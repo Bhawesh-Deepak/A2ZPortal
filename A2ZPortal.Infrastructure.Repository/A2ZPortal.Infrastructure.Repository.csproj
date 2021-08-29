@@ -4,4 +4,8 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\A2ZPortal.Core.Entities\A2ZPortal.Core.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

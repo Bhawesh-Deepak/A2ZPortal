@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using A2ZPortal.Core.Entities.Master;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace A2ZPortal.Core.Entities.Context
@@ -9,7 +10,7 @@ namespace A2ZPortal.Core.Entities.Context
 
         public PortalContext(IConfiguration configuration)
         {
-            _connectionString = configuration.GetSection("").Value;
+            _connectionString = configuration.GetSection("ConnectionStrings:dbConnection").Value;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -20,5 +21,7 @@ namespace A2ZPortal.Core.Entities.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         }
+
+        public virtual DbSet<ModuleMaster> ModuleMasters { get; set; }
     }
 }

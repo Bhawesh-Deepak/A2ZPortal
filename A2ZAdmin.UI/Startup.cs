@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using A2ZPortal.Infrastructure.Implementation.Extensions;
 
 namespace A2ZAdmin.UI
 {
@@ -23,6 +24,7 @@ namespace A2ZAdmin.UI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.ServiceExtensionHelper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

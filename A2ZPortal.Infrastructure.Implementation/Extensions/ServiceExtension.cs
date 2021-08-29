@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using A2ZPortal.Infrastructure.Implementation.GenericImplementation;
+using A2ZPortal.Infrastructure.Repository.GenericRepository;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace A2ZPortal.Infrastructure.Implementation.Extensions
 {
@@ -10,6 +12,7 @@ namespace A2ZPortal.Infrastructure.Implementation.Extensions
     {
         public static void ServiceExtensionHelper(this IServiceCollection services)
         {
+            services.AddTransient(typeof(IGenericRepository<,>), typeof(GenericImplementationDetail<,>));
         }
     }
 }
