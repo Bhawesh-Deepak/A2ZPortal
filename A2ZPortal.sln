@@ -9,17 +9,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastrcture", "Infrastrct
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helper", "Helper", "{A9BBAC69-E501-42F4-B7A6-FF72B0B0138F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A2ZPortal.Core.Entities", "A2ZPortal.Core.Entities\A2ZPortal.Core.Entities.csproj", "{4CEBDDC2-F437-4E5A-B63B-0D15A62ABA73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A2ZPortal.Core.Entities", "A2ZPortal.Core.Entities\A2ZPortal.Core.Entities.csproj", "{4CEBDDC2-F437-4E5A-B63B-0D15A62ABA73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A2ZPortal.Helper", "A2ZPortal.Helper\A2ZPortal.Helper.csproj", "{F34C347F-BF18-418A-9F39-9A252F0FEDAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A2ZPortal.Helper", "A2ZPortal.Helper\A2ZPortal.Helper.csproj", "{F34C347F-BF18-418A-9F39-9A252F0FEDAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A2ZPortal.Infrastructure.Repository", "A2ZPortal.Infrastructure.Repository\A2ZPortal.Infrastructure.Repository.csproj", "{0181023A-9187-48B7-9BDA-2F1DF3D54D01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A2ZPortal.Infrastructure.Repository", "A2ZPortal.Infrastructure.Repository\A2ZPortal.Infrastructure.Repository.csproj", "{0181023A-9187-48B7-9BDA-2F1DF3D54D01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A2ZPortal.Infrastructure.Implementation", "A2ZPortal.Infrastructure.Implementation\A2ZPortal.Infrastructure.Implementation.csproj", "{24650FAA-13C0-4F70-9435-EEA0868E90FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A2ZPortal.Infrastructure.Implementation", "A2ZPortal.Infrastructure.Implementation\A2ZPortal.Infrastructure.Implementation.csproj", "{24650FAA-13C0-4F70-9435-EEA0868E90FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A2ZPortal.Core.ViewModel", "A2ZPortal.Core.ViewModel\A2ZPortal.Core.ViewModel.csproj", "{006CF64F-5452-42F4-887A-956F126DEE1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A2ZPortal.Core.ViewModel", "A2ZPortal.Core.ViewModel\A2ZPortal.Core.ViewModel.csproj", "{006CF64F-5452-42F4-887A-956F126DEE1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A2ZPortal.UI", "A2ZPortal.UI\A2ZPortal.UI.csproj", "{E32485DA-1B83-42D8-BE4D-666DD6FE4F5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A2ZPortal.UI", "A2ZPortal.UI\A2ZPortal.UI.csproj", "{E32485DA-1B83-42D8-BE4D-666DD6FE4F5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A2ZAdmin.UI", "A2ZAdmin.UI\A2ZAdmin.UI.csproj", "{75380A33-35EB-420C-BA78-284C76E7C24D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{E32485DA-1B83-42D8-BE4D-666DD6FE4F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E32485DA-1B83-42D8-BE4D-666DD6FE4F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E32485DA-1B83-42D8-BE4D-666DD6FE4F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75380A33-35EB-420C-BA78-284C76E7C24D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75380A33-35EB-420C-BA78-284C76E7C24D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75380A33-35EB-420C-BA78-284C76E7C24D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75380A33-35EB-420C-BA78-284C76E7C24D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
