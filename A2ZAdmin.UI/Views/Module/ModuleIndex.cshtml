@@ -6,7 +6,7 @@
             <small> @ViewData["Header"] Details</small>
         </h1>
     </section>
-    <section class="content">
+    <section class="content" id="divContent">
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
@@ -31,10 +31,16 @@
         GetDetail();
     });
 
+    function BeginRequest() {
+        $("#divContent").addClass("loading");
+    }
+
     function GetDetail() {
+        $("#divContent").addClass("loading");
         $.get("/Module/GetDetail",
             function(data) {
                 $("#divData").html(data);
+                $("#divContent").removeClass("loading");
             });
 
     }
@@ -55,26 +61,30 @@
 
         GetDetail();
         $("#form")[0].Reset();
+        $("#divContent").removeClass("loading");
     }
 
     function Delete(id) {
+        $("#divContent").addClass("loading");
         alertify.confirm("Are you sure want to delete the record ?", function() {
             $.get("/Module/Delete",
                 { id: id },
                 function(data) {
                     alertify.success(data);
                     GetDetail();
-
+                    $("#divContent").removeClass("loading");
                 });
         });
     }
 
     function Edit(id) {
+        $("#divContent").addClass("loading");
         $.get("/Module/Create",{id:id},
             function(data) {
                 $("#headerText").text("Module Update");
                 $("#divCreate").html(data);
                 $("#myModal").modal('show');
+                $("#divContent").removeClass("loading");
             });
     }
 </script>

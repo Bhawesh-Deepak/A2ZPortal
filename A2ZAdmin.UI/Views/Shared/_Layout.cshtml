@@ -25,7 +25,24 @@
     <link href="~/AlertifyJs/build/css/themes/bootstrap.css" rel="stylesheet" />
     <link href="~/AlertifyJs/build/css/alertify.css" rel="stylesheet" />
     <script src="~/AlertifyJs/build/alertify.js"></script>
+    <style>
+        .loading {
+            position: relative;
+        }
 
+        .loading:before {
+            content: "";
+            display: block;
+            position: absolute;
+            z-index: 9;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 2555, 255,0.6) url(../images/loading.gif) no-repeat center 35vh;
+            background-size: 85px;
+        }
+    </style>
 </head>
 <body class="hold-transition skin-yellow sidebar-mini">
     <div class="wrapper">
