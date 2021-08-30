@@ -1,13 +1,12 @@
 ﻿using A2ZAdmin.UI.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using A2ZPortal.Core.Entities.Master;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
+using Microsoft.Extensions.Logging;
+
 
 namespace A2ZAdmin.UI.Controllers
 {
@@ -23,6 +22,7 @@ namespace A2ZAdmin.UI.Controllers
 
         public async Task<IActionResult> Index()
         {
+            
             var response = await _moduleMasterRepository.CreateEntity(new ModuleMaster()
             {
                 ModuleName = "Home",

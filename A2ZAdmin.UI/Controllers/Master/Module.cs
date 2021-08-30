@@ -42,17 +42,14 @@ namespace A2ZAdmin.UI.Controllers.Master
         [HttpPost]
         public async Task<IActionResult> PostCreate(ModuleMaster model)
         {
-            ResponseStatus status;
             if (model.Id > 0)
             {
                 var updateModel = CommonCrudHelper.CommonUpdateCode(model, 1);
                 var updateResponse = await _iModuleGenericRepository.Update(updateModel);
-                status = updateResponse.ResponseStatus;
             }
 
             var createModel = CommonCrudHelper.CommonCreateCode(model, 1);
             var createResponse = await _iModuleGenericRepository.CreateEntity(createModel);
-            status = createResponse.ResponseStatus;
             return Json("Created");
         }
         public async Task<IActionResult> Delete(int id)
