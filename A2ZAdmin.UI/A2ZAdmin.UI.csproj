@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\A2ZPortal.Helper\A2ZPortal.Helper.csproj" />
     <ProjectReference Include="..\A2ZPortal.Infrastructure.Implementation\A2ZPortal.Infrastructure.Implementation.csproj" />
   </ItemGroup>
 
