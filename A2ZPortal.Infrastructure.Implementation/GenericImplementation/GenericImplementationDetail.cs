@@ -83,7 +83,7 @@ namespace A2ZPortal.Infrastructure.Implementation.GenericImplementation
         {
             IQueryable<TEntity> dbQuery = baseContext.Set<TEntity>();
             foreach (var navigationProp in navigationProperties) dbQuery.Include(navigationProp);
-            var response = await dbQuery.AsNoTracking().ToListAsync();
+            var response = await Task.Run(() => dbQuery.AsNoTracking().Where(where).ToList());
             return new ResponseModel<TEntity>(null, response, ResponseStatus.Success,
                 ResponseStatus.Success.ToString());
         }

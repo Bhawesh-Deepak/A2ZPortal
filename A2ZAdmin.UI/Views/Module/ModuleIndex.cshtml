@@ -1,0 +1,80 @@
+﻿<div class="content-wrapper">
+
+    <section class="content-header">
+        <h1>
+            @ViewData["Header"]
+            <small> @ViewData["Header"] Details</small>
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Module Master Details</h3>
+                        <button class="btn btn-primary pull-right" onclick="Create()">
+                            <i class="fa fa-edit">&nbsp;Add</i>
+                        </button>
+                    </div>
+
+                    <div class="box-body">
+                        <div id="divData"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        GetDetail();
+    });
+
+    function GetDetail() {
+        $.get("/Module/GetDetail",
+            function(data) {
+                $("#divData").html(data);
+            });
+
+    }
+
+    function Create() {
+        $.get("/Module/Create",
+            function(data) {
+                $("#headerText").text("Module Create");
+                $("#divCreate").html(data);
+                $("#myModal").modal('show');
+            });
+    }
+
+    function Success(response) {
+        alertify.set('notifier', 'position', 'top-center');
+        alertify.success("Created Successfully !!!");
+        $("#myModal").modal('hide');
+
+        GetDetail();
+        $("#form")[0].Reset();
+    }
+
+    function Delete(id) {
+        alertify.confirm("Are you sure want to delete the record ?", function() {
+            $.get("/Module/Delete",
+                { id: id },
+                function(data) {
+                    alertify.success(data);
+                    GetDetail();
+
+                });
+        });
+    }
+
+    function Edit(id) {
+        $.get("/Module/Create",{id:id},
+            function(data) {
+                $("#headerText").text("Module Update");
+                $("#divCreate").html(data);
+                $("#myModal").modal('show');
+            });
+    }
+</script>
