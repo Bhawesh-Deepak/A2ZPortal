@@ -8,6 +8,7 @@ using A2ZPortal.Core.Entities.Master;
 using A2ZPortal.Helper;
 using A2ZPortal.Helper.Extension;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
+using Serilog;
 
 namespace A2ZAdmin.UI.Controllers.Master
 {
@@ -23,19 +24,25 @@ namespace A2ZAdmin.UI.Controllers.Master
         public IActionResult Index()
         {
             ViewData["Header"] = "Module Master";
-            return View(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(Module),"ModuleIndex"));
+            return View(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(Module), "ModuleIndex"));
         }
 
         public async Task<IActionResult> GetDetail()
         {
             var response = await _iModuleGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false);
-            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(Module), "ModuleDetails"), response.Entities);
+            if (response.ResponseStatus != ResponseStatus.Error)
+            {
+                return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(Module), "ModuleDetails"), response.Entities);
+            }
+            Log.Error(response.Message);
+            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("Shared", "Error"));
+
         }
 
         public async Task<IActionResult> Create(int id)
         {
-            var response = await _iModuleGenericRepository.GetSingle(x=>x.Id==id);
-            
+            var response = await _iModuleGenericRepository.GetSingle(x => x.Id == id);
+
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(Module), "ModuleCreate"), response.Entity);
         }
 
@@ -46,18 +53,30 @@ namespace A2ZAdmin.UI.Controllers.Master
             {
                 var updateModel = CommonCrudHelper.CommonUpdateCode(model, 1);
                 var updateResponse = await _iModuleGenericRepository.Update(updateModel);
+                if (updateResponse.ResponseStatus != ResponseStatus.Error)
+                {
+                    return Json("Module Updated Successfully !!!");
+                }
+                Log.Error(updateResponse.Message);
+                return Json("Something went wrong Please contact Admin Team !!!");
             }
 
             var createModel = CommonCrudHelper.CommonCreateCode(model, 1);
             var createResponse = await _iModuleGenericRepository.CreateEntity(createModel);
-            return Json("Created");
+            if (createResponse.ResponseStatus != ResponseStatus.Error)
+            {
+                return Json("Module created Successfully !!!");
+            }
+            Log.Error(createResponse.Message);
+            return Json("Something went wrong Please contact Admin Team !!!");
         }
         public async Task<IActionResult> Delete(int id)
         {
             var response = await _iModuleGenericRepository.GetSingle(x => x.Id == id);
             var deleteModel = CommonCrudHelper.CommonDeleteCode(response.Entity, 1);
             var deleteResponse = await _iModuleGenericRepository.Delete(deleteModel);
-            return Json("Deleted");
+            return Json(deleteResponse.ResponseStatus != ResponseStatus.Error ?
+                "Module deleted successfully !!!" : "Something went wrong Please contact Admin !!");
         }
     }
 }
