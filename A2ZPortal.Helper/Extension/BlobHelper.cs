@@ -18,28 +18,17 @@ namespace A2ZPortal.Helper.Extension
                 {
                     switch (file)
                     {
-                        case {Length: > 0, ContentType: "video/mp4"}:
-                        {
-                            var upload = Path.Combine(@"D:/VMVideo/", "Tutorial//");
-                            await using (var fs = new FileStream(Path.Combine(upload, file.FileName), FileMode.Create))
+                        case { Length: > 0 }:
                             {
-                                await file.CopyToAsync(fs);
-                            }
+                                var upload = Path.Combine(_hostingEnvironment.WebRootPath, "PropertyImage//");
+                                await using (var fs = new FileStream(Path.Combine(upload, file.FileName), FileMode.Create))
+                                {
+                                    await file.CopyToAsync(fs);
+                                }
 
-                            imageStoragePaths.Add("D:/VMVideo/Tutorial/" + file.FileName);
-                            break;
-                        }
-                        case {Length: > 0}:
-                        {
-                            var upload = Path.Combine(_hostingEnvironment.WebRootPath, "Images//");
-                            await using (var fs = new FileStream(Path.Combine(upload, file.FileName), FileMode.Create))
-                            {
-                                await file.CopyToAsync(fs);
+                                imageStoragePaths.Add("/PropertyImage/" + file.FileName);
+                                break;
                             }
-
-                            imageStoragePaths.Add("/Images/" + file.FileName);
-                            break;
-                        }
                     }
                 }
                 catch (Exception ex)

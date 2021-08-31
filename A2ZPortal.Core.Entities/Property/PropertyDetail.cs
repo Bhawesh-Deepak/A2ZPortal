@@ -19,6 +19,9 @@ namespace A2ZPortal.Core.Entities.Property
         public string Longitude { get; set; }
         public string Lattitude { get; set; }
         public int AgentId { get; set; }
+        public int BedRoomId { get; set; }
+        public string PlaceAddress { get; set; }
+        public string PlaceId { get; set; }
 
     }
 }
