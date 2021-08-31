@@ -9,17 +9,13 @@
         height: 300px;
         width: 575px;
     }
-    .modal {
-        z-index: 20;
-    }
+   
 
     .modal-backdrop {
         z-index: 10;
     }
 </style>
-
-<div class="col-md-12">
-    <div class="box box-primary">
+ 
         <form id="form" method="post" data-ajax="true" data-ajax-method="post"
               asp-action="PostCreate" asp-controller="PropertyStatus" data-ajax-success="Success" data-ajax-begin="BeginRequest">
             <div class="box-body">
@@ -136,8 +132,7 @@
                 </div>
             </div>
         </form>
-    </div>
-</div>
+    
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKGAp4SyPy1qnUqz5gMygSOzO8Qm2kNvY&callback=initAutocomplete&libraries=places&v=weekly"
         defer></script>
