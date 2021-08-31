@@ -1,0 +1,35 @@
+﻿<div class="content-wrapper">
+
+    <section class="content-header">
+        <h1>
+            @ViewData["Header"]
+            <small> @ViewData["Header"] Details</small>
+        </h1>
+    </section>
+    <section class="content" id="divContent">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Property Feature Details</h3>
+                        <button class="btn btn-primary pull-right" onclick="Create()">
+                            <i class="fa fa-edit">&nbsp;Add</i>
+                        </button>
+                    </div>
+
+                    <div class="box-body">
+                        <div id="divData"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<environment include="Production">
+    <script src="~/CustomJavaScript/PropertyFeature.js"></script>
+</environment>
+<environment include="Development">
+    <script src="~/CustomJavaScript/PropertyFeature.js"></script>
+</environment>
+

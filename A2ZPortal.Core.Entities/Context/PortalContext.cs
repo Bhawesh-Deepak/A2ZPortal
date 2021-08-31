@@ -27,5 +27,13 @@ namespace A2ZPortal.Core.Entities.Context
         public virtual DbSet<PropertyStatusModel> PropertyStatus { get; set; }
         public virtual DbSet<PropertyDetail> PropertyDetails { get; set; }
         public virtual DbSet<PropertyImage> PropertyImages { get; set; }
-    } 
+   
+        public virtual DbSet<RoleMaster> RoleMasters { get; set; }
+        public virtual DbSet<BathRoom> BathRooms { get; set; }
+        public virtual DbSet<BedRoom> BedRooms { get; set; }
+        public virtual DbSet<Budget> Budgets { get; set; }
+        public virtual DbSet<PropertyFeature> PropertyFeatures { get; set; }
+
+        
+    }
 }
