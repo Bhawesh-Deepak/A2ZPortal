@@ -23,5 +23,6 @@ namespace A2ZPortal.Core.Entities.Context
         }
 
         public virtual DbSet<ModuleMaster> ModuleMasters { get; set; }
-    }
+        public virtual DbSet<PropertyStatusModel> PropertyStatus { get; set; }
+    } 
 }
