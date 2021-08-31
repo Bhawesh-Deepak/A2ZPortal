@@ -1,0 +1,224 @@
+﻿@model A2ZPortal.Core.Entities.Property.PropertyDetail
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+<style type="text/css">
+
+    #divMap {
+        height: 300px;
+        width: 575px;
+    }
+    .modal {
+        z-index: 20;
+    }
+
+    .modal-backdrop {
+        z-index: 10;
+    }
+</style>
+
+<div class="col-md-12">
+    <div class="box box-primary">
+        <form id="form" method="post" data-ajax="true" data-ajax-method="post"
+              asp-action="PostCreate" asp-controller="PropertyStatus" data-ajax-success="Success" data-ajax-begin="BeginRequest">
+            <div class="box-body">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input asp-for="Id" type="hidden" />
+                        <input asp-for="CreatedBy" type="hidden" />
+                        <input asp-for="CreatedDate" type="hidden" />
+                        <label asp-for="LocationId">Location</label>
+                        <input type="text" asp-for="LocationId" class="form-control" />
+                        <span asp-validation-for="LocationId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="SubLocationId">SubLocation</label>
+                        <input type="text" asp-for="SubLocationId" class="form-control" />
+                        <span asp-validation-for="SubLocationId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+
+                        <label asp-for="PropertyTypeId">Property Type</label>
+                        <input type="text" asp-for="PropertyTypeId" class="form-control" />
+                        <span asp-validation-for="PropertyTypeId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="PropertyStatusId">Property Status</label>
+                        <input type="text" asp-for="PropertyStatusId" class="form-control" />
+                        <span asp-validation-for="PropertyStatusId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="BathRoomId">Bath Room</label>
+                        <input type="text" asp-for="BathRoomId" class="form-control" />
+                        <span asp-validation-for="BathRoomId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="BudgetId">Budget</label>
+                        <input type="text" asp-for="BudgetId" class="form-control" />
+                        <span asp-validation-for="BudgetId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="AreaCovered">Area Covered</label>
+                        <input type="text" asp-for="AreaCovered" class="form-control" />
+                        <span asp-validation-for="AreaCovered" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="TotalArea">Total Area</label>
+                        <input type="text" asp-for="TotalArea" class="form-control" />
+                        <span asp-validation-for="TotalArea" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="PropertyName">Property Name</label>
+                        <input type="text" asp-for="PropertyName" class="form-control" />
+                        <span asp-validation-for="PropertyName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="SubLocationId">SubLocation</label>
+                        <input type="text" asp-for="SubLocationId" class="form-control" />
+                        <span asp-validation-for="SubLocationId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ProprtyDescription">Proprty Description</label>
+                        <input type="text" asp-for="ProprtyDescription" class="form-control" />
+                        <span asp-validation-for="ProprtyDescription" class="text-danger"></span>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Location (Address)</label>
+                        <input type="hidden" id="Latituide" />
+                        <input type="hidden" id="Longitude" />
+                        <input type="hidden" id="PLaceAddress" />
+                        <input type="hidden" id="PlaceId" />
+                        <input id="pac-input"
+                               class="mailbox-controls form-control"
+                               type="text"
+                               placeholder="Search Box" />
+                        <div id="divMap" class="google_maps" style="position:relative;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-footer">
+                <div class="col-md-8">
+                    <button type="submit" class="btn btn-success pull-right">
+                        <i class="fa fa-download"> &nbsp; Save</i>
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button type="reset" class="btn btn-danger pull-left">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKGAp4SyPy1qnUqz5gMygSOzO8Qm2kNvY&callback=initAutocomplete&libraries=places&v=weekly"
+        defer></script>
+<script>
+    (function (exports) {
+        "use strict";
+        function initAutocomplete() {
+            var map = new google.maps.Map(document.getElementById("divMap"), {
+                center: {
+                    lat: 28.651952,
+                    lng: 77.231495
+                },
+                zoom: 13,
+                mapTypeId: "roadmap"
+            }); // Create the search box and link it to the UI element.
+
+            var input = document.getElementById("pac-input");
+            var searchBox = new google.maps.places.SearchBox(input);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input); // Bias the SearchBox results towards current map's viewport.
+
+            map.addListener("bounds_changed", function () {
+                searchBox.setBounds(map.getBounds());
+            });
+            var markers = []; // Listen for the event fired when the user selects a prediction and retrieve
+            // more details for that place.
+
+            searchBox.addListener("places_changed", function () {
+                var places = searchBox.getPlaces();
+
+                if (places.length == 0) {
+                    return;
+                } // Clear out the old markers.
+
+                markers.forEach(function (marker) {
+                    marker.setMap(null);
+                });
+                markers = []; // For each place, get the icon, name and location.
+
+                var bounds = new google.maps.LatLngBounds();
+                places.forEach(function (place) {
+                    if (!place.geometry) {
+                        console.log("Returned place contains no geometry");
+                        return;
+                    }
+
+                    var icon = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25)
+                    }; // Create a marker for each place.
+
+                    markers.push(
+                        new google.maps.Marker({
+                            map: map,
+                            icon: icon,
+                            title: place.name,
+                            position: place.geometry.location
+                        })
+                    );
+
+                    if (place.geometry.viewport) {
+                        // Only geocodes have viewport.
+                        bounds.union(place.geometry.viewport);
+                    } else {
+                        bounds.extend(place.geometry.location);
+                    }
+
+                    $("#PLaceAddress").val(place.formatted_address);
+                    $("#PlaceId").val(place.place_id);
+
+                });
+
+                map.fitBounds(bounds);
+                $("#Longitude").val(bounds.Ua.i);
+                $("#Latituide").val(bounds.Za.i);
+
+            });
+        }
+
+        exports.initAutocomplete = initAutocomplete;
+    })((this.window = this.window || {}));
+</script>
