@@ -12,19 +12,19 @@ using System.Threading.Tasks;
 
 namespace A2ZAdmin.UI.Controllers.Master
 {
-    public class BathRoomMaster : Controller
+    public class PropertyTypeMaster : Controller
     {
-        private readonly IGenericRepository<BathRoom, int> _iModuleGenericRepository;
+        private readonly IGenericRepository<PropertyType, int> _iModuleGenericRepository;
 
-        public BathRoomMaster(IGenericRepository<BathRoom, int> iModuleGenericRepository)
+        public PropertyTypeMaster(IGenericRepository<PropertyType, int> iModuleGenericRepository)
         {
             _iModuleGenericRepository = iModuleGenericRepository;
         }
 
         public IActionResult Index()
         {
-            ViewData["Header"] = "Bath Room Master";
-            return View(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(BathRoomMaster), "BathRoomMasterIndex"));
+            ViewData["Header"] = "Property Type Master";
+            return View(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(PropertyTypeMaster), "PropertyTypeIndex"));
         }
 
         public async Task<IActionResult> GetDetail()
@@ -32,7 +32,7 @@ namespace A2ZAdmin.UI.Controllers.Master
             var response = await _iModuleGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false);
             if (response.ResponseStatus != ResponseStatus.Error)
             {
-                return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(BathRoomMaster), "BathRoomMasterDetails"), response.Entities);
+                return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(PropertyTypeMaster), "PropertyTypeDetails"), response.Entities);
             }
             Log.Error(response.Message);
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("Shared", "Error"));
@@ -42,11 +42,11 @@ namespace A2ZAdmin.UI.Controllers.Master
         {
             var response = await _iModuleGenericRepository.GetSingle(x => x.Id == id);
 
-            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(BathRoomMaster), "BathRoomMasterCreate"), response.Entity);
+            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(PropertyTypeMaster), "PropertyTypeCreate"), response.Entity);
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostCreate(BathRoom model)
+        public async Task<IActionResult> PostCreate(PropertyType model)
         {
             if (model.Id > 0)
             {
@@ -54,7 +54,7 @@ namespace A2ZAdmin.UI.Controllers.Master
                 var updateResponse = await _iModuleGenericRepository.Update(updateModel);
                 if (updateResponse.ResponseStatus != ResponseStatus.Error)
                 {
-                    return Json("Bath Room Updated Successfully !!!");
+                    return Json("PropertyType Updated Successfully !!!");
                 }
                 Log.Error(updateResponse.Message);
                 return Json("Something went wrong Please contact Admin Team !!!");
@@ -64,7 +64,7 @@ namespace A2ZAdmin.UI.Controllers.Master
             var createResponse = await _iModuleGenericRepository.CreateEntity(createModel);
             if (createResponse.ResponseStatus != ResponseStatus.Error)
             {
-                return Json("Bath Room  created Successfully !!!");
+                return Json("Property Type created Successfully !!!");
             }
             Log.Error(createResponse.Message);
             return Json("Something went wrong Please contact Admin Team !!!");
@@ -75,8 +75,7 @@ namespace A2ZAdmin.UI.Controllers.Master
             var deleteModel = CommonCrudHelper.CommonDeleteCode(response.Entity, 1);
             var deleteResponse = await _iModuleGenericRepository.Delete(deleteModel);
             return Json(deleteResponse.ResponseStatus != ResponseStatus.Error ?
-                "Bath Room  deleted successfully !!!" : "Something went wrong Please contact Admin !!");
+                "Property Type  deleted successfully !!!" : "Something went wrong Please contact Admin !!");
         }
-
     }
 }
