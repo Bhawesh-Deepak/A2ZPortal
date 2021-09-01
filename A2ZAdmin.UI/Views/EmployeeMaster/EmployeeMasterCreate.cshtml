@@ -1,0 +1,75 @@
+﻿@model A2ZPortal.Core.Entities.Master.Employee
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+<form id="form" method="post" data-ajax="true" data-ajax-method="post"
+      asp-action="PostCreate" asp-controller="EmployeeMaster" data-ajax-success="Success" data-ajax-begin="BeginRequest">
+    <div class="box-body">
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <input asp-for="Id" type="hidden" />
+                <input asp-for="CreatedBy" type="hidden" />
+                <input asp-for="CreatedDate" type="hidden" />
+                <label asp-for="EmpCode">Emp Code</label>
+                <input type="text" asp-for="EmpCode" class="form-control" />
+                <span asp-validation-for="EmpCode" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="EmployeeName">Employee Name</label>
+                <input type="text" asp-for="EmployeeName" class="form-control" />
+                <span asp-validation-for="EmployeeName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Phone">Phone Number</label>
+                <input type="text" asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Email">Email</label>
+                <input type="text" asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="RoleId">Role</label>
+                <input type="text" asp-for="RoleId" class="form-control" />
+                <span asp-validation-for="RoleId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="UserName">User Name</label>
+                <input type="text" asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Password">Password</label>
+                <input type="password" asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="box-footer">
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-success pull-right">
+                <i class="fa fa-download"> &nbsp; Save</i>
+            </button>
+        </div>
+        <div class="col-md-4">
+            <button type="reset" class="btn btn-danger pull-left">Cancel</button>
+        </div>
+    </div>
+</form>
