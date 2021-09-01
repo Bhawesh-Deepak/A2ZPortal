@@ -14,13 +14,20 @@ namespace A2ZAdmin.UI.Controllers.Master
 {
     public class SubLoactionMaster : Controller
     {
-        private readonly IGenericRepository<SubLocation, int> _iModuleGenericRepository;
+        private readonly IGenericRepository<SubLocation, int> _iSubLocationGenericRepository;
+        private readonly IGenericRepository<Location, int> _iLocationGenericRepository;
 
-        public SubLoactionMaster(IGenericRepository<SubLocation, int> iModuleGenericRepository)
+        public SubLoactionMaster(IGenericRepository<SubLocation, int> iSubLocationGenericRepository
+            , IGenericRepository<Location, int> iLocationGenericRepository)
         {
-            _iModuleGenericRepository = iModuleGenericRepository;
+            _iSubLocationGenericRepository = iSubLocationGenericRepository;
+            _iLocationGenericRepository = iLocationGenericRepository;
         }
+        private async Task PopulateViewBag()
+        {
+            ViewBag.Location = (await _iLocationGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
 
+        }
         public IActionResult Index()
         {
             ViewData["Header"] = "Sub Location Master";
@@ -29,7 +36,7 @@ namespace A2ZAdmin.UI.Controllers.Master
 
         public async Task<IActionResult> GetDetail()
         {
-            var response = await _iModuleGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false);
+            var response = await _iSubLocationGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false);
             if (response.ResponseStatus != ResponseStatus.Error)
             {
                 return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(SubLoactionMaster), "SubLocationMasterDetails"), response.Entities);
@@ -40,7 +47,8 @@ namespace A2ZAdmin.UI.Controllers.Master
         }
         public async Task<IActionResult> Create(int id)
         {
-            var response = await _iModuleGenericRepository.GetSingle(x => x.Id == id);
+            await PopulateViewBag();
+            var response = await _iSubLocationGenericRepository.GetSingle(x => x.Id == id);
 
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(SubLoactionMaster), "SubLocationMasterCreate"), response.Entity);
         }
@@ -51,7 +59,7 @@ namespace A2ZAdmin.UI.Controllers.Master
             if (model.Id > 0)
             {
                 var updateModel = CommonCrudHelper.CommonUpdateCode(model, 1);
-                var updateResponse = await _iModuleGenericRepository.Update(updateModel);
+                var updateResponse = await _iSubLocationGenericRepository.Update(updateModel);
                 if (updateResponse.ResponseStatus != ResponseStatus.Error)
                 {
                     return Json("Sub Location Updated Successfully !!!");
@@ -61,7 +69,7 @@ namespace A2ZAdmin.UI.Controllers.Master
             }
 
             var createModel = CommonCrudHelper.CommonCreateCode(model, 1);
-            var createResponse = await _iModuleGenericRepository.CreateEntity(createModel);
+            var createResponse = await _iSubLocationGenericRepository.CreateEntity(createModel);
             if (createResponse.ResponseStatus != ResponseStatus.Error)
             {
                 return Json("Sub Location  created Successfully !!!");
@@ -71,9 +79,9 @@ namespace A2ZAdmin.UI.Controllers.Master
         }
         public async Task<IActionResult> Delete(int id)
         {
-            var response = await _iModuleGenericRepository.GetSingle(x => x.Id == id);
+            var response = await _iSubLocationGenericRepository.GetSingle(x => x.Id == id);
             var deleteModel = CommonCrudHelper.CommonDeleteCode(response.Entity, 1);
-            var deleteResponse = await _iModuleGenericRepository.Delete(deleteModel);
+            var deleteResponse = await _iSubLocationGenericRepository.Delete(deleteModel);
             return Json(deleteResponse.ResponseStatus != ResponseStatus.Error ?
                 "Sub Location  deleted successfully !!!" : "Something went wrong Please contact Admin !!");
         }
