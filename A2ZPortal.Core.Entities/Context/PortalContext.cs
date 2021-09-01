@@ -36,6 +36,6 @@ namespace A2ZPortal.Core.Entities.Context
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<SubLocation> SubLocations { get; set; }
-
+        public virtual DbSet<SubModuleMaster> SubModuleMasters { get; set; }
     }
 }
