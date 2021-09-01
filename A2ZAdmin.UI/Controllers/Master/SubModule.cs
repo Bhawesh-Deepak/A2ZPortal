@@ -14,13 +14,20 @@ namespace A2ZAdmin.UI.Controllers.Master
 {
     public class SubModule : Controller
     {
-        private readonly IGenericRepository<SubModuleMaster, int> _iModuleGenericRepository;
+        private readonly IGenericRepository<SubModuleMaster, int> _iSubModuleGenericRepository;
+        private readonly IGenericRepository<ModuleMaster, int> _iModuleGenericRepository;
 
-        public SubModule(IGenericRepository<SubModuleMaster, int> iModuleGenericRepository)
+        public SubModule(IGenericRepository<SubModuleMaster, int> iSubModuleGenericRepository
+         , IGenericRepository<ModuleMaster, int> iModuleGenericRepository)
         {
+            _iSubModuleGenericRepository = iSubModuleGenericRepository;
             _iModuleGenericRepository = iModuleGenericRepository;
         }
-
+        private async Task PopulateViewBag()
+        {
+            ViewBag.Module = (await _iModuleGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            
+        }
         public IActionResult Index()
         {
             ViewData["Header"] = "Sub Module Master";
@@ -29,7 +36,7 @@ namespace A2ZAdmin.UI.Controllers.Master
 
         public async Task<IActionResult> GetDetail()
         {
-            var response = await _iModuleGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false);
+            var response = await _iSubModuleGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false);
             if (response.ResponseStatus != ResponseStatus.Error)
             {
                 return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(SubModule), "SubModuleDetails"), response.Entities);
@@ -40,7 +47,8 @@ namespace A2ZAdmin.UI.Controllers.Master
         }
         public async Task<IActionResult> Create(int id)
         {
-            var response = await _iModuleGenericRepository.GetSingle(x => x.Id == id);
+            await PopulateViewBag();
+            var response = await _iSubModuleGenericRepository.GetSingle(x => x.Id == id);
 
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(SubModule), "SubModuleCreate"), response.Entity);
         }
@@ -51,7 +59,7 @@ namespace A2ZAdmin.UI.Controllers.Master
             if (model.Id > 0)
             {
                 var updateModel = CommonCrudHelper.CommonUpdateCode(model, 1);
-                var updateResponse = await _iModuleGenericRepository.Update(updateModel);
+                var updateResponse = await _iSubModuleGenericRepository.Update(updateModel);
                 if (updateResponse.ResponseStatus != ResponseStatus.Error)
                 {
                     return Json("Sub Module Updated Successfully !!!");
@@ -61,7 +69,7 @@ namespace A2ZAdmin.UI.Controllers.Master
             }
 
             var createModel = CommonCrudHelper.CommonCreateCode(model, 1);
-            var createResponse = await _iModuleGenericRepository.CreateEntity(createModel);
+            var createResponse = await _iSubModuleGenericRepository.CreateEntity(createModel);
             if (createResponse.ResponseStatus != ResponseStatus.Error)
             {
                 return Json("Sub Module created Successfully !!!");
@@ -71,9 +79,9 @@ namespace A2ZAdmin.UI.Controllers.Master
         }
         public async Task<IActionResult> Delete(int id)
         {
-            var response = await _iModuleGenericRepository.GetSingle(x => x.Id == id);
+            var response = await _iSubModuleGenericRepository.GetSingle(x => x.Id == id);
             var deleteModel = CommonCrudHelper.CommonDeleteCode(response.Entity, 1);
-            var deleteResponse = await _iModuleGenericRepository.Delete(deleteModel);
+            var deleteResponse = await _iSubModuleGenericRepository.Delete(deleteModel);
             return Json(deleteResponse.ResponseStatus != ResponseStatus.Error ?
                 "Sub Module  deleted successfully !!!" : "Something went wrong Please contact Admin !!");
         }

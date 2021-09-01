@@ -13,7 +13,10 @@
                     <input asp-for="CreatedBy" type="hidden" />
                     <input asp-for="CreatedDate" type="hidden" />
                     <label asp-for="ModuleId">Module</label>
-                    <input type="text" asp-for="ModuleId" class="form-control" />
+                    <select asp-for="ModuleId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<ModuleMaster>)ViewBag.Module,"Id","ModuleName"))">
+                        <option value="">--Select One--</option>
+                    </select>
                     <span asp-validation-for="ModuleId" class="text-danger"></span>
                 </div>
             </div>
