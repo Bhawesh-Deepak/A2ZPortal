@@ -73,28 +73,40 @@
                     <div class="form-group">
 
                         <label asp-for="PropertyTypeId">Property Type</label>
-                        <input type="text" asp-for="PropertyTypeId" class="form-control" />
+                        <select asp-for="PropertyTypeId" class="form-control" 
+                                asp-items="@(new SelectList((IEnumerable<PropertyType>)ViewBag.PropertyType,"Id","PropertyTypeName"))">
+                            <option value="">--Select--</option>
+                        </select>
                         <span asp-validation-for="PropertyTypeId" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="PropertyStatusId">Property Status</label>
-                        <input type="text" asp-for="PropertyStatusId" class="form-control" />
+                        <select asp-for="PropertyStatusId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<PropertyStatusModel>)ViewBag.PropertyStatus,"Id","PropertyStatus"))">
+                            <option value="">--Select--</option>
+                        </select>
                         <span asp-validation-for="PropertyStatusId" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="BedRoomId">Bed Room</label>
-                        <input type="text" asp-for="BedRoomId" class="form-control" />
+                        <select asp-for="BedRoomId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<BedRoom>)ViewBag.BedRoom,"Id","BedRooms"))">
+                            <option value="">--Select--</option>
+                        </select>
                         <span asp-validation-for="BedRoomId" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="BathRoomId">Bath Room</label>
-                        <input type="text" asp-for="BathRoomId" class="form-control" />
+                        <select asp-for="BathRoomId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<BathRoom>)ViewBag.BathRoom,"Id","BathRooms"))">
+                            <option value="">--Select--</option>
+                        </select>
                         <span asp-validation-for="BathRoomId" class="text-danger"></span>
                     </div>
                 </div>
@@ -102,7 +114,10 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="BudgetId">Budget</label>
-                        <input type="text" asp-for="BudgetId" class="form-control" />
+                        <select asp-for="BathRoomId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<Budget>)ViewBag.Budget,"Id","Budgets"))">
+                            <option value="">--Select--</option>
+                        </select>
                         <span asp-validation-for="BudgetId" class="text-danger"></span>
                     </div>
                 </div>

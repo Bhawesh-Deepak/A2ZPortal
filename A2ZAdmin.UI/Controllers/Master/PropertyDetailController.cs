@@ -1,4 +1,5 @@
 ﻿using A2ZPortal.Core.Entities.Common;
+using A2ZPortal.Core.Entities.Master;
 using A2ZPortal.Core.Entities.Property;
 using A2ZPortal.Helper;
 using A2ZPortal.Helper.Extension;
@@ -18,13 +19,32 @@ namespace A2ZAdmin.UI.Controllers.Master
         private readonly IGenericRepository<PropertyDetail, int> _IPropertyDetailRepository;
         private readonly IGenericRepository<PropertyImage, int> _IPropertyImageRepository;
         private readonly IHostingEnvironment _IhostingEnviroment;
+        private readonly IGenericRepository<PropertyType, int> _IPropertyTypeMasterRepository;
+        private readonly IGenericRepository<PropertyStatusModel, int> _IPropertyStatusRepository;
+        private readonly IGenericRepository<BedRoom, int> _IBedRoomRepository;
+        private readonly IGenericRepository<BathRoom, int> _IBathRoomRepository;
+        private readonly IGenericRepository<Budget, int> _IBudgetRepository;
 
         public PropertyDetailController(IGenericRepository<PropertyDetail, int> propertyDetailRepository,
-            IGenericRepository<PropertyImage, int> propertyImageRepository, IHostingEnvironment hostingEnvironment)
+            IGenericRepository<PropertyImage, int> propertyImageRepository,
+            IHostingEnvironment hostingEnvironment, IGenericRepository<PropertyType, int> propertyTypeRepo
+            , IGenericRepository<PropertyStatusModel, int> propertyStatusRepository
+            , IGenericRepository<BedRoom, int> bedRoomRepository
+            , IGenericRepository<BathRoom, int> bathRoomRepository
+            , IGenericRepository<Budget, int> budgetRepository
+
+
+
+            )
         {
             _IPropertyDetailRepository = propertyDetailRepository;
             _IPropertyImageRepository = propertyImageRepository;
             _IhostingEnviroment = hostingEnvironment;
+            _IPropertyStatusRepository = propertyStatusRepository;
+            _IBedRoomRepository = bedRoomRepository;
+            _IBathRoomRepository = bathRoomRepository;
+            _IBudgetRepository = budgetRepository;
+            _IPropertyTypeMasterRepository = propertyTypeRepo;
         }
         public async Task<IActionResult> Index()
         {
@@ -46,6 +66,8 @@ namespace A2ZAdmin.UI.Controllers.Master
 
         public async Task<IActionResult> Create(int id)
         {
+            await PopulateViewBag();
+
             var response = await _IPropertyDetailRepository.GetSingle(x => x.Id == id);
 
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "PropertyDetailCreate"), response.Entity);
@@ -137,6 +159,15 @@ namespace A2ZAdmin.UI.Controllers.Master
             var updateResponse = await _IPropertyImageRepository.Update(imageList.Entities.ToArray());
 
             return updateResponse.ResponseStatus != ResponseStatus.Error;
+        }
+
+        private async Task PopulateViewBag()
+        {
+            ViewBag.PropertyStatus = (await _IPropertyStatusRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.BedRoom = (await _IBedRoomRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.BathRoom = (await _IBathRoomRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.Budget = (await _IBudgetRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.PropertyType = (await _IPropertyTypeMasterRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
         }
     }
 }
