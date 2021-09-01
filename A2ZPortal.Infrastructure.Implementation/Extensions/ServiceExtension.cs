@@ -1,5 +1,7 @@
 ﻿using A2ZPortal.Infrastructure.Implementation.GenericImplementation;
+using A2ZPortal.Infrastructure.Implementation.PropertyImplementation;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
+using A2ZPortal.Infrastructure.Repository.PropertyDetailRepository;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace A2ZPortal.Infrastructure.Implementation.Extensions
@@ -13,6 +15,7 @@ namespace A2ZPortal.Infrastructure.Implementation.Extensions
         public static void ServiceExtensionHelper(this IServiceCollection services)
         {
             services.AddTransient(typeof(IGenericRepository<,>), typeof(GenericImplementationDetail<,>));
+            services.AddTransient<IPropertyDetailRepository, PropertyDetailImplementation>();
         }
     }
 }

@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\A2ZPortal.Core.Entities\A2ZPortal.Core.Entities.csproj" />
+    <ProjectReference Include="..\A2ZPortal.Core.ViewModel\A2ZPortal.Core.ViewModel.csproj" />
   </ItemGroup>
 
 </Project>
