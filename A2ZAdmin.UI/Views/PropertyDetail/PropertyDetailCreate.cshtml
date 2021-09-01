@@ -60,7 +60,10 @@
                         <input asp-for="CreatedBy" type="hidden" />
                         <input asp-for="CreatedDate" type="hidden" />
                         <label asp-for="LocationId">Location</label>
-                        <input type="text" asp-for="LocationId" class="form-control" />
+                        <select asp-for="LocationId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<Location>)ViewBag.Location,"Id","LocationName"))">
+                            <option value="">--Select--</option>
+                        </select>
                         <span asp-validation-for="LocationId" class="text-danger"></span>
                     </div>
                 </div>

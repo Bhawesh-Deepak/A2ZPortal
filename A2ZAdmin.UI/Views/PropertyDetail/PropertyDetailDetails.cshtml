@@ -1,5 +1,51 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<A2ZPortal.Core.ViewModel.PropertyDetail.PropertyDetailVm>
+<div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+    <div class="row">
+        <div class="col-sm-12">
+            <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                <thead>
+                    <tr role="row">
+                        <th>Property Name </th>
+                        <th>Location </th>
+                        <th>Sub Location</th>
+                        <th>Property Type</th>
+                        <th>Bed Room </th>
+                        <th>Bath Room </th>
+                        <th>Area Covered</th>
+                        <th>Budget </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var data in Model.GroupBy(x=>x.Id))
+                    {
+                    <tr>
+                        <td>@data.First().PropertyName</td>
+                        <td>@data.First().LocationName</td>
+                        <td>@data.First().SubLocation</td>
+                        <td>@data.First().PropertyTypeName</td>
+                        <td>@data.First().BedRoom</td>
+                        <td>@data.First().BathRoom</td>
+                        <td>@data.First().AreaCovered</td>
+                        <td>@data.First().Budget</td>
+                        <td>
+                            <button class="btn btn-primary">
+                                <i class="fa fa-edit" onclick="Edit(@data.Key)"></i>
+                            </button>
+                            <button class="btn btn-danger" onclick="Delete(@data.Key)">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#example1').DataTable();
+    })
+</script>
