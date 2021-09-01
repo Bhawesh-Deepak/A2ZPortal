@@ -65,7 +65,7 @@
             }
         },
         glossary:{
-            title:'SERP Says',
+            title:'A2Z Property',
             ok: 'OK',
             cancel: 'Cancel',
             acccpt: 'Accept',
