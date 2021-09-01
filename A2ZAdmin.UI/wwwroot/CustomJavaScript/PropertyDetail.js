@@ -8,7 +8,8 @@ function BeginRequest() {
 
 function GetDetail() {
     $("#divContent").addClass("loading");
-    $.get("/PropertyDetail/GetDetail",
+    debugger;
+    $.get("/PropertyDetail/GetPropertyDetail",
         function (data) {
             $("#divData").html(data);
             $("#divContent").removeClass("loading");

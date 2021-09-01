@@ -1,9 +1,11 @@
 ﻿using A2ZPortal.Core.Entities.Common;
 using A2ZPortal.Core.Entities.Master;
 using A2ZPortal.Core.Entities.Property;
+using A2ZPortal.Core.ViewModel.RequestFolder;
 using A2ZPortal.Helper;
 using A2ZPortal.Helper.Extension;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
+using A2ZPortal.Infrastructure.Repository.PropertyDetailRepository;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +26,8 @@ namespace A2ZAdmin.UI.Controllers.Master
         private readonly IGenericRepository<BedRoom, int> _IBedRoomRepository;
         private readonly IGenericRepository<BathRoom, int> _IBathRoomRepository;
         private readonly IGenericRepository<Budget, int> _IBudgetRepository;
-
+        private readonly IGenericRepository<Location, int> _ILocationRepository;
+        private readonly IPropertyDetailRepository _IPropertyDetailsRepository;
         public PropertyDetailController(IGenericRepository<PropertyDetail, int> propertyDetailRepository,
             IGenericRepository<PropertyImage, int> propertyImageRepository,
             IHostingEnvironment hostingEnvironment, IGenericRepository<PropertyType, int> propertyTypeRepo
@@ -32,8 +35,8 @@ namespace A2ZAdmin.UI.Controllers.Master
             , IGenericRepository<BedRoom, int> bedRoomRepository
             , IGenericRepository<BathRoom, int> bathRoomRepository
             , IGenericRepository<Budget, int> budgetRepository
-
-
+            , IGenericRepository<Location, int> _LocationRepository
+            , IPropertyDetailRepository propertDetailsRepository
 
             )
         {
@@ -45,6 +48,8 @@ namespace A2ZAdmin.UI.Controllers.Master
             _IBathRoomRepository = bathRoomRepository;
             _IBudgetRepository = budgetRepository;
             _IPropertyTypeMasterRepository = propertyTypeRepo;
+            _ILocationRepository = _LocationRepository;
+            _IPropertyDetailsRepository = propertDetailsRepository;
         }
         public async Task<IActionResult> Index()
         {
@@ -116,6 +121,18 @@ namespace A2ZAdmin.UI.Controllers.Master
                 "Property Status deleted successfully !!!" : "Something went wrong Please contact Admin !!");
         }
 
+
+        public async Task<IActionResult> GetPropertyDetail()
+        {
+            var requestModel = new PropertyRequestModel() {
+                PageNumber=1,
+                PageSize=50
+            };
+            var response = await _IPropertyDetailsRepository.GetPropertyDetails(requestModel);
+            return PartialView(ViewPageHelper.InstanceHelper
+                .GetPathDetail("PropertyDetail", "PropertyDetailDetails"), response);
+
+        }
         private async Task<bool> PropertyImageInsert(IFormFile[] PropertyImage, bool isUpdate)
         {
             var imageResponse = await BlobHelper.UploadImageOnFolder(PropertyImage.ToList(), _IhostingEnviroment);
@@ -168,6 +185,7 @@ namespace A2ZAdmin.UI.Controllers.Master
             ViewBag.BathRoom = (await _IBathRoomRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
             ViewBag.Budget = (await _IBudgetRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
             ViewBag.PropertyType = (await _IPropertyTypeMasterRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.Location = (await _ILocationRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
         }
     }
 }

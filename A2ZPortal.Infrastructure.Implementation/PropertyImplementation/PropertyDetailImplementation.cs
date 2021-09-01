@@ -27,13 +27,13 @@ namespace A2ZPortal.Infrastructure.Implementation.PropertyImplementation
                 {
                     new SqlParameter("@PageNbr",requestModel.PageNumber),
                     new SqlParameter("@PageSize",requestModel.PageSize),
-                    new SqlParameter("@LocationId",requestModel.LocationId),
-                    new SqlParameter("@SubLocationId",requestModel.SubLocationId),
-                    new SqlParameter("@PropertyTypeId",requestModel.PropertyId),
-                    new SqlParameter("@PropertyStatusId",requestModel.PropertyStatusId),
-                    new SqlParameter("@BedRoomId",requestModel.BedRoomId),
-                    new SqlParameter("@BathRoomId",requestModel.BathRoomId),
-                    new SqlParameter("@BudgetId",requestModel.BUdgetID)
+                    new SqlParameter("@LocationId",requestModel.LocationId==0?null: requestModel.LocationId),
+                    new SqlParameter("@SubLocationId",requestModel.SubLocationId ==0?null: requestModel.SubLocationId),
+                    new SqlParameter("@PropertyTypeId",requestModel.PropertyId ==0?null: requestModel.PropertyId),
+                    new SqlParameter("@PropertyStatusId",requestModel.PropertyStatusId ==0?null: requestModel.PropertyStatusId),
+                    new SqlParameter("@BedRoomId",requestModel.BedRoomId ==0?null: requestModel.BedRoomId),
+                    new SqlParameter("@BathRoomId",requestModel.BathRoomId ==0?null: requestModel.BathRoomId),
+                    new SqlParameter("@BudgetId",requestModel.BUdgetID ==0?null: requestModel.BUdgetID)
                 };
 
             var reader = await SqlHelper.ExecuteReader(_connectionString, SqlConstant.GetPropertyDetails,
@@ -47,15 +47,15 @@ namespace A2ZPortal.Infrastructure.Implementation.PropertyImplementation
                 model.SubLocation = reader.DefaultIfNull<string>("SubLocationName");
                 model.PropertyTypeName = reader.DefaultIfNull<string>("PropertyTypeName");
                 model.PropertyStatus = reader.DefaultIfNull<string>("PropertyStatus");
-                model.BedRoom = reader.DefaultIfNull<string>("BedRooms");
-                model.BathRoom = reader.DefaultIfNull<string>("BathRooms");
+                model.BedRoom = reader.DefaultIfNull<int>("BedRooms");
+                model.BathRoom = reader.DefaultIfNull<int>("BathRooms");
                 model.Budget = reader.DefaultIfNull<decimal>("Budgets");
                 model.AreaCovered = reader.DefaultIfNull<decimal>("AreaCovered");
                 model.TotalArea = reader.DefaultIfNull<decimal>("TotalArea");
                 model.PropertyName = reader.DefaultIfNull<string>("PropertyName");
                 model.PlaceAddress = reader.DefaultIfNull<string>("PlaceAddress");
                 model.PlaceId = reader.DefaultIfNull<string>("PlaceId");
-                model.LocationId = reader.DefaultIfNull<string>("LocationId");
+                model.Longitude = reader.DefaultIfNull<string>("Longitude");
                 model.Latitude = reader.DefaultIfNull<string>("Lattitude");
                 model.Images = reader.DefaultIfNull<string>("ImagePath");
                 //model.Features = reader.DefaultIfNull<>("FeatureId");
