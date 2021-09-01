@@ -1,5 +1,6 @@
 ﻿using A2ZPortal.Core.Entities.Common;
 using A2ZPortal.Core.Entities.Master;
+using A2ZPortal.Core.ViewModel.MasterModel;
 using A2ZPortal.Helper;
 using A2ZPortal.Helper.Extension;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
@@ -36,12 +37,25 @@ namespace A2ZAdmin.UI.Controllers.Master
 
         public async Task<IActionResult> GetDetail()
         {
-            var response = await _iSubLocationGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false);
-            if (response.ResponseStatus != ResponseStatus.Error)
+            var SubLocation = await _iSubLocationGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false);
+            var Location = await _iLocationGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false);
+            var SubLocationList = from subLoc in SubLocation.Entities
+                                  join Loc in Location.Entities
+                                  on subLoc.LocationId equals Loc.Id
+                                  select new SubLocationViewModel
+                                  {
+                                      Id = subLoc.Id,
+                                      LocationName = Loc.LocationName,
+                                      SubLocationName = subLoc.SubLocationName
+                                  };
+
+
+            if (SubLocation.ResponseStatus != ResponseStatus.Error && Location.ResponseStatus != ResponseStatus.Error)
             {
-                return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(SubLoactionMaster), "SubLocationMasterDetails"), response.Entities);
+                return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(SubLoactionMaster), "SubLocationMasterDetails"), SubLocationList);
             }
-            Log.Error(response.Message);
+            Log.Error(SubLocation.Message);
+            Log.Error(Location.Message);
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("Shared", "Error"));
 
         }

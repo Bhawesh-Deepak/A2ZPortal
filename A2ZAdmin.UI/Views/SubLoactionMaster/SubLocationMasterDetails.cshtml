@@ -1,5 +1,5 @@
 ﻿@using System.Runtime.InteropServices.ComTypes
-@model IEnumerable<A2ZPortal.Core.Entities.Master.SubLocation>
+@model IEnumerable<A2ZPortal.Core.ViewModel.MasterModel.SubLocationViewModel>
 
 <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
     <div class="row">
@@ -17,7 +17,7 @@
                     {
                         <tr>
 
-                            <td>@data.LocationId</td>
+                            <td>@data.LocationName</td>
                             <td>@data.SubLocationName</td>
                             <td>
                                 <button class="btn btn-primary">
