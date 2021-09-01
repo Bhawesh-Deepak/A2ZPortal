@@ -34,8 +34,6 @@ namespace A2ZPortal.Core.Entities.Context
         public virtual DbSet<Budget> Budgets { get; set; }
         public virtual DbSet<PropertyFeature> PropertyFeatures { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
-        public virtual DbSet<Location> Locations { get; set; }
-        public virtual DbSet<SubLocation> SubLocations { get; set; }
 
     }
 }
