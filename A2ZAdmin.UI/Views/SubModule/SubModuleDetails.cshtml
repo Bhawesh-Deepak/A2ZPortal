@@ -1,5 +1,5 @@
 ﻿@using System.Runtime.InteropServices.ComTypes
-@model IEnumerable<A2ZPortal.Core.Entities.Master.SubModuleMaster>
+@model IEnumerable<A2ZPortal.Core.ViewModel.MasterModel.SubModuleViewModel>
 
 <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
     <div class="row">
@@ -22,7 +22,7 @@
                     {
                         <tr>
 
-                            <td>@data.ModuleId</td>
+                            <td>@data.ModuleName</td>
                             <td>@data.SubModuleName</td>
                             <td>@data.AreaName</td>
                             <td>@data.ControllerName</td>

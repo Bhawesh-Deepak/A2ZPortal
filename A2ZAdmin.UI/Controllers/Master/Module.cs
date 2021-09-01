@@ -29,6 +29,8 @@ namespace A2ZAdmin.UI.Controllers.Master
 
         public async Task<IActionResult> GetDetail()
         {
+           
+
             var response = await _iModuleGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false);
             if (response.ResponseStatus != ResponseStatus.Error)
             {

@@ -1,5 +1,6 @@
 ﻿using A2ZPortal.Core.Entities.Common;
 using A2ZPortal.Core.Entities.Master;
+using A2ZPortal.Core.ViewModel.MasterModel;
 using A2ZPortal.Helper;
 using A2ZPortal.Helper.Extension;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
@@ -26,7 +27,7 @@ namespace A2ZAdmin.UI.Controllers.Master
         private async Task PopulateViewBag()
         {
             ViewBag.Module = (await _iModuleGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
-            
+
         }
         public IActionResult Index()
         {
@@ -36,12 +37,28 @@ namespace A2ZAdmin.UI.Controllers.Master
 
         public async Task<IActionResult> GetDetail()
         {
-            var response = await _iSubModuleGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false);
-            if (response.ResponseStatus != ResponseStatus.Error)
+            var SubModuleResponse = await _iSubModuleGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false);
+            var ModuleResponse = await _iModuleGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false);
+            var submoduleList = from submodule in SubModuleResponse.Entities
+                                join module in ModuleResponse.Entities
+                                on submodule.ModuleId equals module.Id
+                                select new SubModuleViewModel
+                                {
+                                    Id = submodule.Id,
+                                    ModuleName = module.ModuleName,
+                                    SubModuleName = submodule.SubModuleName,
+                                    AreaName = submodule.AreaName,
+                                    ControllerName = submodule.ControllerName,
+                                    ActionName = submodule.ActionName,
+                                    SortOrder = submodule.SortOrder,
+                                    IconImagePath = submodule.IconImagePath
+                                };
+            if (SubModuleResponse.ResponseStatus != ResponseStatus.Error && ModuleResponse.ResponseStatus != ResponseStatus.Error)
             {
-                return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(SubModule), "SubModuleDetails"), response.Entities);
+                return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(SubModule), "SubModuleDetails"), submoduleList);
             }
-            Log.Error(response.Message);
+            Log.Error(SubModuleResponse.Message);
+            Log.Error(ModuleResponse.Message);
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("Shared", "Error"));
 
         }
