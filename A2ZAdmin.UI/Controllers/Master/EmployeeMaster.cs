@@ -82,6 +82,7 @@ namespace A2ZAdmin.UI.Controllers.Master
         [HttpPost]
         public async Task<IActionResult> PostCreate(Employee model)
         {
+            //model.Password = PasswordEncrypter.GetEncryptedPassword(model.Password).ToString();
             if (model.Id > 0)
             {
                 var updateModel = CommonCrudHelper.CommonUpdateCode(model, 1);
@@ -103,6 +104,7 @@ namespace A2ZAdmin.UI.Controllers.Master
             Log.Error(createResponse.Message);
             return Json("Something went wrong Please contact Admin Team !!!");
         }
+
         public async Task<IActionResult> Delete(int id)
         {
             var response = await _IEmployeeRepository.GetSingle(x => x.Id == id);
