@@ -1,4 +1,5 @@
 ﻿using A2ZPortal.Core.Entities.Master;
+using A2ZPortal.Helper;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -45,7 +46,7 @@ namespace A2ZPortal.UI.Controllers
         public async Task<IActionResult> Index()
         {
             await PopulateViewBag();
-            return PartialView();
+            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertySearch", "Index"));
         }
     }
 }

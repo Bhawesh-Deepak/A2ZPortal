@@ -28,6 +28,8 @@ namespace A2ZAdmin.UI.Controllers.Master
         private readonly IGenericRepository<Budget, int> _IBudgetRepository;
         private readonly IGenericRepository<Location, int> _ILocationRepository;
         private readonly IPropertyDetailRepository _IPropertyDetailsRepository;
+     
+
         public PropertyDetailController(IGenericRepository<PropertyDetail, int> propertyDetailRepository,
             IGenericRepository<PropertyImage, int> propertyImageRepository,
             IHostingEnvironment hostingEnvironment, IGenericRepository<PropertyType, int> propertyTypeRepo
@@ -37,7 +39,6 @@ namespace A2ZAdmin.UI.Controllers.Master
             , IGenericRepository<Budget, int> budgetRepository
             , IGenericRepository<Location, int> _LocationRepository
             , IPropertyDetailRepository propertDetailsRepository
-
             )
         {
             _IPropertyDetailRepository = propertyDetailRepository;

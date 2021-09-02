@@ -34,6 +34,11 @@ namespace A2ZPortal.Core.Entities.Master
         [Required(ErrorMessage = "Password is Required.")]
         [Display(Prompt = "Enter Password.")]
         public string Password { get; set; }
+        [Display(Prompt = "Confirm Password")]
+        [Required(ErrorMessage = "Confirm password is required.")]
+        [Compare("Password",ErrorMessage ="Password not matched")]
+        [NotMapped]
+        public string ConfirmPassword { get; set; }
 
     }
      

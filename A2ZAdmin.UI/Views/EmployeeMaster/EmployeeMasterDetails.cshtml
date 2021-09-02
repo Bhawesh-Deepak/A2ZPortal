@@ -1,5 +1,5 @@
 ﻿@using System.Runtime.InteropServices.ComTypes
-@model IEnumerable<A2ZPortal.Core.Entities.Master.Employee>
+@model IEnumerable<A2ZPortal.Core.ViewModel.UserManagement.EmployeeModel>
 
 <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
     <div class="row">
@@ -7,13 +7,12 @@
             <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                 <thead>
                     <tr role="row">
-                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 177.281px;">Emp Code </th>
-                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 177.281px;">Employee Name</th>
-                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 177.281px;">Phone</th>
-                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 177.281px;">Email </th>
-                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 177.281px;">Role </th>
-                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 177.281px;">User Name </th>
-                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 177.281px;">Password </th>
+                        <th>Emp Code </th>
+                        <th>Employee Name</th>
+                        <th>Phone</th>
+                        <th>Email </th>
+                        <th>Role </th>
+                        <th>User Name </th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -26,14 +25,13 @@
                             <td>@data.EmployeeName</td>
                             <td>@data.Phone</td>
                             <td>@data.Email</td>
-                            <td>@data.RoleId</td>
+                            <td>@data.Role</td>
                             <td>@data.UserName</td>
-                            <td>@data.Password</td>
                             <td>
                                 <button class="btn btn-primary">
-                                    <i class="fa fa-edit" onclick="Edit(@data.Id)"></i>
+                                    <i class="fa fa-edit" onclick="Edit(@data.EmployeeId)"></i>
                                 </button>
-                                <button class="btn btn-danger" onclick="Delete(@data.Id)">
+                                <button class="btn btn-danger" onclick="Delete(@data.EmployeeId)">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </td>
