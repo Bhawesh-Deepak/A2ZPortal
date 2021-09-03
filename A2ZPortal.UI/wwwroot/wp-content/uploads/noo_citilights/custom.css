@@ -1,1 +1,675 @@
-body{color:#5f5f5f}h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,h1 a,h2 a,h3 a,h4 a,h5 a,h6 a,.h1 a,.h2 a,.h3 a,.h4 a,.h5 a,.h6 a{color:#5f5f5f}h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover,h5 a:hover,h6 a:hover,.h1 a:hover,.h2 a:hover,.h3 a:hover,.h4 a:hover,.h5 a:hover,.h6 a:hover,.show-filter-property:hover{color:#75b08a}a,.text-primary{color:#75b08a}a:hover,a:focus,a.text-primary:hover{color:#4f8a64}.bg-primary{background-color:#75b08a}a.bg-primary:hover{background-color:#4f8a64}.bg-primary-overlay{background:rgba(79,138,100,.9)}.noo-menu li>a{color:#5f5f5f}.noo-menu li>a:hover,.noo-menu li>a:active,.noo-menu li.current-menu-item>a{color:#4f8a64}.navbar-nav li>a,.navbar-nav ul.sub-menu li>a{color:#5f5f5f}.navbar-nav li>a:hover,.navbar-nav li>a:focus,.navbar-nav li:hover>a,.navbar-nav li.sfHover>a,.navbar-nav li.current-menu-item>a,.noo-topbar .topbar-inner .topbar-content a:hover,.noo-topbar .topbar-inner .noo-social a i:hover{color:#4f8a64}.navbar-nav ul.sub-menu li>a:hover,.navbar-nav ul.sub-menu li>a:focus,.navbar-nav ul.sub-menu li:hover>a,.navbar-nav ul.sub-menu li.sfHover>a,.navbar-nav ul.sub-menu li.current-menu-item>a{color:#4f8a64}.calling-info i{color:#75b08a}@media(min-width:992px){.navbar-nav.sf-menu>li>ul.sub-menu{border-top-color:#75b08a}.navbar-nav.sf-menu>li>ul.sub-menu:before,.navbar-nav.sf-menu>li.align-center>ul.sub-menu:before,.navbar-nav.sf-menu>li.align-right>ul.sub-menu:before,.navbar-nav.sf-menu>li.align-left>ul.sub-menu:before,.navbar-nav.sf-menu>li.full-width.sfHover>a:before{border-bottom-color:#75b08a}}.comment-author a,.comment-pending{color:#5f5f5f}.comment-author a:hover{color:#4f8a64}.comment-reply-link:hover,#respond .required{color:#75b08a}.form-submit input[type=submit]:hover,.form-submit input[type=submit]:focus,.post-password-form input[type=submit]:hover,.post-password-form input[type=submit]:focus{background:#75b08a;border-color:#75b08a}.comment-reply-title span,.content-meta>span>a:hover,.hentry.format-quote a:hover,.hentry.format-link a:hover{color:#75b08a}.hentry.format-quote>.content-wrap,.hentry.format-link>.content-wrap{background:#75b08a}.hentry.format-quote>.content-wrap:hover,.hentry.format-link>.content-wrap:hover{background:#f0e797}.content-footer .content-tags a:hover{background:#75b08a;border-color:#75b08a}.read-more,.form-submit input[type=submit]{color:#c1b547;background:#f0e797;border-color:#f0e797}.read-more:hover,.read-more:focus,.read-more:active,.read-more.active,.open>.dropdown-toggle.read-more{background:#75b08a}.pagination .page-numbers{border:1px solid #75b08a;color:#75b08a}.pagination .page-numbers.current,.pagination a.page-numbers:hover{background:#75b08a}.pagination .page-numbers.dots,.pagination a.page-numbers{color:#75b08a}.wigetized .widget ul li a:hover,.wigetized .widget ol li a:hover{color:#f0e797}.widget.widget_recent_entries li a{color:#5f5f5f}.widget.widget_recent_entries li a:hover{color:#75b08a}.widget_calendar #wp-calendar>tbody>tr>td>a{background:#75b08a}.widget_tag_cloud .tagcloud a:hover,.widget_product_tag_cloud .tagcloud a:hover{background:#75b08a;border-color:#75b08a}.recent-tweets .twitter_time,.recent-tweets .twitter_time:hover{color:#95c3a5}.jp-controls a:hover{color:#75b08a}.jp-play-bar,.jp-volume-bar-value{background-color:#75b08a}.noo-map.no-map .gsearch,.colophon.wigetized:before{background:rgba(117,176,138,.95)}.colophon.site-info .footer-more{background-color:rgba(60,105,76,.8)}a.go-to-top{color:#75b08a}.noo-map .gmap-loading .gmap-loader>div{background:none repeat scroll 0 0 #75b08a}.noo-map .gsearch .gsearch-title i,.noo_advanced_search_property.vertical .gsearch .gsearch-wrap .gsearch-content .gsearch-action .gsubmit button:hover,.noo-map .gsearch .gsearch-content .gsearch-field>div.gprice .ui-slider .ui-slider-range,.noo-map .gsearch .gsearch-content .gsearch-field>div.garea .ui-slider .ui-slider-range,.agents.grid .hentry .agent-wrap .agent-desc .agent-social a:hover,.noo-agent .agent-social a:hover,.property .property-share a:hover,.recent-properties .caroufredsel-next,.recent-properties .caroufredsel-prev,.recent-agents .caroufredsel-next,.recent-agents .caroufredsel-prev,.recent-agents .hentry .agent-wrap .agent-social a:hover,.noo-map .gsearch .gsearch-content .gsearch-field>.form-group.gprice .ui-slider .ui-slider-range,.noo-map .gsearch .gsearch-content .gsearch-field>.form-group.garea .ui-slider .ui-slider-range,.noo-map .gmap-infobox .info-close,.noo-map .gmap-infobox .info-more .info-action,.form-group .dropdown .dropdown-menu>li>a:focus,.form-group .dropdown .dropdown-menu>li>a:hover,.property .property-featured .images .favorites-property:hover,.property .property-featured .property-label,.properties .hentry .property-featured .property-label,.recent-properties .recent-properties-content .property-row .hentry .property-summary .property-info .property-action:hover a{background:#75b08a}.property .property-share a.fa-print{background:#95c3a5}.noo-map .gmap-infobox .info-more .info-action:hover{background:#589a70}.noo-map .gsearch .gsearch-title{background:rgba(117,176,138,.7)}.noo-map .gmap-zoom a,.noo-map .gmap-control a{background:rgba(117,176,138,.75)}.noo-map .gmap-zoom a:hover,.noo-map .gmap-control a:hover,.property .property-featured .images .favorites-property{background:rgba(79,138,100,.8)}.recent-properties .caroufredsel-next:hover,.recent-properties .caroufredsel-prev:hover,.recent-agents .caroufredsel-next:hover,.recent-agents .caroufredsel-prev:hover{background:#589a70}.properties-header .properties-toolbar a.selected,.properties-header .properties-toolbar a:hover,.properties .hentry .property-featured .property-category a:hover,.recent-properties .recent-properties-content .property-row .hentry:hover .property-title a,.recent-properties .recent-properties-content .property-row .hentry .property-category a:hover{color:#4f8a64}.recent-properties.recent-properties-featured .property-featured .property-category{background:rgba(117,176,138,.5)}.bg-primary-overlay{background:rgba(117,176,138,.9)}.btn-secondary,.btn-thirdary,.wpcf7-submit,.noo-slider .caroufredsel_wrapper .sliders .slide-item.noo-property-slide .slide-caption .slide-caption-action a,.noo-map .gsearch .gsearch-content .gsearch-action .gsubmit button,.agents.grid .hentry .agent-wrap .agent-desc .agent-action a,.noo-sh-mailchimp .noo-sh-mailchimp-right form input[type=submit],.recent-properties .recent-properties-content .property-row .hentry .property-summary .property-info .property-action,.recent-properties .recent-properties-content .property-row .hentry .property-summary .property-info .property-action a,.recent-properties.recent-properties-featured .property-info .property-action a,.properties .hentry .property-info.style-2 .property-action{background-color:#f0e797;color:#c1b547;border-color:#f0e797}.btn-secondary:hover,.btn-secondary:focus,.btn-secondary:active,.btn-secondary.active,.open>.dropdown-toggle.btn-secondary,.btn-default:hover,.btn-default:focus,.btn-default:active,.btn-default.active,.open>.dropdown-toggle.btn-default,.btn-success:hover,.btn-success:focus,.btn-success:active,.btn-success.active,.open>.dropdown-toggle.btn-success,.btn-info:hover,.btn-info:focus,.btn-info:active,.btn-info.active,.open>.dropdown-toggle.btn-info,.btn-warning:hover,.btn-warning:focus,.btn-warning:active,.btn-warning.active,.open>.dropdown-toggle.btn-warning,.btn-danger:hover,.btn-danger:focus,.btn-danger:active,.btn-danger.active,.open>.dropdown-toggle.btn-danger,.noo-slider .caroufredsel_wrapper .sliders .slide-item.noo-property-slide .slide-caption .slide-caption-action a:hover,.noo-slider .caroufredsel_wrapper .sliders .slide-item.noo-property-slide .slide-caption .slide-caption-action a:focus,.noo-slider .caroufredsel_wrapper .sliders .slide-item.noo-property-slide .slide-caption .slide-caption-action a:active,.noo-slider .caroufredsel_wrapper .sliders .slide-item.noo-property-slide .slide-caption .slide-caption-action a.active,.open>.dropdown-toggle.noo-slider .caroufredsel_wrapper .sliders .slide-item.noo-property-slide .slide-caption .slide-caption-action a,.noo-map .gsearch .gsearch-content .gsearch-action .gsubmit button:hover,.noo-map .gsearch .gsearch-content .gsearch-action .gsubmit button:focus,.noo-map .gsearch .gsearch-content .gsearch-action .gsubmit button:active,.noo-map .gsearch .gsearch-content .gsearch-action .gsubmit button.active,.open>.dropdown-toggle.noo-map .gsearch .gsearch-content .gsearch-action .gsubmit button,.agents.grid .hentry .agent-wrap .agent-desc .agent-action a:hover,.agents.grid .hentry .agent-wrap .agent-desc .agent-action a:focus,.agents.grid .hentry .agent-wrap .agent-desc .agent-action a:active,.agents.grid .hentry .agent-wrap .agent-desc .agent-action a.active,.open>.dropdown-toggle.agents.grid .hentry .agent-wrap .agent-desc .agent-action a,.agent-property .agents .conact-agent .form-action button:hover,.wpcf7-submit:hover,.wpcf7-submit:focus,.wpcf7-submit:active,.wpcf7-submit.active,.noo-map.no-map.search-vertical .gsearch .gsearch-content .gsearch-action .gsubmit button:hover,.open>.dropdown-toggle.wpcf7-submit,.chosen-container .chosen-results li.highlighted,.property .property-featured .thumbnails .caroufredsel-next:hover,.property .property-featured .thumbnails .caroufredsel-prev:hover,.floor-plan-container .owl-theme .owl-controls .owl-buttons div:hover{background-color:#75b08a}.btn-thirdary:hover,.btn-thirdary:focus,.btn-thirdary:active,.btn-thirdary.active,.open>.dropdown-toggle.btn-thirdary,.noo-sh-mailchimp .noo-sh-mailchimp-right form input[type=submit]:hover{background-color:#eadd6a;color:#c1b547;border-color:#eadd6a}.noo-slider.testimonial-slide .slider-indicators a.selected{border:2px solid #75b08a;background:#75b08a}.form-control-flat>.radio i,.form-control-flat>.checkbox i{color:#75b08a}.form-control-flat .radio i:after{background:#75b08a}.btn-primary,.widget_newsletterwidget .newsletter-submit{background-color:#75b08a;border-color:#65a77c}.btn-primary:hover,.btn-primary:focus,.btn-primary:active,.btn-primary.active,.open>.dropdown-toggle.btn-primary,.widget_newsletterwidget .newsletter-submit:hover,.widget_newsletterwidget .newsletter-submit:focus,.widget_newsletterwidget .newsletter-submit:active,.widget_newsletterwidget .newsletter-submit.active,.open>.dropdown-toggle.widget_newsletterwidget .newsletter-submit{background-color:#75b08a;border-color:#75b08a}.btn-primary.pressable{-webkit-box-shadow:0 4px 0 0 #4f8a64,0 4px 9px rgba(0,0,0,.75)!important;box-shadow:0 4px 0 0 #4f8a64,0 4px 9px rgba(0,0,0,.75)!important}.btn-link,.btn.btn-white:hover,.wpcf7-submit.btn-white:hover,.widget_newsletterwidget .newsletter-submit.btn-white:hover{color:#75b08a}.btn-link:hover,.btn-link:focus{color:#4f8a64}.label-primary,.progress-bar-primary,.noo-vc-accordion.panel-group .panel-heading:hover,.noo-vc-accordion.panel-group .panel-heading.active,.noo-vc-accordion.panel-group .panel-heading:hover .panel-title,.noo-vc-accordion.panel-group .panel-heading.active .panel-title,.noo-vc-accordion.panel-group .panel-heading:hover:hover,.noo-vc-accordion.panel-group .panel-heading.active:hover,.nav-tabs>li>a:hover,.tabs-left>.nav-tabs>li.active>a,.tabs-left>.nav-tabs>li.active>a:hover,.tabs-left>.nav-tabs>li.active>a:focus{background-color:#75b08a;border-color:#75b08a}.nav-tabs>li.active>a,.nav-tabs>li.active>a:hover,.nav-tabs>li.active>a:focus,.tabs-left>.nav-tabs>li>a:hover{color:#75b08a}.noo-social a{color:#5f5f5f}.noo-social a:hover{color:#4f8a64}.noo-member .member-avatar .member-social{background-color:#75b08a}.noo-service:hover .service-icon{background-color:#75b08a;border-color:#75b08a!important}.noo-pricing-table.classic .noo-pricing-column.featured .pricing-header,.noo-pricing-table.ascending .noo-pricing-column.featured .pricing-content .pricing-value{background-color:#75b08a}.noo-pricing-table .noo-pricing-column .pricing-content .pricing-header .pricing-title,.noo-pricing-table .noo-pricing-column .pricing-content .pricing-header .pricing-value .noo-price,.noo-pricing-table.ascending .noo-pricing-column .pricing-content .pricing-header .pricing-title,.noo-pricing-table.ascending .noo-pricing-column .pricing-value .noo-price{color:#75b08a}.noo-pricing-table.ascending .noo-pricing-column .pricing-value{color:#5f5f5f}.noo-pricing-table .noo-pricing-column .pricing-content .pricing-footer .btn:hover,.noo-pricing-table .noo-pricing-column .pricing-content .pricing-footer .wpcf7-submit:hover,.noo-pricing-table .noo-pricing-column .pricing-content .pricing-footer .agents.grid .hentry .agent-wrap .agent-desc .agent-action a:hover,.noo-pricing-table .noo-pricing-column .pricing-content .pricing-footer .widget_newsletterwidget .newsletter-submit:hover,.noo-pricing-table.ascending .noo-pricing-column.featured .pricing-content .pricing-footer .btn,.noo-pricing-table.ascending .noo-pricing-column.featured .pricing-content .pricing-footer .wpcf7-submit,.noo-pricing-table.ascending .noo-pricing-column.featured .pricing-content .pricing-footer .agents.grid .hentry .agent-wrap .agent-desc .agent-action a,.noo-pricing-table.ascending .noo-pricing-column.featured .pricing-content .pricing-footer .widget_newsletterwidget .newsletter-submit{color:#75b08a!important;border-color:#75b08a!important}.noo-member .member-avatar .member-social a:hover{color:#4f8a64}.form-control:focus,.wpcf7-form-control:not(.wpcf7-submit):focus,.widget_newsletterwidget .newsletter-email:focus{border-color:#95c3a5;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 4px #75b08a;box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 4px #75b08a}.our-service:hover .service-icon i{background:rgba(240,231,151,.3)}.chosen-container .chosen-results li.highlighted{background:#75b08a!important}.woocommerce div.product .stock{color:#75b08a}.woocommerce ul.products li.product .onsale,.woocommerce span.onsale{background:#75b08a}.woocommerce ul.products li.product .onsale:hover,.woocommerce span.onsale:hover{background:#4f8a64}.woocommerce ul.products li.product .button,.woocommerce div.product form.cart .button,.woocommerce #respond input#submit,.woocommerce a.button,.woocommerce button.button,.woocommerce input.button,.woocommerce #respond input#submit.alt,.woocommerce a.button.alt,.woocommerce button.button.alt,.woocommerce input.button.alt,.woocommerce .widget_price_filter .price_slider_amount .button,.woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .button,.woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .shop-loop-quickview,.woocommerce ul.products li.product figure .product-wrap .shop-loop-actions a,.woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .yith-wcwl-add-to-wishlist .add_to_wishlist:before,.woocommerce .yith-wcwl-add-button>a,.noo-menu-item-cart .noo-minicart .minicart-footer .minicart-actions .button.checkout-button,.woocommerce #payment #place_order,.noo-menu-item-cart .noo-minicart .minicart-footer .minicart-actions .button,.woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistaddedbrowse a:before,.woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistexistsbrowse a:before,.woocommerce.widget_shopping_cart .buttons .button,.woocommerce .widget_shopping_cart .buttons .button,.woocommerce .cart .button,.woocommerce .cart input.button{background:#95c3a5;color:#fff}.woocommerce ul.products li.product .button:hover,.woocommerce div.product form.cart .button:hover,.woocommerce #respond input#submit:hover,.woocommerce a.button:hover,.woocommerce button.button:hover,.woocommerce input.button:hover,.woocommerce #respond input#submit.alt:hover,.woocommerce a.button.alt:hover,.woocommerce button.button.alt:hover,.woocommerce input.button.alt:hover,.woocommerce .widget_price_filter .price_slider_amount .button:hover,.woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .button:hover,.woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .shop-loop-quickview:hover,.woocommerce ul.products li.product figure .product-wrap .shop-loop-actions a:hover,.woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .yith-wcwl-add-to-wishlist .add_to_wishlist:hover:before,.woocommerce .yith-wcwl-add-button>a:hover,.noo-menu-item-cart .noo-minicart .minicart-footer .minicart-actions .button.checkout-button:hover,.noo-menu-item-cart .noo-minicart .minicart-footer .minicart-actions .button:hover,.woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistaddedbrowse a:hover:before,.woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistexistsbrowse a:hover:before{background:#c1b547!important;color:#fff}.woocommerce div.product p.price,.woocommerce div.product span.price,.woocommerce ul.products li.product .price,.woocommerce ul.products li.product figcaption .product_title a:hover{color:#4f8a64}.woocommerce nav.woocommerce-pagination ul li a:focus,.woocommerce nav.woocommerce-pagination ul li a:hover,.woocommerce nav.woocommerce-pagination ul li span.current{background:#75b08a;color:#fff}.woocommerce .widget_price_filter .ui-slider .ui-slider-range{background:#75b08a}.woocommerce .star-rating span:before,.woocommerce .star-rating:before,.woocommerce p.stars a,.noo-menu-item-cart .cart-item span,.fa-shopping-cart:before{color:#c1b547}.woocommerce p.stars a:hover,.noo-menu-item-cart .cart-item span:hover,.fa-shopping-cart:hover,.woocommerce .woocommerce-info:before,.woocommerce .woocommerce-message:before{color:#4f8a64}.woocommerce form .form-row input.input-text:focus,.woocommerce form .form-row textarea:focus,.woocommerce form .form-row .input-text:focus,.woocommerce.widget_product_search input[name=s]:focus,.woocommerce #review_form #respond textarea:focus{border-color:#75b08a}.woocommerce .woocommerce-info,.woocommerce .woocommerce-message{border-top:3px solid #75b08a;border-right:1px solid #75b08a;border-left:1px solid #75b08a;border-bottom:1px solid #75b08a}.woocommerce .woocommerce-info a.button,.woocommerce .woocommerce-message a.button,.woocommerce .wc-proceed-to-checkout a.button,.woocommerce .wc-proceed-to-checkout a.button.alt{background:0 0!important;color:#2e2e2e!important}.dsidx-search-widget .dsidx-search-button .submit:hover,.dsidx-controls a,.dsidx-results li.dsidx-prop-summary .dsidx-prop-title{background-color:#75b08a}#dsidx-listings .dsidx-listing .dsidx-primary-data .dsidx-address a{color:#75b08a}.dsidx-results li.dsidx-prop-summary .dsidx-prop-features div:before,#dsidx-listings .dsidx-listing .dsidx-secondary-data div:before{color:#c1b547}.dsidx-contact-form .dsidx-contact-form-submit{background-color:#75b08a;border-color:#75b08a}.dsidx-contact-form .dsidx-contact-form-submit:hover{background-color:#c1b547;border-color:#c1b547}.recent-properties.recent-properties-featured .property-info .property-action a:hover,.recent-properties.recent-properties-featured .property-info .property-action a:focus,.recent-properties.recent-properties-featured .property-info .property-action a:active,.recent-properties.recent-properties-featured .property-info .property-action a.active,.properties .hentry .property-info.style-2 .property-action:hover,.properties .hentry .property-info.style-2 .property-action:focus,.properties .hentry .property-info.style-2 .property-action:active,.properties .hentry .property-info.style-2 .property-action.active{background-color:#75b08a;border-color:#75b08a}@media(min-width:992px){.page-fullwidth .properties.list .property-fullwidth-action.property-action a:hover,.page-fullwidth .properties.list .property-fullwidth-action.property-action a:focus,.page-fullwidth .properties.list .property-fullwidth-action.property-action a:active,.page-fullwidth .properties.list .property-fullwidth-action.property-action a.active{background-color:#75b08a;border-color:#75b08a}.page-fullwidth .properties.list .property-fullwidth-action.property-action a{background-color:#f0e797;color:#c1b547;border-color:#f0e797}}@media(min-width:480px){.properties.list .property-info .property-action a{background-color:#f0e797;color:#c1b547;border-color:#f0e797}.properties.list .property-info .property-action a:hover,.properties.list .property-info .property-action a:focus,.properties.list .property-info .property-action a:active,.properties.list .property-info .property-action a.active{background-color:#75b08a}.properties.list .property-info .property-action a:hover i{color:#fff}}.noo-map.no-map .gsearch .gsearch-info-style-2 .gsearch-info-title{background-color:#75b08a}.noo-call-to-action-2 .btn-1,.noo-call-to-action-2 .btn-2:hover,.noo-input-group .input-group-btn a,.noo-property-compare input[type=submit],.noo-map .gsearch .gsearch-content .gsearch-action-style-2 .gsubmit button,.property-slide-style-2 .property-slide-style-2--content .ps-style-2--price,.recent-properties .recent-properties-content li .featured-style-2 .fp-style-2--wrap .fp-style-2--price,.property-slide-style-2 .property-slide-style-2--content .ps-style-2--wrap .ps-style-2--action span:hover,.recent-properties .recent-properties-content li .featured-style-2 .fp-style-2--thumb .content-thumb-overlay .property-action i:hover,.properties .properties-content .property-exclusives .exclusives-content .exclusive-items article .fp-style-2--thumb .content-thumb-overlay .property-action i:hover,.properties .properties-content .property-exclusives .exclusives-content .exclusive-items article .fp-style-2--wrap .fp-style-2--price,.properties .properties-content .property-exclusives .exclusives-content .exclusive-items article .fp-style-2--wrap .fp-style-2--price{background-color:#75b08a}.noo-call-to-action-2 .btn-2,.noo-call-to-action-2 .btn-1:hover,.city-grid .city-item:hover .city-hover::before,.city-grid .city-item .city-hover div p,.city-grid .city-item:hover .city-hover::after,.recent-post .recent-post-thumb .post-thumb-hover i:hover,.property-slide-style-2 .property-slide-style-2--content .ps-style-2--wrap .ps-style-2--action span,.recent-properties .recent-properties-content li .featured-style-2 .fp-style-2--thumb .content-thumb-overlay .property-action i,.properties .properties-content .property-exclusives .exclusives-content .exclusive-items article .fp-style-2--thumb .content-thumb-overlay .property-action i,.recent-properties .recent-properties-content li .featured-style-2 .fp-style-2--thumb .content-thumb-overlay .property-action .property-sharing a:hover,.properties .properties-content .property-exclusives .exclusives-content .exclusive-items article .fp-style-2--thumb .content-thumb-overlay .property-action .property-sharing a:hover{border-color:#75b08a;color:#75b08a}.noo-call-to-action-2 .btn-1{border-color:#75b08a!important}.property-slide-style-2 .property-slide-style-2--content .ps-style-2--wrap .ps-style-2--action span,.property-slide-style-2 .property-slide-style-2--content .owl2-next,.noo-property-compare .item-compare i:hover,.property-slide-style-2 .property-slide-style-2--content .owl2-next,.property-slide-style-2 .property-slide-style-2--content .owl2-prev,{color:#75b08a!important}.owl2-prev:hover,.owl2-next:hover,.noo-property-compare input[type=submit]:hover,.noo-map .gsearch .gsearch-content .gsearch-action-style-2 .gsubmit button:hover,{background-color:#f0e797!important}body{font-family:lato,open sans,sans-serif;font-size:15px;font-style:normal;font-weight:400}h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-family:lato,open sans,sans-serif;font-style:normal;font-weight:400}h1,.h1{font-size:39px}h2,.h2{font-size:32px}h3,.h3{font-size:26px}h4,.h4{font-size:22px}h5,.h5{font-size:20px}h6,.h6{font-size:15px}select{font-size:15px}.btn,.dropdown-menu,.input-group-addon,.popover-title output,.form-control{font-size:15px}legend,.close{font-size:22px}.lead{font-size:17px}@media(min-width:768px){.lead{font-size:22px}}pre{padding:10.5px;margin:0 0 11px;font-size:14px}.panel-title{font-size:17px}@media screen and (min-width:768px){.jumbotron h1,.h1{font-size:68px}}.badge,.btn-sm,.btn-xs,.dropdown-header,.input-sm,.input-group-addon.input-sm,.pagination-sm,.tooltip{13px}.btn-lg,.input-lg,.input-group-addon.input-lg,pagination-lg{font-size:19px}.content-link,.content-cite,.comment-form-author input,.comment-form-email input,.comment-form-url input,.comment-form-comment textarea,.pagination .page-numbers,.widget ul li a,.widget ol li a,.widget.widget_recent_entries li a,.widget.widget_recent_comments li,.widget.widget_recent_entries li,.widget.widget_rss li,.widget_calendar #wp-calendar,.widget_calendar #wp-calendar caption,.widget_calendar #wp-calendar>thead>tr>th{font-size:15px}.breadcrumb,.breadcrumb>li,.ispostauthor,.comment-meta,.comment-reply-link,.comment-notes,.logged-in-as,.comment-form-comment label,.form-submit input[type=submit],.wpcf7-not-valid-tip,div.wpcf7-response-output,.post-password-form input[type=submit],.content-meta,.noo-topbar .topbar-inner .topbar-content,.colophon.site-info .footer-more .noo-bottom-bar-content. .masonry-portfolio .content-date-portfolio,.label,.widget.widget_recent_entries li .post-date,.recent-tweets .twitter_time{font-size:13px}.content-footer .content-tags,.widget_tag_cloud .tagcloud a,.widget_product_tag_cloud .tagcloud a{font-size:13px!important}.noo-member .member-avatar .member-social a,.noo-member .member-info .team-meta,.wigetized .widget .widget-title,.masonry-style-elevated .masonry-portfolio .masonry-container .content-wrap .content-title-portfolio,.content-title,.content-sub-title,.read-more,.content-share>a,.attribute-list,.panel-title,.nav-tabs>li>a,.widget.widget_rss li a{font-size:19px}.breadcrumb{margin-bottom:22px}.noo-page-heading{padding:11px 0}.pagination{margin:22px auto}.content-featured{margin-bottom:22px}.content-footer .content-tags{margin-top:22px;margin-bottom:11px}.woocommerce span.onsale,.woocommerce .cart .button,.woocommerce .cart input.button,.woocommerce p.stars a,.navbar .navbar-header .mobile-minicart-icon span{font-size:15px}.woocommerce ul.products li.product .price del,.noo-menu-item-cart .noo-minicart .minicart-header,.noo-menu-item-cart .noo-minicart .minicart-body .cart-product .cart-product-details,.noo-menu-item-cart .noo-minicart .minicart-footer .minicart-total,.noo-menu-item-cart .noo-minicart .minicart-footer .minicart-actions .button{font-size:13px}.woocommerce div.product .woocommerce-tabs .nav-tabs>li>a,.woocommerce ul.products li.product h3{font-size:19px}.woocommerce .woocommerce-product-rating{margin-top:22px;margin-bottom:11px}.dsidx-details blockquote,.dsidx-shortcode-item blockquote{font-size:15px}span.property-meta{font-size:15px;font-weight:400}.noo-pricing-table .noo-pricing-column .pricing-content .pricing-header .pricing-value,.noo-pricing-table .noo-pricing-column .pricing-content .pricing-info ul li,.noo-pricing-table.ascending .noo-pricing-column .pricing-info ul li,.noo-member .member-info .team-meta small,.panel-body,.tab-content>.tab-pane,.alert,.noo-progress-bar.lean-bars .progress .progress-bar .progress_title,.noo-progress-bar.lean-bars .progress .progress-bar .progress_label,.noo-progress-bar.thick-bars .progress .progress-bar{font-size:15px}.noo-pricing-table.ascending .noo-pricing-column .pricing-header .pricing-title,.noo-pricing-table.ascending .noo-pricing-column .pricing-header .pricing-value .noo-price{font-size:26px}.noo-topbar,.noo-header,.navbar-fixed-left,.navbar-fixed-right{background-color:#fff}.navbar-nav li>a{font-family:lato,open sans,sans-serif;font-size:14px;font-style:normal;font-weight:300}.navbar{height:70px}.calling-info{height:70px}@media(min-width:1200px){.navbar-nav>li>a{padding-left:12px;padding-right:12px}.navbar:not(.navbar-shrink) .navbar-nav>li>a{line-height:70px}}.navbar-toggle{height:70px}.navbar:not(.navbar-shrink) .navbar-brand{line-height:70px;height:70px}#nav-menu-item-cart{display:none}@media(max-width:767px){.navbar .navbar-header .mobile-minicart-icon{display:none}}.navbar-brand .noo-logo-img,.navbar-brand .noo-logo-retina-img{height:30px}.navbar-toggle,.mobile-minicart-icon{font-size:25px}
+body {
+    color: #5f5f5f
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .h1 a, .h2 a, .h3 a, .h4 a, .h5 a, .h6 a {
+    color: #5f5f5f
+}
+
+    h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, .h1 a:hover, .h2 a:hover, .h3 a:hover, .h4 a:hover, .h5 a:hover, .h6 a:hover, .show-filter-property:hover {
+        color: #75b08a
+    }
+
+a, .text-primary {
+    color: #75b08a
+}
+
+    a:hover, a:focus, a.text-primary:hover {
+        color: #4f8a64
+    }
+
+.bg-primary {
+    background-color: #75b08a
+}
+
+a.bg-primary:hover {
+    background-color: #4f8a64
+}
+
+.bg-primary-overlay {
+    background: rgba(79,138,100,.9)
+}
+
+.noo-menu li > a {
+    color: #5f5f5f
+}
+
+    .noo-menu li > a:hover, .noo-menu li > a:active, .noo-menu li.current-menu-item > a {
+        color: #4f8a64
+    }
+
+.navbar-nav li > a, .navbar-nav ul.sub-menu li > a {
+    color: #5f5f5f
+}
+
+    .navbar-nav li > a:hover, .navbar-nav li > a:focus, .navbar-nav li:hover > a, .navbar-nav li.sfHover > a, .navbar-nav li.current-menu-item > a, .noo-topbar .topbar-inner .topbar-content a:hover, .noo-topbar .topbar-inner .noo-social a i:hover {
+        color: #4f8a64
+    }
+
+    .navbar-nav ul.sub-menu li > a:hover, .navbar-nav ul.sub-menu li > a:focus, .navbar-nav ul.sub-menu li:hover > a, .navbar-nav ul.sub-menu li.sfHover > a, .navbar-nav ul.sub-menu li.current-menu-item > a {
+        color: #4f8a64
+    }
+
+.calling-info i {
+    color: #75b08a
+}
+
+@media(min-width:992px) {
+    .navbar-nav.sf-menu > li > ul.sub-menu {
+        border-top-color: #75b08a
+    }
+
+        .navbar-nav.sf-menu > li > ul.sub-menu:before, .navbar-nav.sf-menu > li.align-center > ul.sub-menu:before, .navbar-nav.sf-menu > li.align-right > ul.sub-menu:before, .navbar-nav.sf-menu > li.align-left > ul.sub-menu:before, .navbar-nav.sf-menu > li.full-width.sfHover > a:before {
+            border-bottom-color: #75b08a
+        }
+}
+
+.comment-author a, .comment-pending {
+    color: #5f5f5f
+}
+
+    .comment-author a:hover {
+        color: #4f8a64
+    }
+
+.comment-reply-link:hover, #respond .required {
+    color: #75b08a
+}
+
+.form-submit input[type=submit]:hover, .form-submit input[type=submit]:focus, .post-password-form input[type=submit]:hover, .post-password-form input[type=submit]:focus {
+    background: #75b08a;
+    border-color: #75b08a
+}
+
+.comment-reply-title span, .content-meta > span > a:hover, .hentry.format-quote a:hover, .hentry.format-link a:hover {
+    color: #75b08a
+}
+
+.hentry.format-quote > .content-wrap, .hentry.format-link > .content-wrap {
+    background: #75b08a
+}
+
+    .hentry.format-quote > .content-wrap:hover, .hentry.format-link > .content-wrap:hover {
+        background: #f0e797
+    }
+
+.content-footer .content-tags a:hover {
+    background: #75b08a;
+    border-color: #75b08a
+}
+
+.read-more, .form-submit input[type=submit] {
+    color: #c1b547;
+    background: #f0e797;
+    border-color: #f0e797
+}
+
+    .read-more:hover, .read-more:focus, .read-more:active, .read-more.active, .open > .dropdown-toggle.read-more {
+        background: #75b08a
+    }
+
+.pagination .page-numbers {
+    border: 1px solid #75b08a;
+    color: #75b08a
+}
+
+    .pagination .page-numbers.current, .pagination a.page-numbers:hover {
+        background: #75b08a
+    }
+
+    .pagination .page-numbers.dots, .pagination a.page-numbers {
+        color: #75b08a
+    }
+
+.wigetized .widget ul li a:hover, .wigetized .widget ol li a:hover {
+    color: #f0e797
+}
+
+.widget.widget_recent_entries li a {
+    color: #5f5f5f
+}
+
+    .widget.widget_recent_entries li a:hover {
+        color: #75b08a
+    }
+
+.widget_calendar #wp-calendar > tbody > tr > td > a {
+    background: #75b08a
+}
+
+.widget_tag_cloud .tagcloud a:hover, .widget_product_tag_cloud .tagcloud a:hover {
+    background: #75b08a;
+    border-color: #75b08a
+}
+
+.recent-tweets .twitter_time, .recent-tweets .twitter_time:hover {
+    color: #95c3a5
+}
+
+.jp-controls a:hover {
+    color: #75b08a
+}
+
+.jp-play-bar, .jp-volume-bar-value {
+    background-color: #75b08a
+}
+
+.noo-map.no-map .gsearch, .colophon.wigetized:before {
+    background: rgba(117,176,138,.95)
+}
+
+.colophon.site-info .footer-more {
+    background-color: rgba(60,105,76,.8)
+}
+
+a.go-to-top {
+    color: #75b08a
+}
+
+.noo-map .gmap-loading .gmap-loader > div {
+    background: none repeat scroll 0 0 #75b08a
+}
+
+.noo-map .gsearch .gsearch-title i, .noo_advanced_search_property.vertical .gsearch .gsearch-wrap .gsearch-content .gsearch-action .gsubmit button:hover, .noo-map .gsearch .gsearch-content .gsearch-field > div.gprice .ui-slider .ui-slider-range, .noo-map .gsearch .gsearch-content .gsearch-field > div.garea .ui-slider .ui-slider-range, .agents.grid .hentry .agent-wrap .agent-desc .agent-social a:hover, .noo-agent .agent-social a:hover, .property .property-share a:hover, .recent-properties .caroufredsel-next, .recent-properties .caroufredsel-prev, .recent-agents .caroufredsel-next, .recent-agents .caroufredsel-prev, .recent-agents .hentry .agent-wrap .agent-social a:hover, .noo-map .gsearch .gsearch-content .gsearch-field > .form-group.gprice .ui-slider .ui-slider-range, .noo-map .gsearch .gsearch-content .gsearch-field > .form-group.garea .ui-slider .ui-slider-range, .noo-map .gmap-infobox .info-close, .noo-map .gmap-infobox .info-more .info-action, .form-group .dropdown .dropdown-menu > li > a:focus, .form-group .dropdown .dropdown-menu > li > a:hover, .property .property-featured .images .favorites-property:hover, .property .property-featured .property-label, .properties .hentry .property-featured .property-label, .recent-properties .recent-properties-content .property-row .hentry .property-summary .property-info .property-action:hover a {
+    background: #75b08a
+}
+
+.property .property-share a.fa-print {
+    background: #95c3a5
+}
+
+.noo-map .gmap-infobox .info-more .info-action:hover {
+    background: #589a70
+}
+
+.noo-map .gsearch .gsearch-title {
+    background: rgba(117,176,138,.7)
+}
+
+.noo-map .gmap-zoom a, .noo-map .gmap-control a {
+    background: rgba(117,176,138,.75)
+}
+
+    .noo-map .gmap-zoom a:hover, .noo-map .gmap-control a:hover, .property .property-featured .images .favorites-property {
+        background: rgba(79,138,100,.8)
+    }
+
+.recent-properties .caroufredsel-next:hover, .recent-properties .caroufredsel-prev:hover, .recent-agents .caroufredsel-next:hover, .recent-agents .caroufredsel-prev:hover {
+    background: #589a70
+}
+
+.properties-header .properties-toolbar a.selected, .properties-header .properties-toolbar a:hover, .properties .hentry .property-featured .property-category a:hover, .recent-properties .recent-properties-content .property-row .hentry:hover .property-title a, .recent-properties .recent-properties-content .property-row .hentry .property-category a:hover {
+    color: #4f8a64
+}
+
+.recent-properties.recent-properties-featured .property-featured .property-category {
+    background: rgba(117,176,138,.5)
+}
+
+.bg-primary-overlay {
+    background: rgba(117,176,138,.9)
+}
+
+.btn-secondary, .btn-thirdary, .wpcf7-submit, .noo-slider .caroufredsel_wrapper .sliders .slide-item.noo-property-slide .slide-caption .slide-caption-action a, .noo-map .gsearch .gsearch-content .gsearch-action .gsubmit button, .agents.grid .hentry .agent-wrap .agent-desc .agent-action a, .noo-sh-mailchimp .noo-sh-mailchimp-right form input[type=submit], .recent-properties .recent-properties-content .property-row .hentry .property-summary .property-info .property-action, .recent-properties .recent-properties-content .property-row .hentry .property-summary .property-info .property-action a, .recent-properties.recent-properties-featured .property-info .property-action a, .properties .hentry .property-info.style-2 .property-action {
+    background-color: #f0e797;
+    color: #c1b547;
+    border-color: #f0e797
+}
+
+    .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active, .open > .dropdown-toggle.btn-secondary, .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default, .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open > .dropdown-toggle.btn-success, .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open > .dropdown-toggle.btn-info, .btn-warning:hover, .btn-warning:focus, .btn-warning:active, .btn-warning.active, .open > .dropdown-toggle.btn-warning, .btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .open > .dropdown-toggle.btn-danger, .noo-slider .caroufredsel_wrapper .sliders .slide-item.noo-property-slide .slide-caption .slide-caption-action a:hover, .noo-slider .caroufredsel_wrapper .sliders .slide-item.noo-property-slide .slide-caption .slide-caption-action a:focus, .noo-slider .caroufredsel_wrapper .sliders .slide-item.noo-property-slide .slide-caption .slide-caption-action a:active, .noo-slider .caroufredsel_wrapper .sliders .slide-item.noo-property-slide .slide-caption .slide-caption-action a.active, .open > .dropdown-toggle.noo-slider .caroufredsel_wrapper .sliders .slide-item.noo-property-slide .slide-caption .slide-caption-action a, .noo-map .gsearch .gsearch-content .gsearch-action .gsubmit button:hover, .noo-map .gsearch .gsearch-content .gsearch-action .gsubmit button:focus, .noo-map .gsearch .gsearch-content .gsearch-action .gsubmit button:active, .noo-map .gsearch .gsearch-content .gsearch-action .gsubmit button.active, .open > .dropdown-toggle.noo-map .gsearch .gsearch-content .gsearch-action .gsubmit button, .agents.grid .hentry .agent-wrap .agent-desc .agent-action a:hover, .agents.grid .hentry .agent-wrap .agent-desc .agent-action a:focus, .agents.grid .hentry .agent-wrap .agent-desc .agent-action a:active, .agents.grid .hentry .agent-wrap .agent-desc .agent-action a.active, .open > .dropdown-toggle.agents.grid .hentry .agent-wrap .agent-desc .agent-action a, .agent-property .agents .conact-agent .form-action button:hover, .wpcf7-submit:hover, .wpcf7-submit:focus, .wpcf7-submit:active, .wpcf7-submit.active, .noo-map.no-map.search-vertical .gsearch .gsearch-content .gsearch-action .gsubmit button:hover, .open > .dropdown-toggle.wpcf7-submit, .chosen-container .chosen-results li.highlighted, .property .property-featured .thumbnails .caroufredsel-next:hover, .property .property-featured .thumbnails .caroufredsel-prev:hover, .floor-plan-container .owl-theme .owl-controls .owl-buttons div:hover {
+        background-color: #75b08a
+    }
+
+    .btn-thirdary:hover, .btn-thirdary:focus, .btn-thirdary:active, .btn-thirdary.active, .open > .dropdown-toggle.btn-thirdary, .noo-sh-mailchimp .noo-sh-mailchimp-right form input[type=submit]:hover {
+        background-color: #eadd6a;
+        color: #c1b547;
+        border-color: #eadd6a
+    }
+
+.noo-slider.testimonial-slide .slider-indicators a.selected {
+    border: 2px solid #75b08a;
+    background: #75b08a
+}
+
+.form-control-flat > .radio i, .form-control-flat > .checkbox i {
+    color: #75b08a
+}
+
+.form-control-flat .radio i:after {
+    background: #75b08a
+}
+
+.btn-primary, .widget_newsletterwidget .newsletter-submit {
+    background-color: #75b08a;
+    border-color: #65a77c
+}
+
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary, .widget_newsletterwidget .newsletter-submit:hover, .widget_newsletterwidget .newsletter-submit:focus, .widget_newsletterwidget .newsletter-submit:active, .widget_newsletterwidget .newsletter-submit.active, .open > .dropdown-toggle.widget_newsletterwidget .newsletter-submit {
+        background-color: #75b08a;
+        border-color: #75b08a
+    }
+
+    .btn-primary.pressable {
+        -webkit-box-shadow: 0 4px 0 0 #4f8a64,0 4px 9px rgba(0,0,0,.75) !important;
+        box-shadow: 0 4px 0 0 #4f8a64,0 4px 9px rgba(0,0,0,.75) !important
+    }
+
+    .btn-link, .btn.btn-white:hover, .wpcf7-submit.btn-white:hover, .widget_newsletterwidget .newsletter-submit.btn-white:hover {
+        color: #75b08a
+    }
+
+        .btn-link:hover, .btn-link:focus {
+            color: #4f8a64
+        }
+
+.label-primary, .progress-bar-primary, .noo-vc-accordion.panel-group .panel-heading:hover, .noo-vc-accordion.panel-group .panel-heading.active, .noo-vc-accordion.panel-group .panel-heading:hover .panel-title, .noo-vc-accordion.panel-group .panel-heading.active .panel-title, .noo-vc-accordion.panel-group .panel-heading:hover:hover, .noo-vc-accordion.panel-group .panel-heading.active:hover, .nav-tabs > li > a:hover, .tabs-left > .nav-tabs > li.active > a, .tabs-left > .nav-tabs > li.active > a:hover, .tabs-left > .nav-tabs > li.active > a:focus {
+    background-color: #75b08a;
+    border-color: #75b08a
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus, .tabs-left > .nav-tabs > li > a:hover {
+    color: #75b08a
+}
+
+.noo-social a {
+    color: #5f5f5f
+}
+
+    .noo-social a:hover {
+        color: #4f8a64
+    }
+
+.noo-member .member-avatar .member-social {
+    background-color: #75b08a
+}
+
+.noo-service:hover .service-icon {
+    background-color: #75b08a;
+    border-color: #75b08a !important
+}
+
+.noo-pricing-table.classic .noo-pricing-column.featured .pricing-header, .noo-pricing-table.ascending .noo-pricing-column.featured .pricing-content .pricing-value {
+    background-color: #75b08a
+}
+
+.noo-pricing-table .noo-pricing-column .pricing-content .pricing-header .pricing-title, .noo-pricing-table .noo-pricing-column .pricing-content .pricing-header .pricing-value .noo-price, .noo-pricing-table.ascending .noo-pricing-column .pricing-content .pricing-header .pricing-title, .noo-pricing-table.ascending .noo-pricing-column .pricing-value .noo-price {
+    color: #75b08a
+}
+
+.noo-pricing-table.ascending .noo-pricing-column .pricing-value {
+    color: #5f5f5f
+}
+
+.noo-pricing-table .noo-pricing-column .pricing-content .pricing-footer .btn:hover, .noo-pricing-table .noo-pricing-column .pricing-content .pricing-footer .wpcf7-submit:hover, .noo-pricing-table .noo-pricing-column .pricing-content .pricing-footer .agents.grid .hentry .agent-wrap .agent-desc .agent-action a:hover, .noo-pricing-table .noo-pricing-column .pricing-content .pricing-footer .widget_newsletterwidget .newsletter-submit:hover, .noo-pricing-table.ascending .noo-pricing-column.featured .pricing-content .pricing-footer .btn, .noo-pricing-table.ascending .noo-pricing-column.featured .pricing-content .pricing-footer .wpcf7-submit, .noo-pricing-table.ascending .noo-pricing-column.featured .pricing-content .pricing-footer .agents.grid .hentry .agent-wrap .agent-desc .agent-action a, .noo-pricing-table.ascending .noo-pricing-column.featured .pricing-content .pricing-footer .widget_newsletterwidget .newsletter-submit {
+    color: #75b08a !important;
+    border-color: #75b08a !important
+}
+
+.noo-member .member-avatar .member-social a:hover {
+    color: #4f8a64
+}
+
+.form-control:focus, .wpcf7-form-control:not(.wpcf7-submit):focus, .widget_newsletterwidget .newsletter-email:focus {
+    border-color: #95c3a5;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 4px #75b08a;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 4px #75b08a
+}
+
+.our-service:hover .service-icon i {
+    background: rgba(240,231,151,.3)
+}
+
+.chosen-container .chosen-results li.highlighted {
+    background: #75b08a !important
+}
+
+.woocommerce div.product .stock {
+    color: #75b08a
+}
+
+.woocommerce ul.products li.product .onsale, .woocommerce span.onsale {
+    background: #75b08a
+}
+
+    .woocommerce ul.products li.product .onsale:hover, .woocommerce span.onsale:hover {
+        background: #4f8a64
+    }
+
+.woocommerce ul.products li.product .button, .woocommerce div.product form.cart .button, .woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt, .woocommerce .widget_price_filter .price_slider_amount .button, .woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .button, .woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .shop-loop-quickview, .woocommerce ul.products li.product figure .product-wrap .shop-loop-actions a, .woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .yith-wcwl-add-to-wishlist .add_to_wishlist:before, .woocommerce .yith-wcwl-add-button > a, .noo-menu-item-cart .noo-minicart .minicart-footer .minicart-actions .button.checkout-button, .woocommerce #payment #place_order, .noo-menu-item-cart .noo-minicart .minicart-footer .minicart-actions .button, .woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistaddedbrowse a:before, .woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistexistsbrowse a:before, .woocommerce.widget_shopping_cart .buttons .button, .woocommerce .widget_shopping_cart .buttons .button, .woocommerce .cart .button, .woocommerce .cart input.button {
+    background: #95c3a5;
+    color: #fff
+}
+
+    .woocommerce ul.products li.product .button:hover, .woocommerce div.product form.cart .button:hover, .woocommerce #respond input#submit:hover, .woocommerce a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover, .woocommerce #respond input#submit.alt:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover, .woocommerce .widget_price_filter .price_slider_amount .button:hover, .woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .button:hover, .woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .shop-loop-quickview:hover, .woocommerce ul.products li.product figure .product-wrap .shop-loop-actions a:hover, .woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .yith-wcwl-add-to-wishlist .add_to_wishlist:hover:before, .woocommerce .yith-wcwl-add-button > a:hover, .noo-menu-item-cart .noo-minicart .minicart-footer .minicart-actions .button.checkout-button:hover, .noo-menu-item-cart .noo-minicart .minicart-footer .minicart-actions .button:hover, .woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistaddedbrowse a:hover:before, .woocommerce ul.products li.product figure .product-wrap .shop-loop-actions .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistexistsbrowse a:hover:before {
+        background: #c1b547 !important;
+        color: #fff
+    }
+
+.woocommerce div.product p.price, .woocommerce div.product span.price, .woocommerce ul.products li.product .price, .woocommerce ul.products li.product figcaption .product_title a:hover {
+    color: #4f8a64
+}
+
+.woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li span.current {
+    background: #75b08a;
+    color: #fff
+}
+
+.woocommerce .widget_price_filter .ui-slider .ui-slider-range {
+    background: #75b08a
+}
+
+.woocommerce .star-rating span:before, .woocommerce .star-rating:before, .woocommerce p.stars a, .noo-menu-item-cart .cart-item span, .fa-shopping-cart:before {
+    color: #c1b547
+}
+
+    .woocommerce p.stars a:hover, .noo-menu-item-cart .cart-item span:hover, .fa-shopping-cart:hover, .woocommerce .woocommerce-info:before, .woocommerce .woocommerce-message:before {
+        color: #4f8a64
+    }
+
+.woocommerce form .form-row input.input-text:focus, .woocommerce form .form-row textarea:focus, .woocommerce form .form-row .input-text:focus, .woocommerce.widget_product_search input[name=s]:focus, .woocommerce #review_form #respond textarea:focus {
+    border-color: #75b08a
+}
+
+.woocommerce .woocommerce-info, .woocommerce .woocommerce-message {
+    border-top: 3px solid #75b08a;
+    border-right: 1px solid #75b08a;
+    border-left: 1px solid #75b08a;
+    border-bottom: 1px solid #75b08a
+}
+
+    .woocommerce .woocommerce-info a.button, .woocommerce .woocommerce-message a.button, .woocommerce .wc-proceed-to-checkout a.button, .woocommerce .wc-proceed-to-checkout a.button.alt {
+        background: 0 0 !important;
+        color: #2e2e2e !important
+    }
+
+.dsidx-search-widget .dsidx-search-button .submit:hover, .dsidx-controls a, .dsidx-results li.dsidx-prop-summary .dsidx-prop-title {
+    background-color: #75b08a
+}
+
+#dsidx-listings .dsidx-listing .dsidx-primary-data .dsidx-address a {
+    color: #75b08a
+}
+
+.dsidx-results li.dsidx-prop-summary .dsidx-prop-features div:before, #dsidx-listings .dsidx-listing .dsidx-secondary-data div:before {
+    color: #c1b547
+}
+
+.dsidx-contact-form .dsidx-contact-form-submit {
+    background-color: #75b08a;
+    border-color: #75b08a
+}
+
+    .dsidx-contact-form .dsidx-contact-form-submit:hover {
+        background-color: #c1b547;
+        border-color: #c1b547
+    }
+
+.recent-properties.recent-properties-featured .property-info .property-action a:hover, .recent-properties.recent-properties-featured .property-info .property-action a:focus, .recent-properties.recent-properties-featured .property-info .property-action a:active, .recent-properties.recent-properties-featured .property-info .property-action a.active, .properties .hentry .property-info.style-2 .property-action:hover, .properties .hentry .property-info.style-2 .property-action:focus, .properties .hentry .property-info.style-2 .property-action:active, .properties .hentry .property-info.style-2 .property-action.active {
+    background-color: #75b08a;
+    border-color: #75b08a
+}
+
+@media(min-width:992px) {
+    .page-fullwidth .properties.list .property-fullwidth-action.property-action a:hover, .page-fullwidth .properties.list .property-fullwidth-action.property-action a:focus, .page-fullwidth .properties.list .property-fullwidth-action.property-action a:active, .page-fullwidth .properties.list .property-fullwidth-action.property-action a.active {
+        background-color: #75b08a;
+        border-color: #75b08a
+    }
+
+    .page-fullwidth .properties.list .property-fullwidth-action.property-action a {
+        background-color: #f0e797;
+        color: #c1b547;
+        border-color: #f0e797
+    }
+}
+
+@media(min-width:480px) {
+    .properties.list .property-info .property-action a {
+        background-color: #f0e797;
+        color: #c1b547;
+        border-color: #f0e797
+    }
+
+        .properties.list .property-info .property-action a:hover, .properties.list .property-info .property-action a:focus, .properties.list .property-info .property-action a:active, .properties.list .property-info .property-action a.active {
+            background-color: #75b08a
+        }
+
+            .properties.list .property-info .property-action a:hover i {
+                color: #fff
+            }
+}
+
+.noo-map.no-map .gsearch .gsearch-info-style-2 .gsearch-info-title {
+    background-color: #75b08a
+}
+
+.noo-call-to-action-2 .btn-1, .noo-call-to-action-2 .btn-2:hover, .noo-input-group .input-group-btn a, .noo-property-compare input[type=submit], .noo-map .gsearch .gsearch-content .gsearch-action-style-2 .gsubmit button, .property-slide-style-2 .property-slide-style-2--content .ps-style-2--price, .recent-properties .recent-properties-content li .featured-style-2 .fp-style-2--wrap .fp-style-2--price, .property-slide-style-2 .property-slide-style-2--content .ps-style-2--wrap .ps-style-2--action span:hover, .recent-properties .recent-properties-content li .featured-style-2 .fp-style-2--thumb .content-thumb-overlay .property-action i:hover, .properties .properties-content .property-exclusives .exclusives-content .exclusive-items article .fp-style-2--thumb .content-thumb-overlay .property-action i:hover, .properties .properties-content .property-exclusives .exclusives-content .exclusive-items article .fp-style-2--wrap .fp-style-2--price, .properties .properties-content .property-exclusives .exclusives-content .exclusive-items article .fp-style-2--wrap .fp-style-2--price {
+    background-color: #75b08a
+}
+
+    .noo-call-to-action-2 .btn-2, .noo-call-to-action-2 .btn-1:hover, .city-grid .city-item:hover .city-hover::before, .city-grid .city-item .city-hover div p, .city-grid .city-item:hover .city-hover::after, .recent-post .recent-post-thumb .post-thumb-hover i:hover, .property-slide-style-2 .property-slide-style-2--content .ps-style-2--wrap .ps-style-2--action span, .recent-properties .recent-properties-content li .featured-style-2 .fp-style-2--thumb .content-thumb-overlay .property-action i, .properties .properties-content .property-exclusives .exclusives-content .exclusive-items article .fp-style-2--thumb .content-thumb-overlay .property-action i, .recent-properties .recent-properties-content li .featured-style-2 .fp-style-2--thumb .content-thumb-overlay .property-action .property-sharing a:hover, .properties .properties-content .property-exclusives .exclusives-content .exclusive-items article .fp-style-2--thumb .content-thumb-overlay .property-action .property-sharing a:hover {
+        border-color: #75b08a;
+        color: #75b08a
+    }
+
+.noo-call-to-action-2 .btn-1 {
+    border-color: #75b08a !important
+}
+
+.property-slide-style-2 .property-slide-style-2--content .ps-style-2--wrap .ps-style-2--action span, .property-slide-style-2 .property-slide-style-2--content .owl2-next, .noo-property-compare .item-compare i:hover, .property-slide-style-2 .property-slide-style-2--content .owl2-next, .property-slide-style-2 .property-slide-style-2--content .owl2-prev, {
+    color: #75b08a !important
+}
+
+.owl2-prev:hover, .owl2-next:hover, .noo-property-compare input[type=submit]:hover, .noo-map .gsearch .gsearch-content .gsearch-action-style-2 .gsubmit button:hover, {
+    background-color: #f0e797 !important
+}
+
+body {
+    font-family: lato,open sans,sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: lato,open sans,sans-serif;
+    font-style: normal;
+    font-weight: 400
+}
+
+h1, .h1 {
+    font-size: 39px
+}
+
+h2, .h2 {
+    font-size: 32px
+}
+
+h3, .h3 {
+    font-size: 26px
+}
+
+h4, .h4 {
+    font-size: 22px
+}
+
+h5, .h5 {
+    font-size: 20px
+}
+
+h6, .h6 {
+    font-size: 15px
+}
+
+select {
+    font-size: 15px
+}
+
+.btn, .dropdown-menu, .input-group-addon, .popover-title output, .form-control {
+    font-size: 15px
+}
+
+legend, .close {
+    font-size: 22px
+}
+
+.lead {
+    font-size: 17px
+}
+
+@media(min-width:768px) {
+    .lead {
+        font-size: 22px
+    }
+}
+
+pre {
+    padding: 10.5px;
+    margin: 0 0 11px;
+    font-size: 14px
+}
+
+.panel-title {
+    font-size: 17px
+}
+
+@media screen and (min-width:768px) {
+    .jumbotron h1, .h1 {
+        font-size: 68px
+    }
+}
+
+.badge, .btn-sm, .btn-xs, .dropdown-header, .input-sm, .input-group-addon.input-sm, .pagination-sm, .tooltip {
+    13px
+}
+
+.btn-lg, .input-lg, .input-group-addon.input-lg, pagination-lg {
+    font-size: 19px
+}
+
+.content-link, .content-cite, .comment-form-author input, .comment-form-email input, .comment-form-url input, .comment-form-comment textarea, .pagination .page-numbers, .widget ul li a, .widget ol li a, .widget.widget_recent_entries li a, .widget.widget_recent_comments li, .widget.widget_recent_entries li, .widget.widget_rss li, .widget_calendar #wp-calendar, .widget_calendar #wp-calendar caption, .widget_calendar #wp-calendar > thead > tr > th {
+    font-size: 15px
+}
+
+    .breadcrumb, .breadcrumb > li, .ispostauthor, .comment-meta, .comment-reply-link, .comment-notes, .logged-in-as, .comment-form-comment label, .form-submit input[type=submit], .wpcf7-not-valid-tip, div.wpcf7-response-output, .post-password-form input[type=submit], .content-meta, .noo-topbar .topbar-inner .topbar-content, .colophon.site-info .footer-more .noo-bottom-bar-content. .masonry-portfolio .content-date-portfolio, .label, .widget.widget_recent_entries li .post-date, .recent-tweets .twitter_time {
+        font-size: 13px
+    }
+
+.content-footer .content-tags, .widget_tag_cloud .tagcloud a, .widget_product_tag_cloud .tagcloud a {
+    font-size: 13px !important
+}
+
+.noo-member .member-avatar .member-social a, .noo-member .member-info .team-meta, .wigetized .widget .widget-title, .masonry-style-elevated .masonry-portfolio .masonry-container .content-wrap .content-title-portfolio, .content-title, .content-sub-title, .read-more, .content-share > a, .attribute-list, .panel-title, .nav-tabs > li > a, .widget.widget_rss li a {
+    font-size: 19px
+}
+
+.breadcrumb {
+    margin-bottom: 22px
+}
+
+.noo-page-heading {
+    padding: 11px 0
+}
+
+.pagination {
+    margin: 22px auto
+}
+
+.content-featured {
+    margin-bottom: 22px
+}
+
+.content-footer .content-tags {
+    margin-top: 22px;
+    margin-bottom: 11px
+}
+
+.woocommerce span.onsale, .woocommerce .cart .button, .woocommerce .cart input.button, .woocommerce p.stars a, .navbar .navbar-header .mobile-minicart-icon span {
+    font-size: 15px
+}
+
+.woocommerce ul.products li.product .price del, .noo-menu-item-cart .noo-minicart .minicart-header, .noo-menu-item-cart .noo-minicart .minicart-body .cart-product .cart-product-details, .noo-menu-item-cart .noo-minicart .minicart-footer .minicart-total, .noo-menu-item-cart .noo-minicart .minicart-footer .minicart-actions .button {
+    font-size: 13px
+}
+
+.woocommerce div.product .woocommerce-tabs .nav-tabs > li > a, .woocommerce ul.products li.product h3 {
+    font-size: 19px
+}
+
+.woocommerce .woocommerce-product-rating {
+    margin-top: 22px;
+    margin-bottom: 11px
+}
+
+.dsidx-details blockquote, .dsidx-shortcode-item blockquote {
+    font-size: 15px
+}
+
+span.property-meta {
+    font-size: 15px;
+    font-weight: 400
+}
+
+.noo-pricing-table .noo-pricing-column .pricing-content .pricing-header .pricing-value, .noo-pricing-table .noo-pricing-column .pricing-content .pricing-info ul li, .noo-pricing-table.ascending .noo-pricing-column .pricing-info ul li, .noo-member .member-info .team-meta small, .panel-body, .tab-content > .tab-pane, .alert, .noo-progress-bar.lean-bars .progress .progress-bar .progress_title, .noo-progress-bar.lean-bars .progress .progress-bar .progress_label, .noo-progress-bar.thick-bars .progress .progress-bar {
+    font-size: 15px
+}
+
+.noo-pricing-table.ascending .noo-pricing-column .pricing-header .pricing-title, .noo-pricing-table.ascending .noo-pricing-column .pricing-header .pricing-value .noo-price {
+    font-size: 26px
+}
+
+.noo-topbar, .noo-header, .navbar-fixed-left, .navbar-fixed-right {
+    background-color: #fff
+}
+
+.navbar-nav li > a {
+    font-family: lato,open sans,sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300
+}
+
+.navbar {
+    height: 70px
+}
+
+.calling-info {
+    height: 70px
+}
+
+@media(min-width:1200px) {
+    .navbar-nav > li > a {
+        padding-left: 12px;
+        padding-right: 12px
+    }
+
+    .navbar:not(.navbar-shrink) .navbar-nav > li > a {
+        line-height: 70px
+    }
+}
+
+.navbar-toggle {
+    height: 70px
+}
+
+.navbar:not(.navbar-shrink) .navbar-brand {
+    line-height: 70px;
+    height: 70px
+}
+
+#nav-menu-item-cart {
+    display: none
+}
+
+@media(max-width:767px) {
+    .navbar .navbar-header .mobile-minicart-icon {
+        display: none
+    }
+}
+
+.navbar-brand .noo-logo-img, .navbar-brand .noo-logo-retina-img {
+    height: 68px
+}
+
+.navbar-toggle, .mobile-minicart-icon {
+    font-size: 25px
+}
