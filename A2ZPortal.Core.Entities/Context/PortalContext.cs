@@ -50,5 +50,7 @@ namespace A2ZPortal.Core.Entities.Context
         public virtual DbSet<ExplaningPrice> ExplaningPrices { get; set; }
         public virtual DbSet<SizeAndStructure> SizeAndStructures { get; set; }
         public virtual DbSet<SuitableFor> SuitableFors { get; set; }
+        public virtual DbSet<ExplaningProperty> ExplaningPropertys { get; set; }
+        
     }
 }
