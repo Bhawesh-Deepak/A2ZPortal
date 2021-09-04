@@ -37,5 +37,18 @@ namespace A2ZPortal.Core.Entities.Context
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<SubLocation> SubLocations { get; set; }
         public virtual DbSet<SubModuleMaster> SubModuleMasters { get; set; }
+        public virtual DbSet<AreaType> AreaTypes { get; set; }
+        public virtual DbSet<AreaMeasurement> AreaMeasurements { get; set; }
+        public virtual DbSet<AdditionalRoom> AdditionalRooms { get; set; }
+        public virtual DbSet<PossessionStatus> PossessionStatuss { get; set; }
+        public virtual DbSet<FurnishedStatus> FurnishedStatuss { get; set; }
+        public virtual DbSet<AgeOfProperty> AgeOfPropertys { get; set; }
+        public virtual DbSet<NumberOfParking> NumberOfParkings { get; set; }
+        public virtual DbSet<Amenities> Amenitiess { get; set; }
+        public virtual DbSet<ViewFacing> ViewFacings { get; set; }
+        public virtual DbSet<DefiningLocation> DefiningLocations { get; set; }
+        public virtual DbSet<ExplaningPrice> ExplaningPrices { get; set; }
+        public virtual DbSet<SizeAndStructure> SizeAndStructures { get; set; }
+        public virtual DbSet<SuitableFor> SuitableFors { get; set; }
     }
 }

@@ -1,0 +1,41 @@
+﻿@using System.Runtime.InteropServices.ComTypes
+@model IEnumerable<A2ZPortal.Core.Entities.Master.ViewFacing>
+
+<div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+    <div class="row">
+        <div class="col-sm-12">
+            <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                <thead>
+                    <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 177.281px;">View Facing</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var data in Model)
+                    {
+                        <tr>
+
+                            <td>@data.Facing</td>
+                            <td>
+                                <button class="btn btn-primary">
+                                    <i class="fa fa-edit" onclick="Edit(@data.Id)"></i>
+                                </button>
+                                <button class="btn btn-danger" onclick="Delete(@data.Id)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#example1').DataTable();
+
+    })
+</script>
