@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using A2ZPortal.Infrastructure.Implementation.Extensions;
+using A2ZAdmin.UI.Helper;
 
 namespace A2ZAdmin.UI
 {
@@ -25,6 +26,7 @@ namespace A2ZAdmin.UI
         {
             services.AddControllersWithViews();
             services.ServiceExtensionHelper();
+            //services.AddElasticSearchExtension(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
