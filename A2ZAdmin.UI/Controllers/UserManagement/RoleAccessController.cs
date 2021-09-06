@@ -44,7 +44,7 @@ namespace A2ZAdmin.UI.Controllers.UserManagement
         [HttpPost]
         public async Task<IActionResult> CreateRoleAccess(List<RoleAccess> models)
         {
-            var deleteResponse = await DeleteRoleAccess(Convert.ToInt32(HttpContext.Session.GetInt32("RoleId")));
+           var deleteResponse = await DeleteRoleAccess(Convert.ToInt32(HttpContext.Session.GetInt32("RoleId")));
             List<RoleAccessDetail> roleAccesses = new List<RoleAccessDetail>();
 
             models.ForEach(item =>

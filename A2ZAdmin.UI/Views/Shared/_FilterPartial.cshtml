@@ -1,0 +1,9 @@
+﻿<input type="search" id="myInput" onkeyup="myFunction()" placeholder="Search for Master">
+<div style="height:320px !important; overflow-y:auto ">
+    <ul id="myUL">
+        @foreach (var data in Model)
+        {
+            <li><a asp-action="@data.ActionName" asp-controller="@data.ControllerName">@data.SubModuleName</a></li>
+        }
+    </ul>
+</div>
