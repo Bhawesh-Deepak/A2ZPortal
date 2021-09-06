@@ -26,6 +26,7 @@ namespace A2ZAdmin.UI
         {
             services.AddControllersWithViews();
             services.ServiceExtensionHelper();
+            services.AddSession();
             //services.AddElasticSearchExtension(Configuration);
         }
 
@@ -45,12 +46,13 @@ namespace A2ZAdmin.UI
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Authenticate}/{action=Index}/{id?}");
             });
         }
     }

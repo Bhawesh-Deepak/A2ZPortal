@@ -1,0 +1,65 @@
+﻿@model A2ZPortal.Core.ViewModel.UserManagement.AuthModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>A2Z Portal | Log in</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="~/wp-contents/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/wp-contents/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/wp-contents/bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/wp-contents/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="~/wp-contents/plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ajax-unobtrusive@3.2.6/dist/jquery.unobtrusive-ajax.min.js"
+            integrity="sha256-PAC000yuHt78nszJ2RO0OiDMu/uLzPLRlYTk8J3AO10="
+            crossorigin="anonymous"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <style>
+        .input-validation-error {
+            border-color:orangered;
+        }
+        .text-danger {
+            color:orangered !important;
+        }
+    </style>
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="~/index2.html"><b>A2Z</b>Portal</a>
+        </div>
+        <div class="login-box-body">
+            <p class="login-box-msg">Sign in to start your session</p>
+
+            <form asp-action="Authenticate" asp-controller="Authenticate" method="post">
+                <div class="form-group has-feedback">
+                    <input autocomplete="off" asp-for="UserName" class="form-control" placeholder="User Name">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    <span class="text-danger" asp-validation-for="UserName"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input autocomplete="off" asp-for="Password" type="password" class="form-control" placeholder="Password">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    <span class="text-danger" asp-validation-for="Password"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        
+                    </div>
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="~/wp-contents/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="~/wp-contents/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/wp-contents/plugins/iCheck/icheck.min.js"></script>
+
+</body>
+</html>

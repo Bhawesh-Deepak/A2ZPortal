@@ -1,4 +1,5 @@
-﻿using A2ZPortal.Core.ViewModel.UserManagement;
+﻿using A2ZPortal.Core.Entities.Common;
+using A2ZPortal.Core.ViewModel.UserManagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,7 @@ namespace A2ZPortal.Infrastructure.Repository.UserManagement
     public interface IUserManagementRepository
     {
         Task<IEnumerable<SubModuleDetail>> GetSubModuleDetails();
+        Task<IEnumerable<RoleAccess>> GetRoleAccess(int roleId);
+        Task<ResponseModel<AuthenticateModel>> AuthenticateUser(string userName, string password);
     }
 }

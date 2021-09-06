@@ -1,0 +1,25 @@
+﻿@model IEnumerable<A2ZPortal.Core.ViewModel.UserManagement.UserAccessDetailModel>
+<ul class="sidebar-menu" data-widget="tree">
+    @foreach (var data in Model.GroupBy(x => x.ModuleName))
+    {
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-cogs"></i>
+                <span>@data.Key</span>
+                <span class="pull-right-container">
+                    <i class="@data.First().ModuleIcon"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                @foreach (var item in data)
+                {
+                    <li>
+                        <a asp-controller="@item.ControllerName" asp-action="@item.ActionName">
+                            <i class="@item.SubModuleIcon"></i>@item.SubModuleName
+                        </a>
+                    </li>
+                }
+            </ul>
+        </li>
+    }
+</ul>

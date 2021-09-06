@@ -1,0 +1,53 @@
+﻿@model IEnumerable<A2ZPortal.Core.ViewModel.UserManagement.RoleAccess>
+<div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+    <div class="row">
+        <div class="col-sm-12">
+            <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                <thead>
+                    <tr role="row">
+                        <th>Module Name </th>
+                        <th>SubModule Name </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var data in Model)
+                    {
+                        <tr>
+                            <td>@data.MoudleName</td>
+                            <td>@data.SubModuleName</td>
+                            <td>
+                                @if (data.IsAccess)
+                                {
+                                    <input  type="checkbox" 
+                                           value="@data.SubModuleId" 
+                                           checked="checked" data-id="@data.RoleAccessId" class="chkChecked" />
+                                }
+                                else
+                                {
+                                    <input  type="checkbox" data-id="@data.RoleAccessId" value="@data.SubModuleId"
+                                           class="checkbox chkChecked" />
+                                }
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="col-md-12">
+            <button class="btn btn-primary" onclick="UpdateRoleAccess()">
+                <i class="fa fa-download">&nbsp;&nbsp;Update</i>
+            </button>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#example1').DataTable({
+            pagging:false
+        });
+    })
+</script>

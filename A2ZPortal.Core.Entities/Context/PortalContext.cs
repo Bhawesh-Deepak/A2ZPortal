@@ -1,5 +1,6 @@
 ﻿using A2ZPortal.Core.Entities.Master;
 using A2ZPortal.Core.Entities.Property;
+using A2ZPortal.Core.Entities.UserManagement;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -51,6 +52,7 @@ namespace A2ZPortal.Core.Entities.Context
         public virtual DbSet<SizeAndStructure> SizeAndStructures { get; set; }
         public virtual DbSet<SuitableFor> SuitableFors { get; set; }
         public virtual DbSet<ExplaningProperty> ExplaningPropertys { get; set; }
+        public virtual DbSet<RoleAccessDetail> RoleAccessDetails { get; set; }
         
     }
 }
