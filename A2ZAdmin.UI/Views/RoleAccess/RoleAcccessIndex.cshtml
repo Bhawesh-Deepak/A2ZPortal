@@ -1,0 +1,65 @@
+﻿<div class="content-wrapper">
+
+    <section class="content-header">
+        <h1>
+            @ViewData["Header"]
+            <small> @ViewData["Header"] Details</small>
+        </h1>
+    </section>
+    <section class="content" id="divContent">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Role Access Details</h3>
+                    </div>
+
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Role</label>
+                                        <select id="ddlRole" class="form-control" 
+                                                onchange="GetRoleAccess()" 
+                                                asp-items="@(new SelectList((IEnumerable<RoleMaster>)ViewBag.RoleDetails,"Id","RoleName"))">
+                                            <option value="">--Select--</option>
+                                        </select>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                        <div id="divData"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    function GetRoleAccess() {
+        var id = $("#ddlRole").val();
+        $("#divData").html('');
+        $.get("/RoleAccess/RoleAccess", { roleId:id}, function (data) {
+            $("#divData").html(data);
+        });
+    }
+    function UpdateRoleAccess() {
+        var ids = [];
+        $.each($(".chkChecked"), function () {
+            if (this.checked) {
+                var roleAccess = {
+                    SubModuleId:$(this).val(),
+                    RoleAccessId:$(this).attr("data-id"),
+                }
+                ids.push(roleAccess);
+            }
+        });
+        $.post("/RoleAccess/CreateRoleAccess", { models: ids }, function (data) {
+            alertify.success("Role Updated successfully !!!");
+        })
+    }
+</script>
+
