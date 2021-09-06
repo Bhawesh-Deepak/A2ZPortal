@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
-    GetDetail();
+    /*GetDetail();*/
+    Create();
 });
 
 function BeginRequest() {
@@ -18,11 +19,11 @@ function GetDetail() {
 }
 
 function Create() {
+    $("#divContent").addClass('loading');
     $.get("/PropertyDetail/Create",
         function (data) {
-            $("#headerText").text("Property Detail Create");
-            $("#divCreate").html(data);
-            $("#myModal").modal('show');
+            $("#divData").html(data);
+            $("#divContent").removeClass('loading');
         });
 }
 
@@ -58,4 +59,34 @@ function Edit(id) {
             $("#myModal").modal('show');
             $("#divContent").removeClass("loading");
         });
+}
+
+function RentResidential(eval) {
+    ClearElementClass();
+    AddActiveClass(eval)
+    $("#lblRentSellProperty").html("Rent Residential Property")
+}
+function SellResidential(eval) {
+    ClearElementClass();
+    AddActiveClass(eval)
+    $("#lblRentSellProperty").html("Sell Residential Property")
+}
+function RentCommercial(eval) {
+    ClearElementClass();
+    AddActiveClass(eval)
+    $("#lblRentSellProperty").html("Rent Commercial Property")
+}
+function SellCommercial(eval) {
+    ClearElementClass();
+    AddActiveClass(eval)
+    $("#lblRentSellProperty").html("Sell Commercial Property")
+}
+function ClearElementClass() {
+    $("#btnRentResidential").removeClass().addClass('btn btn-primary');
+    $("#btnSellResidential").removeClass().addClass('btn btn-primary');
+    $("#btnRentCommercial").removeClass().addClass('btn btn-primary');
+    $("#btnSellCommercial").removeClass().addClass('btn btn-primary');
+}
+function AddActiveClass(btn) {
+    $(btn).addClass("btn btn-success");
 }

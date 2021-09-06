@@ -11,20 +11,24 @@
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Property Status Details</h3>
-                        <button class="btn btn-primary pull-right" onclick="Create()">
-                            <i class="fa fa-edit">&nbsp;Add Detail</i>
+                        <button class="btn btn-primary" id="btnRentResidential" onclick="RentResidential(this)">
+                            <i class="fa fa-home">&nbsp;Rent Residential</i>
                         </button>
+                        <button class="btn btn-primary" id="btnSellResidential" onclick="SellResidential(this)">
+                            <i class="fa fa-building">&nbsp;Sell Residential</i>
+                        </button>
+                        <button class="btn btn-primary" id="btnRentCommercial" onclick="RentCommercial(this)">
+                            <i class="fa fa-home">&nbsp;Rent Commercial</i>
+                        </button>
+                        <button class="btn btn-primary" id="btnSellCommercial" onclick="SellCommercial(this)">
+                            <i class="fa fa-building">&nbsp;Sell Commercial</i>
+                        </button>
+                        <h3 id="lblRentSellProperty" class="pull-right" style="margin-top:5px !important">Rent/Sell Property</h3>
+                        <hr>
                     </div>
 
                     <div class="box-body">
-                        <fieldset>
-                            <div class="col-md-12">
-
-                            </div>
-                        </fieldset>
-                        
-
+                       
                         <div id="divData"></div>
                     </div>
                 </div>
