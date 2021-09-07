@@ -1,12 +1,13 @@
 ﻿@model IEnumerable<A2ZPortal.Core.ViewModel.UserManagement.SubModuleDetail>
 <style>
     #myInput {
-        background-position: 10px 12px; /* Position the search icon */
         background-repeat: no-repeat; /* Do not repeat the icon image */
         width: 100%; /* Full-width */
         font-size: 16px; /* Increase font-size */
         padding: 12px 20px 12px 40px; /* Add some padding */
         border: 1px solid #ddd; /* Add a grey border */
+        background-size: 25px 25px;
+        background-position-y:center
     }
 
     #myUL {
@@ -33,15 +34,7 @@
             }
 </style>
 
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Master">
-<div style="height:75px !important;">
-    <ul id="myUL">
-        @foreach (var data in Model)
-        {
-            <li><a asp-action="@data.ActionName" asp-controller="@data.ControllerName">@data.SubModuleName</a></li>
-        }
-    </ul>
-</div>
+@await Html.PartialAsync("~/Views/Shared/_FilterPartial.cshtml")
 
 
 <script>
