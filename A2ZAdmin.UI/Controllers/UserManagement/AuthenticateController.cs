@@ -18,8 +18,9 @@ namespace A2ZAdmin.UI.Controllers.UserManagement
         {
             _IUserManagementRepository = userManagementRepository;
         }
-        public IActionResult Index()
+        public IActionResult Index(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("Authenticate", "Login"));
         }
 
@@ -38,6 +39,9 @@ namespace A2ZAdmin.UI.Controllers.UserManagement
             {
                 HttpContext.Session.SetObject("AccessInformation", response.Entity.UserAccessDetails);
                 HttpContext.Session.SetString("EmployeeName", response.Entity.EmployeeName);
+                if (!string.IsNullOrEmpty(model.ReturnUrl)) {
+                    return Redirect(model.ReturnUrl);
+                }
                 return RedirectToAction("Index", "Home");
 
             }
@@ -45,7 +49,8 @@ namespace A2ZAdmin.UI.Controllers.UserManagement
 
         public async Task<IActionResult> Logout()
         {
-            HttpContext.Session.Clear();
+            HttpContext.Session.Remove("AccessInformation");
+            HttpContext.Session.Remove("EmployeeName");
             return await Task.Run(() => RedirectToAction("Index", "Authenticate"));
         }
     }

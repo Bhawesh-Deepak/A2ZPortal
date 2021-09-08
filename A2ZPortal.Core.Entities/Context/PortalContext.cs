@@ -53,6 +53,7 @@ namespace A2ZPortal.Core.Entities.Context
         public virtual DbSet<SuitableFor> SuitableFors { get; set; }
         public virtual DbSet<ExplaningProperty> ExplaningPropertys { get; set; }
         public virtual DbSet<RoleAccessDetail> RoleAccessDetails { get; set; }
+        public virtual DbSet<PropertyBanner> PropertyBanners { get; set; }
         
     }
 }

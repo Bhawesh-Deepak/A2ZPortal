@@ -17,5 +17,6 @@ namespace A2ZPortal.Core.ViewModel.UserManagement
         public string Password { get; set; }
 
         public string Message { get; set; }
+        public string ReturnUrl { get; set; }
     }
 }
