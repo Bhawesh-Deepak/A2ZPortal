@@ -19,28 +19,28 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="EmployeeName">Employee Name</label>
+                <label asp-for="EmployeeName">Employee Name</label><em>*</em>
                 <input type="text" asp-for="EmployeeName" class="form-control" />
                 <span asp-validation-for="EmployeeName" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="Phone">Phone Number</label>
+                <label asp-for="Phone">Phone Number</label><em>*</em>
                 <input type="text" asp-for="Phone" class="form-control" />
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="Email">Email</label>
+                <label asp-for="Email">Email</label><em>*</em>
                 <input type="text" asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="RoleId">Role</label>
+                <label asp-for="RoleId">Role</label><em>*</em>
                 <select asp-for="RoleId" class="form-control" asp-items="@(new SelectList((IEnumerable<RoleMaster>)ViewBag.RoleDetails,"Id","RoleName"))">
                     <option value="">--Select--</option>
                 </select>
@@ -49,21 +49,21 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="UserName">User Name</label>
+                <label asp-for="UserName">User Name</label><em>*</em>
                 <input type="text" asp-for="UserName" class="form-control" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="Password">Password</label>
+                <label asp-for="Password">Password</label><em>*</em>
                 <input type="password" asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="ConfirmPassword">Confirm Password</label>
+                <label asp-for="ConfirmPassword">Confirm Password</label><em>*</em>
                 <input type="password" asp-for="ConfirmPassword" class="form-control" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
@@ -71,14 +71,9 @@
 
     </div>
 
-    <div class="box-footer">
-        <div class="col-md-8">
-            <button type="submit" class="btn btn-success pull-right">
-                <i class="fa fa-download"> &nbsp; Save</i>
-            </button>
-        </div>
-        <div class="col-md-4">
-            <button type="reset" class="btn btn-danger pull-left">Cancel</button>
-        </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-plus"> &nbsp; Save</i></button>
+        <button type="reset" class="btn btn-danger"> <i class="fa fa-refresh"> &nbsp; Cancel</i></button>
     </div>
 </form>

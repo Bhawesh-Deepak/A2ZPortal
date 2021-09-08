@@ -1,4 +1,8 @@
-﻿<div class="content-wrapper">
+﻿
+@{
+    ViewData["Title"] = "Employee Master";
+}
+<div class="content-wrapper">
 
     <section class="content-header">
         <h1>
@@ -13,7 +17,7 @@
                     <div class="box-header">
                         <h3 class="box-title">Employee Master Details</h3>
                         <button class="btn btn-primary pull-right" onclick="Create()">
-                            <i class="fa fa-edit">&nbsp;Add</i>
+                            <i class="fa fa-plus">&nbsp;Add</i>
                         </button>
                     </div>
 
@@ -23,7 +27,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3" >
+            <div class="col-md-3">
                 @await Component.InvokeAsync("Filter")
             </div>
         </div>
