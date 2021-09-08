@@ -7,43 +7,48 @@ namespace A2ZPortal.Core.Entities.Property
     [Table("PropertyDetail", Schema = "Property")]
     public class PropertyDetail: BaseModel<int>
     {
-        [Required(ErrorMessage ="Location is required.")]
-        public int LocationId { get; set; }
-        [Required(ErrorMessage ="Sub Location is required.")]
-        public int SubLocationId { get; set; }
-        [Required(ErrorMessage ="Property Type is required.")]
-        public int PropertyTypeId { get; set; }
-        [Required(ErrorMessage = "Property Status is required.")]
-        public int PropertyStatusId { get; set; }
-        [Required(ErrorMessage = "Bath Room is required.")]
-        public int BathRoomId { get; set; }
+		public int LocationId { get; set; }
+		public int SubLocationId { get; set; }
+		public int PropertyTypeId { get; set; }
+		public int PropertyStatusId { get; set; }
+		public int BudgetId { get; set; }
+		public decimal AreaCovered { get; set; }
+		public decimal TotalArea { get; set; }
+		public string PropertyName { get; set; }
+		public string ProprtyDescription { get; set; }
+		public string Longitude { get; set; }
+		public string Lattitude { get; set; }
+		public string PlaceAddress { get; set; }
+		public string PlaceId { get; set; }
+		public int AgentId { get; set; }
+		public decimal Price { get; set; }
+		public string AreaDisplay { get; set; }
+		public int NoOfBedRoomsId { get; set; }
+		public int NoOfBathroomsId { get; set; }
+		public int AdditionalRoomId { get; set; }
+		public int PossessionStatusId { get; set; }
+		public int FurnishingStatusId { get; set; }
+		public int AgeOfPropertyId { get; set; }
+		public int NoOfParkingId { get; set; }
+		public int ViewFacingId { get; set; }
+		public string FloorNumber { get; set; }
+		public string TowerBlock { get; set; }
+		public string TotalFloorCount { get; set; }
+		public string UnitNumber { get; set; }
+		public string TrakheesiNumber { get; set; }
+		public int DefiningLocationId { get; set; }
+		public int ExplainingPriceId { get; set; }
+		public int ExplainingThePropertyId { get; set; }
+		public int DefiningSizeStructureId { get; set; }
+		public int SuitableForId { get; set; }
+		public string SpaceType { get; set; }
+		public decimal Maintaince { get; set; }
+		public string Security_Deposit { get; set; }
+		public int NoOfChecks { get; set; }
+		public string LandLordDetails { get; set; }
+		public string Nameoftheowner { get; set; }
+		public string OwnersEmaiAddress { get; set; }
+		public string MobileNoOftheOwner { get; set; }
 
-        [Required(ErrorMessage = "Budget is required.")]
-        public int BudgetId { get; set; }
-
-        [RegularExpression("([1-9][0-9]*)")]
-        [Required(ErrorMessage ="Area covered is required.")]
-        public decimal AreaCovered { get; set; }
-
-        [RegularExpression("([1-9][0-9]*)")]
-        [Required(ErrorMessage = "Total Area covered is required.")]
-        public decimal TotalArea { get; set; }
-
-        [Required(ErrorMessage = "Property Name is required.")]
-        [DataType(DataType.Text)]
-        
-        public string PropertyName { get; set; }
-
-        [DataType(DataType.MultilineText)]
-        public string ProprtyDescription { get; set; }
-        public string Longitude { get; set; }
-        public string Lattitude { get; set; }
-        public int AgentId { get; set; }
-
-        [Required(ErrorMessage = "Bed Room is required.")]
-        public int BedRoomId { get; set; }
-        public string PlaceAddress { get; set; }
-        public string PlaceId { get; set; }
-
-    }
+	}
 }

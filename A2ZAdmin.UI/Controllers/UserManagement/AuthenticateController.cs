@@ -42,5 +42,11 @@ namespace A2ZAdmin.UI.Controllers.UserManagement
 
             }
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            HttpContext.Session.Clear();
+            return await Task.Run(() => RedirectToAction("Index", "Authenticate"));
+        }
     }
 }

@@ -97,29 +97,29 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="BedRoomId">Bed Room</label>
-                        <select asp-for="BedRoomId" class="form-control"
+                        <label asp-for="NoOfBedRoomsId">Bed Room</label>
+                        <select asp-for="NoOfBedRoomsId" class="form-control"
                                 asp-items="@(new SelectList((IEnumerable<BedRoom>)ViewBag.BedRoom,"Id","BedRooms"))">
                             <option value="">--Select--</option>
                         </select>
-                        <span asp-validation-for="BedRoomId" class="text-danger"></span>
+                        <span asp-validation-for="NoOfBedRoomsId" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="BathRoomId">Bath Room</label>
-                        <select asp-for="BathRoomId" class="form-control"
+                        <label asp-for="NoOfBathroomsId">Bath Room</label>
+                        <select asp-for="NoOfBathroomsId" class="form-control"
                                 asp-items="@(new SelectList((IEnumerable<BathRoom>)ViewBag.BathRoom,"Id","BathRooms"))">
                             <option value="">--Select--</option>
                         </select>
-                        <span asp-validation-for="BathRoomId" class="text-danger"></span>
+                        <span asp-validation-for="NoOfBathroomsId" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="BudgetId">Budget</label>
-                        <select asp-for="BathRoomId" class="form-control"
+                        <select asp-for="BudgetId" class="form-control"
                                 asp-items="@(new SelectList((IEnumerable<Budget>)ViewBag.Budget,"Id","Budgets"))">
                             <option value="">--Select--</option>
                         </select>
