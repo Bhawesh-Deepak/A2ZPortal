@@ -1,4 +1,5 @@
-﻿using A2ZPortal.Core.Entities.Common;
+﻿using A2ZAdmin.UI.Helper;
+using A2ZPortal.Core.Entities.Common;
 using A2ZPortal.Core.Entities.Master;
 using A2ZPortal.Core.Entities.Property;
 using A2ZPortal.Core.ViewModel.RequestFolder;
@@ -16,6 +17,8 @@ using System.Threading.Tasks;
 
 namespace A2ZAdmin.UI.Controllers.Master
 {
+    [CustomAuthenticate]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     public class PropertyDetailController : Controller
     {
         private readonly IGenericRepository<PropertyDetail, int> _IPropertyDetailRepository;
