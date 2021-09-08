@@ -15,7 +15,7 @@ namespace A2ZAdmin.UI.Controllers.Master
     public class ExplaningPropertyMaster : Controller
     {
         private readonly IGenericRepository<ExplaningProperty, int> _iExplaningPropertyGenericRepository;
-        private object _iModuleGenericRepository;
+       
 
         public ExplaningPropertyMaster(IGenericRepository<ExplaningProperty, int> iExplaningPropertyGenericRepository)
         {
@@ -24,7 +24,7 @@ namespace A2ZAdmin.UI.Controllers.Master
 
         public IActionResult Index()
         {
-            ViewData["Header"] = "Budget Master";
+            ViewData["Header"] = "Explaning Property Master";
             return View(ViewPageHelper.InstanceHelper.GetPathDetail(nameof(ExplaningPropertyMaster), "ExplaningPropertyIndex"));
         }
 

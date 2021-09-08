@@ -4,7 +4,7 @@
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 
 <form id="form" method="post" data-ajax="true" data-ajax-method="post"
-      asp-action="PostCreate" asp-controller="AreaTypeMaster" data-ajax-success="Success" data-ajax-begin="BeginRequest">
+      asp-action="PostCreate" asp-controller="ExplaningPriceMaster" data-ajax-success="Success" data-ajax-begin="BeginRequest">
     <div class="box-body">
 
         <div class="col-md-12">
@@ -12,7 +12,7 @@
                 <input asp-for="Id" type="hidden" />
                 <input asp-for="CreatedBy" type="hidden" />
                 <input asp-for="CreatedDate" type="hidden" />
-                <label asp-for="PriceName">Explaning Price</label>
+                <label asp-for="PriceName">Explaning Price</label><span class="text-danger"> * </span>
                 <input type="text" asp-for="PriceName" class="form-control" />
                 <span asp-validation-for="PriceName" class="text-danger"></span>
             </div>
@@ -21,15 +21,10 @@
 
 
     </div>
-
-    <div class="box-footer">
-        <div class="col-md-8">
-            <button type="submit" class="btn btn-success pull-right">
-                <i class="fa fa-download"> &nbsp; Save</i>
-            </button>
-        </div>
-        <div class="col-md-4">
-            <button type="reset" class="btn btn-danger pull-left">Cancel</button>
-        </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-plus"> &nbsp; Save</i></button>
+        <button type="reset" class="btn btn-danger"> <i class="fa fa-refresh"> &nbsp; Cancel</i></button>
+    
     </div>
 </form>

@@ -14,7 +14,7 @@ namespace A2ZPortal.Core.Entities.Master
     {
         [Required(ErrorMessage = "Suitable For is Required.")]
         [Display(Prompt = "Enter Suitable For.")]
-        public string SuitableName { get; set; }
+        public string SuitabelName { get; set; }
     }
     
 }

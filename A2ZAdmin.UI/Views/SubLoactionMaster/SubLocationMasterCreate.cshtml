@@ -12,19 +12,19 @@
                 <input asp-for="Id" type="hidden" />
                 <input asp-for="CreatedBy" type="hidden" />
                 <input asp-for="CreatedDate" type="hidden" />
-                <label asp-for="LocationId">Location </label>
+                <label asp-for="LocationId">Location <span class="text-danger"> * </span></label>
                 <select asp-for="LocationId" class="form-control"
                         asp-items="@(new SelectList((IEnumerable<Location>)ViewBag.Location,"Id","LocationName"))">
                     <option value="">--Select One--</option>
                 </select>
                 <span asp-validation-for="LocationId" class="text-danger"></span>
             </div>
-        </div> 
+        </div>
         <div class="col-md-6">
             <div class="form-group">
-                
-                <label asp-for="SubLocationName">Sub Location Name </label>
-                <input type="text" asp-for="SubLocationName" class="form-control" />
+
+                <label asp-for="SubLocationName">Sub Location Name <span class="text-danger"> * </span></label>
+                <input type="text" asp-for="SubLocationName" class="form-control"  placeholder="Enter Sub Location"/>
                 <span asp-validation-for="SubLocationName" class="text-danger"></span>
             </div>
         </div>
@@ -32,14 +32,14 @@
 
     </div>
 
-    <div class="box-footer">
-        <div class="col-md-8">
-            <button type="submit" class="btn btn-success pull-right">
-                <i class="fa fa-download"> &nbsp; Save</i>
-            </button>
-        </div>
-        <div class="col-md-4">
-            <button type="reset" class="btn btn-danger pull-left">Cancel</button>
-        </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+        <button type="submit" class="btn btn-success pull-right">
+            <i class="fa fa-plus"> &nbsp; Save</i>
+        </button>
+
+        <button type="reset" class="btn btn-danger"> <i class="fa fa-refresh"> &nbsp; Cancel</i></button>
+
     </div>
 </form>

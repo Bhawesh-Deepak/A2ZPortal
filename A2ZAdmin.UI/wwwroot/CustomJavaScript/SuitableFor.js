@@ -23,7 +23,7 @@ function Create() {
             debugger;
             $("#headerText").text("SuitableFor Create");
             $("#divCreate").html(data);
-            $("#myModal").modal('show');
+            $('#myModal').modal({ backdrop: 'static' });
         });
 }
 
@@ -55,7 +55,7 @@ function Edit(id) {
         function (data) {
             $("#headerText").text("SuitableFor  Update");
             $("#divCreate").html(data);
-            $("#myModal").modal('show');
+            $('#myModal').modal({ backdrop: 'static' });
             $("#divContent").removeClass("loading");
         });
 }

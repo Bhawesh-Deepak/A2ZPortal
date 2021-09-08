@@ -1,4 +1,8 @@
-﻿<div class="content-wrapper">
+﻿
+@{
+    ViewData["Title"] = "Defining Location Master";
+}
+<div class="content-wrapper">
 
     <section class="content-header">
         <h1>
@@ -8,12 +12,12 @@
     </section>
     <section class="content" id="divContent">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Defining Location Master Details</h3>
                         <button class="btn btn-primary pull-right" onclick="Create()">
-                            <i class="fa fa-edit">&nbsp;Add</i>
+                            <i class="fa fa-plus">&nbsp;Add</i>
                         </button>
                     </div>
 
@@ -21,6 +25,9 @@
                         <div id="divData"></div>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-4">
+                @await Component.InvokeAsync("Filter")
             </div>
         </div>
     </section>

@@ -12,24 +12,15 @@
                 <input asp-for="Id" type="hidden" />
                 <input asp-for="CreatedBy" type="hidden" />
                 <input asp-for="CreatedDate" type="hidden" />
-                <label asp-for="Name">Size And Structure</label>
+                <label asp-for="Name">Size And Structure</label><span class="text-danger"> * </span>
                 <input type="text" asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-
         </div>
-
-
     </div>
-
-    <div class="box-footer">
-        <div class="col-md-8">
-            <button type="submit" class="btn btn-success pull-right">
-                <i class="fa fa-download"> &nbsp; Save</i>
-            </button>
-        </div>
-        <div class="col-md-4">
-            <button type="reset" class="btn btn-danger pull-left">Cancel</button>
-        </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-plus"> &nbsp; Save</i></button>
+        <button type="reset" class="btn btn-danger"> <i class="fa fa-refresh"> &nbsp; Cancel</i></button>
     </div>
 </form>

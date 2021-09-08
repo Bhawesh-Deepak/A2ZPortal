@@ -23,7 +23,8 @@ function Create() {
             debugger;
             $("#headerText").text("Bath Room Create");
             $("#divCreate").html(data);
-            $("#myModal").modal('show');
+            $('#myModal').modal({ backdrop: 'static' });
+
         });
 }
 
@@ -55,7 +56,7 @@ function Edit(id) {
         function (data) {
             $("#headerText").text("Bath Room  Update");
             $("#divCreate").html(data);
-            $("#myModal").modal('show');
+            $('#myModal').modal({ backdrop: 'static' });
             $("#divContent").removeClass("loading");
         });
 }
