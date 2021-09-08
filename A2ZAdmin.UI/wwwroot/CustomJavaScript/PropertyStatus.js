@@ -19,9 +19,9 @@ function GetDetail() {
 function Create() {
     $.get("/PropertyStatus/Create",
         function (data) {
-            $("#headerText").text("Module Create");
+            $("#headerText").text("Property Status Create");
             $("#divCreate").html(data);
-            $("#myModal").modal('show');
+            $('#myModal').modal({ backdrop: 'static' });
         });
 }
 
@@ -52,9 +52,9 @@ function Edit(id) {
     $("#divContent").addClass("loading");
     $.get("/PropertyStatus/Create", { id: id },
         function (data) {
-            $("#headerText").text("Module Update");
+            $("#headerText").text("Property Status Update");
             $("#divCreate").html(data);
-            $("#myModal").modal('show');
+            $('#myModal').modal({ backdrop: 'static' });
             $("#divContent").removeClass("loading");
         });
 }

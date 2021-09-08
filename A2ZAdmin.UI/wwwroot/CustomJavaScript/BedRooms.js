@@ -23,7 +23,8 @@ function Create() {
             debugger;
             $("#headerText").text("Role Create");
             $("#divCreate").html(data);
-            $("#myModal").modal('show');
+            $('#myModal').modal({ backdrop: 'static' });
+
         });
 }
 
@@ -55,7 +56,8 @@ function Edit(id) {
         function (data) {
             $("#headerText").text("Module Update");
             $("#divCreate").html(data);
-            $("#myModal").modal('show');
+            $('#myModal').modal({ backdrop: 'static' });
+
             $("#divContent").removeClass("loading");
         });
 }

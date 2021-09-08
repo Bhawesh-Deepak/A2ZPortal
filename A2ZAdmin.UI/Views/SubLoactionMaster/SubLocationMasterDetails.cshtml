@@ -7,11 +7,11 @@
             <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                 <thead>
                     <tr role="row">
-                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 177.281px;">Location </th>
-                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 177.281px;">Sub Location</th>
+                        <th>Location </th>
+                        <th>Sub Location</th>
                         <th>Action</th>
                     </tr>
-                </thead>
+                </thead> 
                 <tbody>
                     @foreach (var data in Model)
                     {
@@ -20,11 +20,11 @@
                             <td>@data.LocationName</td>
                             <td>@data.SubLocationName</td>
                             <td>
-                                <button class="btn btn-primary">
-                                    <i class="fa fa-edit" onclick="Edit(@data.Id)"></i>
+                                <button class="btn btn-primary btn-xs">
+                                    <i class="fa fa-pencil" onclick="Edit(@data.Id)"></i>
                                 </button>
-                                <button class="btn btn-danger" onclick="Delete(@data.Id)">
-                                    <i class="fa fa-trash"></i>
+                                <button class="btn btn-danger btn-xs" onclick="Delete(@data.Id)">
+                                    <i class="fa fa-close"></i>
                                 </button>
                             </td>
                         </tr>

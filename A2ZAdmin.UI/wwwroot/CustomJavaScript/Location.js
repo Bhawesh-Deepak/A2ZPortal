@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+   
     GetDetail();
 });
 
@@ -7,8 +8,9 @@ function BeginRequest() {
 }
 
 function GetDetail() {
+   
     $("#divContent").addClass("loading");
-
+    
     $.get("/LocationMaster/GetDetail",
         function (data) {
             $("#divData").html(data);
@@ -20,10 +22,11 @@ function GetDetail() {
 function Create() {
     $.get("/LocationMaster/Create",
         function (data) {
-            debugger;
-            $("#headerText").text("Locatio nMaster Create");
+            
+            $("#headerText").text("Location Master Create");
             $("#divCreate").html(data);
-            $("#myModal").modal('show');
+            $('#myModal').modal({ backdrop: 'static' });
+            
         });
 }
 
@@ -55,7 +58,7 @@ function Edit(id) {
         function (data) {
             $("#headerText").text("Location Master   Update");
             $("#divCreate").html(data);
-            $("#myModal").modal('show');
+            $('#myModal').modal({ backdrop: 'static' });
             $("#divContent").removeClass("loading");
         });
 }

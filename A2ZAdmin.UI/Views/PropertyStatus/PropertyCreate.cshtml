@@ -3,35 +3,28 @@
 <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 
-<div class="col-md-12">
-    <div class="box box-primary">
-        <form id="form" method="post" data-ajax="true" data-ajax-method="post"
-              asp-action="PostCreate" asp-controller="PropertyStatus" data-ajax-success="Success" data-ajax-begin="BeginRequest">
-            <div class="box-body">
 
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input asp-for="Id" type="hidden" />
-                        <input asp-for="CreatedBy" type="hidden" />
-                        <input asp-for="CreatedDate" type="hidden" />
-                        <label asp-for="PropertyStatus">Property Status</label>
-                        <input type="text" asp-for="PropertyStatus" class="form-control" />
-                        <span asp-validation-for="PropertyStatus" class="text-danger"></span>
-                    </div>
+<form id="form" method="post" data-ajax="true" data-ajax-method="post"
+      asp-action="PostCreate" asp-controller="PropertyStatus" data-ajax-success="Success" data-ajax-begin="BeginRequest">
+    <div class="box-body">
 
-                </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <input asp-for="Id" type="hidden" />
+                <input asp-for="CreatedBy" type="hidden" />
+                <input asp-for="CreatedDate" type="hidden" />
+                <label asp-for="PropertyStatus">Property Status <span class="text-danger"> * </span></label>
+                <input type="text" asp-for="PropertyStatus" class="form-control" placeholder="Enter Property Status" />
+                <span asp-validation-for="PropertyStatus" class="text-danger"></span>
             </div>
 
-            <div class="box-footer">
-                <div class="col-md-8">
-                    <button type="submit" class="btn btn-success pull-right">
-                        <i class="fa fa-download"> &nbsp; Save</i>
-                    </button>
-                </div>
-                <div class="col-md-4">
-                    <button type="reset" class="btn btn-danger pull-left">Cancel</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-plus"> &nbsp; Save</i></button>
+        <button type="reset" class="btn btn-danger"> <i class="fa fa-refresh"> &nbsp; Cancel</i></button>
+    </div>
+</form>
+
