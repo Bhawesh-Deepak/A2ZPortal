@@ -11,7 +11,7 @@
                 <input asp-for="Id" type="hidden" />
                 <input asp-for="CreatedBy" type="hidden" />
                 <input asp-for="CreatedDate" type="hidden" />
-                <label asp-for="LocationId">Location</label>
+                <label asp-for="LocationId">Location</label><em>*</em>
                 <select asp-for="LocationId" class="form-control"
                         asp-items="@(new SelectList((IEnumerable<Location>)ViewBag.Location,"Id","LocationName"))">
                     <option value="">--Select--</option>
@@ -21,8 +21,12 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="SubLocationId">SubLocation</label>
-                <input type="text" asp-for="SubLocationId" class="form-control" />
+                <label asp-for="SubLocationId">SubLocation</label><em>*</em>
+                <select asp-for="SubLocationId" class="form-control"
+                        asp-items="@(new SelectList((IEnumerable<Location>)ViewBag.SubLocation,"Id","SubLocationName"))">
+                    <option value="">--Select--</option>
+                </select>
+
                 <span asp-validation-for="SubLocationId" class="text-danger"></span>
             </div>
         </div>
@@ -56,7 +60,6 @@
                 <span asp-validation-for="NoOfBathRooms" class="text-danger"></span>
             </div>
         </div>
-
         <div class="col-md-4">
             <div class="form-group">
                 <label asp-for="PropertyName">Property Name</label>

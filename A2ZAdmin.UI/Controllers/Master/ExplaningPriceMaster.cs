@@ -1,4 +1,5 @@
 ﻿
+using A2ZAdmin.UI.Helper;
 using A2ZPortal.Core.Entities.Common;
 using A2ZPortal.Core.Entities.Master;
 using A2ZPortal.Helper;
@@ -13,6 +14,8 @@ using System.Threading.Tasks;
 
 namespace A2ZAdmin.UI.Controllers.Master
 {
+    [CustomAuthenticate]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     public class ExplaningPriceMaster : Controller
     {
         private readonly IGenericRepository<ExplaningPrice, int> _iExplaningPriceGenericRepository;

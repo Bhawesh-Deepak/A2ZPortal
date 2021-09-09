@@ -23,7 +23,8 @@ function Create() {
             debugger;
             $("#headerText").text("Employee Master Create");
             $("#divCreate").html(data);
-            $("#myModal").modal('show');
+            $(".modal-dialog").addClass("modal-lg");
+            $('#myModal').modal({ backdrop: 'static' });
         });
 }
 
@@ -55,7 +56,8 @@ function Edit(id) {
         function (data) {
             $("#headerText").text("Bath Room  Update");
             $("#divCreate").html(data);
-            $("#myModal").modal('show');
+            $(".modal-dialog").addClass("modal-lg");
+            $('#myModal').modal({ backdrop: 'static' });
             $("#divContent").removeClass("loading");
         });
 }

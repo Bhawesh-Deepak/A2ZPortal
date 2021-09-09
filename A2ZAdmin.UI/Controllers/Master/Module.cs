@@ -9,9 +9,12 @@ using A2ZPortal.Helper;
 using A2ZPortal.Helper.Extension;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
 using Serilog;
+using A2ZAdmin.UI.Helper;
 
 namespace A2ZAdmin.UI.Controllers.Master
 {
+    [CustomAuthenticate]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     public class Module : Controller
     {
         private readonly IGenericRepository<ModuleMaster, int> _iModuleGenericRepository;

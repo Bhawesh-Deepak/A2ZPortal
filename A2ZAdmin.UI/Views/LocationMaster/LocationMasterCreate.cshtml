@@ -12,7 +12,7 @@
                 <input asp-for="Id" type="hidden" />
                 <input asp-for="CreatedBy" type="hidden" />
                 <input asp-for="CreatedDate" type="hidden" />
-                <label asp-for="LocationName">Location Name <span class="text-danger"> * </span></label>
+                <label asp-for="LocationName" class="text-danger">Location Name <span class="text-danger"> * </span></label>
                 <input type="text" asp-for="LocationName" class="form-control" />
                 <span asp-validation-for="LocationName" class="text-danger"></span>
             </div>
