@@ -206,21 +206,15 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="Price">Price (Rent)</label><em>*</em>
-                    <input type="text" asp-for="Price" class="form-control" placeholder="Price (Rent) on Monthly basis" />
-                    <span asp-validation-for="Price" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-
-            <div class="col-md-4">
-                <div class="form-group">
                     <label asp-for="FloarNumber">Floor Number</label><em>*</em>
                     <input type="text" asp-for="FloarNumber" class="form-control" placeholder="Floor Number" />
                     <span asp-validation-for="FloarNumber" class="text-danger"></span>
                 </div>
             </div>
+        </div>
+        <div class="row">
+
+
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="Tower_Block">Tower Block</label><em>*</em>
@@ -228,16 +222,6 @@
                     <span asp-validation-for="Tower_Block" class="text-danger"></span>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="TotalFloarCount">Total Floor Count</label><em>*</em>
-                    <input type="text" asp-for="TotalFloarCount" class="form-control" placeholder="Total Floor Count" />
-                    <span asp-validation-for="TotalFloarCount" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="UnitNumber">Unit Number</label><em>*</em>
@@ -252,7 +236,18 @@
                     <span asp-validation-for="TarkeshiNumber" class="text-danger"></span>
                 </div>
             </div>
+        </div>
+      
+        <div class="row">
 
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="SpaceType">Space Type</label><em>*</em>
+                    <input type="text" asp-for="SpaceType" class="form-control" placeholder="Space Type" />
+                    <span asp-validation-for="SpaceType" class="text-danger"></span>
+                </div>
+            </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="Amenities">Amenities</label><em>*</em><br />
@@ -263,18 +258,16 @@
                     <span asp-validation-for="Amenities" class="text-danger"></span>
                 </div>
             </div>
-        </div>
-       
-         
-        <div class="row">
-
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label>Upload Image</label>
                     <input type="file" id="files" name="PropertyImage" multiple class="form-control" />
                 </div>
             </div>
-            <div class="col-md-6">
+        </div>
+         
+        <div class="row">
+            <div class="col-md-12">
                 <div class="form-group" id="divFile">
 
                 </div>
@@ -433,8 +426,8 @@
     });
 </script>
 
-
-
+ 
+ 
 <link href="~/MultiSelect/css/bootstrap-multiselect.css" rel="stylesheet" />
 <script src="~/MultiSelect/js/bootstrap-2.3.2.min.js"></script>
 <script src="~/MultiSelect/js/bootstrap-multiselect.js"></script>

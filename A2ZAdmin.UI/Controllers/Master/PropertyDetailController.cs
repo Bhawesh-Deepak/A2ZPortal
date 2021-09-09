@@ -121,6 +121,30 @@ namespace A2ZAdmin.UI.Controllers.Master
 
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "RentResidentialCreate"), response.Entity);
         }
+        public async Task<IActionResult> SellCommercial(int id)
+        {
+            await PopulateViewBag();
+
+            var response = await _IPropertyDetailRepository.GetSingle(x => x.Id == id);
+
+            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "SellCommercialCreate"), response.Entity);
+        }
+        public async Task<IActionResult> RentCommercial(int id)
+        {
+            await PopulateViewBag();
+
+            var response = await _IPropertyDetailRepository.GetSingle(x => x.Id == id);
+
+            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "RentCommercialCreate"), response.Entity);
+        }
+        public async Task<IActionResult> SellResidential(int id)
+        {
+            await PopulateViewBag();
+
+            var response = await _IPropertyDetailRepository.GetSingle(x => x.Id == id);
+
+            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "SellResidentialCreate"), response.Entity);
+        }
         [HttpPost]
         public async Task<IActionResult> PostCreate(PropertyDetail model, IFormFile[] PropertyImage)
         {

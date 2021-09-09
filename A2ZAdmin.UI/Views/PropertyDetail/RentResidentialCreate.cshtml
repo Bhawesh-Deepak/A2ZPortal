@@ -313,21 +313,26 @@
 
         </div>
         <div class="row">
-            <div class="col-md-4">
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Amenities">Amenities</label><em>*</em><br />
+                    <select asp-for="Amenities" class="form-control" multiple
+                            asp-items="@(new SelectList((IEnumerable<Amenities>)ViewBag.Amenities,"Id","AmenitiesName"))">
+                    </select>
+
+                    <span asp-validation-for="Amenities" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
                 <div class="form-group">
                     <label>Upload Image</label>
                     <input type="file" id="files" name="PropertyImage" multiple class="form-control" />
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="Amenities">Amenities</label><em>*</em>
-                    <select asp-for="Amenities" class="form-control" multiple
-                            asp-items="@(new SelectList((IEnumerable<Amenities>)ViewBag.Amenities,"Id","AmenitiesName"))">
-                       
-                    </select>
-                    
-                    <span asp-validation-for="Amenities" class="text-danger"></span>
+            <div class="col-md-6">
+                <div class="form-group" id="divFile">
+
                 </div>
             </div>
         </div>
