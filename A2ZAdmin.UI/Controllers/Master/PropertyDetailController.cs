@@ -119,36 +119,36 @@ namespace A2ZAdmin.UI.Controllers.Master
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "RentResidentialCreate"), response.Entity);
         }
         [HttpPost]
-        public async Task<IActionResult> PostCreate(PropertyDetail model, IFormFile[] PropertyImage)
+        public async Task<IActionResult> PostCreate(RentResidentialVM model, IFormFile[] PropertyImage)
         {
             if (model.Id > 0)
             {
-                var updateModel = CommonCrudHelper.CommonUpdateCode(model, 1);
+                var updateModel = ReplaceNullWithDefault.ReplaceWithDefault(CommonCrudHelper.CommonUpdateCode(model, 1));
+                
+                //var updateResponse = await _IPropertyDetailRepository.Update(updateModel);
 
-                var updateResponse = await _IPropertyDetailRepository.Update(updateModel);
+                //if (updateResponse.ResponseStatus != ResponseStatus.Error)
+                //{
+                //    await PropertyImageInsert(PropertyImage, false);
 
-                if (updateResponse.ResponseStatus != ResponseStatus.Error)
-                {
-                    await PropertyImageInsert(PropertyImage, false);
-
-                    return Json("Property Status Updated Successfully !!!");
-                }
-                Log.Error(updateResponse.Message);
+                //    return Json("Property Status Updated Successfully !!!");
+                //}
+                //Log.Error(updateResponse.Message);
 
                 return Json("Something went wrong Please contact Admin Team !!!");
             }
 
-            var createModel = CommonCrudHelper.CommonCreateCode(model, 1);
+            //var createModel = CommonCrudHelper.CommonCreateCode(model, 1);
 
-            var createResponse = await _IPropertyDetailRepository.CreateEntity(createModel);
+            //var createResponse = await _IPropertyDetailRepository.CreateEntity(createModel);
 
-            if (createResponse.ResponseStatus != ResponseStatus.Error)
-            {
-                await PropertyImageInsert(PropertyImage, true);
-                return Json("Property Status created Successfully !!!");
-            }
+            //if (createResponse.ResponseStatus != ResponseStatus.Error)
+            //{
+            //    await PropertyImageInsert(PropertyImage, true);
+            //    return Json("Property Status created Successfully !!!");
+            //}
 
-            Log.Error(createResponse.Message);
+            //Log.Error(createResponse.Message);
 
             return Json("Something went wrong Please contact Admin Team !!!");
         }
