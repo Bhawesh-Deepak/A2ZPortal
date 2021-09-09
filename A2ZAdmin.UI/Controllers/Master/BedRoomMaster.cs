@@ -1,4 +1,5 @@
-﻿using A2ZPortal.Core.Entities.Common;
+﻿using A2ZAdmin.UI.Helper;
+using A2ZPortal.Core.Entities.Common;
 using A2ZPortal.Core.Entities.Master;
 using A2ZPortal.Helper;
 using A2ZPortal.Helper.Extension;
@@ -12,6 +13,8 @@ using System.Threading.Tasks;
 
 namespace A2ZAdmin.UI.Controllers.Master
 {
+    [CustomAuthenticate]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     public class BedRoomMaster : Controller
     {
         private readonly IGenericRepository<BedRoom, int> _iModuleGenericRepository;

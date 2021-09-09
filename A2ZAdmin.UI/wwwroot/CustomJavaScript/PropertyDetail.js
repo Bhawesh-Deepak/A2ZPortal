@@ -20,9 +20,11 @@ function GetDetail() {
 
 function Create() {
     $("#divContent").addClass('loading');
-    $.get("/PropertyDetail/Create",
+    $.get("/PropertyDetail/RentResidential",
         function (data) {
             $("#divData").html(data);
+            AddActiveClass('#btnRentResidential');
+            $("#lblRentSellProperty").html("Rent Residential Property")
             $("#divContent").removeClass('loading');
         });
 }
@@ -88,5 +90,6 @@ function ClearElementClass() {
     $("#btnSellCommercial").removeClass().addClass('btn btn-primary');
 }
 function AddActiveClass(btn) {
+    debugger;
     $(btn).addClass("btn btn-success");
 }

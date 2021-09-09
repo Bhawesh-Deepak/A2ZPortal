@@ -1,4 +1,5 @@
-﻿using A2ZPortal.Core.Entities.Common;
+﻿using A2ZAdmin.UI.Helper;
+using A2ZPortal.Core.Entities.Common;
 using A2ZPortal.Core.Entities.Master;
 using A2ZPortal.Core.Entities.Property;
 using A2ZPortal.Core.ViewModel.RequestFolder;
@@ -16,6 +17,8 @@ using System.Threading.Tasks;
 
 namespace A2ZAdmin.UI.Controllers.Master
 {
+    [CustomAuthenticate]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     public class PropertyDetailController : Controller
     {
         private readonly IGenericRepository<PropertyDetail, int> _IPropertyDetailRepository;
@@ -27,9 +30,18 @@ namespace A2ZAdmin.UI.Controllers.Master
         private readonly IGenericRepository<BathRoom, int> _IBathRoomRepository;
         private readonly IGenericRepository<Budget, int> _IBudgetRepository;
         private readonly IGenericRepository<Location, int> _ILocationRepository;
+        private readonly IGenericRepository<SubLocation, int> _ISubLocationRepository;
         private readonly IPropertyDetailRepository _IPropertyDetailsRepository;
-     
-
+        private readonly IGenericRepository<AdditionalRoom, int> _IAdditionalRoomRepository;
+        private readonly IGenericRepository<FurnishedStatus, int> _IFurnishedStatusRepository;
+        private readonly IGenericRepository<AgeOfProperty, int> _IAgeOfPropertyRepository;
+        private readonly IGenericRepository<NumberOfParking, int> _INumberOfParkingRepository;
+        private readonly IGenericRepository<ViewFacing, int> _IViewFacingRepository;
+        private readonly IGenericRepository<DefiningLocation, int> _IDefiningLocationRepository;
+        private readonly IGenericRepository<ExplaningPrice, int> _IExplaningPriceRepository;
+        private readonly IGenericRepository<ExplaningProperty, int> _IExplaningPropertyRepository;
+        private readonly IGenericRepository<SizeAndStructure, int> _ISizeAndStructureRepository;
+        private readonly IGenericRepository<SuitableFor, int> _ISuitableForRepository;
         public PropertyDetailController(IGenericRepository<PropertyDetail, int> propertyDetailRepository,
             IGenericRepository<PropertyImage, int> propertyImageRepository,
             IHostingEnvironment hostingEnvironment, IGenericRepository<PropertyType, int> propertyTypeRepo
@@ -38,7 +50,18 @@ namespace A2ZAdmin.UI.Controllers.Master
             , IGenericRepository<BathRoom, int> bathRoomRepository
             , IGenericRepository<Budget, int> budgetRepository
             , IGenericRepository<Location, int> _LocationRepository
+             , IGenericRepository<SubLocation, int> _SubLocationRepository
             , IPropertyDetailRepository propertDetailsRepository
+             , IGenericRepository<AdditionalRoom, int> _AdditionalRoomRepository
+            , IGenericRepository<FurnishedStatus, int> _FurnishedStatusRepository
+            , IGenericRepository<AgeOfProperty, int> _AgeOfPropertyRepository
+            , IGenericRepository<NumberOfParking, int> _NumberOfParkingRepository
+            , IGenericRepository<ViewFacing, int> _ViewFacingRepository
+             , IGenericRepository<DefiningLocation, int> _DefiningLocationRepository
+             , IGenericRepository<ExplaningPrice, int> _ExplaningPriceRepository
+             , IGenericRepository<ExplaningProperty, int> _ExplaningPropertyRepository
+             , IGenericRepository<SizeAndStructure, int> _SizeAndStructureRepository
+             , IGenericRepository<SuitableFor, int> _SuitableForRepository
             )
         {
             _IPropertyDetailRepository = propertyDetailRepository;
@@ -51,13 +74,23 @@ namespace A2ZAdmin.UI.Controllers.Master
             _IPropertyTypeMasterRepository = propertyTypeRepo;
             _ILocationRepository = _LocationRepository;
             _IPropertyDetailsRepository = propertDetailsRepository;
+            _ISubLocationRepository = _SubLocationRepository;
+            _IAdditionalRoomRepository = _AdditionalRoomRepository;
+            _IFurnishedStatusRepository = _FurnishedStatusRepository;
+            _IAgeOfPropertyRepository = _AgeOfPropertyRepository;
+            _INumberOfParkingRepository = _NumberOfParkingRepository;
+            _IViewFacingRepository = _ViewFacingRepository;
+            _IDefiningLocationRepository = _DefiningLocationRepository;
+            _IExplaningPriceRepository = _ExplaningPriceRepository;
+            _IExplaningPropertyRepository = _ExplaningPropertyRepository;
+            _ISizeAndStructureRepository = _SizeAndStructureRepository;
+            _ISuitableForRepository = _SuitableForRepository;
         }
         public async Task<IActionResult> Index()
         {
             ViewData["Header"] = "Property Detail";
             return await Task.Run(() => View(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "PropertyDetailIndex")));
         }
-
         public async Task<IActionResult> GetDetail()
         {
             var response = await _IPropertyDetailRepository.GetList(x => x.IsActive == true && x.IsDeleted == false);
@@ -69,7 +102,6 @@ namespace A2ZAdmin.UI.Controllers.Master
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("Shared", "Error"));
 
         }
-
         public async Task<IActionResult> Create(int id)
         {
             await PopulateViewBag();
@@ -78,7 +110,14 @@ namespace A2ZAdmin.UI.Controllers.Master
 
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "PropertyDetailCreate"), response.Entity);
         }
+        public async Task<IActionResult> RentResidential(int id)
+        {
+            await PopulateViewBag();
 
+            var response = await _IPropertyDetailRepository.GetSingle(x => x.Id == id);
+
+            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "RentResidentialCreate"), response.Entity);
+        }
         [HttpPost]
         public async Task<IActionResult> PostCreate(PropertyDetail model, IFormFile[] PropertyImage)
         {
@@ -121,8 +160,6 @@ namespace A2ZAdmin.UI.Controllers.Master
             return Json(deleteResponse.ResponseStatus != ResponseStatus.Error ?
                 "Property Status deleted successfully !!!" : "Something went wrong Please contact Admin !!");
         }
-
-
         public async Task<IActionResult> GetPropertyDetail()
         {
             var requestModel = new PropertyRequestModel() {
@@ -178,7 +215,6 @@ namespace A2ZAdmin.UI.Controllers.Master
 
             return updateResponse.ResponseStatus != ResponseStatus.Error;
         }
-
         private async Task PopulateViewBag()
         {
             ViewBag.PropertyStatus = (await _IPropertyStatusRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
@@ -187,6 +223,17 @@ namespace A2ZAdmin.UI.Controllers.Master
             ViewBag.Budget = (await _IBudgetRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
             ViewBag.PropertyType = (await _IPropertyTypeMasterRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
             ViewBag.Location = (await _ILocationRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.SubLocation = (await _ISubLocationRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.AdditionalRoom = (await _IAdditionalRoomRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.FurnishedStatus = (await _IFurnishedStatusRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.AgeOfProperty = (await _IAgeOfPropertyRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.NumberOfParking = (await _INumberOfParkingRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.ViewFacing = (await _IViewFacingRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.DefiningLocation = (await _IDefiningLocationRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.ExplaningPrice = (await _IExplaningPriceRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.ExplaningProperty = (await _IExplaningPropertyRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.SizeAndStructure = (await _ISizeAndStructureRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.SuitableFor = (await _ISuitableForRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
         }
     }
 }
