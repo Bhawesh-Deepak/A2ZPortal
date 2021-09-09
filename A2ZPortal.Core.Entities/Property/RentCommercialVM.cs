@@ -9,6 +9,9 @@ namespace A2ZPortal.Core.Entities.Property
 {
     public class RentCommercialVM : PropertyBaseModel
     {
+        public decimal Maintaince { get; set; }
+        public string Security_Deposit { get; set; }
+        public int NoOfChecks { get; set; }
         public string Nameoftheowner { get; set; }
         public string OwnersEmaiAddress { get; set; }
         public string MobileNoOftheOwner { get; set; }

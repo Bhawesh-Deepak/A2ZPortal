@@ -64,24 +64,49 @@ function Edit(id) {
 }
 
 function RentResidential(eval) {
-    ClearElementClass();
-    AddActiveClass(eval)
-    $("#lblRentSellProperty").html("Rent Residential Property")
+    $("#divContent").addClass('loading');
+    $.get("/PropertyDetail/RentResidential",
+        function (data) {
+            $("#divData").html(data);
+            ClearElementClass();
+            AddActiveClass(eval)
+            $("#lblRentSellProperty").html("Rent Residential Property");           
+            $("#divContent").removeClass('loading');
+        });
 }
 function SellResidential(eval) {
-    ClearElementClass();
-    AddActiveClass(eval)
-    $("#lblRentSellProperty").html("Sell Residential Property")
+    $("#divContent").addClass('loading');
+    $.get("/PropertyDetail/SellResidential",
+        function (data) {
+            $("#divData").html(data);
+            ClearElementClass();
+            AddActiveClass(eval)
+            $("#lblRentSellProperty").html("Sell Residential Property")
+            $("#divContent").removeClass('loading');
+        });
 }
 function RentCommercial(eval) {
-    ClearElementClass();
-    AddActiveClass(eval)
-    $("#lblRentSellProperty").html("Rent Commercial Property")
+    $("#divContent").addClass('loading');
+    $.get("/PropertyDetail/RentCommercial",
+        function (data) {
+            $("#divData").html(data);
+            ClearElementClass();
+            AddActiveClass(eval)
+            $("#lblRentSellProperty").html("Rent Commercial Property")
+            $("#divContent").removeClass('loading');
+        });
+  
 }
 function SellCommercial(eval) {
-    ClearElementClass();
-    AddActiveClass(eval)
-    $("#lblRentSellProperty").html("Sell Commercial Property")
+    $("#divContent").addClass('loading');
+    $.get("/PropertyDetail/SellCommercial",
+        function (data) {
+            $("#divData").html(data);
+            ClearElementClass();
+            AddActiveClass(eval)
+            $("#lblRentSellProperty").html("Sell Commercial Property")
+            $("#divContent").removeClass('loading');
+        });
 }
 function ClearElementClass() {
     $("#btnRentResidential").removeClass().addClass('btn btn-primary');

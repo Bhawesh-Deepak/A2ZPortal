@@ -15,5 +15,6 @@ namespace A2ZPortal.Core.Entities.Property
         public string Nameoftheowner { get; set; }
         public string OwnersEmaiAddress { get; set; }
         public string MobileNoOftheOwner { get; set; }
+       
     }
 }
