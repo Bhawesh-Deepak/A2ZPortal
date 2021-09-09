@@ -42,6 +42,7 @@ namespace A2ZAdmin.UI.Controllers.Master
         private readonly IGenericRepository<ExplaningProperty, int> _IExplaningPropertyRepository;
         private readonly IGenericRepository<SizeAndStructure, int> _ISizeAndStructureRepository;
         private readonly IGenericRepository<SuitableFor, int> _ISuitableForRepository;
+        private readonly IGenericRepository<Amenities, int> _IAmenitiesRepository;
         public PropertyDetailController(IGenericRepository<PropertyDetail, int> propertyDetailRepository,
             IGenericRepository<PropertyImage, int> propertyImageRepository,
             IHostingEnvironment hostingEnvironment, IGenericRepository<PropertyType, int> propertyTypeRepo
@@ -62,6 +63,7 @@ namespace A2ZAdmin.UI.Controllers.Master
              , IGenericRepository<ExplaningProperty, int> _ExplaningPropertyRepository
              , IGenericRepository<SizeAndStructure, int> _SizeAndStructureRepository
              , IGenericRepository<SuitableFor, int> _SuitableForRepository
+            , IGenericRepository<Amenities, int> _AmenitiesRepository
             )
         {
             _IPropertyDetailRepository = propertyDetailRepository;
@@ -85,6 +87,7 @@ namespace A2ZAdmin.UI.Controllers.Master
             _IExplaningPropertyRepository = _ExplaningPropertyRepository;
             _ISizeAndStructureRepository = _SizeAndStructureRepository;
             _ISuitableForRepository = _SuitableForRepository;
+            _IAmenitiesRepository = _AmenitiesRepository;
         }
         public async Task<IActionResult> Index()
         {
@@ -234,6 +237,7 @@ namespace A2ZAdmin.UI.Controllers.Master
             ViewBag.ExplaningProperty = (await _IExplaningPropertyRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
             ViewBag.SizeAndStructure = (await _ISizeAndStructureRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
             ViewBag.SuitableFor = (await _ISuitableForRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.Amenities = (await _IAmenitiesRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
         }
     }
 }

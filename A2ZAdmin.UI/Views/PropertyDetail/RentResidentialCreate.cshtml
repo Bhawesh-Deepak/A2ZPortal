@@ -322,13 +322,11 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="Amenities">Amenities</label><em>*</em>
-                    <select id="lstFruits" multiple="multiple">
-                        <option value="1">Mango</option>
-                        <option value="2">Apple</option>
-                        <option value="3">Banana</option>
-                        <option value="4">Guava</option>
-                        <option value="5">Orange</option>
+                    <select asp-for="Amenities" class="form-control" multiple
+                            asp-items="@(new SelectList((IEnumerable<Amenities>)ViewBag.Amenities,"Id","AmenitiesName"))">
+                       
                     </select>
+                    
                     <span asp-validation-for="Amenities" class="text-danger"></span>
                 </div>
             </div>
@@ -486,16 +484,13 @@
     });
 </script>
 
-<link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css"
-      rel="stylesheet" type="text/css" />
-<link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css"
-      rel="stylesheet" type="text/css" />
-<script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"
-        type="text/javascript"></script>
+ 
+ 
+<link href="~/MultiSelect/css/bootstrap-multiselect.css" rel="stylesheet" />
+<script src="~/MultiSelect/js/bootstrap-2.3.2.min.js"></script>
+<script src="~/MultiSelect/js/bootstrap-multiselect.js"></script>
 <script type="text/javascript">
-    $(function () {
-        $('#lstFruits').multiselect({
-            includeSelectAllOption: true
-        });
+    $(document).ready(function () {
+        $('#Amenities').multiselect();
     });
 </script>
