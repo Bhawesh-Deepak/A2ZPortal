@@ -1,13 +1,12 @@
-﻿using A2ZPortal.Infrastructure.Repository.UserManagement;
+﻿using A2ZAdmin.UI.Helper;
+using A2ZPortal.Infrastructure.Repository.UserManagement;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 
 namespace A2ZAdmin.UI.Controllers.Common
 {
+    [CustomAuthenticate]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     public class FilterMasterController : Controller
     {
         private readonly IUserManagementRepository _IUserManagementRepository;
