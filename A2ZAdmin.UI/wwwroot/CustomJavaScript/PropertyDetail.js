@@ -35,7 +35,7 @@ function Success(response) {
     alertify.success(response);
     $("#myModal").modal('hide');
 
-   // GetDetail();
+    // GetDetail();
     //$("#form")[0].Reset();
     $("#divContent").removeClass("loading");
 }
@@ -137,4 +137,8 @@ function SuccessProperty(response) {
             $('#myModal').modal({ backdrop: 'static' });
         })
     }
+}
+function SuccessImage(response) {
+    alertify.success(response);
+    location.reload();
 }

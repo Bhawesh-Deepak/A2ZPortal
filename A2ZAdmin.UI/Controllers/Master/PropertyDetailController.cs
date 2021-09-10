@@ -2,6 +2,7 @@
 using A2ZPortal.Core.Entities.Common;
 using A2ZPortal.Core.Entities.Master;
 using A2ZPortal.Core.Entities.Property;
+using A2ZPortal.Core.ViewModel.PropertyDetail;
 using A2ZPortal.Core.ViewModel.RequestFolder;
 using A2ZPortal.Helper;
 using A2ZPortal.Helper.Extension;
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -168,9 +170,6 @@ namespace A2ZAdmin.UI.Controllers.Master
                 await CreatePropertyDetails(model, PropertyImage) :
                 await UpdatePropertyDetails(model, PropertyImage);
         }
-
-
-
         public async Task<IActionResult> Delete(int id)
         {
             var response = await _IPropertyDetailRepository.GetSingle(x => x.Id == id);
@@ -339,9 +338,31 @@ namespace A2ZAdmin.UI.Controllers.Master
 
         public async Task<IActionResult> GetPropertyImageDetails(int propertyId)
         {
-            var response = await _IPropertyImageRepository.GetList(x => x.IsActive == true && x.IsDeleted == false && x.PropertyDetailId==propertyId);
-            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "PropertyImageDetail"), response.Entities);
+            var response = await _IPropertyImageRepository.GetList(x => x.IsActive == true && x.IsDeleted == false 
+            && x.PropertyDetailId == propertyId);
 
+            var model = new PropertyImageVm();
+            model.PropertyImages = response.Entities.ToList();
+            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "PropertyImageDetail"), model);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> MappImage(PropertyImageVm model)
+        {
+            model.PropertyImages.ForEach(item =>
+            {
+                item.CreatedBy = 1;
+                item.CreatedDate = DateTime.Now;
+                item.IsActive = true;
+                item.IsDeleted = false;
+            });
+
+            var response = await _IPropertyImageRepository.Update(model.PropertyImages.ToArray());
+            if (response.ResponseStatus != ResponseStatus.Error) {
+                return Json("Image mapped successfully !!!!");
+            }
+            return Json("Something wents wrong Please contact admin Team");
         }
     }
 }
