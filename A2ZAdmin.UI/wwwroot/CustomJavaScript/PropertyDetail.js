@@ -127,3 +127,14 @@ function CommonAlertModal() {
         return false;
     })
 }
+
+function SuccessProperty(response) {
+    if (response > 0) {
+        alertify.success("Created successfully !!!");
+        $.get("/PropertyDetail/GetPropertyImageDetails", { propertyId: response }, function (data) {
+            $("#headerText").text("Property Image Allocation");
+            $("#divCreate").html(data);
+            $('#myModal').modal({ backdrop: 'static' });
+        })
+    }
+}

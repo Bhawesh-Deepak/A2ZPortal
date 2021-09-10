@@ -1,0 +1,73 @@
+﻿@model IEnumerable<A2ZPortal.Core.Entities.Property.PropertyImage>
+<div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+    <div class="row">
+        <div class="col-sm-12">
+            <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                <thead>
+                    <tr role="row">
+                        <th>Property Status</th>
+                        <th>IsPrimary</th>
+                        <th>Is Exclusive</th>
+                        <th>Is Recent</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var data in Model)
+                    {
+                    <tr>
+                        <td>
+                            <img src="@data.ImagePath" alt="A2ZPropertyImage" style="height:125px;width:125px;" />
+                        </td>
+                        <td>
+                            @if (data.IsPrimaryImage)
+                            {
+                                <input type="checkbox" checked="checked" name="IsPrimary" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="IsPrimary"/>
+                            }
+
+                        </td>
+                        <td>
+                            @if (data.IsExclusive)
+                            {
+                                <input type="checkbox" checked="checked" name="IsExclusive"  />
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="IsExclusive"  />
+                            }
+                        </td>
+                        <td>
+                            @if (data.IsRecent)
+                            {
+                                <input type="checkbox" checked="checked" name="IsRecent"  />
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="IsRecent" />
+                            }
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="col-md-12">
+            <input type="button" class="Add Image" onclick="AddImage()" />
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#example1').DataTable();
+    })
+
+    function AddImage() {
+
+    }
+</script>

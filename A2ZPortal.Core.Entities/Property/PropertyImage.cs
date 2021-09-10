@@ -9,5 +9,7 @@ namespace A2ZPortal.Core.Entities.Property
         public int PropertyDetailId { get; set; }
         public string ImagePath { get; set; }
         public bool IsPrimaryImage { get; set; }
+        public bool IsExclusive { get; set; }
+        public bool IsRecent { get; set; }
     }
 }
