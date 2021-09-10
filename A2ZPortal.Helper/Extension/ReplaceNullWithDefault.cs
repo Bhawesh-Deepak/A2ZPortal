@@ -18,17 +18,10 @@ namespace A2ZPortal.Helper.Extension
             {
                 switch (prop.PropertyType.Name)
                 {
-                    case "String" when prop.GetValue(modelType, null) == null:
-                        prop.SetValue(typeModel, string.Empty);
-                        break;
-                    case "Decimal" when prop.GetValue(modelType, null) == null:
-                        prop.SetValue(typeModel, default(decimal));
-                        break;
-                    case "Int32" when prop.GetValue(modelType, null) == null:
-                        prop.SetValue(typeModel, default(Int32));
-                        break;
-                    case "Float" when prop.GetValue(modelType, null) == null:
-                        prop.SetValue(typeModel, default(float));
+                    case "String":
+                        object value = prop.GetValue(typeModel, null);
+                        if (value == null)
+                            prop.SetValue(typeModel, string.Empty);
                         break;
                     default:
                         break;

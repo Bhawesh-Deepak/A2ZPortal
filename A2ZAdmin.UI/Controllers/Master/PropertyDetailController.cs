@@ -43,6 +43,7 @@ namespace A2ZAdmin.UI.Controllers.Master
         private readonly IGenericRepository<SizeAndStructure, int> _ISizeAndStructureRepository;
         private readonly IGenericRepository<SuitableFor, int> _ISuitableForRepository;
         private readonly IGenericRepository<Amenities, int> _IAmenitiesRepository;
+        private readonly IGenericRepository<PropertyFeature, int> _IPropertyFeatureRepository;
         public PropertyDetailController(IGenericRepository<PropertyDetail, int> propertyDetailRepository,
             IGenericRepository<PropertyImage, int> propertyImageRepository,
             IHostingEnvironment hostingEnvironment, IGenericRepository<PropertyType, int> propertyTypeRepo
@@ -63,7 +64,8 @@ namespace A2ZAdmin.UI.Controllers.Master
              , IGenericRepository<ExplaningProperty, int> _ExplaningPropertyRepository
              , IGenericRepository<SizeAndStructure, int> _SizeAndStructureRepository
              , IGenericRepository<SuitableFor, int> _SuitableForRepository
-            , IGenericRepository<Amenities, int> _AmenitiesRepository
+            , IGenericRepository<Amenities, int> _AmenitiesRepository,
+            IGenericRepository<PropertyFeature, int> _PropertyFeatureRepository
             )
         {
             _IPropertyDetailRepository = propertyDetailRepository;
@@ -88,6 +90,7 @@ namespace A2ZAdmin.UI.Controllers.Master
             _ISizeAndStructureRepository = _SizeAndStructureRepository;
             _ISuitableForRepository = _SuitableForRepository;
             _IAmenitiesRepository = _AmenitiesRepository;
+            _IPropertyFeatureRepository = _PropertyFeatureRepository;
         }
         public async Task<IActionResult> Index()
         {
@@ -117,6 +120,8 @@ namespace A2ZAdmin.UI.Controllers.Master
         {
             await PopulateViewBag();
 
+            HttpContext.Session.SetObject("PropCat", ("Rent","Residential" ));
+
             var response = await _IPropertyDetailRepository.GetSingle(x => x.Id == id);
 
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "RentResidentialCreate"), response.Entity);
@@ -124,6 +129,8 @@ namespace A2ZAdmin.UI.Controllers.Master
         public async Task<IActionResult> SellCommercial(int id)
         {
             await PopulateViewBag();
+
+            HttpContext.Session.SetObject("PropCat", ("Sell",  "Commercial" ));
 
             var response = await _IPropertyDetailRepository.GetSingle(x => x.Id == id);
 
@@ -133,6 +140,8 @@ namespace A2ZAdmin.UI.Controllers.Master
         {
             await PopulateViewBag();
 
+            HttpContext.Session.SetObject("PropCat", ( "Rent", "Commercial" ));
+
             var response = await _IPropertyDetailRepository.GetSingle(x => x.Id == id);
 
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "RentCommercialCreate"), response.Entity);
@@ -141,44 +150,27 @@ namespace A2ZAdmin.UI.Controllers.Master
         {
             await PopulateViewBag();
 
+            HttpContext.Session.SetObject("PropCat", ("Sell", "Residential" ));
+
             var response = await _IPropertyDetailRepository.GetSingle(x => x.Id == id);
 
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "SellResidentialCreate"), response.Entity);
         }
         [HttpPost]
-        public async Task<IActionResult> PostCreate(RentResidentialVM model, IFormFile[] PropertyImage)
+        public async Task<IActionResult> PostCreate(PropertyDetail model, IFormFile[] PropertyImage)
         {
-            if (model.Id > 0)
-            {
-                var updateModel = ReplaceNullWithDefault.ReplaceWithDefault(CommonCrudHelper.CommonUpdateCode(model, 1));
-                
-                //var updateResponse = await _IPropertyDetailRepository.Update(updateModel);
+            var propertyType = HttpContext.Session.GetObject<(string, string)>("PropCat");
 
-                //if (updateResponse.ResponseStatus != ResponseStatus.Error)
-                //{
-                //    await PropertyImageInsert(PropertyImage, false);
+            model.PropertyTypeId = propertyType.Item1;
+            model.CategoryId = propertyType.Item2;
 
-                //    return Json("Property Status Updated Successfully !!!");
-                //}
-                //Log.Error(updateResponse.Message);
-
-                return Json("Something went wrong Please contact Admin Team !!!");
-            }
-
-            //var createModel = CommonCrudHelper.CommonCreateCode(model, 1);
-
-            //var createResponse = await _IPropertyDetailRepository.CreateEntity(createModel);
-
-            //if (createResponse.ResponseStatus != ResponseStatus.Error)
-            //{
-            //    await PropertyImageInsert(PropertyImage, true);
-            //    return Json("Property Status created Successfully !!!");
-            //}
-
-            //Log.Error(createResponse.Message);
-
-            return Json("Something went wrong Please contact Admin Team !!!");
+            return model.Id == 0 ?
+                await CreatePropertyDetails(model, PropertyImage) : 
+                await UpdatePropertyDetails(model, PropertyImage);
         }
+
+
+
         public async Task<IActionResult> Delete(int id)
         {
             var response = await _IPropertyDetailRepository.GetSingle(x => x.Id == id);
@@ -189,20 +181,56 @@ namespace A2ZAdmin.UI.Controllers.Master
         }
         public async Task<IActionResult> GetPropertyDetail()
         {
-            var requestModel = new PropertyRequestModel() {
-                PageNumber=1,
-                PageSize=50
+            var requestModel = new PropertyRequestModel()
+            {
+                PageNumber = 1,
+                PageSize = 50
             };
             var response = await _IPropertyDetailsRepository.GetPropertyDetails(requestModel);
             return PartialView(ViewPageHelper.InstanceHelper
                 .GetPathDetail("PropertyDetail", "PropertyDetailDetails"), response);
 
         }
-        private async Task<bool> PropertyImageInsert(IFormFile[] PropertyImage, bool isUpdate)
+
+        private async Task<bool> InsertPropertyFeature(List<int> propertyFeatures, bool isUpdated, int propertyDetailId)
+        {
+            if (propertyFeatures != null && propertyFeatures.Count() > 0) {
+                if (isUpdated)
+                {
+                    var returnModel = await _IPropertyFeatureRepository.GetList(x => x.PropertyDetailId == propertyDetailId);
+                    returnModel.Entities.ToList().ForEach(item => {
+                        item.IsActive = false;
+                        item.IsDeleted = true;
+                    });
+
+                    var updateResponse = await _IPropertyFeatureRepository.Update(returnModel.Entities.ToArray());
+                }
+                var models = new List<PropertyFeature>();
+
+                propertyFeatures.ForEach(item =>
+                {
+                    var model = new PropertyFeature()
+                    {
+                        CreatedBy = 1,
+                        CreatedDate = System.DateTime.Now,
+                        PropertyDetailId = propertyDetailId,
+                        FeatureId = item
+                    };
+                    models.Add(model);
+
+                });
+                var createReponse = await _IPropertyFeatureRepository.Add(models.ToArray());
+
+                return createReponse.ResponseStatus != ResponseStatus.Error;
+            }
+
+            return false;
+        }
+        private async Task<bool> PropertyImageInsert(IFormFile[] PropertyImage, bool isUpdate, int lastInsertedId)
         {
             var imageResponse = await BlobHelper.UploadImageOnFolder(PropertyImage.ToList(), _IhostingEnviroment);
 
-            var lastInsertedId = (await _IPropertyDetailRepository.GetList(x => x.IsActive == true)).Entities.Max(x => x.Id);
+          
 
             if (isUpdate)
             {
@@ -262,6 +290,48 @@ namespace A2ZAdmin.UI.Controllers.Master
             ViewBag.SizeAndStructure = (await _ISizeAndStructureRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
             ViewBag.SuitableFor = (await _ISuitableForRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
             ViewBag.Amenities = (await _IAmenitiesRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+        }
+
+        private async Task<IActionResult> CreatePropertyDetails(PropertyDetail model, IFormFile[] PropertyImage)
+        {
+            var createModel = ReplaceNullWithDefault.ReplaceWithDefault<PropertyDetail>(CommonCrudHelper.CommonCreateCode(model, 1));
+
+            var createResponse = await _IPropertyDetailRepository.CreateEntity(createModel);
+
+            if (createResponse.ResponseStatus != ResponseStatus.Error)
+            {
+                var lastInsertedId = (await _IPropertyDetailRepository.GetList(x => x.IsActive == true)).Entities.Max(x => x.Id);
+
+                await PropertyImageInsert(PropertyImage, false, lastInsertedId);
+
+                await InsertPropertyFeature(model.Amenities, false, lastInsertedId);
+
+                return Json("Property Status Created Successfully !!!");
+            }
+            Log.Error(createResponse.Message);
+
+            return Json("Something went wrong Please contact Admin Team !!!");
+        }
+
+        private async Task<IActionResult> UpdatePropertyDetails(PropertyDetail model, IFormFile[] PropertyImage)
+        {
+            var updateModel = ReplaceNullWithDefault.ReplaceWithDefault<PropertyDetail>(CommonCrudHelper.CommonUpdateCode(model, 1));
+
+            var updateResponse = await _IPropertyDetailRepository.CreateEntity(updateModel);
+
+            if (updateResponse.ResponseStatus != ResponseStatus.Error)
+            {
+                var lastInsertedId = (await _IPropertyDetailRepository.GetList(x => x.IsActive == true)).Entities.Max(x => x.Id);
+
+                await PropertyImageInsert(PropertyImage, true, lastInsertedId);
+
+                await InsertPropertyFeature(model.Amenities, true, lastInsertedId);
+
+                return Json("Property Status Updated Successfully !!!");
+            }
+            Log.Error(updateResponse.Message);
+
+            return Json("Something went wrong Please contact Admin Team !!!");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using A2ZPortal.Core.Entities.Common;
 
@@ -9,7 +10,7 @@ namespace A2ZPortal.Core.Entities.Property
     {
 		public int LocationId { get; set; }
 		public int SubLocationId { get; set; }
-		public int PropertyTypeId { get; set; }
+		public string PropertyTypeId { get; set; }
 		public int PropertyStatusId { get; set; }
 		public int BudgetId { get; set; }
 		public decimal AreaCovered { get; set; }
@@ -49,6 +50,9 @@ namespace A2ZPortal.Core.Entities.Property
 		public string Nameoftheowner { get; set; }
 		public string OwnersEmaiAddress { get; set; }
 		public string MobileNoOftheOwner { get; set; }
+		[NotMapped]
+        public List<int> Amenities { get; set; }
+        public string CategoryId { get; set; }
 
-	}
+    }
 }
