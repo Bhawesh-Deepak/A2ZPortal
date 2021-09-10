@@ -30,12 +30,13 @@ function Create() {
 }
 
 function Success(response) {
+    debugger;
     alertify.set('notifier', 'position', 'top-center');
-    alertify.success("Created Successfully !!!");
+    alertify.success(response);
     $("#myModal").modal('hide');
 
-    GetDetail();
-    $("#form")[0].Reset();
+   // GetDetail();
+    //$("#form")[0].Reset();
     $("#divContent").removeClass("loading");
 }
 
