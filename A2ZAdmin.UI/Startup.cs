@@ -28,7 +28,7 @@ namespace A2ZAdmin.UI
             services.ServiceExtensionHelper();
             services.AddSession();
             services.AddElasticSearchExtension(Configuration);
-            services.AddStackExchangeRedisCache(option => { option.Configuration = "localhost:6000"; });
+            //services.AddStackExchangeRedisCache(option => { option.Configuration = "localhost:6000"; });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

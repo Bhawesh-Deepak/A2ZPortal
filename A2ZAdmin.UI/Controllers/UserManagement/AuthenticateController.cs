@@ -49,8 +49,8 @@ namespace A2ZAdmin.UI.Controllers.UserManagement
 
         public async Task<IActionResult> Logout()
         {
-            HttpContext.Session.Remove("AccessInformation");
-            HttpContext.Session.Remove("EmployeeName");
+            //HttpContext.Session.Remove("AccessInformation");
+            //HttpContext.Session.Remove("EmployeeName");
             return await Task.Run(() => RedirectToAction("Index", "Authenticate"));
         }
     }
