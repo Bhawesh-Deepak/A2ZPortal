@@ -7210,6 +7210,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\PropertyImage\" />
+    <Folder Include="wwwroot\validation\css\" />
+    <Folder Include="wwwroot\validation\js\" />
   </ItemGroup>
 
 </Project>

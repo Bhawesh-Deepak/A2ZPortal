@@ -1,7 +1,5 @@
-﻿@model A2ZPortal.Core.Entities.Property.SellResedentialVm
-
-<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+﻿@model A2ZPortal.Core.Entities.Property.PropertyDetail
+ 
 <style type="text/css">
 
     #divMap {
@@ -63,7 +61,6 @@
                             asp-items="@(new SelectList((IEnumerable<Location>)ViewBag.Location,"Id","LocationName"))">
                         <option value="">--Select--</option>
                     </select>
-                    <span asp-validation-for="LocationId" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
@@ -73,142 +70,128 @@
                             asp-items="@(new SelectList((IEnumerable<SubLocation>)ViewBag.SubLocation,"Id","SubLocationName"))">
                         <option value="">--Select--</option>
                     </select>
-                    <span asp-validation-for="SubLocationId" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="NoOfBedRooms">Bed Room</label><em>*</em>
-                    <select asp-for="NoOfBedRooms" class="form-control"
+                    <label asp-for="NoOfBedRoomsId">Bed Room</label><em>*</em>
+                    <select asp-for="NoOfBedRoomsId" class="form-control"
                             asp-items="@(new SelectList((IEnumerable<BedRoom>)ViewBag.BedRoom,"Id","BedRooms"))">
                         <option value="">--Select--</option>
                     </select>
-                    <span asp-validation-for="NoOfBedRooms" class="text-danger"></span>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="NoOfBathRooms">Bath Room</label><em>*</em>
-                    <select asp-for="NoOfBathRooms" class="form-control"
+                    <label asp-for="NoOfBathroomsId">Bath Room</label><em>*</em>
+                    <select asp-for="NoOfBathroomsId" class="form-control"
                             asp-items="@(new SelectList((IEnumerable<BathRoom>)ViewBag.BathRoom,"Id","BathRooms"))">
                         <option value="">--Select--</option>
                     </select>
-                    <span asp-validation-for="NoOfBathRooms" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="AdditionalBedRooms">Additional Room</label><em>*</em>
-                    <select asp-for="AdditionalBedRooms" class="form-control"
+                    <label asp-for="AdditionalRoomId">Additional Room</label><em>*</em>
+                    <select asp-for="AdditionalRoomId" class="form-control"
                             asp-items="@(new SelectList((IEnumerable<AdditionalRoom>)ViewBag.AdditionalRoom,"Id","RoomName"))">
                         <option value="">--Select--</option>
                     </select>
-                    <span asp-validation-for="AdditionalBedRooms" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="FurnishingStatus">Furnishing Status</label><em>*</em>
-                    <select asp-for="FurnishingStatus" class="form-control"
+                    <label asp-for="FurnishingStatusId">Furnishing Status</label><em>*</em>
+                    <select asp-for="FurnishingStatusId" class="form-control"
                             asp-items="@(new SelectList((IEnumerable<FurnishedStatus>)ViewBag.FurnishedStatus,"Id","StatusName"))">
                         <option value="">--Select--</option>
                     </select>
-                    <span asp-validation-for="FurnishingStatus" class="text-danger"></span>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="AgeOfProperty">Age Of Property</label><em>*</em>
-                    <select asp-for="AgeOfProperty" class="form-control"
+                    <label asp-for="AgeOfPropertyId">Age Of Property</label><em>*</em>
+                    <select asp-for="AgeOfPropertyId" class="form-control"
                             asp-items="@(new SelectList((IEnumerable<AgeOfProperty>)ViewBag.AgeOfProperty,"Id","Age"))">
                         <option value="">--Select--</option>
                     </select>
-                    <span asp-validation-for="AgeOfProperty" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="NoOfParking">No. Of Parking</label><em>*</em>
-                    <select asp-for="NoOfParking" class="form-control"
+                    <label asp-for="NoOfParkingId">No. Of Parking</label><em>*</em>
+                    <select asp-for="NoOfParkingId" class="form-control"
                             asp-items="@(new SelectList((IEnumerable<NumberOfParking>)ViewBag.NumberOfParking,"Id","TotalParking"))">
                         <option value="">--Select--</option>
                     </select>
-                    <span asp-validation-for="NoOfParking" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="ViewFacing">View Facing</label><em>*</em>
-                    <select asp-for="ViewFacing" class="form-control"
+                    <label asp-for="ViewFacingId">View Facing</label><em>*</em>
+                    <select asp-for="ViewFacingId" class="form-control"
                             asp-items="@(new SelectList((IEnumerable<ViewFacing>)ViewBag.ViewFacing,"Id","Facing"))">
                         <option value="">--Select--</option>
                     </select>
-                    <span asp-validation-for="ViewFacing" class="text-danger"></span>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="DefiningLocation">Defining Location</label><em>*</em>
-                    <select asp-for="DefiningLocation" class="form-control"
+                    <label asp-for="DefiningLocationId">Defining Location</label><em>*</em>
+                    <select asp-for="DefiningLocationId" class="form-control"
                             asp-items="@(new SelectList((IEnumerable<DefiningLocation>)ViewBag.DefiningLocation,"Id","DLocationName"))">
                         <option value="">--Select--</option>
                     </select>
-                    <span asp-validation-for="DefiningLocation" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="ExplaningPrice">Explaining Price</label><em>*</em>
-                    <select asp-for="ExplaningPrice" class="form-control"
+                    <label asp-for="ExplainingPriceId">Explaining Price</label><em>*</em>
+                    <select asp-for="ExplainingPriceId" class="form-control"
                             asp-items="@(new SelectList((IEnumerable<ExplaningPrice>)ViewBag.ExplaningPrice,"Id","PriceName"))">
                         <option value="">--Select--</option>
                     </select>
-                    <span asp-validation-for="ExplaningPrice" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="ExpplaningTower">Explaining The Property</label><em>*</em>
-                    <select asp-for="ExpplaningTower" class="form-control"
+                    <label asp-for="ExplainingThePropertyId">Explaining The Property</label><em>*</em>
+                    <select asp-for="ExplainingThePropertyId" class="form-control"
                             asp-items="@(new SelectList((IEnumerable<ExplaningProperty>)ViewBag.ExplaningProperty,"Id","Name"))">
                         <option value="">--Select--</option>
                     </select>
-                    <span asp-validation-for="ExpplaningTower" class="text-danger"></span>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="DefiningSizeAndStrcuture">Defining Size and Structure</label><em>*</em>
-                    <select asp-for="DefiningSizeAndStrcuture" class="form-control"
+                    <label asp-for="DefiningSizeStructureId">Defining Size and Structure</label><em>*</em>
+                    <select asp-for="DefiningSizeStructureId" class="form-control"
                             asp-items="@(new SelectList((IEnumerable<SizeAndStructure>)ViewBag.SizeAndStructure,"Id","Name"))">
                         <option value="">--Select--</option>
                     </select>
-                    <span asp-validation-for="DefiningSizeAndStrcuture" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="SuitableFor">Suitable For</label><em>*</em>
-                    <select asp-for="SuitableFor" class="form-control"
+                    <label asp-for="SuitableForId">Suitable For</label><em>*</em>
+                    <select asp-for="SuitableForId" class="form-control"
                             asp-items="@(new SelectList((IEnumerable<SuitableFor>)ViewBag.SuitableFor,"Id","SuitabelName"))">
                         <option value="">--Select--</option>
                     </select>
-                    <span asp-validation-for="SuitableFor" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="FloarNumber">Floor Number</label><em>*</em>
-                    <input type="text" asp-for="FloarNumber" class="form-control" placeholder="Floor Number" />
-                    <span asp-validation-for="FloarNumber" class="text-danger"></span>
+                    <label asp-for="FloorNumber">Floor Number</label><em>*</em>
+                    <input type="text" asp-for="FloorNumber" class="form-control" placeholder="Floor Number" />
                 </div>
             </div>
         </div>
@@ -217,23 +200,20 @@
 
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="Tower_Block">Tower Block</label><em>*</em>
-                    <input type="text" asp-for="Tower_Block" class="form-control" placeholder="Tower Block" />
-                    <span asp-validation-for="Tower_Block" class="text-danger"></span>
+                    <label asp-for="TowerBlock">Tower Block</label><em>*</em>
+                    <input type="text" asp-for="TowerBlock" class="form-control" placeholder="Tower Block" />
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="UnitNumber">Unit Number</label><em>*</em>
                     <input type="text" asp-for="UnitNumber" class="form-control" placeholder="Floor Number" />
-                    <span asp-validation-for="UnitNumber" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="TarkeshiNumber">Trakheesi Number</label><em>*</em>
-                    <input type="text" asp-for="TarkeshiNumber" class="form-control" placeholder="Trakheesi Number" />
-                    <span asp-validation-for="TarkeshiNumber" class="text-danger"></span>
+                    <label asp-for="TrakheesiNumber">Trakheesi Number</label><em>*</em>
+                    <input type="text" asp-for="TrakheesiNumber" class="form-control" placeholder="Trakheesi Number" />
                 </div>
             </div>
         </div>
@@ -245,17 +225,14 @@
                 <div class="form-group">
                     <label asp-for="SpaceType">Space Type</label><em>*</em>
                     <input type="text" asp-for="SpaceType" class="form-control" placeholder="Space Type" />
-                    <span asp-validation-for="SpaceType" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="Amenities">Amenities</label><em>*</em><br />
-                    <select asp-for="Amenities" class="form-control" multiple
+                    <label>Amenities</label><em>*</em><br />
+                    <select id="Amenities" class="form-control" multiple
                             asp-items="@(new SelectList((IEnumerable<Amenities>)ViewBag.Amenities,"Id","AmenitiesName"))">
-                    </select>
-
-                    <span asp-validation-for="Amenities" class="text-danger"></span>
+                    </select> 
                 </div>
             </div>
             <div class="col-md-4">
