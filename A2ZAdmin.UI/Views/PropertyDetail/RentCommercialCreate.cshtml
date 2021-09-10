@@ -337,7 +337,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="form-group">
                     <label>Location (Address)</label>
                     <input asp-for="Lattitude" type="hidden" />
@@ -350,6 +350,18 @@
                            placeholder="Search Box" />
                     <div id="divMap" class="google_maps" style="position:relative;"></div>
                 </div>
+            </div>
+
+            <div class="col-md-4">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Is Primary</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
     </div>
@@ -497,5 +509,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#Amenities').multiselect();
+        $("#form").removeData("validator")
+            .removeData("unobtrusiveValidation");
     });
 </script>

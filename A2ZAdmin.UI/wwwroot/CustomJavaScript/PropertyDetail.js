@@ -70,7 +70,7 @@ function RentResidential(eval) {
             $("#divData").html(data);
             ClearElementClass();
             AddActiveClass(eval)
-            $("#lblRentSellProperty").html("Rent Residential Property");           
+            $("#lblRentSellProperty").html("Rent Residential Property");
             $("#divContent").removeClass('loading');
         });
 }
@@ -95,7 +95,7 @@ function RentCommercial(eval) {
             $("#lblRentSellProperty").html("Rent Commercial Property")
             $("#divContent").removeClass('loading');
         });
-  
+
 }
 function SellCommercial(eval) {
     $("#divContent").addClass('loading');
@@ -117,4 +117,12 @@ function ClearElementClass() {
 function AddActiveClass(btn) {
     debugger;
     $(btn).addClass("btn btn-success");
+}
+
+function CommonAlertModal() {
+    alertify.confirm("Are you sure want to  leave this page, Unsaved data from the page will be lost.", function () {
+        return true;
+    }, function () {
+        return false;
+    })
 }
