@@ -1,445 +1,478 @@
-﻿@model A2ZPortal.Core.Entities.Property.SellResedentialVm
+﻿@model A2ZPortal.Core.Entities.Property.PropertyDetail
 
-<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-<style type="text/css">
+ 
+<link href="~/validation/css/adminlte.min.css" rel="stylesheet" />
+    <script src="~/validation/js/additional-methods.min.js"></script>
+    <script src="~/validation/js/demo.js"></script>
+    <script src="~/validation/js/jquery.validate.min.js"></script>
+    <style type="text/css">
 
-    #divMap {
-        height: 300px;
-        width: 100%;
-    }
-
-
-    .modal-backdrop {
-        z-index: 10;
-    }
-
-    input[type="file"] {
-        display: block;
-    }
-
-    .imageThumb {
-        max-height: 75px;
-        border: 2px solid;
-        padding: 1px;
-        cursor: pointer;
-    }
-
-    .pip {
-        display: inline-block;
-        margin: 10px 10px 0 0;
-    }
-
-    .remove {
-        display: block;
-        background: #444;
-        border: 1px solid black;
-        color: white;
-        text-align: center;
-        cursor: pointer;
-    }
-
-        .remove:hover {
-            background: white;
-            color: black;
+        #divMap {
+            height: 300px;
+            width: 100%;
         }
 
-    .modal {
-        z-index: 20;
-    }
-</style>
-<form id="form" method="post" data-ajax="true" data-ajax-method="post"
-      asp-action="PostCreate" asp-controller="PropertyDetail" enctype="multipart/form-data"
-      data-ajax-success="Success" data-ajax-begin="BeginRequest">
-    <div class="box-body">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <input asp-for="Id" type="hidden" />
-                    <input asp-for="CreatedBy" type="hidden" />
-                    <input asp-for="CreatedDate" type="hidden" />
-                    <label asp-for="LocationId">Location</label><em>*</em>
-                    <select asp-for="LocationId" class="form-control"
-                            asp-items="@(new SelectList((IEnumerable<Location>)ViewBag.Location,"Id","LocationName"))">
-                        <option value="">--Select--</option>
-                    </select>
-                    <span asp-validation-for="LocationId" class="text-danger"></span>
+
+        .modal-backdrop {
+            z-index: 10;
+        }
+
+        input[type="file"] {
+            display: block;
+        }
+
+        .imageThumb {
+            max-height: 75px;
+            border: 2px solid;
+            padding: 1px;
+            cursor: pointer;
+        }
+
+        .pip {
+            display: inline-block;
+            margin: 10px 10px 0 0;
+        }
+
+        .remove {
+            display: block;
+            background: #444;
+            border: 1px solid black;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+        }
+
+            .remove:hover {
+                background: white;
+                color: black;
+            }
+
+        .modal {
+            z-index: 20;
+        }
+    </style>
+    <form id="SellResidentialform" method="post" data-ajax="true" data-ajax-method="post"
+          asp-action="PostCreate" asp-controller="PropertyDetail" enctype="multipart/form-data"
+          data-ajax-success="Success" data-ajax-begin="BeginRequest">
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input asp-for="Id" type="hidden" />
+                        <input asp-for="CreatedBy" type="hidden" />
+                        <input asp-for="CreatedDate" type="hidden" />
+                        <label asp-for="LocationId">Location</label><em>*</em>
+                        <select asp-for="LocationId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<Location>)ViewBag.Location,"Id","LocationName"))">
+                            <option value="">--Select--</option>
+                        </select>
+                        <span asp-validation-for="LocationId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="SubLocationId">Sub Location</label><em>*</em>
+                        <select asp-for="SubLocationId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<SubLocation>)ViewBag.SubLocation,"Id","SubLocationName"))">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="NoOfBedRoomsId">Bed Room</label><em>*</em>
+                        <select asp-for="NoOfBedRoomsId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<BedRoom>)ViewBag.BedRoom,"Id","BedRooms"))">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="SubLocationId">Sub Location</label><em>*</em>
-                    <select asp-for="SubLocationId" class="form-control"
-                            asp-items="@(new SelectList((IEnumerable<SubLocation>)ViewBag.SubLocation,"Id","SubLocationName"))">
-                        <option value="">--Select--</option>
-                    </select>
-                    <span asp-validation-for="SubLocationId" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="NoOfBathroomsId">Bath Room</label><em>*</em>
+                        <select asp-for="NoOfBathroomsId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<BathRoom>)ViewBag.BathRoom,"Id","BathRooms"))">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="AdditionalRoomId">Additional Room</label><em>*</em>
+                        <select asp-for="AdditionalRoomId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<AdditionalRoom>)ViewBag.AdditionalRoom,"Id","RoomName"))">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="FurnishingStatusId">Furnishing Status</label><em>*</em>
+                        <select asp-for="FurnishingStatusId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<FurnishedStatus>)ViewBag.FurnishedStatus,"Id","StatusName"))">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="NoOfBedRooms">Bed Room</label><em>*</em>
-                    <select asp-for="NoOfBedRooms" class="form-control"
-                            asp-items="@(new SelectList((IEnumerable<BedRoom>)ViewBag.BedRoom,"Id","BedRooms"))">
-                        <option value="">--Select--</option>
-                    </select>
-                    <span asp-validation-for="NoOfBedRooms" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="AgeOfPropertyId">Age Of Property</label><em>*</em>
+                        <select asp-for="AgeOfPropertyId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<AgeOfProperty>)ViewBag.AgeOfProperty,"Id","Age"))">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="NoOfParkingId">No. Of Parking</label><em>*</em>
+                        <select asp-for="NoOfParkingId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<NumberOfParking>)ViewBag.NumberOfParking,"Id","TotalParking"))">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ViewFacingId">View Facing</label><em>*</em>
+                        <select asp-for="ViewFacingId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<ViewFacing>)ViewBag.ViewFacing,"Id","Facing"))">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="DefiningLocationId">Defining Location</label><em>*</em>
+                        <select asp-for="DefiningLocationId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<DefiningLocation>)ViewBag.DefiningLocation,"Id","DLocationName"))">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ExplainingPriceId">Explaining Price</label><em>*</em>
+                        <select asp-for="ExplainingPriceId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<ExplaningPrice>)ViewBag.ExplaningPrice,"Id","PriceName"))">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ExplainingThePropertyId">Explaining The Property</label><em>*</em>
+                        <select asp-for="ExplainingThePropertyId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<ExplaningProperty>)ViewBag.ExplaningProperty,"Id","Name"))">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="DefiningSizeStructureId">Defining Size and Structure</label><em>*</em>
+                        <select asp-for="DefiningSizeStructureId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<SizeAndStructure>)ViewBag.SizeAndStructure,"Id","Name"))">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="SuitableForId">Suitable For</label><em>*</em>
+                        <select asp-for="SuitableForId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<SuitableFor>)ViewBag.SuitableFor,"Id","SuitabelName"))">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Price">Price (Rent)</label><em>*</em>
+                        <input type="text" asp-for="Price" class="form-control" placeholder="Price (Rent) on Monthly basis" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="FloorNumber">Floor Number</label><em>*</em>
+                        <input type="text" asp-for="FloorNumber" class="form-control" placeholder="Floor Number" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="TowerBlock">Tower Block</label><em>*</em>
+                        <input type="text" asp-for="TowerBlock" class="form-control" placeholder="Tower Block" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="TotalFloorCount">Total Floor Count</label><em>*</em>
+                        <input type="text" asp-for="TotalFloorCount" class="form-control" placeholder="Total Floor Count" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="UnitNumber">Unit Number</label><em>*</em>
+                        <input type="text" asp-for="UnitNumber" class="form-control" placeholder="Floor Number" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="TrakheesiNumber">Trakheesi Number</label><em>*</em>
+                        <input type="text" asp-for="TrakheesiNumber" class="form-control" placeholder="Trakheesi Number" />
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Amenities</label><em>*</em><br />
+                        <select id="Amenities" class="form-control" multiple
+                                asp-items="@(new SelectList((IEnumerable<Amenities>)ViewBag.Amenities,"Id","AmenitiesName"))">
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Upload Image</label>
+                        <input type="file" id="files" name="PropertyImage" multiple class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group" id="divFile">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Location (Address)</label>
+                        <input asp-for="Lattitude" type="hidden" />
+                        <input type="hidden" asp-for="Longitude" />
+                        <input type="hidden" asp-for="PlaceAddress" />
+                        <input type="hidden" asp-for="PlaceAddress" />
+                        <input id="pac-input"
+                               class="mailbox-controls form-control"
+                               type="text"
+                               placeholder="Search Box" />
+                        <div id="divMap" class="google_maps" style="position:relative;"></div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="NoOfBathRooms">Bath Room</label><em>*</em>
-                    <select asp-for="NoOfBathRooms" class="form-control"
-                            asp-items="@(new SelectList((IEnumerable<BathRoom>)ViewBag.BathRoom,"Id","BathRooms"))">
-                        <option value="">--Select--</option>
-                    </select>
-                    <span asp-validation-for="NoOfBathRooms" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="AdditionalBedRooms">Additional Room</label><em>*</em>
-                    <select asp-for="AdditionalBedRooms" class="form-control"
-                            asp-items="@(new SelectList((IEnumerable<AdditionalRoom>)ViewBag.AdditionalRoom,"Id","RoomName"))">
-                        <option value="">--Select--</option>
-                    </select>
-                    <span asp-validation-for="AdditionalBedRooms" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="FurnishingStatus">Furnishing Status</label><em>*</em>
-                    <select asp-for="FurnishingStatus" class="form-control"
-                            asp-items="@(new SelectList((IEnumerable<FurnishedStatus>)ViewBag.FurnishedStatus,"Id","StatusName"))">
-                        <option value="">--Select--</option>
-                    </select>
-                    <span asp-validation-for="FurnishingStatus" class="text-danger"></span>
-                </div>
+        <div class="box-footer">
+
+            <div class="col-md-12 pull-right">
+                <button type="reset" class="btn btn-danger ">Cancel</button>
+                <button type="submit" class="btn btn-success pull-right">
+                    <i class="fa fa-download"> &nbsp; Save</i>
+                </button>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="AgeOfProperty">Age Of Property</label><em>*</em>
-                    <select asp-for="AgeOfProperty" class="form-control"
-                            asp-items="@(new SelectList((IEnumerable<AgeOfProperty>)ViewBag.AgeOfProperty,"Id","Age"))">
-                        <option value="">--Select--</option>
-                    </select>
-                    <span asp-validation-for="AgeOfProperty" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="NoOfParking">No. Of Parking</label><em>*</em>
-                    <select asp-for="NoOfParking" class="form-control"
-                            asp-items="@(new SelectList((IEnumerable<NumberOfParking>)ViewBag.NumberOfParking,"Id","TotalParking"))">
-                        <option value="">--Select--</option>
-                    </select>
-                    <span asp-validation-for="NoOfParking" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="ViewFacing">View Facing</label><em>*</em>
-                    <select asp-for="ViewFacing" class="form-control"
-                            asp-items="@(new SelectList((IEnumerable<ViewFacing>)ViewBag.ViewFacing,"Id","Facing"))">
-                        <option value="">--Select--</option>
-                    </select>
-                    <span asp-validation-for="ViewFacing" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="DefiningLocation">Defining Location</label><em>*</em>
-                    <select asp-for="DefiningLocation" class="form-control"
-                            asp-items="@(new SelectList((IEnumerable<DefiningLocation>)ViewBag.DefiningLocation,"Id","DLocationName"))">
-                        <option value="">--Select--</option>
-                    </select>
-                    <span asp-validation-for="DefiningLocation" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="ExplaningPrice">Explaining Price</label><em>*</em>
-                    <select asp-for="ExplaningPrice" class="form-control"
-                            asp-items="@(new SelectList((IEnumerable<ExplaningPrice>)ViewBag.ExplaningPrice,"Id","PriceName"))">
-                        <option value="">--Select--</option>
-                    </select>
-                    <span asp-validation-for="ExplaningPrice" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="ExpplaningTower">Explaining The Property</label><em>*</em>
-                    <select asp-for="ExpplaningTower" class="form-control"
-                            asp-items="@(new SelectList((IEnumerable<ExplaningProperty>)ViewBag.ExplaningProperty,"Id","Name"))">
-                        <option value="">--Select--</option>
-                    </select>
-                    <span asp-validation-for="ExpplaningTower" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="DefiningSizeAndStrcuture">Defining Size and Structure</label><em>*</em>
-                    <select asp-for="DefiningSizeAndStrcuture" class="form-control"
-                            asp-items="@(new SelectList((IEnumerable<SizeAndStructure>)ViewBag.SizeAndStructure,"Id","Name"))">
-                        <option value="">--Select--</option>
-                    </select>
-                    <span asp-validation-for="DefiningSizeAndStrcuture" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="SuitableFor">Suitable For</label><em>*</em>
-                    <select asp-for="SuitableFor" class="form-control"
-                            asp-items="@(new SelectList((IEnumerable<SuitableFor>)ViewBag.SuitableFor,"Id","SuitabelName"))">
-                        <option value="">--Select--</option>
-                    </select>
-                    <span asp-validation-for="SuitableFor" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="Price">Price (Rent)</label><em>*</em>
-                    <input type="text" asp-for="Price" class="form-control" placeholder="Price (Rent) on Monthly basis" />
-                    <span asp-validation-for="Price" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="FloarNumber">Floor Number</label><em>*</em>
-                    <input type="text" asp-for="FloarNumber" class="form-control" placeholder="Floor Number" />
-                    <span asp-validation-for="FloarNumber" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="Tower_Block">Tower Block</label><em>*</em>
-                    <input type="text" asp-for="Tower_Block" class="form-control" placeholder="Tower Block" />
-                    <span asp-validation-for="Tower_Block" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="TotalFloarCount">Total Floor Count</label><em>*</em>
-                    <input type="text" asp-for="TotalFloarCount" class="form-control" placeholder="Total Floor Count" />
-                    <span asp-validation-for="TotalFloarCount" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="UnitNumber">Unit Number</label><em>*</em>
-                    <input type="text" asp-for="UnitNumber" class="form-control" placeholder="Floor Number" />
-                    <span asp-validation-for="UnitNumber" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="TarkeshiNumber">Trakheesi Number</label><em>*</em>
-                    <input type="text" asp-for="TarkeshiNumber" class="form-control" placeholder="Trakheesi Number" />
-                    <span asp-validation-for="TarkeshiNumber" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="Amenities">Amenities</label><em>*</em><br />
-                    <select asp-for="Amenities" class="form-control" multiple
-                            asp-items="@(new SelectList((IEnumerable<Amenities>)ViewBag.Amenities,"Id","AmenitiesName"))">
-                    </select>
-
-                    <span asp-validation-for="Amenities" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-       
-         
-        <div class="row">
-
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label>Upload Image</label>
-                    <input type="file" id="files" name="PropertyImage" multiple class="form-control" />
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group" id="divFile">
-
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Location (Address)</label>
-                    <input asp-for="Lattitude" type="hidden" />
-                    <input type="hidden" asp-for="Longitude" />
-                    <input type="hidden" asp-for="PlaceAddress" />
-                    <input type="hidden" asp-for="PlaceAddress" />
-                    <input id="pac-input"
-                           class="mailbox-controls form-control"
-                           type="text"
-                           placeholder="Search Box" />
-                    <div id="divMap" class="google_maps" style="position:relative;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="box-footer">
-
-        <div class="col-md-12 pull-right">
-            <button type="reset" class="btn btn-danger ">Cancel</button>
-            <button type="submit" class="btn btn-success pull-right">
-                <i class="fa fa-download"> &nbsp; Save</i>
-            </button>
-        </div>
-    </div>
-</form>
+    </form>
 
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKGAp4SyPy1qnUqz5gMygSOzO8Qm2kNvY&callback=initAutocomplete&libraries=places&v=weekly"
-        defer></script>
-<script>
-    (function (exports) {
-        "use strict";
-        function initAutocomplete() {
-            var map = new google.maps.Map(document.getElementById("divMap"), {
-                center: {
-                    lat: 28.651952,
-                    lng: 77.231495
-                },
-                zoom: 13,
-                mapTypeId: "roadmap"
-            }); // Create the search box and link it to the UI element.
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKGAp4SyPy1qnUqz5gMygSOzO8Qm2kNvY&callback=initAutocomplete&libraries=places&v=weekly"
+            defer></script>
+    <script>
+        (function (exports) {
+            "use strict";
+            function initAutocomplete() {
+                var map = new google.maps.Map(document.getElementById("divMap"), {
+                    center: {
+                        lat: 28.651952,
+                        lng: 77.231495
+                    },
+                    zoom: 13,
+                    mapTypeId: "roadmap"
+                }); // Create the search box and link it to the UI element.
 
-            var input = document.getElementById("pac-input");
-            var searchBox = new google.maps.places.SearchBox(input);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input); // Bias the SearchBox results towards current map's viewport.
+                var input = document.getElementById("pac-input");
+                var searchBox = new google.maps.places.SearchBox(input);
+                map.controls[google.maps.ControlPosition.TOP_LEFT].push(input); // Bias the SearchBox results towards current map's viewport.
 
-            map.addListener("bounds_changed", function () {
-                searchBox.setBounds(map.getBounds());
-            });
-            var markers = []; // Listen for the event fired when the user selects a prediction and retrieve
-            // more details for that place.
-
-            searchBox.addListener("places_changed", function () {
-                var places = searchBox.getPlaces();
-
-                if (places.length == 0) {
-                    return;
-                } // Clear out the old markers.
-
-                markers.forEach(function (marker) {
-                    marker.setMap(null);
+                map.addListener("bounds_changed", function () {
+                    searchBox.setBounds(map.getBounds());
                 });
-                markers = []; // For each place, get the icon, name and location.
+                var markers = []; // Listen for the event fired when the user selects a prediction and retrieve
+                // more details for that place.
 
-                var bounds = new google.maps.LatLngBounds();
-                places.forEach(function (place) {
-                    if (!place.geometry) {
-                        console.log("Returned place contains no geometry");
+                searchBox.addListener("places_changed", function () {
+                    var places = searchBox.getPlaces();
+
+                    if (places.length == 0) {
                         return;
-                    }
+                    } // Clear out the old markers.
 
-                    var icon = {
-                        url: place.icon,
-                        size: new google.maps.Size(71, 71),
-                        origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(17, 34),
-                        scaledSize: new google.maps.Size(25, 25)
-                    }; // Create a marker for each place.
-
-                    markers.push(
-                        new google.maps.Marker({
-                            map: map,
-                            icon: icon,
-                            title: place.name,
-                            position: place.geometry.location
-                        })
-                    );
-
-                    if (place.geometry.viewport) {
-                        // Only geocodes have viewport.
-                        bounds.union(place.geometry.viewport);
-                    } else {
-                        bounds.extend(place.geometry.location);
-                    }
-
-                    $("#PlaceAddress").val(place.formatted_address);
-                    $("#PlaceId").val(place.place_id);
-                    $("#Longitude").val(place.geometry.location.lat());
-                    $("#Latituide").val(place.geometry.location.lng());
-
-                    debugger
-                });
-
-                map.fitBounds(bounds);
-                $("#Longitude").val(bounds.Ua.i);
-                $("#Latituide").val(bounds.Za.i);
-
-            });
-        }
-
-        exports.initAutocomplete = initAutocomplete;
-    })((this.window = this.window || {}));
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        if (window.File && window.FileList && window.FileReader) {
-            $("#files").on("change", function (e) {
-                var files = e.target.files,
-                    filesLength = files.length;
-                for (var i = 0; i < filesLength; i++) {
-                    var f = files[i]
-                    var fileReader = new FileReader();
-                    fileReader.onload = (function (e) {
-                        var file = e.target;
-                        $("<span class=\"pip\">" +
-                            "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
-                            "<br/>" +
-                            "</span>").insertAfter("#divFile");
-                        $(".remove").click(function () {
-                            $(this).parent(".pip").remove();
-                        });
-
-                        // Old code here
-                        /*$("<img></img>", {
-                          class: "imageThumb",
-                          src: e.target.result,
-                          title: file.name + " | Click to remove"
-                        }).insertAfter("#files").click(function(){$(this).remove();});*/
-
+                    markers.forEach(function (marker) {
+                        marker.setMap(null);
                     });
-                    fileReader.readAsDataURL(f);
+                    markers = []; // For each place, get the icon, name and location.
+
+                    var bounds = new google.maps.LatLngBounds();
+                    places.forEach(function (place) {
+                        if (!place.geometry) {
+                            console.log("Returned place contains no geometry");
+                            return;
+                        }
+
+                        var icon = {
+                            url: place.icon,
+                            size: new google.maps.Size(71, 71),
+                            origin: new google.maps.Point(0, 0),
+                            anchor: new google.maps.Point(17, 34),
+                            scaledSize: new google.maps.Size(25, 25)
+                        }; // Create a marker for each place.
+
+                        markers.push(
+                            new google.maps.Marker({
+                                map: map,
+                                icon: icon,
+                                title: place.name,
+                                position: place.geometry.location
+                            })
+                        );
+
+                        if (place.geometry.viewport) {
+                            // Only geocodes have viewport.
+                            bounds.union(place.geometry.viewport);
+                        } else {
+                            bounds.extend(place.geometry.location);
+                        }
+
+                        $("#PlaceAddress").val(place.formatted_address);
+                        $("#PlaceId").val(place.place_id);
+                        $("#Longitude").val(place.geometry.location.lat());
+                        $("#Latituide").val(place.geometry.location.lng());
+
+                        debugger
+                    });
+
+                    map.fitBounds(bounds);
+                    $("#Longitude").val(bounds.Ua.i);
+                    $("#Latituide").val(bounds.Za.i);
+
+                });
+            }
+
+            exports.initAutocomplete = initAutocomplete;
+        })((this.window = this.window || {}));
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (window.File && window.FileList && window.FileReader) {
+                $("#files").on("change", function (e) {
+                    var files = e.target.files,
+                        filesLength = files.length;
+                    for (var i = 0; i < filesLength; i++) {
+                        var f = files[i]
+                        var fileReader = new FileReader();
+                        fileReader.onload = (function (e) {
+                            var file = e.target;
+                            $("<span class=\"pip\">" +
+                                "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                                "<br/>" +
+                                "</span>").insertAfter("#divFile");
+                            $(".remove").click(function () {
+                                $(this).parent(".pip").remove();
+                            });
+
+                            // Old code here
+                            /*$("<img></img>", {
+                              class: "imageThumb",
+                              src: e.target.result,
+                              title: file.name + " | Click to remove"
+                            }).insertAfter("#files").click(function(){$(this).remove();});*/
+
+                        });
+                        fileReader.readAsDataURL(f);
+                    }
+                });
+            } else {
+                alert("Your browser doesn't support to File API")
+            }
+        });
+    </script>
+
+
+
+    <link href="~/MultiSelect/css/bootstrap-multiselect.css" rel="stylesheet" />
+    <script src="~/MultiSelect/js/bootstrap-2.3.2.min.js"></script>
+    <script src="~/MultiSelect/js/bootstrap-multiselect.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#Amenities').multiselect();
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $.validator.setDefaults({
+                submitHandler: function () {
+                    alert("Form successful submitted!");
                 }
             });
-        } else {
-            alert("Your browser doesn't support to File API")
-        }
-    });
-</script>
+            $('#SellResidentialform').validate({
+                rules: {
+                    LocationId: {
+                        required: true,
 
+                    },
+                    SubLocationId: {
+                        required: true,
 
+                    },
+                    NoOfBedRoomsId: {
+                        required: true
+                    },
+                },
+                messages: {
+                    LocationId: {
+                        required: "location field is required.",
 
-<link href="~/MultiSelect/css/bootstrap-multiselect.css" rel="stylesheet" />
-<script src="~/MultiSelect/js/bootstrap-2.3.2.min.js"></script>
-<script src="~/MultiSelect/js/bootstrap-multiselect.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#Amenities').multiselect();
-    });
-</script>
+                    },
+                    SubLocationId: {
+                        required: "Sub location field is required.",
+
+                    }, NoOfBedRoomsId: {
+                        required: "No Of Bed Rooms  field is required.",
+
+                    },
+
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+            });
+        });
+    </script>
