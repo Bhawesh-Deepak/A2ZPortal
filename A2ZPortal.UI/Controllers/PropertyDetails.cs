@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using A2ZPortal.Helper;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,10 @@ namespace A2ZPortal.UI.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+        public IActionResult PropertyDetail()
+        {
+            return View(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetails", "PropertyDetailIndex"));
         }
     }
 }
