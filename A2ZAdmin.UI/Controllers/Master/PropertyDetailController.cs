@@ -126,6 +126,11 @@ namespace A2ZAdmin.UI.Controllers.Master
 
             var response = await _IPropertyDetailRepository.GetSingle(x => x.Id == id);
 
+            if (id > 0)
+            {
+                await PopulateImageViewBag(response.Entity.Id);
+            }
+
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "RentResidentialCreate"), response.Entity);
         }
         public async Task<IActionResult> SellCommercial(int id)
@@ -135,6 +140,11 @@ namespace A2ZAdmin.UI.Controllers.Master
             HttpContext.Session.SetObject("PropCat", ("Sell", "Commercial"));
 
             var response = await _IPropertyDetailRepository.GetSingle(x => x.Id == id);
+
+            if (id > 0)
+            {
+                await PopulateImageViewBag(response.Entity.Id);
+            }
 
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "SellCommercialCreate"), response.Entity);
         }
@@ -146,6 +156,11 @@ namespace A2ZAdmin.UI.Controllers.Master
 
             var response = await _IPropertyDetailRepository.GetSingle(x => x.Id == id);
 
+            if (id > 0)
+            {
+                await PopulateImageViewBag(response.Entity.Id);
+            }
+
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "RentCommercialCreate"), response.Entity);
         }
         public async Task<IActionResult> SellResidential(int id)
@@ -155,6 +170,11 @@ namespace A2ZAdmin.UI.Controllers.Master
             HttpContext.Session.SetObject("PropCat", ("Sell", "Residential"));
 
             var response = await _IPropertyDetailRepository.GetSingle(x => x.Id == id);
+
+            if (id > 0)
+            {
+                await PopulateImageViewBag(response.Entity.Id);
+            }
 
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "SellResidentialCreate"), response.Entity);
         }
@@ -371,6 +391,18 @@ namespace A2ZAdmin.UI.Controllers.Master
             var response = await _IPropertyDetailsRepository.GetPropertyListVm();
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "PropertyDetailList"), response);
 
+        }
+        private async Task PopulateImageViewBag(int propId)
+        {
+            ViewBag.ImageDetails = (await _IPropertyImageRepository.GetList(x => x.IsActive == true && x.IsDeleted == false
+                 && x.PropertyDetailId == propId
+            )).Entities;
+        }
+
+        public async Task<IActionResult> GetPropertyCompleteDetails(int id)
+        {
+            var response = await _IPropertyDetailsRepository.GetPropertyDetail(id);
+            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "PropertyCompleteDetail"), response);
         }
     }
 }

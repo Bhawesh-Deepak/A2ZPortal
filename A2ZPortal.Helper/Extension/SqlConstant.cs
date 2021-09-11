@@ -13,5 +13,6 @@ namespace A2ZPortal.Helper.Extension
         public static string GetRoleAccessDetails = @"Master.usp_GetRoleAccess";
         public static string AuthenticateUser = @"usp_Authenticate";
         public static string GetPropertyList = @"usp_GetPropertyDetails";
+        public static string GetPropertyDetailList = @"usp_GetCompletePropertyDetail";
     }
 }

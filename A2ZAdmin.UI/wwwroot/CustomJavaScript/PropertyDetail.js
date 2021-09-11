@@ -47,20 +47,38 @@ function Delete(id) {
             { id: id },
             function (data) {
                 alertify.success(data);
-                GetDetail();
+                GetDetails();
                 $("#divContent").removeClass("loading");
             });
     });
 }
 
-function Edit(id) {
+function Edit(id, category, propertyType) {
+    debugger;
     $("#divContent").addClass("loading");
-    $.get("/PropertyDetail/Create", { id: id },
+    if (category === "Residential" && propertyType === "Rent") {
+        BindEditData('#btnRentResidential', 'Rent Residential Property', id, "/PropertyDetail/RentResidential");
+    }
+
+    if (category === "Residential" && propertyType === "Sell") {
+        BindEditData('#btnSellResidential', 'Sell Residential Property', id, "/PropertyDetail/SellResidential");
+    }
+    if (category === "Commercial" && propertyType === "Rent") {
+        BindEditData('#btnRentCommercial', 'Rent Commercial Property', id, "/PropertyDetail/RentCommercial");
+    }
+    if (category === "Commercial" && propertyType === "Sell") {
+        BindEditData('#btnSellCommercial', 'Sell Commercial Property', id, "/PropertyDetail/SellCommercial");
+    }
+}
+
+function BindEditData(btn,textData,id,url) {
+    $.get(url, { id: id },
         function (data) {
-            $("#headerText").text("Property Detail Update");
-            $("#divCreate").html(data);
-            $("#myModal").modal('show');
-            $("#divContent").removeClass("loading");
+            AddActiveClass(btn);
+            $("#divData").html(data);
+            $("#lblRentSellProperty").html(textData)
+            $("#divContent").removeClass('loading');
+            $("#myModal").modal('hide');
         });
 }
 
@@ -116,7 +134,7 @@ function ClearElementClass() {
     $("#btnSellCommercial").removeClass().addClass('btn btn-primary');
 }
 function AddActiveClass(btn) {
-    debugger;
+    ClearElementClass();
     $(btn).addClass("btn btn-success");
 }
 
@@ -149,5 +167,12 @@ function GetDetails() {
         $("#divCreate").html(data);
         $(".modal-dialog").removeClass().addClass("modal-dialog modal-lg")
         $('#myModal').modal();
+    })
+}
+
+function GetPropInfor(id) {
+    $.get("/PropertyDetail/GetPropertyCompleteDetails", {id:id}, function (data) {
+        $("#divData").html(data);
+        $("#myModal").modal('hide');
     })
 }

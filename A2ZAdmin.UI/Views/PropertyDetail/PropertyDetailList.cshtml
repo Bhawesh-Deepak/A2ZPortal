@@ -33,23 +33,24 @@
                             <td>
                                 @if (data.PropertyType.ToLower().Trim() == "rent")
                                 {
-                                    @data.Price
-
+                                    var value = decimal.Round(data.Price, 2);
+                                    @value
                                     <span>(Monthly Rent)</span>
                                 }
                                 else
                                 {
-                                    @data.Price
+                                    var value = decimal.Round(data.Price, 2);
+                                    @value
                                 }
                             </td>
                             <td>
                                 <button class="btn btn-primary btn-xs">
-                                    <i class="fa fa-pencil" onclick="Edit(@data.Id)"></i>
+                                    <i class="fa fa-pencil" onclick="Edit(@data.Id,'@data.CategoryName', '@data.PropertyType')"></i>
                                 </button>
                                 <button class="btn btn-danger btn-xs" onclick="Delete(@data.Id)">
                                     <i class="fa fa-close"></i>
                                 </button>
-                                <button class="btn btn-danger btn-xs" onclick="Delete(@data.Id)">
+                                <button class="btn btn-danger btn-xs" onclick="GetPropInfor(@data.Id)">
                                     <i class="fa fa-eye"></i>
                                 </button>
                             </td>

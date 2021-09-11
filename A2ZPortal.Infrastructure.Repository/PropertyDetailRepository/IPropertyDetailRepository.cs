@@ -1,4 +1,5 @@
 ﻿using A2ZPortal.Core.ViewModel.PropertyDetail;
+using A2ZPortal.Core.ViewModel.PropertyList;
 using A2ZPortal.Core.ViewModel.RequestFolder;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,6 @@ namespace A2ZPortal.Infrastructure.Repository.PropertyDetailRepository
     {
         Task<List<PropertyDetailVm>> GetPropertyDetails(PropertyRequestModel requestModel);
         Task<List<PropertyListVm>> GetPropertyListVm();
+        Task<PropertyDetailListVm> GetPropertyDetail(int id);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using A2ZPortal.Core.ViewModel.PropertyDetail;
+using A2ZPortal.Core.ViewModel.PropertyList;
 using A2ZPortal.Core.ViewModel.RequestFolder;
 using A2ZPortal.Helper.Extension;
 using A2ZPortal.Infrastructure.Repository.PropertyDetailRepository;
@@ -20,6 +21,85 @@ namespace A2ZPortal.Infrastructure.Implementation.PropertyImplementation
         {
             _connectionString = configuration.GetSection("ConnectionStrings:dbConnection").Value;
         }
+
+        public async Task<PropertyDetailListVm> GetPropertyDetail(int id)
+        {
+            var model = new PropertyDetailListVm();
+            var imageModels = new List<PropertyImage>();
+            var features = new List<string>();
+
+            SqlParameter[] sqlParameters = { new SqlParameter("@propId", id) };
+            var reader = await SqlHelper.ExecuteReader(_connectionString, SqlConstant.GetPropertyDetailList,
+                System.Data.CommandType.StoredProcedure, sqlParameters);
+            while (reader.Read())
+            {
+                model.Id = reader.DefaultIfNull<int>("Id");
+                model.CategoryName = reader.DefaultIfNull<string>("CategoryId");
+                model.LocationName = reader.DefaultIfNull<string>("LocationName");
+                model.SubLocationName = reader.DefaultIfNull<string>("SubLocationName");
+                model.Budget = reader.DefaultIfNull<string>("Budgets");
+                model.AreaCovered = reader.DefaultIfNull<decimal>("AreaCovered");
+                model.TotalArea = reader.DefaultIfNull<decimal>("TotalArea");
+                model.PropertyName = reader.DefaultIfNull<string>("PropertyName");
+                model.PropertyDescription = reader.DefaultIfNull<string>("ProprtyDescription");
+                model.longitude = reader.DefaultIfNull<string>("Longitude");
+                model.Latitude = reader.DefaultIfNull<string>("Lattitude");
+                model.PlaceAddress = reader.DefaultIfNull<string>("PlaceAddress");
+                model.PlaceId = reader.DefaultIfNull<string>("PlaceId");
+                model.BedRooms = reader.DefaultIfNull<int>("BedRooms");
+                model.BathRooms = reader.DefaultIfNull<int>("BathRooms");
+                model.RoomName = reader.DefaultIfNull<string>("RoomName");
+                model.PossesionStatus = reader.DefaultIfNull<string>("PossesionStatus");
+                model.FurnishingStatus = reader.DefaultIfNull<string>("FurnishingStatus");
+                model.Age = reader.DefaultIfNull<int>("Age");
+                model.TotalParking = reader.DefaultIfNull<int>("TotalParking");
+                model.Facing = reader.DefaultIfNull<string>("Facing");
+                model.FloorNumber = reader.DefaultIfNull<string>("FloorNumber");
+                model.TowerBlock = reader.DefaultIfNull<string>("TowerBlock");
+                model.UnitNumber = reader.DefaultIfNull<string>("UnitNumber");
+                model.TarkeshiNumber = reader.DefaultIfNull<string>("TrakheesiNumber");
+                model.DefiningLocation = reader.DefaultIfNull<string>("DLocationName");
+                model.PriceName = reader.DefaultIfNull<string>("PriceName");
+                model.ExplaningName = reader.DefaultIfNull<string>("ExplaningName");
+                model.DefiningStructure = reader.DefaultIfNull<string>("DefiningStructure");
+                model.SuitableName = reader.DefaultIfNull<string>("SuitabelName");
+                model.SpaceType = reader.DefaultIfNull<string>("SpaceType");
+                model.Maintainence = reader.DefaultIfNull<decimal>("Maintaince");
+                model.SecurityDeposit = reader.DefaultIfNull<string>("Security_Deposit");
+                model.NoOfChecks = reader.DefaultIfNull<int>("NoOfChecks");
+                model.LandLoardDetails = reader.DefaultIfNull<string>("LandLordDetails");
+                model.NameofOwner = reader.DefaultIfNull<string>("Nameoftheowner");
+                model.EmailAddress = reader.DefaultIfNull<string>("OwnersEmaiAddress");
+                model.MobileNumber = reader.DefaultIfNull<string>("MobileNoOftheOwner");
+            }
+
+            if (reader.NextResult())
+            {
+                while (reader.Read())
+                {
+                    var imageModel = new PropertyImage();
+                    imageModel.ImagePath = reader.DefaultIfNull<string>("ImagePath");
+                    imageModel.IsExclusive = reader.DefaultIfNull<bool>("IsExclusive");
+                    imageModel.IsRecent = reader.DefaultIfNull<bool>("IsRecent");
+                    imageModel.IsPrimary = reader.DefaultIfNull<bool>("IsPrimaryImage");
+
+                    imageModels.Add(imageModel);
+                }
+            }
+
+            if (reader.NextResult())
+            {
+                while (reader.Read())
+                {
+                    features.Add(reader.DefaultIfNull<string>("AmenitiesName"));
+                }
+            }
+
+            model.Amenities = features;
+            model.PropertyImages = imageModels;
+            return model;
+        }
+
         public async Task<List<PropertyDetailVm>> GetPropertyDetails(PropertyRequestModel requestModel)
         {
             var models = new List<PropertyDetailVm>();
