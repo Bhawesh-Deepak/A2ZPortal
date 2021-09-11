@@ -609,14 +609,14 @@
                         $("#PlaceAddress").val(place.formatted_address);
                         $("#PlaceId").val(place.place_id);
                         $("#Longitude").val(place.geometry.location.lat());
-                        $("#Latituide").val(place.geometry.location.lng());
+                        $("#Lattitude").val(place.geometry.location.lng());
 
                         debugger
                     });
 
                     map.fitBounds(bounds);
                     $("#Longitude").val(bounds.Ua.i);
-                    $("#Latituide").val(bounds.Za.i);
+                    $("#Lattitude").val(bounds.Za.i);
 
                 });
             }

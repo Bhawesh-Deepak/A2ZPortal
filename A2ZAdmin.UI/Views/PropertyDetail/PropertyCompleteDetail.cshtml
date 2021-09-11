@@ -1,327 +1,265 @@
 ﻿@model A2ZPortal.Core.ViewModel.PropertyList.PropertyDetailListVm
-@{ var images = Model.PropertyImages.Where(x => x.IsPrimary == true).FirstOrDefault();
-                if (images == null)
-                {
-                    images = Model.PropertyImages.FirstOrDefault();
-                } }
+@{
+    var images = Model.PropertyImages.ToList();
+    var aminities = Model.Amenities.ToList();
+
+}
+
+<style>
+    .users-list > li img {
+        border-radius: 2%;
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-12">
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">Property Complete Detail</h3>
 
-        <!-- Profile Image -->
-        <div class="box box-primary">
-            <div class="box-body box-profile">
-                <img class="profile-user-img img-responsive img-circle" src="@images.ImagePath" alt="User profile picture">
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="box-body">
 
-                <h3 class="profile-username text-center">@Model.PropertyName</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="PropertyName">Property Name</label>
+                                <input type="text" asp-for="PropertyName" class="form-control" readonly />
 
-                <ul class="list-group list-group-unbordered">
-                    <li class="list-group-item">
-                        <b>Price</b> <a class="pull-right">@Model.PriceName</a>
-                    </li>
-                    <li class="list-group-item">
-                        <b>Area Covered</b> <a class="pull-right">@Model.AreaCovered</a>
-                    </li>
-                    <li class="list-group-item">
-                        <b>Toatal Area</b> <a class="pull-right">@Model.TotalArea</a>
-                    </li>
-                    <li class="list-group-item">
-                        <b>Toatal Area</b> <a class="pull-right">@Model.TotalArea</a>
-                    </li>
-                    <li class="list-group-item">
-                        <b>Toatal Area</b> <a class="pull-right">@Model.TotalArea</a>
-                    </li>
-                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="PropertyDescription">Property Description</label>
+                                <input type="text" asp-for="PropertyDescription" class="form-control" readonly />
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input asp-for="Id" type="hidden" />
+                                <label asp-for="LocationName">Location</label>
+                                <input type="text" asp-for="LocationName" class="form-control" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="SubLocationName">Sub Location</label>
+                                <input type="text" asp-for="SubLocationName" class="form-control" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="BedRooms">Bed Room</label>
+                                <input type="text" asp-for="BedRooms" class="form-control" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="BathRooms">Bath Room</label>
+                                <input type="text" asp-for="BedRooms" class="form-control" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="RoomName">Additional Room</label>
+                                <input type="text" asp-for="RoomName" class="form-control" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="FurnishingStatus">Furnishing Status</label>
+                                <input type="text" asp-for="FurnishingStatus" class="form-control" readonly />
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Age">Age Of Property</label>
+                                <input type="text" asp-for="Age" class="form-control" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="TotalParking">No. Of Parking</label>
+                                <input type="text" asp-for="Age" class="form-control" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Facing">View Facing</label>
+                                <input type="text" asp-for="Facing" class="form-control" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="DefiningLocation">Defining Location</label>
+                                <input type="text" asp-for="DefiningLocation" class="form-control" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="PriceName">Explaining Price</label>
+                                <input type="text" asp-for="PriceName" class="form-control" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="ExplaningName">Explaining The Property</label>
+                                <input type="text" asp-for="PriceName" class="form-control" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="DefiningStructure">Defining Size and Structure</label>
+                                <input type="text" asp-for="DefiningStructure" class="form-control" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="SuitableName">Suitable For</label>
+                                <input type="text" asp-for="SuitableName" class="form-control" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="FloorNumber">Floor Number</label>
+                                <input type="text" asp-for="FloorNumber" class="form-control" placeholder="Floor Number" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="TowerBlock">Tower Block</label>
+                                <input type="text" asp-for="TowerBlock" class="form-control" placeholder="Tower Block" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="UnitNumber">Unit Number</label>
+                                <input type="text" asp-for="UnitNumber" class="form-control" placeholder="Floor Number" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="TarkeshiNumber">Trakheesi Number</label>
+                                <input type="text" asp-for="TarkeshiNumber" class="form-control" placeholder="Trakheesi Number" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="SpaceType">Space Type</label>
+                                <input type="text" asp-for="SpaceType" class="form-control" placeholder="Space Type" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Amenities  Details</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <ul class="users-list clearfix">
+                                        @foreach (var item in aminities)
+                                        {
+                                            <li>
+                                                <span class="users-list-date">Today</span>
+
+                                            </li>
+                                        }
+                                    </ul>
+
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                        <div class="col-md-6">
+                            <div class="box box-warning">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Images</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="box-body no-padding">
+                                        <ul class="users-list clearfix">
+                                            @foreach (var item in images)
+                                            {
+                                                <li>
+                                                    <img src="@item.ImagePath" alt="User Image">
+
+                                                </li>
+                                            }
+                                        </ul>
+
+                                        <!-- /.users-list -->
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Loaction</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <div id="googleMap" style="width:100%;height:400px;"></div>
+
+
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+
+                    </div>
+
+
+                </div>
+
 
             </div>
             <!-- /.box-body -->
         </div>
-       
     </div>
-    <!-- /.col -->
-    <div class="col-md-9">
-        <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
-                <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-                <li><a href="#settings" data-toggle="tab">Settings</a></li>
-            </ul>
-            <div class="tab-content">
-                <div class="active tab-pane" id="activity">
-                    <!-- Post -->
-                    <div class="post">
-                        <div class="user-block">
-                            <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-                            <span class="username">
-                                <a href="#">Jonathan Burke Jr.</a>
-                                <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                            </span>
-                            <span class="description">Shared publicly - 7:30 PM today</span>
-                        </div>
-                        <!-- /.user-block -->
-                        <p>
-                            Lorem ipsum represents a long-held tradition for designers,
-                            typographers and the like. Some people hate it and argue for
-                            its demise, but others ignore the hate as they create awesome
-                            tools to help create filler text for everyone from bacon lovers
-                            to Charlie Sheen fans.
-                        </p>
-                        <ul class="list-inline">
-                            <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                            <li>
-                                <a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-                            </li>
-                            <li class="pull-right">
-                                <a href="#" class="link-black text-sm">
-                                    <i class="fa fa-comments-o margin-r-5"></i> Comments
-                                    (5)
-                                </a>
-                            </li>
-                        </ul>
-
-                        <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                    </div>
-                    <!-- /.post -->
-                    <!-- Post -->
-                    <div class="post clearfix">
-                        <div class="user-block">
-                            <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
-                            <span class="username">
-                                <a href="#">Sarah Ross</a>
-                                <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                            </span>
-                            <span class="description">Sent you a message - 3 days ago</span>
-                        </div>
-                        <!-- /.user-block -->
-                        <p>
-                            Lorem ipsum represents a long-held tradition for designers,
-                            typographers and the like. Some people hate it and argue for
-                            its demise, but others ignore the hate as they create awesome
-                            tools to help create filler text for everyone from bacon lovers
-                            to Charlie Sheen fans.
-                        </p>
-
-                        <form class="form-horizontal">
-                            <div class="form-group margin-bottom-none">
-                                <div class="col-sm-9">
-                                    <input class="form-control input-sm" placeholder="Response">
-                                </div>
-                                <div class="col-sm-3">
-                                    <button type="submit" class="btn btn-danger pull-right btn-block btn-sm">Send</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- /.post -->
-                    <!-- Post -->
-                    <div class="post">
-                        <div class="user-block">
-                            <img class="img-circle img-bordered-sm" src="../../dist/img/user6-128x128.jpg" alt="User Image">
-                            <span class="username">
-                                <a href="#">Adam Jones</a>
-                                <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                            </span>
-                            <span class="description">Posted 5 photos - 5 days ago</span>
-                        </div>
-                        <!-- /.user-block -->
-                        <div class="row margin-bottom">
-                            <div class="col-sm-6">
-                                <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-6">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <img class="img-responsive" src="../../dist/img/photo2.png" alt="Photo">
-                                        <br>
-                                        <img class="img-responsive" src="../../dist/img/photo3.jpg" alt="Photo">
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-sm-6">
-                                        <img class="img-responsive" src="../../dist/img/photo4.jpg" alt="Photo">
-                                        <br>
-                                        <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                                <!-- /.row -->
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                        <!-- /.row -->
-
-                        <ul class="list-inline">
-                            <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                            <li>
-                                <a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-                            </li>
-                            <li class="pull-right">
-                                <a href="#" class="link-black text-sm">
-                                    <i class="fa fa-comments-o margin-r-5"></i> Comments
-                                    (5)
-                                </a>
-                            </li>
-                        </ul>
-
-                        <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                    </div>
-                    <!-- /.post -->
-                </div>
-                <!-- /.tab-pane -->
-                <div class="tab-pane" id="timeline">
-                    <!-- The timeline -->
-                    <ul class="timeline timeline-inverse">
-                        <!-- timeline time label -->
-                        <li class="time-label">
-                            <span class="bg-red">
-                                10 Feb. 2014
-                            </span>
-                        </li>
-                        <!-- /.timeline-label -->
-                        <!-- timeline item -->
-                        <li>
-                            <i class="fa fa-envelope bg-blue"></i>
-
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
-
-                                <div class="timeline-body">
-                                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                                    weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                                    jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                                    quora plaxo ideeli hulu weebly balihoo...
-                                </div>
-                                <div class="timeline-footer">
-                                    <a class="btn btn-primary btn-xs">Read more</a>
-                                    <a class="btn btn-danger btn-xs">Delete</a>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- END timeline item -->
-                        <!-- timeline item -->
-                        <li>
-                            <i class="fa fa-user bg-aqua"></i>
-
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-
-                                <h3 class="timeline-header no-border">
-                                    <a href="#">Sarah Young</a> accepted your friend request
-                                </h3>
-                            </div>
-                        </li>
-                        <!-- END timeline item -->
-                        <!-- timeline item -->
-                        <li>
-                            <i class="fa fa-comments bg-yellow"></i>
-
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-
-                                <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-
-                                <div class="timeline-body">
-                                    Take me to your leader!
-                                    Switzerland is small and neutral!
-                                    We are more like Germany, ambitious and misunderstood!
-                                </div>
-                                <div class="timeline-footer">
-                                    <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- END timeline item -->
-                        <!-- timeline time label -->
-                        <li class="time-label">
-                            <span class="bg-green">
-                                3 Jan. 2014
-                            </span>
-                        </li>
-                        <!-- /.timeline-label -->
-                        <!-- timeline item -->
-                        <li>
-                            <i class="fa fa-camera bg-purple"></i>
-
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-
-                                <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-                                <div class="timeline-body">
-                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                </div>
-                            </div>
-                        </li>
-                        <!-- END timeline item -->
-                        <li>
-                            <i class="fa fa-clock-o bg-gray"></i>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.tab-pane -->
-
-                <div class="tab-pane" id="settings">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                            <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputName" placeholder="Name">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                            <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputName" placeholder="Name">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-                            <div class="col-sm-10">
-                                <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-danger">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- /.tab-pane -->
-            </div>
-            <!-- /.tab-content -->
-        </div>
-        <!-- /.nav-tabs-custom -->
-    </div>
-    <!-- /.col -->
 </div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKGAp4SyPy1qnUqz5gMygSOzO8Qm2kNvY&callback=myMap"></script>
+
+<script>
+    function myMap() {
+        var long = '@Model.longitude';
+        var lat = '@Model.Latitude'
+        debugger;
+        var mapProp = {
+            center: new google.maps.LatLng(lat, long),
+            zoom: 5,
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    }
+</script>
+
