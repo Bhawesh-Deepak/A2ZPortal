@@ -11,5 +11,6 @@ namespace A2ZPortal.Infrastructure.Repository.PropertyDetailRepository
     public interface IPropertyDetailRepository
     {
         Task<List<PropertyDetailVm>> GetPropertyDetails(PropertyRequestModel requestModel);
+        Task<List<PropertyListVm>> GetPropertyListVm();
     }
 }

@@ -338,7 +338,7 @@ namespace A2ZAdmin.UI.Controllers.Master
 
         public async Task<IActionResult> GetPropertyImageDetails(int propertyId)
         {
-            var response = await _IPropertyImageRepository.GetList(x => x.IsActive == true && x.IsDeleted == false 
+            var response = await _IPropertyImageRepository.GetList(x => x.IsActive == true && x.IsDeleted == false
             && x.PropertyDetailId == propertyId);
 
             var model = new PropertyImageVm();
@@ -359,10 +359,18 @@ namespace A2ZAdmin.UI.Controllers.Master
             });
 
             var response = await _IPropertyImageRepository.Update(model.PropertyImages.ToArray());
-            if (response.ResponseStatus != ResponseStatus.Error) {
+            if (response.ResponseStatus != ResponseStatus.Error)
+            {
                 return Json("Image mapped successfully !!!!");
             }
             return Json("Something wents wrong Please contact admin Team");
+        }
+
+        public async Task<IActionResult> GetPropertyList()
+        {
+            var response = await _IPropertyDetailsRepository.GetPropertyListVm();
+            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetail", "PropertyDetailList"), response);
+
         }
     }
 }

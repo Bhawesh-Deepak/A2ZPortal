@@ -142,3 +142,12 @@ function SuccessImage(response) {
     alertify.success(response);
     location.reload();
 }
+
+function GetDetails() {
+    $.get("/PropertyDetail/GetPropertyList", function (data) {
+        $("#headerText").text("Property Details");
+        $("#divCreate").html(data);
+        $(".modal-dialog").removeClass().addClass("modal-dialog modal-lg")
+        $('#myModal').modal();
+    })
+}

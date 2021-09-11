@@ -64,5 +64,28 @@ namespace A2ZPortal.Infrastructure.Implementation.PropertyImplementation
             }
             return models;
         }
+
+        public async Task<List<PropertyListVm>> GetPropertyListVm()
+        {
+            var models = new List<PropertyListVm>();
+            var reader = await SqlHelper.ExecuteReader(_connectionString, SqlConstant.GetPropertyList,
+                System.Data.CommandType.StoredProcedure, null);
+            while (reader.Read())
+            {
+
+                var model = new PropertyListVm();
+                model.Id = reader.DefaultIfNull<int>("Id");
+                model.Location = reader.DefaultIfNull<string>("LocationName");
+                model.SubLocation = reader.DefaultIfNull<string>("SubLocationName");
+                model.CategoryName = reader.DefaultIfNull<string>("CategoryId");
+                model.PropertyType = reader.DefaultIfNull<string>("PropertyTypeId");
+                model.PropertyName = reader.DefaultIfNull<string>("PropertyName");
+                model.Description = reader.DefaultIfNull<string>("ProprtyDescription");
+                model.PlaceAddress = reader.DefaultIfNull<string>("PlaceAddress");
+                model.Price = reader.DefaultIfNull<decimal>("Price");
+                models.Add(model);
+            }
+            return models;
+        }
     }
 }

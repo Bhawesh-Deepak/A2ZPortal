@@ -1,0 +1,69 @@
+﻿@using System.Runtime.InteropServices.ComTypes
+@model IEnumerable<A2ZPortal.Core.ViewModel.PropertyDetail.PropertyListVm>
+
+<div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+    <div class="row">
+        <div class="col-sm-12">
+            <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                <thead>
+                    <tr role="row">
+                        <th>Property (Name)</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Property Type</th>
+                        <th>Location</th>
+                        <th>SubLocation</th>
+                        <th>Place Address</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var data in Model)
+                    {
+                        <tr>
+
+                            <td>@data.PropertyName</td>
+                            <td>@data.Description</td>
+                            <td>@data.CategoryName</td>
+                            <td>@data.PropertyType</td>
+                            <td>@data.Location</td>
+                            <td>@data.SubLocation</td>
+                            <td>@data.PlaceAddress</td>
+                            <td>
+                                @if (data.PropertyType.ToLower().Trim() == "rent")
+                                {
+                                    @data.Price
+
+                                    <span>(Monthly Rent)</span>
+                                }
+                                else
+                                {
+                                    @data.Price
+                                }
+                            </td>
+                            <td>
+                                <button class="btn btn-primary btn-xs">
+                                    <i class="fa fa-pencil" onclick="Edit(@data.Id)"></i>
+                                </button>
+                                <button class="btn btn-danger btn-xs" onclick="Delete(@data.Id)">
+                                    <i class="fa fa-close"></i>
+                                </button>
+                                <button class="btn btn-danger btn-xs" onclick="Delete(@data.Id)">
+                                    <i class="fa fa-eye"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#example1').DataTable();
+
+    })
+</script>
