@@ -257,7 +257,7 @@
         var lat = parseFloat('@Model.Latitude');
         var long = parseFloat('@Model.longitude');
         debugger;
-        const myLatLng = { lat: 28.480780, lng: 77.533623 };
+        const myLatLng = { lat: lat, lng: long };
         const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 15,
             center: myLatLng,
