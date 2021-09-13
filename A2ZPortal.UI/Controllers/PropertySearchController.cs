@@ -43,7 +43,7 @@ namespace A2ZPortal.UI.Controllers
         public async Task<IActionResult> Index()
         {
             await PopulateViewBag();
-            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertySearch", "Index"));
+            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("PropertySearch", "PropertySearchIndex"));
         }
     }
 }

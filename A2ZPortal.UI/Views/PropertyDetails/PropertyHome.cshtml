@@ -1,0 +1,165 @@
+﻿@model A2ZPortal.Core.ViewModel.PropertyDetail.PropertySearchVm
+<div class="container-wrap">
+    <div class="noo_advanced_search_property horizontal  hidden-print">
+        <div class="noo-map ">
+            <div id="gmap" data-source="property" style="height: 820px;"></div>
+            <div class="gmap-search">
+                <input placeholder="Search your map" type="text" autocomplete="off" id="gmap_search_input">
+            </div>
+            <div class="gmap-control">
+                <a class="gmap-mylocation" href="#"><i class="fa fa-map-marker"></i>My Location</a>
+                <a class="gmap-full" href="#" data-mobile='true'><i class="fa fa-expand"></i></a>
+                <a class="gmap-prev" href="#"><i class="fa fa-angle-left"></i></a>
+                <a class="gmap-next" href="#"><i class="fa fa-angle-right"></i></a>
+            </div>
+            <div class="gmap-zoom">
+                <a href="#" class="zoom-in"><i class="fa fa-plus"></i></a>
+                <a href="#" class="zoom-out"><i class="fa fa-minus"></i></a>
+            </div>
+            <div class="gmap-loading">
+                Loading Maps
+                <div class="gmap-loader">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+            </div>
+            <div class="gsearch property">
+                <div class="container-boxed">
+                    <div class="gsearch-wrap">
+                        <form action="~/PropertyDetails/Index" class="gsearchform" method="get" role="search">
+                            <div class="gsearch-content" style="display: block">
+                                <div class="gsearch-field bg-white-opacity b-lr search_style_2">
+                                    <div class="form-group s-prop-location" style=width:25%>
+                                        <select asp-for="LocationId" class="form-control  form-control-chosen ignore-valid" name="bathrooms" data-placeholder="All Location"
+                                                asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.Location>)ViewBag.Location,"Id","LocationName"))">
+                                            <option value="" selected='selected'>All Location</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="form-group s-prop-sub_location" style=width:25%>
+                                        <select asp-for="SubLocationId" class="form-control  form-control-chosen ignore-valid"
+                                                data-placeholder="All Sub Location" asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.SubLocation>)ViewBag.SubLocation,"Id","SubLocationName"))">
+                                            <option value="" selected='selected'>All Location</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="form-group s-prop-status" style=width:25%>
+                                        <select class="form-control  form-control-chosen ignore-valid" asp-for="PropertyStatus" data-placeholder="All Status" asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.PropertyStatusModel>)ViewBag.PropertyStatus,"Id","PropertyStatus"))">
+                                            <option value="" selected='selected'>All Location</option>
+                                        </select>
+
+
+                                    </div>
+                                    <div class="form-group s-prop-category" style=width:25%>
+                                        <select class="form-control  form-control-chosen ignore-valid" asp-for="PropertyType"
+                                                data-placeholder="All PropertyType" asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.PropertyType>)ViewBag.PropertyType,"Id","PropertyTypeName"))">
+                                            <option value="" selected='selected'>All Location</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="noo-box-select">
+                                            <select class="form-control  form-control-chosen ignore-valid" asp-for="BedRoomId" data-placeholder="All Bed Rooms"
+                                                    asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.BedRoom>)ViewBag.BedRoom,"Id","BedRooms"))">
+                                                <option value="" selected='selected'>All Location</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="noo-box-select">
+                                            <select class="form-control  form-control-chosen ignore-valid"
+                                                    asp-for="BathRoomId" data-placeholder="All Bathrooms"
+                                                    asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.BathRoom>)ViewBag.BathRoom,"Id","BathRooms"))">
+                                                <option value="" selected='selected'>All Location</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group gprice">
+                                        <span class="gprice-label">Price</span>
+                                        <div class="gprice-slider-range"></div>
+                                        <input type="hidden" name="min_price" asp-for="MinPrice" class="gprice_min" data-min="0">
+                                        <input type="hidden" name="max_price" asp-for="MaxPrice" class="gprice_max" data-max="11000000">
+                                    </div>
+                                    <div class="form-group garea">
+                                        <span class="garea-label">Area</span>
+                                        <div class="garea-slider-range"></div>
+                                        <input type="hidden" class="garea_min" asp-for="MinArea" name="min_area" data-min="1">
+                                        <input type="hidden" class="garea_max" asp-for="MaxArea" name="max_area" data-max="3077">
+                                    </div>
+                                    <div class="gsearch-feature">
+                                        <a id="gsearchFeature" href="#gsearch-feature" class="gsearch-feature-control" data-parent="#gsearch-feature" data-toggle="collapse">Advanced Search</a>
+                                        <div id="gsearch-feature" class="panel-collapse collapse row">
+                                            <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_attic"><input type="checkbox" value="1" class="" name="_noo_property_feature_attic" id="_noo_property_feature_attic">&nbsp;Attic</label></div>
+                                            <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_gas-heat"><input type="checkbox" value="1" class="" name="_noo_property_feature_gas-heat" id="_noo_property_feature_gas-heat">&nbsp;Gas heat</label></div>
+                                            <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_balcony"><input type="checkbox" value="1" class="" name="_noo_property_feature_balcony" id="_noo_property_feature_balcony">&nbsp;Balcony</label></div>
+                                            <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_wine-cellar"><input type="checkbox" value="1" class="" name="_noo_property_feature_wine-cellar" id="_noo_property_feature_wine-cellar">&nbsp;Wine cellar</label></div>
+                                            <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_basketball-court"><input type="checkbox" value="1" class="" name="_noo_property_feature_basketball-court" id="_noo_property_feature_basketball-court">&nbsp;Basketball court</label></div>
+                                            <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_trash-compactors"><input type="checkbox" value="1" class="" name="_noo_property_feature_trash-compactors" id="_noo_property_feature_trash-compactors">&nbsp;Trash compactors</label></div>
+                                            <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_gym"><input type="checkbox" value="1" class="" name="_noo_property_feature_gym" id="_noo_property_feature_gym">&nbsp;Gym</label></div>
+                                            <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_fireplace"><input type="checkbox" value="1" class="" name="_noo_property_feature_fireplace" id="_noo_property_feature_fireplace">&nbsp;Fireplace</label></div>
+                                            <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_pool"><input type="checkbox" value="1" class="" name="_noo_property_feature_pool" id="_noo_property_feature_pool">&nbsp;Pool</label></div>
+                                            <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_lake-view"><input type="checkbox" value="1" class="" name="_noo_property_feature_lake-view" id="_noo_property_feature_lake-view">&nbsp;Lake view</label></div>
+                                            <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_storm-windows"><input type="checkbox" value="1" class="" name="_noo_property_feature_storm-windows" id="_noo_property_feature_storm-windows">&nbsp;Storm Windows</label></div>
+                                            <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_wet-bar"><input type="checkbox" value="1" class="" name="_noo_property_feature_wet-bar" id="_noo_property_feature_wet-bar">&nbsp;Wet bar</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gsearch-action-style-2">
+                                    <div class="gsubmit ">
+                                        <button type="submit">Search Property</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divPropData">
+        @await Component.InvokeAsync("PropertyDetail", Model);
+    </div>
+  
+</div>
+
+
+<script>
+    function GetFilterDetail(id) {
+        var locationId = $("#LocationId").val();
+        var subLocationId = $("#SubLocationId").val();
+        var status = $("#PropertyStatus").val();
+        var propertyType = $("#PropertyType").val();
+        var bedRoom = $("#BedRoomId").val();
+        var bathRoom = $("#BathRoomId").val();
+        var fromPrice = $("#MinPrice").val();
+        var toPrice = $("#MaxPrice").val();
+        var fromArea = $("#MinArea").val();
+        var toArea = $("#MaxArea").val();
+
+        debugger;
+
+        $.get("/PropertyDetails/FilteredPropertyDetail",
+            {
+                location: locationId,
+                subLocation: subLocationId,
+                status: status,
+                property: propertyType,
+                bedRoom: bedRoom,
+                bathRoom: bathRoom,
+                fromPrice: fromPrice,
+                toPrice: toPrice,
+                fromArea: fromArea,
+                toArea: toArea,
+                pageIndex: id
+
+            }, function (data) {
+                $("#divPropData").html(data);
+            })
+
+    }
+</script>

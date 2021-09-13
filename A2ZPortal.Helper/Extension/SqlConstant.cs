@@ -15,5 +15,6 @@ namespace A2ZPortal.Helper.Extension
         public static string GetPropertyList = @"usp_GetPropertyDetails";
         public static string GetPropertyDetailList = @"usp_GetCompletePropertyDetail";
         public static string GetFeaturedProperty = @"usp_GetFeaturedProperty";
+        public static string GetCompletePropertyDetails = @"usp_GetPropertyDetailList";
     }
 }

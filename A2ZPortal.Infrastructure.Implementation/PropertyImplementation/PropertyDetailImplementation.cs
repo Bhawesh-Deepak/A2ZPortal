@@ -22,6 +22,46 @@ namespace A2ZPortal.Infrastructure.Implementation.PropertyImplementation
             _connectionString = configuration.GetSection("ConnectionStrings:dbConnection").Value;
         }
 
+        public async Task<List<PropertyCompleteListVm>> GetPropertyCompleteDetail(PropertyRequestModel requestModel)
+        {
+            var models = new List<PropertyCompleteListVm>();
+            SqlParameter[] sqlParameters =
+                {
+                    new SqlParameter("@PageNbr",requestModel.PageNumber),
+                    new SqlParameter("@PageSize",requestModel.PageSize==0?6:requestModel.PageSize),
+                    new SqlParameter("@LocationId",requestModel.LocationId==0?null: requestModel.LocationId),
+                    new SqlParameter("@SubLocationId",requestModel.SubLocationId ==0?null: requestModel.SubLocationId),
+                    new SqlParameter("@PropertyTypeId",requestModel.PropertyId ==0?null: requestModel.PropertyId),
+                    new SqlParameter("@PropertyStatusId",requestModel.PropertyStatusId ==0?null: requestModel.PropertyStatusId),
+                    new SqlParameter("@BedRoomId",requestModel.BedRoomId ==0?null: requestModel.BedRoomId),
+                    new SqlParameter("@BathRoomId",requestModel.BathRoomId ==0?null: requestModel.BathRoomId)
+                   
+                };
+
+            var reader = await SqlHelper.ExecuteReader(_connectionString, SqlConstant.GetCompletePropertyDetails,
+                System.Data.CommandType.StoredProcedure, sqlParameters);
+
+            while (reader.Read())
+            {
+
+                var model = new PropertyCompleteListVm();
+                model.PropertyId = reader.DefaultIfNull<int>("Id");
+                model.PropertyName = reader.DefaultIfNull<string>("PropertyName");
+                model.Description = reader.DefaultIfNull<string>("ProprtyDescription");
+                model.PlaceAddress = reader.DefaultIfNull<string>("PlaceAddress");
+                model.CategoryName = reader.DefaultIfNull<string>("CategoryId");
+                model.BedRooms = reader.DefaultIfNull<int>("BedRooms");
+                model.BathRooms = reader.DefaultIfNull<int>("BathRooms");
+                model.Price = reader.DefaultIfNull<decimal>("Price");
+                model.ImagePath = reader.DefaultIfNull<string>("PropImage");
+                model.Area = reader.DefaultIfNull<decimal>("TotalArea");
+                model.TotalCount = reader.DefaultIfNull<int>("TotalCount");
+
+                models.Add(model);
+            }
+            return models;
+        }
+
         public async Task<PropertyDetailListVm> GetPropertyDetail(int id)
         {
             var model = new PropertyDetailListVm();
