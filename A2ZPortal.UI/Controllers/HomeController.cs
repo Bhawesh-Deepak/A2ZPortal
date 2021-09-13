@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using A2ZPortal.Core.Entities.Master;
+using A2ZPortal.Helper;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
 using A2ZPortal.UI.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -59,7 +60,18 @@ namespace A2ZPortal.UI.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public async Task<IActionResult> SeachBoxPartial()
+        {
+            await PopulateViewBag();
+            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("Home", "SeachMaster"));
+        }
+
+        public async Task<IActionResult> FeaturedProperty(int pageIndex)
+        {
+            return await Task.Run(() => ViewComponent("Featured", pageIndex));
         }
     }
 }

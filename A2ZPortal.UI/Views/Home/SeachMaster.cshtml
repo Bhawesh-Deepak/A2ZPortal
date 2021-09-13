@@ -1,0 +1,89 @@
+﻿<div class="gsearch-wrap">
+    <form action="~/PropertyDetails/Index" class="gsearchform" method="get" role="search">
+        <div class="gsearch-content" style="display: block">
+            <div class="gsearch-field bg-white-opacity b-lr search_style_2">
+                <div class="form-group s-prop-location" style=width:25%>
+                    <select data-placeholder="All Location" name='location' id='location' class='form-control form-control-chosen ignore-valid'
+                            asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.Location>)ViewBag.Location,"Id","LocationName"))">
+                        <option value="" selected='selected'>All Location</option>
+                    </select>
+
+                </div>
+                <div class="form-group s-prop-sub_location" style=width:25%>
+                    <select data-placeholder="All Sub Location" name='sub_location' id='sub_location' class='form-control form-control-chosen ignore-valid'
+                            asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.SubLocation>)ViewBag.SubLocation,"Id","SubLocationName"))">
+                        <option value="" selected='selected'>All Sub Location</option>
+                    </select>
+
+                </div>
+                <div class="form-group s-prop-status" style=width:25%>
+                    <select data-placeholder="All Status" name='status' id='status' class='form-control form-control-chosen ignore-valid'
+                            asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.PropertyStatusModel>)ViewBag.PropertyStatus,"Id","PropertyStatus"))">
+                        <option value="" selected='selected'>All Status</option>
+                    </select>
+
+
+                </div>
+                <div class="form-group s-prop-category" style=width:25%>
+                    <select data-placeholder="All Type" name='category' id='category' class='form-control form-control-chosen ignore-valid'
+                            asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.PropertyType>)ViewBag.PropertyType,"Id","PropertyTypeName"))">
+                        <option value="" selected='selected'>All Type</option>
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <div class="noo-box-select">
+                        <select id="search-bedrooms" class="form-control  form-control-chosen ignore-valid" name="bedrooms" data-placeholder="All Bedrooms"
+                                asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.BedRoom>)ViewBag.BedRoom,"Id","BedRooms"))">
+                            <option value="" selected='selected'>All Bed Rooms</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="noo-box-select">
+                        <select id="search-bathrooms" class="form-control  form-control-chosen ignore-valid" name="bathrooms" data-placeholder="All Bathrooms"
+                                asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.BathRoom>)ViewBag.BathRoom,"Id","BathRooms"))">
+                            <option value="" selected='selected'>All Bath Rooms</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group gprice">
+                    <span class="gprice-label">Price</span>
+                    <div class="gprice-slider-range"></div>
+                    <input type="hidden" name="min_price" class="gprice_min" data-min="0" value="0">
+                    <input type="hidden" name="max_price" class="gprice_max" data-max="11000000" value="11000000">
+                </div>
+                <div class="form-group garea">
+                    <span class="garea-label">Area</span>
+                    <div class="garea-slider-range"></div>
+                    <input type="hidden" class="garea_min" name="min_area" data-min="1" value="1">
+                    <input type="hidden" class="garea_max" name="max_area" data-max="3077" value="3077">
+                </div>
+                <div class="gsearch-feature">
+                    <a id="gsearchFeature" href="#gsearch-feature" class="gsearch-feature-control" data-parent="#gsearch-feature" data-toggle="collapse">Advanced Search</a>
+                    <div id="gsearch-feature" class="panel-collapse collapse row">
+                        <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_attic"><input type="checkbox" value="1" class="" name="_noo_property_feature_attic" id="_noo_property_feature_attic">&nbsp;Attic</label></div>
+                        <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_gas-heat"><input type="checkbox" value="1" class="" name="_noo_property_feature_gas-heat" id="_noo_property_feature_gas-heat">&nbsp;Gas heat</label></div>
+                        <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_balcony"><input type="checkbox" value="1" class="" name="_noo_property_feature_balcony" id="_noo_property_feature_balcony">&nbsp;Balcony</label></div>
+                        <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_wine-cellar"><input type="checkbox" value="1" class="" name="_noo_property_feature_wine-cellar" id="_noo_property_feature_wine-cellar">&nbsp;Wine cellar</label></div>
+                        <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_basketball-court"><input type="checkbox" value="1" class="" name="_noo_property_feature_basketball-court" id="_noo_property_feature_basketball-court">&nbsp;Basketball court</label></div>
+                        <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_trash-compactors"><input type="checkbox" value="1" class="" name="_noo_property_feature_trash-compactors" id="_noo_property_feature_trash-compactors">&nbsp;Trash compactors</label></div>
+                        <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_gym"><input type="checkbox" value="1" class="" name="_noo_property_feature_gym" id="_noo_property_feature_gym">&nbsp;Gym</label></div>
+                        <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_fireplace"><input type="checkbox" value="1" class="" name="_noo_property_feature_fireplace" id="_noo_property_feature_fireplace">&nbsp;Fireplace</label></div>
+                        <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_pool"><input type="checkbox" value="1" class="" name="_noo_property_feature_pool" id="_noo_property_feature_pool">&nbsp;Pool</label></div>
+                        <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_lake-view"><input type="checkbox" value="1" class="" name="_noo_property_feature_lake-view" id="_noo_property_feature_lake-view">&nbsp;Lake view</label></div>
+                        <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_storm-windows"><input type="checkbox" value="1" class="" name="_noo_property_feature_storm-windows" id="_noo_property_feature_storm-windows">&nbsp;Storm Windows</label></div>
+                        <div class="col-sm-3"><label class="checkbox-label" for="_noo_property_feature_wet-bar"><input type="checkbox" value="1" class="" name="_noo_property_feature_wet-bar" id="_noo_property_feature_wet-bar">&nbsp;Wet bar</label></div>
+                    </div>
+                </div>
+            </div>
+            <div class="gsearch-action-style-2">
+                <div class="gsubmit ">
+                    <button type="submit">Search Property</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
