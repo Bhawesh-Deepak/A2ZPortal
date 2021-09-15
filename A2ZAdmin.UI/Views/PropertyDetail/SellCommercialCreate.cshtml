@@ -662,13 +662,21 @@
         }
     });
 </script>
-<link href="~/MultiSelect/css/bootstrap-multiselect.css" rel="stylesheet" />
-<script src="~/MultiSelect/js/bootstrap-2.3.2.min.js"></script>
-<script src="~/MultiSelect/js/bootstrap-multiselect.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#Amenities').multiselect();
+<link href="~/MultiSelect/css/jquery.multiselect.css" rel="stylesheet" />
+<link href="~/MultiSelect/css/demo-style.css" rel="stylesheet" />
+ 
+<script src="~/MultiSelect/js/jquery.multiselect.js"></script>
+<script>
+
+
+    $('#Amenities').multiselect({
+        columns: 1,
+        placeholder: 'Select Languages',
+        search: true,
+        selectAll: true
     });
+
+
 </script>
 <script>
     $(function () {

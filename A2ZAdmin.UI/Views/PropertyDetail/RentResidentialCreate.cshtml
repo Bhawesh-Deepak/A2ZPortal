@@ -595,8 +595,6 @@
         </div>
     </div>
 </form>
-
-
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKGAp4SyPy1qnUqz5gMygSOzO8Qm2kNvY&callback=initAutocomplete&libraries=places&v=weekly"
         defer></script>
@@ -684,7 +682,6 @@
         exports.initAutocomplete = initAutocomplete;
     })((this.window = this.window || {}));
 </script>
-
 <script type="text/javascript">
     $(document).ready(function () {
         if (window.File && window.FileList && window.FileReader) {
@@ -720,207 +717,212 @@
         }
     });
 </script>
-
-
-
-<link href="~/MultiSelect/css/bootstrap-multiselect.css" rel="stylesheet" />
-<script src="~/MultiSelect/js/bootstrap-2.3.2.min.js"></script>
-<script src="~/MultiSelect/js/bootstrap-multiselect.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#Amenities').multiselect();
-    });
-</script>
+<link href="~/MultiSelect/css/jquery.multiselect.css" rel="stylesheet" />
+<link href="~/MultiSelect/css/demo-style.css" rel="stylesheet" />
+  
+<script src="~/MultiSelect/js/jquery.multiselect.js"></script>
 <script>
-    $(function () {
-        $.validator.setDefaults({
-            submitHandler: function () {
-                $("#divContent").addClass('loading');
-                $('#RentResidentialform').submit();
-                $("#divContent").removeClass('loading');
-            }
-        });
+   
+
+    $('#Amenities').multiselect({
+        columns: 1,
+        placeholder: 'Select Languages',
+        search: true,
+        selectAll: true
+    });
+
+    
+    </script>
+    <script>
+        $(function () {
+            $.validator.setDefaults({
+                submitHandler: function () {
+                    $("#divContent").addClass('loading');
+                    $('#RentResidentialform').submit();
+                    $("#divContent").removeClass('loading');
+                }
+            });
         $('#RentResidentialform').validate({
             rules: {
-                PropertyName: {
-                    required: true,
+            PropertyName: {
+            required: true,
 
                 },
                 ProprtyDescription: {
-                    required: true,
+            required: true,
 
                 },
                 LocationId: {
-                    required: true,
+            required: true,
 
                 },
                 SubLocationId: {
-                    required: true,
+            required: true,
 
                 },
                 NoOfBedRoomsId: {
-                    required: true
+            required: true
                 },
                 NoOfBathroomsId: {
-                    required: true,
+            required: true,
 
                 },
                 AdditionalRoomId: {
-                    required: true,
+            required: true,
 
                 },
                 FurnishingStatusId: {
-                    required: true
+            required: true
                 },
                 AgeOfPropertyId: {
-                    required: true,
+            required: true,
 
                 },
                 NoOfParkingId: {
-                    required: true,
+            required: true,
 
                 },
                 ViewFacingId: {
-                    required: true
+            required: true
                 },
                 DefiningLocationId: {
-                    required: true,
+            required: true,
 
                 },
                 ExplainingPriceId: {
-                    required: true,
+            required: true,
 
                 },
                 ExplainingThePropertyId: {
-                    required: true
+            required: true
                 },
                 DefiningSizeStructureId: {
-                    required: true,
+            required: true,
 
                 },
                 SuitableForId: {
-                    required: true,
+            required: true,
 
                 },
                 BudgetId: {
-                    required: true
+            required: true
                 },
                 PossessionStatusId: {
-                    required: true
+            required: true
                 },
                 AreaTypeId: {
-                    required: true
+            required: true
                 },
                 TotalArea: {
-                    required: true
+            required: true
                 },
                 AreaMeasurementTypeId: {
-                    required: true
+            required: true
                 },
                 AreaDisplay: {
-                    required: true
+            required: true
                 },
                 AreaCovered: {
-                    required: true
+            required: true
                 },
 
 
             },
             messages: {
 
-                PropertyName: {
-                    required: "this  field is required.",
+            PropertyName: {
+            required: "this  field is required.",
 
                 },
                 ProprtyDescription: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
 
                 },
                 LocationId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
 
                 },
                 SubLocationId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
 
                 },
                 NoOfBedRoomsId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
                 },
                 NoOfBathroomsId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
 
                 },
                 AdditionalRoomId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
 
                 },
                 FurnishingStatusId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
                 },
                 AgeOfPropertyId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
 
                 },
                 NoOfParkingId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
 
                 },
                 ViewFacingId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
                 },
                 DefiningLocationId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
 
                 },
                 ExplainingPriceId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
 
                 },
                 ExplainingThePropertyId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
                 },
                 DefiningSizeStructureId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
 
                 },
                 SuitableForId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
 
                 },
                 BudgetId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
                 },
                 PossessionStatusId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
                 },
                 AreaTypeId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
                 },
                 TotalArea: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
                 },
                 AreaMeasurementTypeId: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
                 },
                 AreaDisplay: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
                 },
                 AreaCovered: {
-                    required: "this  field is required.",
+            required: "this  field is required.",
                 },
 
             },
             errorElement: 'span',
             errorPlacement: function (error, element) {
-                error.addClass('invalid-feedback');
+            error.addClass('invalid-feedback');
                 element.closest('.form-group').append(error);
             },
             highlight: function (element, errorClass, validClass) {
-                $(element).addClass('is-invalid');
+            $(element).addClass('is-invalid');
             },
             unhighlight: function (element, errorClass, validClass) {
-                $(element).removeClass('is-invalid');
+            $(element).removeClass('is-invalid');
             }
         });
     });

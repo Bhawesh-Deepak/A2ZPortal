@@ -7212,6 +7212,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\MultiSelect\css\" />
+    <Folder Include="wwwroot\MultiSelect\js\" />
     <Folder Include="wwwroot\validation\css\" />
     <Folder Include="wwwroot\validation\js\" />
   </ItemGroup>
