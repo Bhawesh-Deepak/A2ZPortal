@@ -20,6 +20,7 @@ namespace A2ZPortal.Infrastructure.Implementation.Extensions
             services.AddTransient<IPropertyDetailRepository, PropertyDetailImplementation>();
             services.AddTransient<IUserManagementRepository, UserManagementImplementation>();
             services.AddTransient<IPropertyDashBoradRepository, PropertyDashBoradImplementation>();
+            services.AddTransient<IPropertyDetailCompleteRepository, PropertyDetailCompleteImplementation>();
         }
     }
 }

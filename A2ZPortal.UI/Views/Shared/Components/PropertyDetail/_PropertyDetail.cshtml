@@ -42,7 +42,7 @@
                                  property_category-coop property_category-single-family-home property_location-new-york-3 property_sub_location-staten-island
                                  property_status-open-house property_status-sales has-featured">
                             <div class="property-featured">
-                                <a class="content-thumb xx" href="http://wp.nootheme.com/citilights/properties/john-doe-2/">
+                                <a class="content-thumb xx" asp-controller="PropertyDetails" asp-action="GetPropertyDetail" asp-route-id="@data.PropertyId">
                                     <img style="width:375px;height:350px" src="@data.ImagePath" alt="" loading="lazy" />
                                 </a>
                                 <span class="property-label sold">@data.CategoryName</span>
@@ -52,7 +52,7 @@
                                         @data.PropertyName
                                     </a>
                                 </span>
-                                <a class="out-link" title="" href="http://wp.nootheme.com/citilights/properties/john-doe-2/">
+                                <a class="out-link" title="" asp-controller="PropertyDetails" asp-action="GetPropertyDetail" asp-route-id="@data.PropertyId">
                                     <i class="fa fa-link" aria-hidden="true"></i>
                                 </a>
                             </div>

@@ -3,6 +3,7 @@ using A2ZPortal.Core.ViewModel.PropertyDetail;
 using A2ZPortal.Core.ViewModel.RequestFolder;
 using A2ZPortal.Helper;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
+using A2ZPortal.Infrastructure.Repository.PropertyDetailRepository;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -17,13 +18,16 @@ namespace A2ZPortal.UI.Controllers
         private readonly IGenericRepository<PropertyType, int> _iPropertyTypeGenericRepository;
         private readonly IGenericRepository<BedRoom, int> _iBedRoomGenericRepository;
         private readonly IGenericRepository<BathRoom, int> _iBathRoomGenericRepository;
+        private readonly IPropertyDetailCompleteRepository _IPropertyCompleteRepository;
 
         public PropertyDetails(IGenericRepository<Location, int> iLocationGenericRepository,
             IGenericRepository<SubLocation, int> iSubLocationGenericRepository,
              IGenericRepository<PropertyStatusModel, int> iPropertyStatusGenericRepository,
              IGenericRepository<PropertyType, int> iPropertyTypeGenericRepository,
               IGenericRepository<BedRoom, int> iBedRoomGenericRepository,
-             IGenericRepository<BathRoom, int> iBathRoomGenericRepository)
+             IGenericRepository<BathRoom, int> iBathRoomGenericRepository,
+             IPropertyDetailCompleteRepository propertyDetailCompleteRepository
+             )
         {
             _iLocationGenericRepository = iLocationGenericRepository;
             _iSubLocationGenericRepository = iSubLocationGenericRepository;
@@ -31,6 +35,7 @@ namespace A2ZPortal.UI.Controllers
             _iPropertyTypeGenericRepository = iPropertyTypeGenericRepository;
             _iBedRoomGenericRepository = iBedRoomGenericRepository;
             _iBathRoomGenericRepository = iBathRoomGenericRepository;
+            _IPropertyCompleteRepository = propertyDetailCompleteRepository;
 
         }
         public async Task<IActionResult> Index(int location, int sub_location, int bathRoom,
@@ -61,17 +66,23 @@ namespace A2ZPortal.UI.Controllers
         {
             var requestModel = new PropertySearchVm()
             {
-                LocationId = location==0? null:location,
-                SubLocationId = subLocation==0? null:subLocation,
-                PropertyStatusId = Convert.ToInt32(status)==0?null : Convert.ToInt32(status),
-                BedRoomId=bedRoom==0?null:bedRoom,
-                BathRoomId=bathRoom==0? null : bathRoom,
-                PageNumber=pageIndex==0?1 : pageIndex
+                LocationId = location == 0 ? null : location,
+                SubLocationId = subLocation == 0 ? null : subLocation,
+                PropertyStatusId = Convert.ToInt32(status) == 0 ? null : Convert.ToInt32(status),
+                BedRoomId = bedRoom == 0 ? null : bedRoom,
+                BathRoomId = bathRoom == 0 ? null : bathRoom,
+                PageNumber = pageIndex == 0 ? 1 : pageIndex
             };
             return await Task.Run(() => ViewComponent("PropertyDetail", requestModel));
 
         }
 
+
+        public async Task<IActionResult> GetPropertyDetail(int id)
+        {
+            var response = await _IPropertyCompleteRepository.GetCompletePropertyDetail(id);
+            return View(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetails", "CompletePropertyDetail"), response);
+        }
         private async Task PopulateViewBag()
         {
             ViewBag.PropertyStatus = (await _iPropertyStatusGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
