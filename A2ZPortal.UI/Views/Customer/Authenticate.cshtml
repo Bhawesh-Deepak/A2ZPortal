@@ -1,0 +1,82 @@
+﻿@model A2ZPortal.Core.Entities.Customers.CustomerDetails
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ajax-unobtrusive@3.2.6/dist/jquery.unobtrusive-ajax.min.js"
+            integrity="sha256-PAC000yuHt78nszJ2RO0OiDMu/uLzPLRlYTk8J3AO10="
+            crossorigin="anonymous"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <div class="container-wrap">
+        <div class="main-content container-fullwidth">
+            <div class="row">
+                <div class="noo-main col-md-12" role="main">
+
+                    <div class="noo-vc-row row " style="">
+                        <div class="noo-vc-col col-md-12 ">
+                            <div class="noo-logreg both">
+                                <div class="logreg-container">
+                                    <div class="logreg-content row">
+                                        <div class="login-form col-md-6 col-sm-6">
+                                            <form method="POST" action="http://wp.nootheme.com/citilights/wp-login.php" class="shortcode-login noo-box noo-box-login class-login-wrap-613f7989462e8 show">
+                                                <div class="logreg-title">
+                                                    Login Form
+                                                </div>
+                                                <div class="login_form">
+                                                    <div class="loginalert login_message_area"></div>
+                                                    <p class="logreg-desc">
+                                                        Already a member of A2Z Portal. Please use the form below to log in site.
+                                                    </p>
+                                                    <div class="noo-item user_log">
+                                                        <input type="text" class="form-control" asp-for="CustomerPhone" placeholder="Customer Phone *">
+                                                    </div>
+                                                    <div class="noo-item user_pass">
+                                                        <input type="password" class="form-control" asp-for="OTP" placeholder="One Time Password *">
+                                                    </div>
+                                                    <div class="noo-form-action">
+                                                        <button type="submit" class="btn btn-secondary btn-lg noo-login" data-class-wrap=".class-login-wrap-613f7989462e8">
+                                                            Login
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="register-form col-md-6 col-sm-6">
+                                            <form asp-action="CreateCustomer" asp-controller="CustomerDetail"
+                                                  class="shortcode-login noo-box noo-box-register class-register-wrap-613f79894632a show">
+                                                <div class="logreg-title">Register Form</div>
+                                                <div class="register_form">
+                                                    <div class="loginalert register_message_area">
+                                                        @if (!string.IsNullOrEmpty(Model.Message)) { 
+                                                            <span style="color: #bdb254">@Model.Message</span>
+                                                        }
+                                                    </div>
+                                                    <p class="logreg-desc">
+                                                        Don't have an account? Please fill in the form below to create one.
+                                                    </p>
+                                                    <div class="noo-item user_login">
+                                                        <input type="text" asp-for="CustomerName" class="user_login form-control" placeholder="Your Name *">
+                                                    </div>
+                                                    <div class="noo-item user_email">
+                                                        <input type="text" asp-for="CustomerEmail" class="user_email form-control" placeholder="Your Email *">
+                                                    </div>
+                                                    <div class="noo-item user_password">
+                                                        <input asp-for="CustomerPhone" class="user_password form-control" placeholder="Your Phone">
+                                                    </div>
+
+                                                    <div class="noo-form-action">
+                                                        <button type="submit" class=" btn btn-success">Register</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>

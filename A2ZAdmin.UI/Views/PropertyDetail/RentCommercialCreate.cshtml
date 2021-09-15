@@ -236,14 +236,14 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="PropertyName">Sub Location</label><em>*</em>
-                    <input type="text" asp-for="PropertyName" class="form-control" />
+                    <input type="text" asp-for="PropertyName" class="form-control" placeholder="Enter Property Name" />
 
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="ProprtyDescription">Property Description</label><em>*</em>
-                    <input type="text" asp-for="ProprtyDescription" class="form-control" />
+                    <input type="text" asp-for="ProprtyDescription" class="form-control" placeholder="Enter Property Description" />
 
                 </div>
             </div>
@@ -259,6 +259,8 @@
                     </select>
                 </div>
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="SubLocationId">Sub Location</label><em>*</em>
@@ -277,8 +279,6 @@
                     </select>
                 </div>
             </div>
-        </div>
-        <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="NoOfBathroomsId">Bath Room</label><em>*</em>
@@ -288,6 +288,9 @@
                     </select>
                 </div>
             </div>
+        </div>
+        <div class="row">
+
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="AdditionalRoomId">Additional Room</label><em>*</em>
@@ -306,8 +309,6 @@
                     </select>
                 </div>
             </div>
-        </div>
-        <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="AgeOfPropertyId">Age Of Property</label><em>*</em>
@@ -317,6 +318,9 @@
                     </select>
                 </div>
             </div>
+        </div>
+        <div class="row">
+
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="NoOfParkingId">No. Of Parking</label><em>*</em>
@@ -335,8 +339,6 @@
                     </select>
                 </div>
             </div>
-        </div>
-        <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="DefiningLocationId">Defining Location</label><em>*</em>
@@ -346,6 +348,9 @@
                     </select>
                 </div>
             </div>
+        </div>
+        <div class="row">
+
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="ExplainingPriceId">Explaining Price</label><em>*</em>
@@ -364,8 +369,6 @@
                     </select>
                 </div>
             </div>
-        </div>
-        <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="DefiningSizeStructureId">Defining Size and Structure</label><em>*</em>
@@ -375,6 +378,71 @@
                     </select>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="BudgetId">Budget</label><em>*</em>
+                    <select asp-for="BudgetId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<Budget>)ViewBag.Budget,"Id","Budgets"))">
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="PossessionStatusId">Possession Status</label><em>*</em>
+                    <select asp-for="PossessionStatusId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<PossessionStatus>)ViewBag.PossessionStatus,"Id","StatusName"))">
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="AreaTypeId">Area Type</label><em>*</em>
+                    <select asp-for="AreaTypeId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<AreaType>)ViewBag.AreaType,"Id","AreaTypeName"))">
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="TotalArea">Total Area</label><em>*</em>
+                        <input type="text" asp-for="TotalArea" class="form-control" placeholder="Total Area" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="AreaMeasurementTypeId">Area Type</label><em>*</em>
+                        <select asp-for="AreaMeasurementTypeId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<AreaMeasurement>)ViewBag.AreaMeasurement,"Id","MeasurementType"))">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="AreaCovered">Covered Area</label><em>*</em>
+                    <input type="text" asp-for="AreaCovered" class="form-control" placeholder="Enter Covered Area" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="AreaDisplay">Display Area</label><em>*</em>
+                    <input type="text" asp-for="AreaDisplay" class="form-control" placeholder="Enter Display Area" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="SuitableForId">Suitable For</label><em>*</em>
@@ -390,14 +458,15 @@
                     <input type="text" asp-for="Price" class="form-control" placeholder="Price (Rent) on Monthly basis" />
                 </div>
             </div>
-        </div>
-        <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="Maintaince">Maintaince</label><em>*</em>
                     <input type="text" asp-for="Maintaince" class="form-control" placeholder="Maintaince on Monthly basis" />
                 </div>
             </div>
+        </div>
+        <div class="row">
+
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="FloorNumber">Floor Number</label><em>*</em>
@@ -410,14 +479,15 @@
                     <input type="text" asp-for="TowerBlock" class="form-control" placeholder="Tower Block" />
                 </div>
             </div>
-        </div>
-        <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="TotalFloorCount">Total Floor Count</label><em>*</em>
                     <input type="text" asp-for="TotalFloorCount" class="form-control" placeholder="Total Floor Count" />
                 </div>
             </div>
+        </div>
+        <div class="row">
+
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="UnitNumber">Unit Number</label><em>*</em>
@@ -430,23 +500,14 @@
                     <input type="text" asp-for="Security_Deposit" class="form-control" placeholder="Security Deposit" />
                 </div>
             </div>
-
-        </div>
-        <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="NoOfChecks">No. Of Checks</label><em>*</em>
                     <input type="text" asp-for="NoOfChecks" class="form-control" placeholder="No. Of Checks" />
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="TrakheesiNumber">Trakheesi Number</label><em>*</em>
-                    <input type="text" asp-for="TrakheesiNumber" class="form-control" placeholder="Trakheesi Number" />
-                </div>
-            </div>
-
         </div>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-warning">
@@ -481,8 +542,13 @@
 
         </div>
         <div class="row">
-
-            <div class="col-md-3">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="TrakheesiNumber">Trakheesi Number</label><em>*</em>
+                    <input type="text" asp-for="TrakheesiNumber" class="form-control" placeholder="Trakheesi Number" />
+                </div>
+            </div>
+            <div class="col-md-4">
                 <div class="form-group">
                     <label>Amenities</label><em>*</em><br />
                     <select id="Amenities" class="form-control" name="Amenities" multiple
@@ -492,20 +558,23 @@
 
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label>Upload Image</label>
                     <input type="file" id="files" name="PropertyImage" multiple class="form-control" />
                 </div>
             </div>
-            <div class="col-md-6">
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <div class="form-group" id="divFile">
                     @if (ViewBag?.ImageDetails != null)
                     {
                         var imageDetails = ViewBag.ImageDetails;
-                        foreach (var imgData in imageDetails) {
+                        foreach (var imgData in imageDetails)
+                        {
                             <span class="pip">
-                                <img src="@imgData.ImagePath" class="imageThumb" alt="A2ZImage"/>
+                                <img src="@imgData.ImagePath" class="imageThumb" alt="A2ZImage" />
                             </span>
                         }
                     }
@@ -539,8 +608,6 @@
         </div>
     </div>
 </form>
-
-
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKGAp4SyPy1qnUqz5gMygSOzO8Qm2kNvY&callback=initAutocomplete&libraries=places&v=weekly"
         defer></script>
@@ -612,7 +679,7 @@
 
                     $("#PlaceAddress").val(place.formatted_address);
                     $("#PlaceId").val(place.place_id);
-                    $("#Lattitude").val(place.geometry.location.lat()); 
+                    $("#Lattitude").val(place.geometry.location.lat());
                     $("#Longitude").val(place.geometry.location.lng());
 
                     debugger
@@ -686,6 +753,14 @@
         });
         $('#RentCommercialform').validate({
             rules: {
+                PropertyName: {
+                    required: true,
+
+                },
+                ProprtyDescription: {
+                    required: true,
+
+                },
                 LocationId: {
                     required: true,
 
@@ -741,8 +816,38 @@
                 Price: {
                     required: true
                 },
+                BudgetId: {
+                    required: true
+                },
+                PossessionStatusId: {
+                    required: true
+                },
+                AreaTypeId: {
+                    required: true
+                },
+                TotalArea: {
+                    required: true
+                },
+                AreaMeasurementTypeId: {
+                    required: true
+                },
+                AreaDisplay: {
+                    required: true
+                },
+                AreaCovered: {
+                    required: true
+                },
+
             },
             messages: {
+                PropertyName: {
+                    required: "this  field is required.",
+
+                },
+                ProprtyDescription: {
+                    required: "this  field is required.",
+
+                },
 
                 LocationId: {
                     required: "this  field is required.",
@@ -799,6 +904,28 @@
                 Price: {
                     required: "this  field is required.",
                 },
+                BudgetId: {
+                    required: "this  field is required.",
+                },
+                PossessionStatusId: {
+                    required: "this  field is required.",
+                },
+                AreaTypeId: {
+                    required: "this  field is required.",
+                },
+                TotalArea: {
+                    required: "this  field is required.",
+                },
+                AreaMeasurementTypeId: {
+                    required: "this  field is required.",
+                },
+                AreaDisplay: {
+                    required: "this  field is required.",
+                },
+                AreaCovered: {
+                    required: "this  field is required.",
+                },
+
             },
             errorElement: 'span',
             errorPlacement: function (error, element) {

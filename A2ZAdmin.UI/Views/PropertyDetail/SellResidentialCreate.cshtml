@@ -1,752 +1,879 @@
 ﻿@model A2ZPortal.Core.Entities.Property.PropertyDetail
 
- 
-    <style>
+
+<style>
 
 
-        .form-row > .col > .valid-tooltip, .form-row > [class*=col-] > .valid-tooltip {
-            left: 5px
-        }
+    .form-row > .col > .valid-tooltip, .form-row > [class*=col-] > .valid-tooltip {
+        left: 5px
+    }
 
-        .is-valid ~ .valid-feedback, .is-valid ~ .valid-tooltip, .was-validated :valid ~ .valid-feedback, .was-validated :valid ~ .valid-tooltip {
-            display: block;
-            font-size: 14px;
-        }
+    .is-valid ~ .valid-feedback, .is-valid ~ .valid-tooltip, .was-validated :valid ~ .valid-feedback, .was-validated :valid ~ .valid-tooltip {
+        display: block;
+        font-size: 14px;
+    }
 
-        .form-control.is-valid, .was-validated .form-control:valid {
-            border-color: #28a745;
-            padding-right: 2.25rem;
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right calc(1.375em + .1875rem) center !important;
-            background-size: calc(.75em + .375rem) calc(.75em + .375rem)
-        }
+    .form-control.is-valid, .was-validated .form-control:valid {
+        border-color: #28a745;
+        padding-right: 2.25rem;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right calc(1.375em + .1875rem) center !important;
+        background-size: calc(.75em + .375rem) calc(.75em + .375rem)
+    }
 
-            .form-control.is-valid:focus, .was-validated .form-control:valid:focus {
-                border-color: #28a745;
-                box-shadow: 0 0 0 0 rgba(40,167,69,.25)
-            }
-
-        .was-validated textarea.form-control:valid, textarea.form-control.is-valid {
-            padding-right: 2.25rem;
-            background-position: top calc(1.375em + .1875rem) right calc(.375em + .1875rem)
-        }
-
-        .custom-select.is-valid, .was-validated .custom-select:valid {
-            border-color: #28a745;
-            padding-right: calc(.75em + 2.3125rem);
-            background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") right .75rem center/8px 10px no-repeat,#fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") center right 1.75rem/calc(.75em + .375rem) calc(.75em + .375rem) no-repeat
-        }
-
-            .custom-select.is-valid:focus, .was-validated .custom-select:valid:focus {
-                border-color: #28a745;
-                box-shadow: 0 0 0 0 rgba(40,167,69,.25)
-            }
-
-        .form-check-input.is-valid ~ .form-check-label, .was-validated .form-check-input:valid ~ .form-check-label {
-            color: #28a745
-        }
-
-        .form-check-input.is-valid ~ .valid-feedback, .form-check-input.is-valid ~ .valid-tooltip, .was-validated .form-check-input:valid ~ .valid-feedback, .was-validated .form-check-input:valid ~ .valid-tooltip {
-            display: block
-        }
-
-        .custom-control-input.is-valid ~ .custom-control-label, .was-validated .custom-control-input:valid ~ .custom-control-label {
-            color: #28a745
-        }
-
-            .custom-control-input.is-valid ~ .custom-control-label::before, .was-validated .custom-control-input:valid ~ .custom-control-label::before {
-                border-color: #28a745
-            }
-
-        .custom-control-input.is-valid:checked ~ .custom-control-label::before, .was-validated .custom-control-input:valid:checked ~ .custom-control-label::before {
-            border-color: #34ce57;
-            background-color: #34ce57
-        }
-
-        .custom-control-input.is-valid:focus ~ .custom-control-label::before, .was-validated .custom-control-input:valid:focus ~ .custom-control-label::before {
-            box-shadow: 0 0 0 0 rgba(40,167,69,.25)
-        }
-
-        .custom-control-input.is-valid:focus:not(:checked) ~ .custom-control-label::before, .was-validated .custom-control-input:valid:focus:not(:checked) ~ .custom-control-label::before {
-            border-color: #28a745
-        }
-
-        .custom-file-input.is-valid ~ .custom-file-label, .was-validated .custom-file-input:valid ~ .custom-file-label {
-            border-color: #28a745
-        }
-
-        .custom-file-input.is-valid:focus ~ .custom-file-label, .was-validated .custom-file-input:valid:focus ~ .custom-file-label {
+        .form-control.is-valid:focus, .was-validated .form-control:valid:focus {
             border-color: #28a745;
             box-shadow: 0 0 0 0 rgba(40,167,69,.25)
         }
 
-        .invalid-feedback {
-            display: none;
-            width: 100%;
-            margin-top: .25rem;
-            font-size: 80%;
-            color: #dc3545
+    .was-validated textarea.form-control:valid, textarea.form-control.is-valid {
+        padding-right: 2.25rem;
+        background-position: top calc(1.375em + .1875rem) right calc(.375em + .1875rem)
+    }
+
+    .custom-select.is-valid, .was-validated .custom-select:valid {
+        border-color: #28a745;
+        padding-right: calc(.75em + 2.3125rem);
+        background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") right .75rem center/8px 10px no-repeat,#fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") center right 1.75rem/calc(.75em + .375rem) calc(.75em + .375rem) no-repeat
+    }
+
+        .custom-select.is-valid:focus, .was-validated .custom-select:valid:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 0 0 rgba(40,167,69,.25)
         }
 
-        .invalid-tooltip {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            z-index: 5;
-            display: none;
-            max-width: 100%;
-            padding: .25rem .5rem;
-            margin-top: .1rem;
-            font-size: .875rem;
-            line-height: 1.5;
-            color: #fff;
-            background-color: rgba(220,53,69,.9);
-            border-radius: .25rem
+    .form-check-input.is-valid ~ .form-check-label, .was-validated .form-check-input:valid ~ .form-check-label {
+        color: #28a745
+    }
+
+    .form-check-input.is-valid ~ .valid-feedback, .form-check-input.is-valid ~ .valid-tooltip, .was-validated .form-check-input:valid ~ .valid-feedback, .was-validated .form-check-input:valid ~ .valid-tooltip {
+        display: block
+    }
+
+    .custom-control-input.is-valid ~ .custom-control-label, .was-validated .custom-control-input:valid ~ .custom-control-label {
+        color: #28a745
+    }
+
+        .custom-control-input.is-valid ~ .custom-control-label::before, .was-validated .custom-control-input:valid ~ .custom-control-label::before {
+            border-color: #28a745
         }
 
-        .form-row > .col > .invalid-tooltip, .form-row > [class*=col-] > .invalid-tooltip {
-            left: 5px
-        }
+    .custom-control-input.is-valid:checked ~ .custom-control-label::before, .was-validated .custom-control-input:valid:checked ~ .custom-control-label::before {
+        border-color: #34ce57;
+        background-color: #34ce57
+    }
 
-        .is-invalid ~ .invalid-feedback, .is-invalid ~ .invalid-tooltip, .was-validated :invalid ~ .invalid-feedback, .was-validated :invalid ~ .invalid-tooltip {
-            display: block
-        }
+    .custom-control-input.is-valid:focus ~ .custom-control-label::before, .was-validated .custom-control-input:valid:focus ~ .custom-control-label::before {
+        box-shadow: 0 0 0 0 rgba(40,167,69,.25)
+    }
 
-        .form-control.is-invalid, .was-validated .form-control:invalid {
+    .custom-control-input.is-valid:focus:not(:checked) ~ .custom-control-label::before, .was-validated .custom-control-input:valid:focus:not(:checked) ~ .custom-control-label::before {
+        border-color: #28a745
+    }
+
+    .custom-file-input.is-valid ~ .custom-file-label, .was-validated .custom-file-input:valid ~ .custom-file-label {
+        border-color: #28a745
+    }
+
+    .custom-file-input.is-valid:focus ~ .custom-file-label, .was-validated .custom-file-input:valid:focus ~ .custom-file-label {
+        border-color: #28a745;
+        box-shadow: 0 0 0 0 rgba(40,167,69,.25)
+    }
+
+    .invalid-feedback {
+        display: none;
+        width: 100%;
+        margin-top: .25rem;
+        font-size: 80%;
+        color: #dc3545
+    }
+
+    .invalid-tooltip {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 5;
+        display: none;
+        max-width: 100%;
+        padding: .25rem .5rem;
+        margin-top: .1rem;
+        font-size: .875rem;
+        line-height: 1.5;
+        color: #fff;
+        background-color: rgba(220,53,69,.9);
+        border-radius: .25rem
+    }
+
+    .form-row > .col > .invalid-tooltip, .form-row > [class*=col-] > .invalid-tooltip {
+        left: 5px
+    }
+
+    .is-invalid ~ .invalid-feedback, .is-invalid ~ .invalid-tooltip, .was-validated :invalid ~ .invalid-feedback, .was-validated :invalid ~ .invalid-tooltip {
+        display: block
+    }
+
+    .form-control.is-invalid, .was-validated .form-control:invalid {
+        border-color: #dc3545;
+        padding-right: 2.25rem;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right calc(1.375em + .1875rem) center;
+        background-size: calc(.75em + .375rem) calc(.75em + .375rem)
+    }
+
+        .form-control.is-invalid:focus, .was-validated .form-control:invalid:focus {
             border-color: #dc3545;
-            padding-right: 2.25rem;
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right calc(1.375em + .1875rem) center;
-            background-size: calc(.75em + .375rem) calc(.75em + .375rem)
-        }
-
-            .form-control.is-invalid:focus, .was-validated .form-control:invalid:focus {
-                border-color: #dc3545;
-                box-shadow: 0 0 0 0 rgba(220,53,69,.25)
-            }
-
-        .was-validated textarea.form-control:invalid, textarea.form-control.is-invalid {
-            padding-right: 2.25rem;
-            background-position: top calc(1.375em + .1875rem) right calc(.375em + .1875rem)
-        }
-
-        .custom-select.is-invalid, .was-validated .custom-select:invalid {
-            border-color: #dc3545;
-            padding-right: calc(.75em + 2.3125rem);
-            background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") right .75rem center/8px 10px no-repeat,#fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") center right 1.75rem/calc(.75em + .375rem) calc(.75em + .375rem) no-repeat
-        }
-
-            .custom-select.is-invalid:focus, .was-validated .custom-select:invalid:focus {
-                border-color: #dc3545;
-                box-shadow: 0 0 0 0 rgba(220,53,69,.25)
-            }
-
-        .form-check-input.is-invalid ~ .form-check-label, .was-validated .form-check-input:invalid ~ .form-check-label {
-            color: #dc3545
-        }
-
-        .form-check-input.is-invalid ~ .invalid-feedback, .form-check-input.is-invalid ~ .invalid-tooltip, .was-validated .form-check-input:invalid ~ .invalid-feedback, .was-validated .form-check-input:invalid ~ .invalid-tooltip {
-            display: block
-        }
-
-        .custom-control-input.is-invalid ~ .custom-control-label, .was-validated .custom-control-input:invalid ~ .custom-control-label {
-            color: #dc3545
-        }
-
-            .custom-control-input.is-invalid ~ .custom-control-label::before, .was-validated .custom-control-input:invalid ~ .custom-control-label::before {
-                border-color: #dc3545
-            }
-
-        .custom-control-input.is-invalid:checked ~ .custom-control-label::before, .was-validated .custom-control-input:invalid:checked ~ .custom-control-label::before {
-            border-color: #e4606d;
-            background-color: #e4606d
-        }
-
-        .custom-control-input.is-invalid:focus ~ .custom-control-label::before, .was-validated .custom-control-input:invalid:focus ~ .custom-control-label::before {
             box-shadow: 0 0 0 0 rgba(220,53,69,.25)
         }
 
-        .custom-control-input.is-invalid:focus:not(:checked) ~ .custom-control-label::before, .was-validated .custom-control-input:invalid:focus:not(:checked) ~ .custom-control-label::before {
-            border-color: #dc3545
-        }
+    .was-validated textarea.form-control:invalid, textarea.form-control.is-invalid {
+        padding-right: 2.25rem;
+        background-position: top calc(1.375em + .1875rem) right calc(.375em + .1875rem)
+    }
 
-        .custom-file-input.is-invalid ~ .custom-file-label, .was-validated .custom-file-input:invalid ~ .custom-file-label {
-            border-color: #dc3545
-        }
+    .custom-select.is-invalid, .was-validated .custom-select:invalid {
+        border-color: #dc3545;
+        padding-right: calc(.75em + 2.3125rem);
+        background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") right .75rem center/8px 10px no-repeat,#fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") center right 1.75rem/calc(.75em + .375rem) calc(.75em + .375rem) no-repeat
+    }
 
-        .custom-file-input.is-invalid:focus ~ .custom-file-label, .was-validated .custom-file-input:invalid:focus ~ .custom-file-label {
+        .custom-select.is-invalid:focus, .was-validated .custom-select:invalid:focus {
             border-color: #dc3545;
             box-shadow: 0 0 0 0 rgba(220,53,69,.25)
         }
-    </style>    <script src="~/validation/js/additional-methods.min.js"></script>
-    <script src="~/validation/js/demo.js"></script>
-    <script src="~/validation/js/jquery.validate.min.js"></script>
-    <style type="text/css">
 
-        #divMap {
-            height: 300px;
-            width: 100%;
+    .form-check-input.is-invalid ~ .form-check-label, .was-validated .form-check-input:invalid ~ .form-check-label {
+        color: #dc3545
+    }
+
+    .form-check-input.is-invalid ~ .invalid-feedback, .form-check-input.is-invalid ~ .invalid-tooltip, .was-validated .form-check-input:invalid ~ .invalid-feedback, .was-validated .form-check-input:invalid ~ .invalid-tooltip {
+        display: block
+    }
+
+    .custom-control-input.is-invalid ~ .custom-control-label, .was-validated .custom-control-input:invalid ~ .custom-control-label {
+        color: #dc3545
+    }
+
+        .custom-control-input.is-invalid ~ .custom-control-label::before, .was-validated .custom-control-input:invalid ~ .custom-control-label::before {
+            border-color: #dc3545
         }
 
+    .custom-control-input.is-invalid:checked ~ .custom-control-label::before, .was-validated .custom-control-input:invalid:checked ~ .custom-control-label::before {
+        border-color: #e4606d;
+        background-color: #e4606d
+    }
 
-        .modal-backdrop {
-            z-index: 10;
+    .custom-control-input.is-invalid:focus ~ .custom-control-label::before, .was-validated .custom-control-input:invalid:focus ~ .custom-control-label::before {
+        box-shadow: 0 0 0 0 rgba(220,53,69,.25)
+    }
+
+    .custom-control-input.is-invalid:focus:not(:checked) ~ .custom-control-label::before, .was-validated .custom-control-input:invalid:focus:not(:checked) ~ .custom-control-label::before {
+        border-color: #dc3545
+    }
+
+    .custom-file-input.is-invalid ~ .custom-file-label, .was-validated .custom-file-input:invalid ~ .custom-file-label {
+        border-color: #dc3545
+    }
+
+    .custom-file-input.is-invalid:focus ~ .custom-file-label, .was-validated .custom-file-input:invalid:focus ~ .custom-file-label {
+        border-color: #dc3545;
+        box-shadow: 0 0 0 0 rgba(220,53,69,.25)
+    }
+</style>
+<script src="~/validation/js/additional-methods.min.js"></script>
+<script src="~/validation/js/demo.js"></script>
+<script src="~/validation/js/jquery.validate.min.js"></script>
+<style type="text/css">
+
+    #divMap {
+        height: 300px;
+        width: 100%;
+    }
+
+
+    .modal-backdrop {
+        z-index: 10;
+    }
+
+    input[type="file"] {
+        display: block;
+    }
+
+    .imageThumb {
+        max-height: 75px;
+        border: 2px solid;
+        padding: 1px;
+        cursor: pointer;
+    }
+
+    .pip {
+        display: inline-block;
+        margin: 10px 10px 0 0;
+    }
+
+    .remove {
+        display: block;
+        background: #444;
+        border: 1px solid black;
+        color: white;
+        text-align: center;
+        cursor: pointer;
+    }
+
+        .remove:hover {
+            background: white;
+            color: black;
         }
 
-        input[type="file"] {
-            display: block;
-        }
+    .modal {
+        z-index: 20;
+    }
+</style>
+<form id="SellResidentialform" method="post" data-ajax="true" data-ajax-method="post"
+      asp-action="PostCreate" asp-controller="PropertyDetail" enctype="multipart/form-data"
+      data-ajax-success="SuccessProperty" data-ajax-begin="BeginRequest">
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="PropertyName">Property Name</label><em>*</em>
+                    <input type="text" asp-for="PropertyName" class="form-control" placeholder="Enter Property Name" />
 
-        .imageThumb {
-            max-height: 75px;
-            border: 2px solid;
-            padding: 1px;
-            cursor: pointer;
-        }
-
-        .pip {
-            display: inline-block;
-            margin: 10px 10px 0 0;
-        }
-
-        .remove {
-            display: block;
-            background: #444;
-            border: 1px solid black;
-            color: white;
-            text-align: center;
-            cursor: pointer;
-        }
-
-            .remove:hover {
-                background: white;
-                color: black;
-            }
-
-        .modal {
-            z-index: 20;
-        }
-    </style>
-    <form id="SellResidentialform" method="post" data-ajax="true" data-ajax-method="post"
-          asp-action="PostCreate" asp-controller="PropertyDetail" enctype="multipart/form-data"
-          data-ajax-success="SuccessProperty" data-ajax-begin="BeginRequest">
-        <div class="box-body">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="PropertyName">Property Name</label><em>*</em>
-                        <input type="text" asp-for="PropertyName" class="form-control" />
-
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="ProprtyDescription">Property Description</label><em>*</em>
-                        <input type="text" asp-for="ProprtyDescription" class="form-control" />
-
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input asp-for="Id" type="hidden" />
-                        <input asp-for="CreatedBy" type="hidden" />
-                        <input asp-for="CreatedDate" type="hidden" />
-                        <label asp-for="LocationId">Location</label><em>*</em>
-                        <select asp-for="LocationId" class="form-control"
-                                asp-items="@(new SelectList((IEnumerable<Location>)ViewBag.Location,"Id","LocationName"))">
-                            <option value="">--Select--</option>
-                        </select>
-                        <span asp-validation-for="LocationId" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="SubLocationId">Sub Location</label><em>*</em>
-                        <select asp-for="SubLocationId" class="form-control"
-                                asp-items="@(new SelectList((IEnumerable<SubLocation>)ViewBag.SubLocation,"Id","SubLocationName"))">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="NoOfBedRoomsId">Bed Room</label><em>*</em>
-                        <select asp-for="NoOfBedRoomsId" class="form-control"
-                                asp-items="@(new SelectList((IEnumerable<BedRoom>)ViewBag.BedRoom,"Id","BedRooms"))">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="NoOfBathroomsId">Bath Room</label><em>*</em>
-                        <select asp-for="NoOfBathroomsId" class="form-control"
-                                asp-items="@(new SelectList((IEnumerable<BathRoom>)ViewBag.BathRoom,"Id","BathRooms"))">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="AdditionalRoomId">Additional Room</label><em>*</em>
-                        <select asp-for="AdditionalRoomId" class="form-control"
-                                asp-items="@(new SelectList((IEnumerable<AdditionalRoom>)ViewBag.AdditionalRoom,"Id","RoomName"))">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="FurnishingStatusId">Furnishing Status</label><em>*</em>
-                        <select asp-for="FurnishingStatusId" class="form-control"
-                                asp-items="@(new SelectList((IEnumerable<FurnishedStatus>)ViewBag.FurnishedStatus,"Id","StatusName"))">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="ProprtyDescription">Property Description</label><em>*</em>
+                    <input type="text" placeholder="Enter Property Description" asp-for="ProprtyDescription" class="form-control" />
+
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="AgeOfPropertyId">Age Of Property</label><em>*</em>
-                        <select asp-for="AgeOfPropertyId" class="form-control"
-                                asp-items="@(new SelectList((IEnumerable<AgeOfProperty>)ViewBag.AgeOfProperty,"Id","Age"))">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="NoOfParkingId">No. Of Parking</label><em>*</em>
-                        <select asp-for="NoOfParkingId" class="form-control"
-                                asp-items="@(new SelectList((IEnumerable<NumberOfParking>)ViewBag.NumberOfParking,"Id","TotalParking"))">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="ViewFacingId">View Facing</label><em>*</em>
-                        <select asp-for="ViewFacingId" class="form-control"
-                                asp-items="@(new SelectList((IEnumerable<ViewFacing>)ViewBag.ViewFacing,"Id","Facing"))">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <input asp-for="Id" type="hidden" />
+                    <input asp-for="CreatedBy" type="hidden" />
+                    <input asp-for="CreatedDate" type="hidden" />
+                    <label asp-for="LocationId">Location</label><em>*</em>
+                    <select asp-for="LocationId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<Location>)ViewBag.Location,"Id","LocationName"))">
+                        <option value="">--Select--</option>
+                    </select>
+                    <span asp-validation-for="LocationId" class="text-danger"></span>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="DefiningLocationId">Defining Location</label><em>*</em>
-                        <select asp-for="DefiningLocationId" class="form-control"
-                                asp-items="@(new SelectList((IEnumerable<DefiningLocation>)ViewBag.DefiningLocation,"Id","DLocationName"))">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="ExplainingPriceId">Explaining Price</label><em>*</em>
-                        <select asp-for="ExplainingPriceId" class="form-control"
-                                asp-items="@(new SelectList((IEnumerable<ExplaningPrice>)ViewBag.ExplaningPrice,"Id","PriceName"))">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="ExplainingThePropertyId">Explaining The Property</label><em>*</em>
-                        <select asp-for="ExplainingThePropertyId" class="form-control"
-                                asp-items="@(new SelectList((IEnumerable<ExplaningProperty>)ViewBag.ExplaningProperty,"Id","Name"))">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="SubLocationId">Sub Location</label><em>*</em>
+                    <select asp-for="SubLocationId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<SubLocation>)ViewBag.SubLocation,"Id","SubLocationName"))">
+                        <option value="">--Select--</option>
+                    </select>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="DefiningSizeStructureId">Defining Size and Structure</label><em>*</em>
-                        <select asp-for="DefiningSizeStructureId" class="form-control"
-                                asp-items="@(new SelectList((IEnumerable<SizeAndStructure>)ViewBag.SizeAndStructure,"Id","Name"))">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="SuitableForId">Suitable For</label><em>*</em>
-                        <select asp-for="SuitableForId" class="form-control"
-                                asp-items="@(new SelectList((IEnumerable<SuitableFor>)ViewBag.SuitableFor,"Id","SuitabelName"))">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="Price">Price (Rent)</label><em>*</em>
-                        <input type="text" asp-for="Price" class="form-control" placeholder="Price (Rent) on Monthly basis" />
-                    </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="NoOfBedRoomsId">Bed Room</label><em>*</em>
+                    <select asp-for="NoOfBedRoomsId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<BedRoom>)ViewBag.BedRoom,"Id","BedRooms"))">
+                        <option value="">--Select--</option>
+                    </select>
                 </div>
             </div>
-            <div class="row">
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="FloorNumber">Floor Number</label><em>*</em>
-                        <input type="text" asp-for="FloorNumber" class="form-control" placeholder="Floor Number" />
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="TowerBlock">Tower Block</label><em>*</em>
-                        <input type="text" asp-for="TowerBlock" class="form-control" placeholder="Tower Block" />
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="TotalFloorCount">Total Floor Count</label><em>*</em>
-                        <input type="text" asp-for="TotalFloorCount" class="form-control" placeholder="Total Floor Count" />
-                    </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="NoOfBathroomsId">Bath Room</label><em>*</em>
+                    <select asp-for="NoOfBathroomsId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<BathRoom>)ViewBag.BathRoom,"Id","BathRooms"))">
+                        <option value="">--Select--</option>
+                    </select>
                 </div>
             </div>
-            <div class="row">
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="UnitNumber">Unit Number</label><em>*</em>
-                        <input type="text" asp-for="UnitNumber" class="form-control" placeholder="Floor Number" />
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="TrakheesiNumber">Trakheesi Number</label><em>*</em>
-                        <input type="text" asp-for="TrakheesiNumber" class="form-control" placeholder="Trakheesi Number" />
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Amenities</label><em>*</em><br />
-                        <select id="Amenities" class="form-control" multiple name="Amenities"
-                                asp-items="@(new SelectList((IEnumerable<Amenities>)ViewBag.Amenities,"Id","AmenitiesName"))">
-                        </select>
-
-                    </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="AdditionalRoomId">Additional Room</label><em>*</em>
+                    <select asp-for="AdditionalRoomId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<AdditionalRoom>)ViewBag.AdditionalRoom,"Id","RoomName"))">
+                        <option value="">--Select--</option>
+                    </select>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="FurnishingStatusId">Furnishing Status</label><em>*</em>
+                    <select asp-for="FurnishingStatusId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<FurnishedStatus>)ViewBag.FurnishedStatus,"Id","StatusName"))">
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="AgeOfPropertyId">Age Of Property</label><em>*</em>
+                    <select asp-for="AgeOfPropertyId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<AgeOfProperty>)ViewBag.AgeOfProperty,"Id","Age"))">
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
 
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="NoOfParkingId">No. Of Parking</label><em>*</em>
+                    <select asp-for="NoOfParkingId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<NumberOfParking>)ViewBag.NumberOfParking,"Id","TotalParking"))">
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="ViewFacingId">View Facing</label><em>*</em>
+                    <select asp-for="ViewFacingId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<ViewFacing>)ViewBag.ViewFacing,"Id","Facing"))">
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="DefiningLocationId">Defining Location</label><em>*</em>
+                    <select asp-for="DefiningLocationId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<DefiningLocation>)ViewBag.DefiningLocation,"Id","DLocationName"))">
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
 
-            <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="ExplainingPriceId">Explaining Price</label><em>*</em>
+                    <select asp-for="ExplainingPriceId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<ExplaningPrice>)ViewBag.ExplaningPrice,"Id","PriceName"))">
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="ExplainingThePropertyId">Explaining The Property</label><em>*</em>
+                    <select asp-for="ExplainingThePropertyId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<ExplaningProperty>)ViewBag.ExplaningProperty,"Id","Name"))">
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="DefiningSizeStructureId">Defining Size and Structure</label><em>*</em>
+                    <select asp-for="DefiningSizeStructureId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<SizeAndStructure>)ViewBag.SizeAndStructure,"Id","Name"))">
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="BudgetId">Budget</label><em>*</em>
+                    <select asp-for="BudgetId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<Budget>)ViewBag.Budget,"Id","Budgets"))">
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="PossessionStatusId">Possession Status</label><em>*</em>
+                    <select asp-for="PossessionStatusId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<PossessionStatus>)ViewBag.PossessionStatus,"Id","StatusName"))">
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="AreaTypeId">Area Type</label><em>*</em>
+                    <select asp-for="AreaTypeId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<AreaType>)ViewBag.AreaType,"Id","AreaTypeName"))">
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+        </div>
 
-                <div class="col-md-3">
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="SuitableForId">Suitable For</label><em>*</em>
+                    <select asp-for="SuitableForId" class="form-control"
+                            asp-items="@(new SelectList((IEnumerable<SuitableFor>)ViewBag.SuitableFor,"Id","SuitabelName"))">
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Price">Price (Rent)</label><em>*</em>
+                    <input type="text" asp-for="Price" class="form-control" placeholder="Price (Rent) on Monthly basis" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="FloorNumber">Floor Number</label><em>*</em>
+                    <input type="text" asp-for="FloorNumber" class="form-control" placeholder="Floor Number" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="form-group">
-                        <label>Upload Image</label>
-                        <input type="file" id="files" name="PropertyImage" multiple class="form-control" />
+                        <label asp-for="TotalArea">Total Area</label><em>*</em>
+                        <input type="text" asp-for="TotalArea" class="form-control" placeholder="Total Area" />
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group" id="divFile">
-
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
                     <div class="form-group">
-                        <label>Location (Address)</label>
-                        <input asp-for="Lattitude" type="hidden" />
-                        <input type="hidden" asp-for="Longitude" />
-                        <input type="hidden" asp-for="PlaceAddress" />
-                        <input type="hidden" asp-for="PlaceAddress" />
-                        <input id="pac-input"
-                               class="mailbox-controls form-control"
-                               type="text"
-                               placeholder="Search Box" />
-                        <div id="divMap" class="google_maps" style="position:relative;"></div>
+                        <label asp-for="AreaMeasurementTypeId">Area Type</label><em>*</em>
+                        <select asp-for="AreaMeasurementTypeId" class="form-control"
+                                asp-items="@(new SelectList((IEnumerable<AreaMeasurement>)ViewBag.AreaMeasurement,"Id","MeasurementType"))">
+                            <option value="">--Select--</option>
+                        </select>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="box-footer">
-
-            <div class="col-md-12 pull-right">
-                <button type="reset" class="btn btn-danger ">Cancel</button>
-                <button type="submit" class="btn btn-success pull-right">
-                    <i class="fa fa-download"> &nbsp; Save</i>
-                </button>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="AreaCovered">Covered Area</label><em>*</em>
+                    <input type="text" asp-for="AreaCovered" class="form-control" placeholder="Enter Covered Area" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="AreaDisplay">Display Area</label><em>*</em>
+                    <input type="text" asp-for="AreaDisplay" class="form-control" placeholder="Enter Display Area" />
+                </div>
             </div>
         </div>
-    </form>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKGAp4SyPy1qnUqz5gMygSOzO8Qm2kNvY&callback=initAutocomplete&libraries=places&v=weekly"defer></script>
-    <script>
-        (function (exports) {
-            "use strict";
-            function initAutocomplete() {
-                var map = new google.maps.Map(document.getElementById("divMap"), {
-                    center: {
-                        lat: 28.651952,
-                        lng: 77.231495
-                    },
-                    zoom: 13,
-                    mapTypeId: "roadmap"
-                }); // Create the search box and link it to the UI element.
+        <div class="row">
 
-                var input = document.getElementById("pac-input");
-                var searchBox = new google.maps.places.SearchBox(input);
-                map.controls[google.maps.ControlPosition.TOP_LEFT].push(input); // Bias the SearchBox results towards current map's viewport.
 
-                map.addListener("bounds_changed", function () {
-                    searchBox.setBounds(map.getBounds());
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="TowerBlock">Tower Block</label><em>*</em>
+                    <input type="text" asp-for="TowerBlock" class="form-control" placeholder="Tower Block" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="TotalFloorCount">Total Floor Count</label><em>*</em>
+                    <input type="text" asp-for="TotalFloorCount" class="form-control" placeholder="Total Floor Count" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="UnitNumber">Unit Number</label><em>*</em>
+                    <input type="text" asp-for="UnitNumber" class="form-control" placeholder="Unit Number" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="TrakheesiNumber">Trakheesi Number</label><em>*</em>
+                    <input type="text" asp-for="TrakheesiNumber" class="form-control" placeholder="Trakheesi Number" />
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Amenities</label><em>*</em><br />
+                    <select id="Amenities" class="form-control" multiple name="Amenities"
+                            asp-items="@(new SelectList((IEnumerable<Amenities>)ViewBag.Amenities,"Id","AmenitiesName"))">
+                    </select>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Upload Image</label>
+                    <input type="file" id="files" name="PropertyImage" multiple class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group" id="divFile">
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Location (Address)</label>
+                    <input asp-for="Lattitude" type="hidden" />
+                    <input type="hidden" asp-for="Longitude" />
+                    <input type="hidden" asp-for="PlaceAddress" />
+                    <input type="hidden" asp-for="PlaceAddress" />
+                    <input id="pac-input"
+                           class="mailbox-controls form-control"
+                           type="text"
+                           placeholder="Search Box" />
+                    <div id="divMap" class="google_maps" style="position:relative;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+
+        <div class="col-md-12 pull-right">
+            <button type="reset" class="btn btn-danger ">Cancel</button>
+            <button type="submit" class="btn btn-success pull-right">
+                <i class="fa fa-download"> &nbsp; Save</i>
+            </button>
+        </div>
+    </div>
+</form>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKGAp4SyPy1qnUqz5gMygSOzO8Qm2kNvY&callback=initAutocomplete&libraries=places&v=weekly" defer></script>
+<script>
+    (function (exports) {
+        "use strict";
+        function initAutocomplete() {
+            var map = new google.maps.Map(document.getElementById("divMap"), {
+                center: {
+                    lat: 28.651952,
+                    lng: 77.231495
+                },
+                zoom: 13,
+                mapTypeId: "roadmap"
+            }); // Create the search box and link it to the UI element.
+
+            var input = document.getElementById("pac-input");
+            var searchBox = new google.maps.places.SearchBox(input);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input); // Bias the SearchBox results towards current map's viewport.
+
+            map.addListener("bounds_changed", function () {
+                searchBox.setBounds(map.getBounds());
+            });
+            var markers = []; // Listen for the event fired when the user selects a prediction and retrieve
+            // more details for that place.
+
+            searchBox.addListener("places_changed", function () {
+                var places = searchBox.getPlaces();
+
+                if (places.length == 0) {
+                    return;
+                } // Clear out the old markers.
+
+                markers.forEach(function (marker) {
+                    marker.setMap(null);
                 });
-                var markers = []; // Listen for the event fired when the user selects a prediction and retrieve
-                // more details for that place.
+                markers = []; // For each place, get the icon, name and location.
 
-                searchBox.addListener("places_changed", function () {
-                    var places = searchBox.getPlaces();
-
-                    if (places.length == 0) {
+                var bounds = new google.maps.LatLngBounds();
+                places.forEach(function (place) {
+                    if (!place.geometry) {
+                        console.log("Returned place contains no geometry");
                         return;
-                    } // Clear out the old markers.
-
-                    markers.forEach(function (marker) {
-                        marker.setMap(null);
-                    });
-                    markers = []; // For each place, get the icon, name and location.
-
-                    var bounds = new google.maps.LatLngBounds();
-                    places.forEach(function (place) {
-                        if (!place.geometry) {
-                            console.log("Returned place contains no geometry");
-                            return;
-                        }
-
-                        var icon = {
-                            url: place.icon,
-                            size: new google.maps.Size(71, 71),
-                            origin: new google.maps.Point(0, 0),
-                            anchor: new google.maps.Point(17, 34),
-                            scaledSize: new google.maps.Size(25, 25)
-                        }; // Create a marker for each place.
-
-                        markers.push(
-                            new google.maps.Marker({
-                                map: map,
-                                icon: icon,
-                                title: place.name,
-                                position: place.geometry.location
-                            })
-                        );
-
-                        if (place.geometry.viewport) {
-                            // Only geocodes have viewport.
-                            bounds.union(place.geometry.viewport);
-                        } else {
-                            bounds.extend(place.geometry.location);
-                        }
-
-                        $("#PlaceAddress").val(place.formatted_address);
-                        $("#PlaceId").val(place.place_id);
-                        $("#Lattitude").val(place.geometry.location.lat());
-                        $("#Longitude").val(place.geometry.location.lng());
-
-                        debugger
-                    });
-
-                    map.fitBounds(bounds);
-                    $("#Longitude").val(bounds.Ua.i);
-                    $("#Lattitude").val(bounds.Za.i);
-
-                });
-            }
-
-            exports.initAutocomplete = initAutocomplete;
-        })((this.window = this.window || {}));
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            if (window.File && window.FileList && window.FileReader) {
-                $("#files").on("change", function (e) {
-                    var files = e.target.files,
-                        filesLength = files.length;
-                    for (var i = 0; i < filesLength; i++) {
-                        var f = files[i]
-                        var fileReader = new FileReader();
-                        fileReader.onload = (function (e) {
-                            var file = e.target;
-                            $("<span class=\"pip\">" +
-                                "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
-                                "<br/>" +
-                                "</span>").insertAfter("#divFile");
-                            $(".remove").click(function () {
-                                $(this).parent(".pip").remove();
-                            });
-
-                            // Old code here
-                            /*$("<img></img>", {
-                              class: "imageThumb",
-                              src: e.target.result,
-                              title: file.name + " | Click to remove"
-                            }).insertAfter("#files").click(function(){$(this).remove();});*/
-
-                        });
-                        fileReader.readAsDataURL(f);
                     }
+
+                    var icon = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25)
+                    }; // Create a marker for each place.
+
+                    markers.push(
+                        new google.maps.Marker({
+                            map: map,
+                            icon: icon,
+                            title: place.name,
+                            position: place.geometry.location
+                        })
+                    );
+
+                    if (place.geometry.viewport) {
+                        // Only geocodes have viewport.
+                        bounds.union(place.geometry.viewport);
+                    } else {
+                        bounds.extend(place.geometry.location);
+                    }
+
+                    $("#PlaceAddress").val(place.formatted_address);
+                    $("#PlaceId").val(place.place_id);
+                    $("#Lattitude").val(place.geometry.location.lat());
+                    $("#Longitude").val(place.geometry.location.lng());
+
+                    debugger
                 });
-            } else {
-                alert("Your browser doesn't support to File API")
+
+                map.fitBounds(bounds);
+                $("#Longitude").val(bounds.Ua.i);
+                $("#Lattitude").val(bounds.Za.i);
+
+            });
+        }
+
+        exports.initAutocomplete = initAutocomplete;
+    })((this.window = this.window || {}));
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        if (window.File && window.FileList && window.FileReader) {
+            $("#files").on("change", function (e) {
+                var files = e.target.files,
+                    filesLength = files.length;
+                for (var i = 0; i < filesLength; i++) {
+                    var f = files[i]
+                    var fileReader = new FileReader();
+                    fileReader.onload = (function (e) {
+                        var file = e.target;
+                        $("<span class=\"pip\">" +
+                            "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                            "<br/>" +
+                            "</span>").insertAfter("#divFile");
+                        $(".remove").click(function () {
+                            $(this).parent(".pip").remove();
+                        });
+
+                        // Old code here
+                        /*$("<img></img>", {
+                          class: "imageThumb",
+                          src: e.target.result,
+                          title: file.name + " | Click to remove"
+                        }).insertAfter("#files").click(function(){$(this).remove();});*/
+
+                    });
+                    fileReader.readAsDataURL(f);
+                }
+            });
+        } else {
+            alert("Your browser doesn't support to File API")
+        }
+    });
+</script>
+<link href="~/MultiSelect/css/bootstrap-multiselect.css" rel="stylesheet" />
+<script src="~/MultiSelect/js/bootstrap-2.3.2.min.js"></script>
+<script src="~/MultiSelect/js/bootstrap-multiselect.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#Amenities').multiselect();
+    });
+</script>
+
+<script>
+    $(function () {
+        $.validator.setDefaults({
+            submitHandler: function () {
+                $("#divContent").addClass('loading');
+                $('#SellResidentialform').submit();
+                $("#divContent").removeClass('loading');
             }
         });
-    </script> <link href="~/MultiSelect/css/bootstrap-multiselect.css" rel="stylesheet" />
-    <script src="~/MultiSelect/js/bootstrap-2.3.2.min.js"></script>
-    <script src="~/MultiSelect/js/bootstrap-multiselect.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#Amenities').multiselect();
+        $('#SellResidentialform').validate({
+            rules: {
+                PropertyName: {
+                    required: true,
+
+                },
+                ProprtyDescription: {
+                    required: true,
+
+                },
+                LocationId: {
+                    required: true,
+
+                },
+                SubLocationId: {
+                    required: true,
+
+                },
+                NoOfBedRoomsId: {
+                    required: true
+                },
+                NoOfBathroomsId: {
+                    required: true,
+
+                },
+                AdditionalRoomId: {
+                    required: true,
+
+                },
+                FurnishingStatusId: {
+                    required: true
+                },
+                AgeOfPropertyId: {
+                    required: true,
+
+                },
+                NoOfParkingId: {
+                    required: true,
+
+                },
+                ViewFacingId: {
+                    required: true
+                },
+                DefiningLocationId: {
+                    required: true,
+
+                },
+                ExplainingPriceId: {
+                    required: true,
+
+                },
+                ExplainingThePropertyId: {
+                    required: true
+                },
+                DefiningSizeStructureId: {
+                    required: true,
+
+                },
+                SuitableForId: {
+                    required: true,
+
+                },
+                Price: {
+                    required: true
+                },
+                BudgetId: {
+                    required: true
+                },
+                PossessionStatusId: {
+                    required: true
+                },
+                AreaTypeId: {
+                    required: true
+                },
+                TotalArea: {
+                    required: true
+                },
+                AreaMeasurementTypeId: {
+                    required: true
+                },
+                AreaDisplay: {
+                    required: true
+                },
+                AreaCovered: {
+                    required: true
+                },
+
+
+            },
+            messages: {
+
+                PropertyName: {
+                    required: "this  field is required.",
+
+                },
+                PropertyName: {
+                    required: "this  field is required.",
+
+                },
+                LocationId: {
+                    required: "this  field is required.",
+
+                },
+                SubLocationId: {
+                    required: "this  field is required.",
+
+                },
+                NoOfBedRoomsId: {
+                    required: "this  field is required.",
+                },
+                NoOfBathroomsId: {
+                    required: "this  field is required.",
+
+                },
+                AdditionalRoomId: {
+                    required: "this  field is required.",
+
+                },
+                FurnishingStatusId: {
+                    required: "this  field is required.",
+                },
+                AgeOfPropertyId: {
+                    required: "this  field is required.",
+
+                },
+                NoOfParkingId: {
+                    required: "this  field is required.",
+
+                },
+                ViewFacingId: {
+                    required: "this  field is required.",
+                },
+                DefiningLocationId: {
+                    required: "this  field is required.",
+
+                },
+                ExplainingPriceId: {
+                    required: "this  field is required.",
+
+                },
+                ExplainingThePropertyId: {
+                    required: "this  field is required.",
+                },
+                DefiningSizeStructureId: {
+                    required: "this  field is required.",
+
+                },
+                SuitableForId: {
+                    required: "this  field is required.",
+
+                },
+                Price: {
+                    required: "this  field is required.",
+                },
+                BudgetId: {
+                    required: "this  field is required.",
+                },
+                PossessionStatusId: {
+                    required: "this  field is required.",
+                },
+                AreaTypeId: {
+                    required: "this  field is required.",
+                },
+                TotalArea: {
+                    required: "this  field is required.",
+                },
+                AreaMeasurementTypeId: {
+                    required: "this  field is required.",
+                },
+                AreaDisplay: {
+                    required: "this  field is required.",
+                },
+                AreaCovered: {
+                    required: "this  field is required.",
+                },
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+            }
         });
-    </script>
-
-    <script>
-        $(function () {
-            $.validator.setDefaults({
-                submitHandler: function () {
-                    $("#divContent").addClass('loading');
-                    $('#SellResidentialform').submit();
-                    $("#divContent").removeClass('loading');
-                }
-            });
-            $('#SellResidentialform').validate({
-                rules: {
-                    LocationId: {
-                        required: true,
-
-                    },
-                    SubLocationId: {
-                        required: true,
-
-                    },
-                    NoOfBedRoomsId: {
-                        required: true
-                    },
-                    NoOfBathroomsId: {
-                        required: true,
-
-                    },
-                    AdditionalRoomId: {
-                        required: true,
-
-                    },
-                    FurnishingStatusId: {
-                        required: true
-                    },
-                    AgeOfPropertyId: {
-                        required: true,
-
-                    },
-                    NoOfParkingId: {
-                        required: true,
-
-                    },
-                    ViewFacingId: {
-                        required: true
-                    },
-                    DefiningLocationId: {
-                        required: true,
-
-                    },
-                    ExplainingPriceId: {
-                        required: true,
-
-                    },
-                    ExplainingThePropertyId: {
-                        required: true
-                    },
-                    DefiningSizeStructureId: {
-                        required: true,
-
-                    },
-                    SuitableForId: {
-                        required: true,
-
-                    },
-                    Price: {
-                        required: true
-                    },
-                },
-                messages: {
-                    
-                    LocationId: {
-                        required: "this  field is required.",
-
-                    },
-                    SubLocationId: {
-                        required: "this  field is required.",
-
-                    },
-                    NoOfBedRoomsId: {
-                        required: "this  field is required.",
-                    },
-                    NoOfBathroomsId: {
-                        required: "this  field is required.",
-
-                    },
-                    AdditionalRoomId: {
-                        required: "this  field is required.",
-
-                    },
-                    FurnishingStatusId: {
-                        required: "this  field is required.",
-                    },
-                    AgeOfPropertyId: {
-                        required: "this  field is required.",
-
-                    },
-                    NoOfParkingId: {
-                        required: "this  field is required.",
-
-                    },
-                    ViewFacingId: {
-                        required: "this  field is required.",
-                    },
-                    DefiningLocationId: {
-                        required: "this  field is required.",
-
-                    },
-                    ExplainingPriceId: {
-                        required: "this  field is required.",
-
-                    },
-                    ExplainingThePropertyId: {
-                        required: "this  field is required.",
-                    },
-                    DefiningSizeStructureId: {
-                        required: "this  field is required.",
-
-                    },
-                    SuitableForId: {
-                        required: "this  field is required.",
-
-                    },
-                    Price: {
-                        required: "this  field is required.",
-                    },
-                },
-                errorElement: 'span',
-                errorPlacement: function (error, element) {
-                    error.addClass('invalid-feedback');
-                    element.closest('.form-group').append(error);
-                },
-                highlight: function (element, errorClass, validClass) {
-                    $(element).addClass('is-invalid');
-                },
-                unhighlight: function (element, errorClass, validClass) {
-                    $(element).removeClass('is-invalid');
-                }
-            });
-        });
-    </script>
+    });
+</script>

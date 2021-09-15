@@ -46,6 +46,10 @@ namespace A2ZAdmin.UI.Controllers.Master
         private readonly IGenericRepository<SuitableFor, int> _ISuitableForRepository;
         private readonly IGenericRepository<Amenities, int> _IAmenitiesRepository;
         private readonly IGenericRepository<PropertyFeature, int> _IPropertyFeatureRepository;
+        private readonly IGenericRepository<PossessionStatus, int> _IPossessionStatusRepository;
+        private readonly IGenericRepository<AreaType, int> _IAreaTypeRepository;
+        private readonly IGenericRepository<AreaMeasurement, int> _IAreaMeasurementRepository;
+
         public PropertyDetailController(IGenericRepository<PropertyDetail, int> propertyDetailRepository,
             IGenericRepository<PropertyImage, int> propertyImageRepository,
             IHostingEnvironment hostingEnvironment, IGenericRepository<PropertyType, int> propertyTypeRepo
@@ -67,7 +71,10 @@ namespace A2ZAdmin.UI.Controllers.Master
              , IGenericRepository<SizeAndStructure, int> _SizeAndStructureRepository
              , IGenericRepository<SuitableFor, int> _SuitableForRepository
             , IGenericRepository<Amenities, int> _AmenitiesRepository,
-            IGenericRepository<PropertyFeature, int> _PropertyFeatureRepository
+            IGenericRepository<PropertyFeature, int> _PropertyFeatureRepository,
+            IGenericRepository<PossessionStatus, int> _PossessionStatusRepository,
+            IGenericRepository<AreaType, int> _AreaTypeRepository,
+            IGenericRepository<AreaMeasurement, int> _AreaMeasurementRepository
             )
         {
             _IPropertyDetailRepository = propertyDetailRepository;
@@ -93,6 +100,9 @@ namespace A2ZAdmin.UI.Controllers.Master
             _ISuitableForRepository = _SuitableForRepository;
             _IAmenitiesRepository = _AmenitiesRepository;
             _IPropertyFeatureRepository = _PropertyFeatureRepository;
+            _IPossessionStatusRepository = _PossessionStatusRepository;
+            _IAreaTypeRepository = _AreaTypeRepository;
+            _IAreaMeasurementRepository = _AreaMeasurementRepository;
         }
         public async Task<IActionResult> Index()
         {
@@ -312,6 +322,11 @@ namespace A2ZAdmin.UI.Controllers.Master
             ViewBag.SizeAndStructure = (await _ISizeAndStructureRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
             ViewBag.SuitableFor = (await _ISuitableForRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
             ViewBag.Amenities = (await _IAmenitiesRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.PossessionStatus = (await _IPossessionStatusRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.AreaType = (await _IAreaTypeRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.AreaMeasurement = (await _IAreaMeasurementRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+
+
         }
 
         private async Task<IActionResult> CreatePropertyDetails(PropertyDetail model, IFormFile[] PropertyImage)

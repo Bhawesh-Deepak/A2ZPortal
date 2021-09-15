@@ -1,4 +1,5 @@
-﻿using A2ZPortal.Core.Entities.Master;
+﻿using A2ZPortal.Core.Entities.Customers;
+using A2ZPortal.Core.Entities.Master;
 using A2ZPortal.Core.Entities.Property;
 using A2ZPortal.Core.Entities.UserManagement;
 using Microsoft.EntityFrameworkCore;
@@ -54,6 +55,7 @@ namespace A2ZPortal.Core.Entities.Context
         public virtual DbSet<ExplaningProperty> ExplaningPropertys { get; set; }
         public virtual DbSet<RoleAccessDetail> RoleAccessDetails { get; set; }
         public virtual DbSet<PropertyBanner> PropertyBanners { get; set; }
+        public virtual DbSet<CustomerDetails> CustomerDetails { get; set; }
         
     }
 }

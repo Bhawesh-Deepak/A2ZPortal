@@ -5,9 +5,9 @@ using A2ZPortal.Core.Entities.Common;
 
 namespace A2ZPortal.Core.Entities.Property
 {
-    [Table("PropertyDetail", Schema = "Property")]
-    public class PropertyDetail: BaseModel<int>
-    {
+	[Table("PropertyDetail", Schema = "Property")]
+	public class PropertyDetail : BaseModel<int>
+	{
 		public int LocationId { get; set; }
 		public int SubLocationId { get; set; }
 		public string PropertyTypeId { get; set; }
@@ -22,6 +22,8 @@ namespace A2ZPortal.Core.Entities.Property
 		public string PlaceAddress { get; set; }
 		public string PlaceId { get; set; }
 		public int AgentId { get; set; }
+		public int AreaTypeId { get; set; }
+		public int AreaMeasurementTypeId { get; set; }
 		public decimal Price { get; set; }
 		public string AreaDisplay { get; set; }
 		public int NoOfBedRoomsId { get; set; }
@@ -51,8 +53,8 @@ namespace A2ZPortal.Core.Entities.Property
 		public string OwnersEmaiAddress { get; set; }
 		public string MobileNoOftheOwner { get; set; }
 		[NotMapped]
-        public List<int> Amenities { get; set; }
-        public string CategoryId { get; set; }
+		public List<int> Amenities { get; set; }
+		public string CategoryId { get; set; }
 
-    }
+	}
 }
