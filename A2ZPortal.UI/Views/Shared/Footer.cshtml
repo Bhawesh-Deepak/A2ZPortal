@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-3 col-sm-6">
                 <div id="text-3" class="widget widget_text">
-                    <h4 class="widget-title">A2Z Property</h4>
+                    <h4 class="widget-title">A2Z Properties</h4>
                     <div class="textwidget">
                         <p>A2Z brings wide range of choice, steadily updated property list and market trend for you to figure out your right decision.</p>
                         <p>You are now at right place for your real estate research. </p>
@@ -42,12 +42,12 @@
                     <h4 class="widget-title">Useful links</h4>
                     <div class="menu-footer-menu-container">
                         <ul id="menu-footer-menu" class="menu">
-                            <li id="menu-item-6322" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6322 align-right"><a href="#">Terms of Use</a></li>
-                            <li id="menu-item-6323" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6323 align-right"><a href="#">Privacy Policy</a></li>
-                            <li id="menu-item-6324" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6324 align-right"><a href="#">Contact Support</a></li>
-                            <li id="menu-item-6325" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6325 align-right"><a href="#">Knowledgebase</a></li>
-                            <li id="menu-item-6326" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6326 align-right"><a href="#">Careers</a></li>
-                            <li id="menu-item-6327" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6327 align-right"><a href="#">FAQs</a></li>
+                            <li id="menu-item-6322" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6322 align-right"><a asp-controller="Projects" asp-action="Index">Projects</a></li>
+                            <li id="menu-item-6323" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6323 align-right"><a asp-controller="Sale" asp-action="Index">Sale </a></li>
+                            <li id="menu-item-6324" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6324 align-right"><a asp-controller="Resale" asp-action="Index">Resale</a></li>
+                            <li id="menu-item-6325" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6325 align-right"><a asp-controller="Rental" asp-action="Index">Rental</a></li>
+                            <li id="menu-item-6326" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6326 align-right"><a asp-controller="AboutUs" asp-action="Index">About Us</a></li>
+                            <li id="menu-item-6327" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6327 align-right"><a asp-controller="ContactUs" asp-action="Index">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -72,13 +72,13 @@
         <div class="footer-more">
             <div class="container-boxed max">
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="noo-bottom-bar-content">
+                    <div class="col-md-9">
+                        @*<div class="noo-bottom-bar-content">
                             © @DateTime.Now.Year A2Z Property. All Rights Reserved. <br /><span>Powered by Wordpress</span>
-                        </div>
+                        </div>*@
                     </div>
-                    <div class="col-md-1"><a href="#" class="go-to-top on"><i class="fa fa-angle-up"></i></a></div>
-                    <div class="col-md-5 text-right">
+                    <div class="col-md-1  text-right"><a href="#" class="go-to-top on"><i class="fa fa-angle-up"></i></a></div>
+                    <div class="col-md-2 text-right">
                         <img src="~/A2Z-contents/img/logo/logo.png"  alt="A2Z Property">
                     </div>
                 </div>
