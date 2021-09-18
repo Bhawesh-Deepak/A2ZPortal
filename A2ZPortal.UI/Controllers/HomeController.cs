@@ -18,13 +18,15 @@ namespace A2ZPortal.UI.Controllers
         private readonly IGenericRepository<PropertyType, int> _iPropertyTypeGenericRepository;
         private readonly IGenericRepository<BedRoom, int> _iBedRoomGenericRepository;
         private readonly IGenericRepository<BathRoom, int> _iBathRoomGenericRepository;
+        private readonly IGenericRepository<Amenities, int> _iAmenitiesGenericRepository;
 
         public HomeController(IGenericRepository<Location, int> iLocationGenericRepository,
             IGenericRepository<SubLocation, int> iSubLocationGenericRepository,
              IGenericRepository<PropertyStatusModel, int> iPropertyStatusGenericRepository,
              IGenericRepository<PropertyType, int> iPropertyTypeGenericRepository,
               IGenericRepository<BedRoom, int> iBedRoomGenericRepository,
-             IGenericRepository<BathRoom, int> iBathRoomGenericRepository
+             IGenericRepository<BathRoom, int> iBathRoomGenericRepository,
+             IGenericRepository<Amenities, int> iAmenitiesGenericRepository
 
             )
         {
@@ -34,6 +36,7 @@ namespace A2ZPortal.UI.Controllers
             _iPropertyTypeGenericRepository = iPropertyTypeGenericRepository;
             _iBedRoomGenericRepository = iBedRoomGenericRepository;
             _iBathRoomGenericRepository = iBathRoomGenericRepository;
+            _iAmenitiesGenericRepository = iAmenitiesGenericRepository;
         }
         private async Task PopulateViewBag()
         {
@@ -43,6 +46,7 @@ namespace A2ZPortal.UI.Controllers
             ViewBag.PropertyType = (await _iPropertyTypeGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
             ViewBag.Location = (await _iLocationGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
             ViewBag.SubLocation = (await _iSubLocationGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.Amenities = (await _iAmenitiesGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
         }
 
 
