@@ -1,6 +1,8 @@
-﻿using A2ZPortal.Infrastructure.Implementation.GenericImplementation;
+﻿using A2ZPortal.Infrastructure.Implementation.CustomersImplementation;
+using A2ZPortal.Infrastructure.Implementation.GenericImplementation;
 using A2ZPortal.Infrastructure.Implementation.PropertyImplementation;
 using A2ZPortal.Infrastructure.Implementation.UserManagement;
+using A2ZPortal.Infrastructure.Repository.CustomerRepository;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
 using A2ZPortal.Infrastructure.Repository.PropertyDetailRepository;
 using A2ZPortal.Infrastructure.Repository.UserManagement;
@@ -21,6 +23,7 @@ namespace A2ZPortal.Infrastructure.Implementation.Extensions
             services.AddTransient<IUserManagementRepository, UserManagementImplementation>();
             services.AddTransient<IPropertyDashBoradRepository, PropertyDashBoradImplementation>();
             services.AddTransient<IPropertyDetailCompleteRepository, PropertyDetailCompleteImplementation>();
+            services.AddTransient<ITestimonialRepository, TestimonialImplimentation>();
         }
     }
 }
