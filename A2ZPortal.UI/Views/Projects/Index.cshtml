@@ -57,27 +57,14 @@
 
                                                         <div class="property-action">
                                                             <i title="Compare" data-user="0" data-id="@data.Id" data-action="compare" data-thumbnail="@data.ImagePath" data-div="submit-compare-612a036c0bbe8" class="property-action-button fa fa-plus compare-11917" aria-hidden="true"></i>
-                                                            <i title="Add to favorites" data-user="0" data-id="11917" data-action="favorites" data-status="add_favorites" data-url="http://wp.nootheme.com/citilights/my-favorites/" class="property-action-button fa fa-heart-o" aria-hidden="true"></i>
+                                                            <a asp-action="AddToFavourite" asp-controller="CustomerTransaction" asp-route-propId="@data.Id">
+                                                                <i title="Add to favorites" class="fa fa-heart-o" aria-hidden="true"></i>
+                                                            </a>
+                                                            
                                                         </div>
                                                     </div>
-                                                    <div class="property-info property-fullwidth-info">
-                                                        <div class="property-price">
-                                                            <span> </span>
-                                                        </div>
-                                                        <div class="area">
-                                                            <span class="property-meta-icon" style="background-image: url(http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/size-icon_ccd251439ef2512942b64d525ced79fe.png);"></span><span class="property-meta">@data.AreaCovered</span>
-                                                        </div>
-                                                        <div class="bedrooms">
-                                                            <span class="property-meta-icon" style="background-image: url(http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/bedroom-icon_92be012355310366e0bf07c8a41e35fe.png);"></span><span class="property-meta">@data.BedRooms</span>
-                                                        </div>
-                                                        <div class="bathrooms">
-                                                            <span class="property-meta-icon" style="background-image: url(http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/bathroom-icon_ffc5ba8874014ad0a7fcc5aa3b8acd57.png);"></span><span class="property-meta">@data.BathRooms</span>
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </div>
-                                            </div>
-                                            <div class="property-action property-fullwidth-action">
-                                                <a href="http://wp.nootheme.com/citilights/properties/house-for-sale-on-military-road/">More Details</a>
                                             </div>
                                         </article>
 

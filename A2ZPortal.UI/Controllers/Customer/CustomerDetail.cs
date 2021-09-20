@@ -22,8 +22,9 @@ namespace A2ZPortal.UI.Controllers.Customer
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCustomer(CustomerDetails model)
+        public async Task<IActionResult> CreateCustomer(CustomerDetails model, string returnUrl)
         {
+            model.ReturnUrl = returnUrl;
             var createModel = CommonCrudHelper.CommonCreateCode(model, 1);
             var response = await _ICustomerRepository.CreateEntity(createModel);
 
@@ -35,14 +36,21 @@ namespace A2ZPortal.UI.Controllers.Customer
 
             return RedirectToAction("Index", "CustomerDetail", model);
         }
+        [HttpPost]
+        public async Task<IActionResult> Login(CustomerDetails model, string returnUrl)
+        {
+            if (model.CustomerPhone == "9315775084" && model.Password == "admin")
+            {
+                HttpContext.Session.SetString("UserPhone", model.CustomerPhone);
 
-        //public async Task<IActionResult> Login(Models.LoginModel model)
-        //{
-        //    if (model.UserName == "admin" && model.Password == "admin")
-        //    {
-        //        HttpContext.Session.SetString("UserName", model.UserName);
-        //    }
-        //}
+                if (string.IsNullOrEmpty(returnUrl))
+                    return await Task.Run(() => RedirectToAction("Index", "Home"));
+
+
+                return await Task.Run(() => Redirect(returnUrl));
+            }
+            return await Task.Run(() => RedirectToAction("Index", "CustomerDetail"));
+        }
 
     }
 }

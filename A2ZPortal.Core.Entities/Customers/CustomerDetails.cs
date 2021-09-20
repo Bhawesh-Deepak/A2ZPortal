@@ -27,6 +27,9 @@ namespace A2ZPortal.Core.Entities.Customers
         [NotMapped]
         public string Message { get; set; }
 
+        [NotMapped]
+        public string ReturnUrl { get; set; }
+
         [Required(ErrorMessage = "Password is required.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }

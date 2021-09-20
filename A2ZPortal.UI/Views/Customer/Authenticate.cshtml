@@ -18,7 +18,7 @@
                                 <div class="logreg-container">
                                     <div class="logreg-content row">
                                         <div class="login-form col-md-6 col-sm-6">
-                                            <form method="POST" action="http://wp.nootheme.com/citilights/wp-login.php" class="shortcode-login noo-box noo-box-login class-login-wrap-613f7989462e8 show">
+                                            <form method="POST" asp-action="Login" asp-controller="CustomerDetail" class="shortcode-login noo-box noo-box-login class-login-wrap-613f7989462e8 show">
                                                 <div class="logreg-title">
                                                     Login Form
                                                 </div>
@@ -28,10 +28,11 @@
                                                         Already a member of A2Z Portal. Please use the form below to log in site.
                                                     </p>
                                                     <div class="noo-item user_log">
+                                                        <input type="hidden" asp-for="ReturnUrl" />
                                                         <input type="text" class="form-control" asp-for="CustomerPhone" placeholder="Customer Phone *">
                                                     </div>
                                                     <div class="noo-item user_pass">
-                                                        <input type="password" class="form-control" asp-for="OTP" placeholder="One Time Password *">
+                                                        <input type="password" class="form-control" asp-for="Password" placeholder="Password *">
                                                     </div>
                                                     <div class="noo-form-action">
                                                         <button type="submit" class="btn btn-secondary btn-lg noo-login" data-class-wrap=".class-login-wrap-613f7989462e8">
