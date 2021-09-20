@@ -17,7 +17,7 @@ namespace A2ZPortal.UI.Controllers.Customer
         }
         public IActionResult Index(CustomerDetails model)
         {
-            
+
             return View(ViewPageHelper.InstanceHelper.GetPathDetail("Customer", "Authenticate"), model);
         }
 
@@ -33,7 +33,16 @@ namespace A2ZPortal.UI.Controllers.Customer
                 "Something wents wrong, Please contact admin." :
                 "Thanks for registring in A2Z portal, Login to start your session.";
 
-            return RedirectToAction("Index", "CustomerDetail",model);
+            return RedirectToAction("Index", "CustomerDetail", model);
         }
+
+        //public async Task<IActionResult> Login(Models.LoginModel model)
+        //{
+        //    if (model.UserName == "admin" && model.Password == "admin")
+        //    {
+        //        HttpContext.Session.SetString("UserName", model.UserName);
+        //    }
+        //}
+
     }
 }

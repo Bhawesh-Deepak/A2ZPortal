@@ -37,8 +37,8 @@ namespace A2ZPortal.Infrastructure.Implementation.PropertyImplementation
                 model.LocationName = reader.DefaultIfNull<string>("LocationName");
                 model.SubLocationName = reader.DefaultIfNull<string>("SubLocationName");
                 model.Budgets = reader.DefaultIfNull<int>("Budgets");
-                model.AreaCovered = reader.DefaultIfNull<int>("AreaCovered");
-                model.TotalArea = reader.DefaultIfNull<int>("TotalArea");
+                model.AreaCovered = reader.DefaultIfNull<decimal>("AreaCovered");
+                model.TotalArea = reader.DefaultIfNull<decimal>("TotalArea");
                 model.PropertyName = reader.DefaultIfNull<string>("PropertyName");
                 model.ProprtyDescription = reader.DefaultIfNull<string>("ProprtyDescription");
                 model.Longitude = reader.DefaultIfNull<string>("Longitude");
@@ -66,7 +66,7 @@ namespace A2ZPortal.Infrastructure.Implementation.PropertyImplementation
                 model.SuitabelName= reader.DefaultIfNull<string>("SuitabelName");
 
                 model.SpaceType= reader.DefaultIfNull<string>("SpaceType");
-                model.Maintaince = reader.DefaultIfNull<int>("Maintaince");
+                model.Maintaince = reader.DefaultIfNull<decimal>("Maintaince");
                 model.Security_Deposit = reader.DefaultIfNull<string>("Security_Deposit");
                 model.NoOfChecks = reader.DefaultIfNull<int>("NoOfChecks");
                 model.LandLordDetails = reader.DefaultIfNull<string>("LandLordDetails");

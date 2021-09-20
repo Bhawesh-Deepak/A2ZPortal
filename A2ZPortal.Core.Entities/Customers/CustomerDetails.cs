@@ -5,14 +5,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace A2ZPortal.Core.Entities.Customers
 {
-    [Table("Customers",Schema= "Customer")]
-    public class CustomerDetails:BaseModel<int>
+    [Table("Customers", Schema = "Customer")]
+    public class CustomerDetails : BaseModel<int>
     {
-        [Required(ErrorMessage ="Customer name is required.")]
+        [Required(ErrorMessage = "Customer name is required.")]
         public string CustomerName { get; set; }
 
         [Required(ErrorMessage = "Customer phone is required.")]
-        [DataType(DataType.PhoneNumber,ErrorMessage ="Phone is invalid.")]
+        [DataType(DataType.PhoneNumber, ErrorMessage = "Phone is invalid.")]
         public string CustomerPhone { get; set; }
 
         [Required(ErrorMessage = "Customer email is required.")]
@@ -26,5 +26,9 @@ namespace A2ZPortal.Core.Entities.Customers
         public DateTime? OTPSentTime { get; set; }
         [NotMapped]
         public string Message { get; set; }
+
+        [Required(ErrorMessage = "Password is required.")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
     }
 }

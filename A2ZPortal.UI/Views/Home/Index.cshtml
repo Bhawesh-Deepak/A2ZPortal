@@ -7,7 +7,7 @@
     <div class="main-content container-fullwidth">
         <div class="row">
             <div class="noo-main col-md-12" role="main">
-                <div class="noo-vc-row row  bg-image" style="padding-top: 15%; padding-bottom: 15%;" >
+                <div class="noo-vc-row row  bg-image" style="padding-top: 15%; padding-bottom: 15%;">
                     <div class="noo-vc-col col-md-12 ">
                         <div class="noo_advanced_search_property horizontal  hidden-print">
                             <div class="noo-map no-map " style="background: none">
@@ -27,14 +27,14 @@
 
                                     })
                                 </script>
-                                 
+
                             </div>
                         </div>
                     </div>
                     <div class=" parallax" data-parallax="1" data-parallax_no_mobile="1" data-velocity="0.1" style="background-image: url(A2Z-contents/images/Backgroundimage.jpg);"></div>
                 </div>
                 <div id="divData">     @await Component.InvokeAsync("Featured")</div>
-           
+
                 <div id="custom-calltoaction" class="noo-vc-row row  bg-image" style=" padding-top: 0px; padding-bottom: 0px;background-position: bottom">
                     <div class="noo-vc-col col-md-6 col-sm-12 ">
                         <div class="noo-vc-row row " style="background-color: rgba(255,255,255,0.9); padding-top: 100px; padding-bottom: 100px;padding-left: 10%;">
@@ -989,8 +989,14 @@
                                                 <input type="hidden" name="_wpcf7_container_post" value="10274" />
                                             </div>
                                             <div class="cf7">
-                                                <span class="wpcf7-form-control-wrap your-email"><input type="text" name="your-email" value="Type your email address" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" id="cf7-email-input" aria-required="true" aria-invalid="false" /></span><br />
-                                                <input type="submit" value="Send" class="wpcf7-form-control wpcf7-submit" id="cf7-submit-button" />
+                                                <span class="wpcf7-form-control-wrap your-email">
+                                                    <input type="text" name="your-email"
+                                                           value="Type your email address" size="40"
+                                                           class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                                                           id="cf7-email-input" aria-required="true" aria-invalid="false" />
+                                                </span><br />
+                                                <input type="button" onclick="EmailSubscribe()" value="Send" class="wpcf7-form-control wpcf7-submit"
+                                                       id="cf7-submit-button" />
                                             </div>
                                             <div class="wpcf7-response-output wpcf7-display-none"></div>
                                         </form>
@@ -1006,13 +1012,13 @@
 </div>
 
 @*<script>
-    $(document).ready(function () {
-        $.get("/PropertySearch/Index",
-            function (data) {
-                $("#div-property-search").html(data);
-            });
-    });
-</script>*@
+        $(document).ready(function () {
+            $.get("/PropertySearch/Index",
+                function (data) {
+                    $("#div-property-search").html(data);
+                });
+        });
+    </script>*@
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -1020,4 +1026,7 @@
             $("#searchMaster").html(data);
         })
     })
+    function EmailSubscribe() {
+        $("#cf7-email-input").text();
+    }
 </script>

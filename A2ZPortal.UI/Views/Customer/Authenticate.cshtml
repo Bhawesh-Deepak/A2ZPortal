@@ -47,7 +47,8 @@
                                                 <div class="logreg-title">Register Form</div>
                                                 <div class="register_form">
                                                     <div class="loginalert register_message_area">
-                                                        @if (!string.IsNullOrEmpty(Model.Message)) { 
+                                                        @if (!string.IsNullOrEmpty(Model.Message))
+                                                        {
                                                             <span style="color: #bdb254">@Model.Message</span>
                                                         }
                                                     </div>
@@ -62,6 +63,11 @@
                                                     </div>
                                                     <div class="noo-item user_password">
                                                         <input asp-for="CustomerPhone" class="user_password form-control" placeholder="Your Phone">
+                                                    </div>
+
+                                                    <div class="noo-item user_password">
+                                                        <input asp-for="Password" class="user_password form-control"
+                                                               placeholder="Your Password">
                                                     </div>
 
                                                     <div class="noo-form-action">
