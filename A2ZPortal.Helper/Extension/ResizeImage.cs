@@ -3,10 +3,10 @@ using System.Drawing.Drawing2D;
 
 namespace A2ZPortal.Helper.Extension
 {
-    public class ResizeImage
+    public static class ResizeImage
     {
         //System.Drawing.Image i = resizeImage(b, new Size(100, 100));
-        public Image ResizeImageData(string imagePath, Size size)
+        public static  Image ResizeImageData(string imagePath, Size size)
         {
             var imgToResize = Image.FromFile(string.Concat(imagePath));
             var sourceWidth = imgToResize.Width;

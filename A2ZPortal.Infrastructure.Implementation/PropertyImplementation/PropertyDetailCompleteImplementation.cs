@@ -51,30 +51,30 @@ namespace A2ZPortal.Infrastructure.Implementation.PropertyImplementation
                 model.RoomName = reader.DefaultIfNull<string>("RoomName");
                 model.PossesionStatus = reader.DefaultIfNull<string>("PossesionStatus");
                 model.FurnishingStatus = reader.DefaultIfNull<string>("FurnishingStatus");
-                model.Id = reader.DefaultIfNull<int>("Age");
-                model.Id = reader.DefaultIfNull<int>("TotalParking");
+                model.Age = reader.DefaultIfNull<int>("Age");
+                model.TotalParking= reader.DefaultIfNull<int>("TotalParking");
 
-                model.Id = reader.DefaultIfNull<int>("Facing");
-                model.Id = reader.DefaultIfNull<int>("FloorNumber");
-                model.Id = reader.DefaultIfNull<int>("TowerBlock");
-                model.Id = reader.DefaultIfNull<int>("UnitNumber");
-                model.Id = reader.DefaultIfNull<int>("TrakheesiNumber");
-                model.Id = reader.DefaultIfNull<int>("DLocationName");
-                model.Id = reader.DefaultIfNull<int>("PriceName");
-                model.Id = reader.DefaultIfNull<int>("ExplaningName");
-                model.Id = reader.DefaultIfNull<int>("DefiningStructure");
-                model.Id = reader.DefaultIfNull<int>("SuitabelName");
+                model.Facing = reader.DefaultIfNull<string>("Facing");
+                model.FloorNumber= reader.DefaultIfNull<string>("FloorNumber");
+                model.TowerBlock= reader.DefaultIfNull<string>("TowerBlock");
+                model.UnitNumber= reader.DefaultIfNull<string>("UnitNumber");
+                model.TrakheesiNumber= reader.DefaultIfNull<string>("TrakheesiNumber");
+                model.DLocationName= reader.DefaultIfNull<string>("DLocationName");
+                model.PriceName= reader.DefaultIfNull<string>("PriceName");
+                model.ExplaningName= reader.DefaultIfNull<string>("ExplaningName");
+                model.DefiningStructure= reader.DefaultIfNull<string>("DefiningStructure");
+                model.SuitabelName= reader.DefaultIfNull<string>("SuitabelName");
 
-                model.Id = reader.DefaultIfNull<int>("SpaceType");
-                model.Id = reader.DefaultIfNull<int>("Maintaince");
-                model.Id = reader.DefaultIfNull<int>("Security_Deposit");
-                model.Id = reader.DefaultIfNull<int>("NoOfChecks");
-                model.Id = reader.DefaultIfNull<int>("LandLordDetails");
-                model.Id = reader.DefaultIfNull<int>("Nameoftheowner");
-                model.Id = reader.DefaultIfNull<int>("OwnersEmaiAddress");
-                model.Id = reader.DefaultIfNull<int>("MobileNoOftheOwner");
-                model.Id = reader.DefaultIfNull<int>("MeasurementType");
-                model.Id = reader.DefaultIfNull<int>("AreaTypeName");
+                model.SpaceType= reader.DefaultIfNull<string>("SpaceType");
+                model.Maintaince = reader.DefaultIfNull<int>("Maintaince");
+                model.Security_Deposit = reader.DefaultIfNull<string>("Security_Deposit");
+                model.NoOfChecks = reader.DefaultIfNull<int>("NoOfChecks");
+                model.LandLordDetails = reader.DefaultIfNull<string>("LandLordDetails");
+                model.Nameoftheowner = reader.DefaultIfNull<string>("Nameoftheowner");
+                model.OwnersEmaiAddress = reader.DefaultIfNull<string>("OwnersEmaiAddress");
+                model.MobileNoOftheOwner = reader.DefaultIfNull<string>("MobileNoOftheOwner");
+                model.MeasurementType = reader.DefaultIfNull<string>("MeasurementType");
+                model.AreaTypeName = reader.DefaultIfNull<string>("AreaTypeName");
             }
 
             if (reader.NextResult()) {
