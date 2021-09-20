@@ -10,5 +10,6 @@ namespace A2ZPortal.Infrastructure.Repository.PropertyDetailRepository
     public interface IPropertyDetailCompleteRepository
     {
         Task<CompletePropertyDetailsVm> GetCompletePropertyDetail(int propertyId);
+        Task<List<ProeprtyDetailByNameVm>> GetPropertyDetailByName(string propName);
     }
 }

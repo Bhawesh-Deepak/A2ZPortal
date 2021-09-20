@@ -52,20 +52,20 @@ namespace A2ZPortal.Infrastructure.Implementation.PropertyImplementation
                 model.PossesionStatus = reader.DefaultIfNull<string>("PossesionStatus");
                 model.FurnishingStatus = reader.DefaultIfNull<string>("FurnishingStatus");
                 model.Age = reader.DefaultIfNull<int>("Age");
-                model.TotalParking= reader.DefaultIfNull<int>("TotalParking");
+                model.TotalParking = reader.DefaultIfNull<int>("TotalParking");
 
                 model.Facing = reader.DefaultIfNull<string>("Facing");
-                model.FloorNumber= reader.DefaultIfNull<string>("FloorNumber");
-                model.TowerBlock= reader.DefaultIfNull<string>("TowerBlock");
-                model.UnitNumber= reader.DefaultIfNull<string>("UnitNumber");
-                model.TrakheesiNumber= reader.DefaultIfNull<string>("TrakheesiNumber");
-                model.DLocationName= reader.DefaultIfNull<string>("DLocationName");
-                model.PriceName= reader.DefaultIfNull<string>("PriceName");
-                model.ExplaningName= reader.DefaultIfNull<string>("ExplaningName");
-                model.DefiningStructure= reader.DefaultIfNull<string>("DefiningStructure");
-                model.SuitabelName= reader.DefaultIfNull<string>("SuitabelName");
+                model.FloorNumber = reader.DefaultIfNull<string>("FloorNumber");
+                model.TowerBlock = reader.DefaultIfNull<string>("TowerBlock");
+                model.UnitNumber = reader.DefaultIfNull<string>("UnitNumber");
+                model.TrakheesiNumber = reader.DefaultIfNull<string>("TrakheesiNumber");
+                model.DLocationName = reader.DefaultIfNull<string>("DLocationName");
+                model.PriceName = reader.DefaultIfNull<string>("PriceName");
+                model.ExplaningName = reader.DefaultIfNull<string>("ExplaningName");
+                model.DefiningStructure = reader.DefaultIfNull<string>("DefiningStructure");
+                model.SuitabelName = reader.DefaultIfNull<string>("SuitabelName");
 
-                model.SpaceType= reader.DefaultIfNull<string>("SpaceType");
+                model.SpaceType = reader.DefaultIfNull<string>("SpaceType");
                 model.Maintaince = reader.DefaultIfNull<decimal>("Maintaince");
                 model.Security_Deposit = reader.DefaultIfNull<string>("Security_Deposit");
                 model.NoOfChecks = reader.DefaultIfNull<int>("NoOfChecks");
@@ -77,7 +77,8 @@ namespace A2ZPortal.Infrastructure.Implementation.PropertyImplementation
                 model.AreaTypeName = reader.DefaultIfNull<string>("AreaTypeName");
             }
 
-            if (reader.NextResult()) {
+            if (reader.NextResult())
+            {
 
                 while (reader.Read())
                 {
@@ -105,6 +106,37 @@ namespace A2ZPortal.Infrastructure.Implementation.PropertyImplementation
             model.ImageDetails = imageModels;
 
             return model;
+        }
+
+        public async Task<List<ProeprtyDetailByNameVm>> GetPropertyDetailByName(string propName)
+        {
+            SqlParameter[] param = { new SqlParameter("@propertyType", propName) };
+
+            var models = new List<ProeprtyDetailByNameVm>();
+
+            var reader = await SqlHelper.ExecuteReader(_connectionString, SqlConstant.GetPropertyDetailByName,
+                System.Data.CommandType.StoredProcedure, param);
+
+            while (reader.Read())
+            {
+                var model = new ProeprtyDetailByNameVm();
+                model.Id = reader.DefaultIfNull<int>("Id");
+                model.PropertyName = reader.DefaultIfNull<string>("PropertyName");
+                model.PropertyDescription = reader.DefaultIfNull<string>("ProprtyDescription");
+                model.AreaCovered = reader.DefaultIfNull<decimal>("AreaCovered");
+                model.BedRooms = reader.DefaultIfNull<int>("BedRooms");
+                model.BathRooms = reader.DefaultIfNull<int>("BathRooms");
+                model.PlaceAddress = reader.DefaultIfNull<string>("PlaceAddress");
+
+                model.Location = reader.DefaultIfNull<string>("LocationName");
+                model.SubLocation = reader.DefaultIfNull<string>("SubLocationName");
+                model.Price = reader.DefaultIfNull<decimal>("Price");
+                model.ImagePath = reader.DefaultIfNull<string>("ImagePath");
+                model.CategoryName = reader.DefaultIfNull<string>("CategoryId");
+                models.Add(model);
+
+            }
+            return models;
         }
     }
 }
