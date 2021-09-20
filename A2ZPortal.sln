@@ -21,9 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A2ZPortal.Core.ViewModel", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A2ZPortal.UI", "A2ZPortal.UI\A2ZPortal.UI.csproj", "{E32485DA-1B83-42D8-BE4D-666DD6FE4F5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A2ZAdmin.UI", "A2ZAdmin.UI\A2ZAdmin.UI.csproj", "{75380A33-35EB-420C-BA78-284C76E7C24D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A2ZAdmin.UI", "A2ZAdmin.UI\A2ZAdmin.UI.csproj", "{75380A33-35EB-420C-BA78-284C76E7C24D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnit.A2ZPortal.Test", "XUnit.A2ZPortal.Test\XUnit.A2ZPortal.Test.csproj", "{B423E055-716E-4EEB-A57D-4FE9B891625B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnit.A2ZPortal.Test", "XUnit.A2ZPortal.Test\XUnit.A2ZPortal.Test.csproj", "{B423E055-716E-4EEB-A57D-4FE9B891625B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

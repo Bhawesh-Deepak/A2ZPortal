@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using A2ZPortal.Core.Entities.Master;
 using A2ZPortal.Helper;
+using A2ZPortal.Infrastructure.Repository.CustomerRepository;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
 using A2ZPortal.UI.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +20,7 @@ namespace A2ZPortal.UI.Controllers
         private readonly IGenericRepository<BedRoom, int> _iBedRoomGenericRepository;
         private readonly IGenericRepository<BathRoom, int> _iBathRoomGenericRepository;
         private readonly IGenericRepository<Amenities, int> _iAmenitiesGenericRepository;
+      
 
         public HomeController(IGenericRepository<Location, int> iLocationGenericRepository,
             IGenericRepository<SubLocation, int> iSubLocationGenericRepository,
@@ -27,7 +29,7 @@ namespace A2ZPortal.UI.Controllers
               IGenericRepository<BedRoom, int> iBedRoomGenericRepository,
              IGenericRepository<BathRoom, int> iBathRoomGenericRepository,
              IGenericRepository<Amenities, int> iAmenitiesGenericRepository
-
+           
             )
         {
             _iLocationGenericRepository = iLocationGenericRepository;
@@ -37,6 +39,7 @@ namespace A2ZPortal.UI.Controllers
             _iBedRoomGenericRepository = iBedRoomGenericRepository;
             _iBathRoomGenericRepository = iBathRoomGenericRepository;
             _iAmenitiesGenericRepository = iAmenitiesGenericRepository;
+            
         }
         private async Task PopulateViewBag()
         {
@@ -76,6 +79,10 @@ namespace A2ZPortal.UI.Controllers
         public async Task<IActionResult> FeaturedProperty(int pageIndex)
         {
             return await Task.Run(() => ViewComponent("Featured", pageIndex));
+        }
+        public async Task<IActionResult> TestimonialProperty()
+        {
+            return await Task.Run(() => ViewComponent("Testimonials"));
         }
     }
 }
