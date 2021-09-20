@@ -1,0 +1,77 @@
+﻿@model IEnumerable<A2ZPortal.Core.ViewModel.CustomersModel.TestimonialVM>
+
+<div id="custom-testimonial" class="noo-vc-row row  bg-image" style=" padding-top: 0px; padding-bottom: 0px;background-position: bottom">
+    <div class="noo-vc-col col-md-6 col-sm-12 "></div>
+    <div class="noo-vc-col col-md-6 col-sm-12 ">
+        <div class="noo-vc-row row " style="background-color: rgba(255,255,255,0.8); padding-top: 60px; padding-bottom: 60px;padding-left: 50px; padding-right: 50px;">
+            <div class="noo-vc-col col-md-12 ">
+                <div class="noo-text-block" style="font-weight: 300">
+                    <h2 style="text-align: left;"><strong>TESTIMONIAL</strong></h2>
+                </div>
+                <div class="noo-sc-testimonial ">
+                    <div class="noo-testimonial">
+                        <div style="text-align: center !important; list-style: none;" id="testimonial_612a0e93548dd">
+                            <ul class="noo-content owl-carousel owl-theme" style="padding: 0;">
+                                @foreach (var item in Model.Select((x, i) => new { Data = x, Index = i + 1 }))
+                                {
+                                    <li data-page="@item.Index">
+                                        <p class="quote-2"><em>@item.Data.Testimonial</em></p>
+                                        <div class="ds-author-2">
+                                            <div class="ds-item" style="width: 70px;">
+                                                <img class="noo-img-responsive ds-author-img" data-source="@item.Index" class="grayscale" src="~/wp-content/uploads/2014/09/customer.png" alt="Dave Softel" width="70" height="70" />
+                                            </div>
+                                            <div class="ds-item ds-user">
+                                                <h4 class="name">@item.Data.CustomerName</h4>
+                                                <p class="position"><em>@item.Data.PlaceAddress</em></p>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                }
+
+
+                            </ul>
+                        </div>
+                        <div class="owl-dots" style="text-align: left">
+                            <div class="owl-dot active"><span></span></div>
+                            <div class="owl-dot"><span></span></div>
+                            <div class="owl-dot"><span></span></div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        jQuery('document').ready(function ($) {
+                            var $quoteCarousel = $('#testimonial_612a0e93548dd ul');
+                            $quoteCarousel.owlCarousel({
+                                items: 1,
+                                loop: true,
+                                rtl: false,
+                                autoplay: false,
+                                autoplayTimeout: 5000,
+                                autoplayHoverPause: true,
+                                lazyLoad: true,
+                                center: true,
+                                autoplaySpeed: 500,
+                            });
+                            $('#testimonial_612a0e93548dd .owl-dots').css('text-align', 'left');
+                            $('#testimonial_612a0e93548dd .owl-dots').css('padding', '20px 0 0 0');
+
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" parallax" data-parallax="1" data-parallax_no_mobile="1" data-velocity="0.1" style="background-image: url(wp-content/uploads/2019/11/Untitled-3_2f39b5e41be5c2c9029b9a58309bf3fd.jpg);"></div>
+</div>
+
+@*<script>
+        $(document).ready(function () {
+            alert('ok');
+            $.get("/Home/TestimonialProperty", {}, function (data) {
+                $("#divTestimonialData").html(data);
+            }).done(function () {
+                $(eData).addClass("Current");
+            })
+        });
+
+    </script>*@
