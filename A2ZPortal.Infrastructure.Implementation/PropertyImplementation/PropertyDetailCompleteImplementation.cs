@@ -42,7 +42,8 @@ namespace A2ZPortal.Infrastructure.Implementation.PropertyImplementation
                 model.PropertyName = reader.DefaultIfNull<string>("PropertyName");
                 model.ProprtyDescription = reader.DefaultIfNull<string>("ProprtyDescription");
                 model.Longitude = reader.DefaultIfNull<string>("Longitude");
-
+                model.PropertyTypeId = reader.DefaultIfNull<string>("PropertyTypeId");
+                model.Price = reader.DefaultIfNull<decimal>("Price");
                 model.Lattitude = reader.DefaultIfNull<string>("Lattitude");
                 model.PlaceAddress = reader.DefaultIfNull<string>("PlaceAddress");
                 model.PlaceId = reader.DefaultIfNull<string>("PlaceId");
