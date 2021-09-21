@@ -10,6 +10,8 @@ namespace A2ZPortal.Core.ViewModel.PropertyDetail
     {
         public int Id { get; set; }
         public string CategoryId { get; set; }
+        public string PropertyTypeId { get; set; }
+        public decimal Price { get; set; }
         public string LocationName { get; set; }
         public string SubLocationName { get; set; }
         public decimal Budgets { get; set; }

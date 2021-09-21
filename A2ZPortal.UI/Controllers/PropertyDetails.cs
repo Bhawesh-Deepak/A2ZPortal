@@ -5,6 +5,7 @@ using A2ZPortal.Helper;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
 using A2ZPortal.Infrastructure.Repository.PropertyDetailRepository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Threading.Tasks;
 
@@ -19,14 +20,14 @@ namespace A2ZPortal.UI.Controllers
         private readonly IGenericRepository<BedRoom, int> _iBedRoomGenericRepository;
         private readonly IGenericRepository<BathRoom, int> _iBathRoomGenericRepository;
         private readonly IPropertyDetailCompleteRepository _IPropertyCompleteRepository;
-
+        private readonly string APIURL = string.Empty;
         public PropertyDetails(IGenericRepository<Location, int> iLocationGenericRepository,
             IGenericRepository<SubLocation, int> iSubLocationGenericRepository,
              IGenericRepository<PropertyStatusModel, int> iPropertyStatusGenericRepository,
              IGenericRepository<PropertyType, int> iPropertyTypeGenericRepository,
               IGenericRepository<BedRoom, int> iBedRoomGenericRepository,
              IGenericRepository<BathRoom, int> iBathRoomGenericRepository,
-             IPropertyDetailCompleteRepository propertyDetailCompleteRepository
+             IPropertyDetailCompleteRepository propertyDetailCompleteRepository, IConfiguration configuration
              )
         {
             _iLocationGenericRepository = iLocationGenericRepository;
@@ -36,7 +37,7 @@ namespace A2ZPortal.UI.Controllers
             _iBedRoomGenericRepository = iBedRoomGenericRepository;
             _iBathRoomGenericRepository = iBathRoomGenericRepository;
             _IPropertyCompleteRepository = propertyDetailCompleteRepository;
-
+            APIURL = configuration.GetSection("APIURL").Value;
         }
         public async Task<IActionResult> Index(int location, int sub_location, int bathRoom,
             int status, int category, int bedrooms, int min_price, int max_price, int min_area, int max_area)
@@ -81,6 +82,18 @@ namespace A2ZPortal.UI.Controllers
         public async Task<IActionResult> GetPropertyDetail(int id)
         {
             var response = await _IPropertyCompleteRepository.GetCompletePropertyDetail(id);
+            response.ImageDetails.ForEach(item =>
+            {
+                if (string.IsNullOrEmpty(item.ImagePath))
+                {
+                    item.ImagePath = "/A2Z-contents/PropertyImageNotFound.png";
+                }
+                else
+                {
+                    item.ImagePath = APIURL + item.ImagePath;
+                }
+
+            });
             return View(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetails", "CompletePropertyDetail"), response);
         }
         private async Task PopulateViewBag()
