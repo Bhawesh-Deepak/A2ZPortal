@@ -9,9 +9,9 @@ namespace A2ZPortal.Core.Entities.Context
 {
     public class PortalContext : DbContext
     {
-        private readonly string connectionString;
+        private readonly string _connectionString;
 
-        public PortalContext(IConfiguration configuration) => connectionString = configuration.GetSection("ConnectionStrings:dbConnection").Value;
+        public PortalContext(IConfiguration configuration) => _connectionString = configuration.GetSection("ConnectionStrings:dbConnection").Value;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
