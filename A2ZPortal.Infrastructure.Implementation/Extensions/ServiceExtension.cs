@@ -24,6 +24,7 @@ namespace A2ZPortal.Infrastructure.Implementation.Extensions
             services.AddTransient<IPropertyDashBoradRepository, PropertyDashBoradImplementation>();
             services.AddTransient<IPropertyDetailCompleteRepository, PropertyDetailCompleteImplementation>();
             services.AddTransient<ITestimonialRepository, TestimonialImplimentation>();
+            services.AddTransient<IOrderTransactionRepository, OrderTransactionImplementation>();
         }
     }
 }

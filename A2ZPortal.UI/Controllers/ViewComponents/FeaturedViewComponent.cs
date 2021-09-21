@@ -32,6 +32,7 @@ namespace A2ZPortal.UI.Controllers.ViewComponents
             return await Task.FromResult((IViewComponentResult)View("_FeaturedProperty", models));
         }
 
+      
 
     }
 }

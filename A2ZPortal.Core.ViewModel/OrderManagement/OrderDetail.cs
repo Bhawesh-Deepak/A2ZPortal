@@ -10,9 +10,10 @@ namespace A2ZPortal.Core.ViewModel.OrderManagement
     {
         public int Id { get; set; }
         public string PropertyName { get; set; }
-        public string Description { get; set; }
-        public string Location { get; set; }
-        public string SubLocation { get; set; }
+        public string PlaceAddress { get; set; }
+        public string CategoryName { get; set; }
+        public string PropertyTypeName { get; set; }
         public string Image { get; set; }
+        public int PropertyId { get; set; }
     }
 }

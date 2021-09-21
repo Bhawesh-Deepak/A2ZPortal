@@ -19,5 +19,6 @@ namespace A2ZPortal.Helper.Extension
         public static string GetPropertyCompleteDetail = @"usp_GetPropertyCompleteDetails";
         public static string GetTestimonialCompleteDetail = @"usp_GetTestimonial";
         public static string GetPropertyDetailByName = @"usp_GetPropertyDetailByPropertyType";
+        public static string GetCustomerCartDetails = @"usp_GetCustomerCartDetails";
     }
 }
