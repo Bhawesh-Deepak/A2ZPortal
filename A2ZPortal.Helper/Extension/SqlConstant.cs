@@ -20,5 +20,8 @@ namespace A2ZPortal.Helper.Extension
         public static string GetTestimonialCompleteDetail = @"usp_GetTestimonial";
         public static string GetPropertyDetailByName = @"usp_GetPropertyDetailByPropertyType";
         public static string GetCustomerCartDetails = @"usp_GetCustomerCartDetails";
+        public static string GetRecentPropertyDetails = @"usp_GetRecentPropertyDetail";
+        public static string GetPropertyLocationWiseCount = @"usp_GetPropertyDetailCount";
+        public static string GetRecentPropertyDetail = @"usp_GetRecentProperty";
     }
 }

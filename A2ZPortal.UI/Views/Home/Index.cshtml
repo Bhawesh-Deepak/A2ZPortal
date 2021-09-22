@@ -1,5 +1,4 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
@@ -47,10 +46,7 @@
                                             </div>
                                             <div class="nav-button">
                                                 <div>
-                                                    <a href="#" target="_blank" class="btn-1">Learn more</a>
-                                                </div>
-                                                <div>
-                                                    <a href="#" target="_blank" class="btn-2">Buy Now</a>
+                                                    <a asp-action="Index" asp-controller="Projects" class="btn-2">Buy Now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -66,8 +62,9 @@
                     <div class="noo-vc-row row " style=" padding-top: 50px; padding-bottom: 0px;">
                         <div class="noo-vc-col col-md-12 ">
                             <div class="noo-text-block">
-                                <h2 style="text-align: left;"><strong>Featured Properties</strong></h2>
-                                <p style="text-align: left;">Choose from different templates and lay them out, full-width or boxed, grid or listed.</p>
+                                <h2 style="text-align: left;"><strong>Recent Properties</strong></h2>
+                                <p style="text-align: left;">The latest residential offerings from the best builders , handpicked by our team of experts just for you and backed by our widely 
+                                acclaimed transaction and financial services..</p>
                                 <h2 style="text-align: center;"></h2>
                             </div>
                         </div>
@@ -86,367 +83,54 @@
                                                 </form>
                                             </div>
                                             <ul id="featured_612a0e933ddb8" class="owl-carousel owl-theme">
-                                                <li>
-                                                    <article>
-                                                        <div class="featured-style-2">
-                                                            <div class="fp-style-2--thumb">
-                                                                <a class="content-thumb" href="properties/house-for-sale-on-military-road/index.html">
-                                                                    <img width="370" height="300" src="~/wp-content/uploads/2014/09/beautiful-new-concept-of-minimalist-home-exterior-370x300.jpg" class="attachment-property-thumb size-property-thumb wp-post-image" alt="" loading="lazy" />
-                                                                </a>
-                                                                <div class="content-thumb-overlay">
-                                                                    <div class="property-action">
-                                                                        <div class="action-container">
-                                                                            <div class="property-sharing sharing612a0e933f945">
-                                                                                <div class="property-share hidden-print clearfix">
-                                                                                    <a href="#share" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" class="fa fa-facebook" title="Share on Facebook" onclick="window.open('http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fhouse-for-sale-on-military-road%2F&amp;t=House+for+sale+on+Military+Road','popupFacebook','width=650,height=270,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-twitter" title="Share on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=House+for+sale+on+Military+Road&amp;url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fhouse-for-sale-on-military-road%2F','popupTwitter','width=500,height=370,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-google-plus" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fhouse-for-sale-on-military-road%2F','popupGooglePlus','width=650,height=226,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-pinterest" title="Share on Pinterest" onclick="window.open('http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fhouse-for-sale-on-military-road%2F&amp;media=http://wp.nootheme.com/citilights/wp-content/uploads/2014/09/beautiful-new-concept-of-minimalist-home-exterior-370x300.jpg&amp;description=House+for+sale+on+Military+Road','popupPinterest','width=750,height=265,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-linkedin" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fhouse-for-sale-on-military-road%2F&amp;title=House+for+sale+on+Military+Road&amp;summary=House+for+sale+on+Military+Road%2C+District+11+-+217m2%2C+8.3+billion%2C+suitable+for+rental+or+business%0D%0A-+10m-wide+frontage+on+Lanh+Binh+Thang+street+corner%2C+3m+to+3%2F2+Avenue%0D%0A-+Location%3A+Military+Road%2C+D11.%0D%0A-+Facilities%3A+international+schools.%0D%0A-+Suitable+for+office%2C+business%2C+spa%2C+beauty+salon%2C+multi-level+company.%0D%0A-+Brand+new+house%2C+civilized+area%2C+cool.%0D%0A-+Area%3A+217+m2.%0D%0A-+The+price+is+8.3+billion%2C+cheaper+than+other+houses&amp;source=CitiLights','popupLinkedIn','width=610,height=480,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
+                                                @foreach (var data in ((IEnumerable<A2ZPortal.Core.ViewModel.PropertyDetail.RecentPropertyDetail>)ViewBag.PropertyRecentDetail))
+                                                {
+                                                    <li>
+                                                        <article>
+                                                            <div class="featured-style-2">
+                                                                <div class="fp-style-2--thumb">
+                                                                    <a class="content-thumb" asp-action="GetPropertyDetail" asp-route-id="@data.PropertyId" asp-controller="PropertyDetails" >
+                                                                        <img width="370" height="300" src="@data.ImagePath" class="attachment-property-thumb size-property-thumb wp-post-image" alt="" loading="lazy" />
+                                                                    </a>
+                                                                    <div class="content-thumb-overlay">
+                                                                        <div class="property-action">
+                                                                            <div class="action-container">
+                                                                                <div class="property-sharing sharing612a0e933f945">
+                                                                                    <div class="property-share hidden-print clearfix">
+                                                                                       @data.PropertyName
+                                                                                    </div>
                                                                                 </div>
+                                                                              
                                                                             </div>
-                                                                            <i title="Compare" data-user="0" data-id="11917" data-action="compare" data-thumbnail="http://wp.nootheme.com/citilights/wp-content/uploads/2014/09/beautiful-new-concept-of-minimalist-home-exterior-180x130.jpg" data-div="submit-compare-612a0e933deef" class="property-action-button fa fa-plus compare-11917" aria-hidden="true"></i>
-                                                                            <i title="Add to favorites" data-user="0" data-id="11917" data-action="favorites" data-status="add_favorites" data-url="http://wp.nootheme.com/citilights/my-favorites/" class="property-action-button fa fa-heart-o" aria-hidden="true"></i>
-                                                                            <i title="Share" data-user="0" data-id="11917" data-action="sharing" data-class="sharing612a0e933f945" class="property-action-button fa fa-share-alt" aria-hidden="true"></i>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="fp-style-2--wrap">
-                                                                <div>
-                                                                    <div class="fp-style-2--title">
-                                                                        <h4>
-                                                                            <a href="properties/house-for-sale-on-military-road/index.html" title="House for sale on Military Road">
-                                                                                House for sale on Military Road
-                                                                            </a>
-                                                                        </h4>
-                                                                    </div>
-                                                                    <div class="fp-style-2--excerpt">
-                                                                        <p>House for sale on Military Road, District 11 &#8211; 217m2, 8.3 billion, suitable for rental or business &#8211; 10m-wide frontage on Lanh Binh Thang street corner, 3m to 3/2 Avenue...</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="fp-style-2--summary">
-                                                                <div class="property-detail">
-                                                                    <div class="area"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/size-icon_ccd251439ef2512942b64d525ced79fe.png);"></span><span class="property-meta">217 sqft</span></div>
-                                                                    <div class="bedrooms"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/bedroom-icon_92be012355310366e0bf07c8a41e35fe.png);"></span><span class="property-meta">4</span></div>
-                                                                    <div class="bathrooms"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/bathroom-icon_ffc5ba8874014ad0a7fcc5aa3b8acd57.png);"></span><span class="property-meta">3</span></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </article>
-                                                </li>
-                                                <li>
-                                                    <article>
-                                                        <div class="featured-style-2">
-                                                            <div class="fp-style-2--thumb">
-                                                                <a class="content-thumb" href="properties/home-for-rent/index.html">
-                                                                    <img width="370" height="300" src="~/wp-content/uploads/2019/11/beautiful-new-concept-of-minimalist-home-exterior-_d55273bb39aa1c6bae5bd3a886b872ac-370x300.jpg" class="attachment-property-thumb size-property-thumb wp-post-image" alt="" loading="lazy" />
-                                                                </a>
-                                                                <div class="content-thumb-overlay">
-                                                                    <div class="property-action">
-                                                                        <div class="action-container">
-                                                                            <div class="property-sharing sharing612a0e93412b1">
-                                                                                <div class="property-share hidden-print clearfix">
-                                                                                    <a href="#share" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" class="fa fa-facebook" title="Share on Facebook" onclick="window.open('http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fhome-for-rent%2F&amp;t=Home+For+Rent','popupFacebook','width=650,height=270,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-twitter" title="Share on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=Home+For+Rent&amp;url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fhome-for-rent%2F','popupTwitter','width=500,height=370,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-google-plus" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fhome-for-rent%2F','popupGooglePlus','width=650,height=226,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-pinterest" title="Share on Pinterest" onclick="window.open('http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fhome-for-rent%2F&amp;media=http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/beautiful-new-concept-of-minimalist-home-exterior-_d55273bb39aa1c6bae5bd3a886b872ac-370x300.jpg&amp;description=Home+For+Rent','popupPinterest','width=750,height=265,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-linkedin" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fhome-for-rent%2F&amp;title=Home+For+Rent&amp;summary=5-storey+house%2C+65m2%2C+total+using+area+325m2.%0D%0AFront+of+5m.%0D%0ANear+the+market%2C+near+the+Mega+supermarket%2C+near+the+school%2C+the+park%2C+in+front+of+the+garden+is+an+open+flower+garden.%0D%0APriority+for+office%2C+spa%2C+preschool.%0D%0A5-year+lease%2C+rent+20+million+%2F+month.&amp;source=CitiLights','popupLinkedIn','width=610,height=480,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                </div>
-                                                                            </div>
-                                                                            <i title="Compare" data-user="0" data-id="11893" data-action="compare" data-thumbnail="http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/beautiful-new-concept-of-minimalist-home-exterior-_d55273bb39aa1c6bae5bd3a886b872ac-180x130.jpg" data-div="submit-compare-612a0e933deef" class="property-action-button fa fa-plus compare-11893" aria-hidden="true"></i>
-                                                                            <i title="Add to favorites" data-user="0" data-id="11893" data-action="favorites" data-status="add_favorites" data-url="http://wp.nootheme.com/citilights/my-favorites/" class="property-action-button fa fa-heart-o" aria-hidden="true"></i>
-                                                                            <i title="Share" data-user="0" data-id="11893" data-action="sharing" data-class="sharing612a0e93412b1" class="property-action-button fa fa-share-alt" aria-hidden="true"></i>
+                                                                <div class="fp-style-2--wrap">
+                                                                    <div>
+                                                                        <div class="fp-style-2--title">
+                                                                            <h4>
+                                                                                <a asp-action="GetPropertyDetail" asp-route-id="@data.PropertyId" asp-controller="PropertyDetails" title="@data.PropertyName">
+                                                                                    @data.PropertyName , @data.CategoryName
+                                                                                </a>
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div class="fp-style-2--excerpt">
+                                                                            <p>@data.Description</p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="fp-style-2--wrap">
-                                                                <div>
-                                                                    <span class="fp-style-2--price">
-                                                                        20 million
-                                                                    </span>
-                                                                    <div class="fp-style-2--title">
-                                                                        <h4>
-                                                                            <a href="properties/home-for-rent/index.html" title="Home For Rent">
-                                                                                Home For Rent
-                                                                            </a>
-                                                                        </h4>
-                                                                        <small class="fp-style-2--address">
-                                                                            <i class="fa fa-map-marker"></i> Selam St, Mek&#039;ele 1710, Ethiopia
-                                                                        </small>
-                                                                    </div>
-                                                                    <div class="fp-style-2--excerpt">
-                                                                        <p>5-storey house, 65m2, total using area 325m2. Front of 5m. Near the market, near the Mega supermarket, near the school, the park, in front of the garden is an open...</p>
+                                                                <div class="fp-style-2--summary">
+                                                                    <div class="property-detail">
+                                                                        <div class="area"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/size-icon_ccd251439ef2512942b64d525ced79fe.png);"></span><span class="property-meta">@data.TotalArea sqft</span></div>
+                                                                        <div class="bedrooms"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/bedroom-icon_92be012355310366e0bf07c8a41e35fe.png);"></span><span class="property-meta">@data.BedRooms</span></div>
+                                                                        <div class="bathrooms"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/bathroom-icon_ffc5ba8874014ad0a7fcc5aa3b8acd57.png);"></span><span class="property-meta">@data.BathRooms</span></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="fp-style-2--summary">
-                                                                <div class="property-detail">
-                                                                    <div class="area"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/size-icon_ccd251439ef2512942b64d525ced79fe.png);"></span><span class="property-meta">325 sqft</span></div>
-                                                                    <div class="bedrooms"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/bedroom-icon_92be012355310366e0bf07c8a41e35fe.png);"></span><span class="property-meta">3</span></div>
-                                                                    <div class="bathrooms"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/bathroom-icon_ffc5ba8874014ad0a7fcc5aa3b8acd57.png);"></span><span class="property-meta">2</span></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </article>
-                                                </li>
-                                                <li>
-                                                    <article>
-                                                        <div class="featured-style-2">
-                                                            <div class="fp-style-2--thumb">
-                                                                <a class="content-thumb" href="properties/__trashed/index.html">
-                                                                    <img width="370" height="300" src="~/wp-content/uploads/2018/07/cedric-klei-743463-unsplash-1-370x300.jpg" class="attachment-property-thumb size-property-thumb wp-post-image" alt="" loading="lazy" />
-                                                                </a>
-                                                                <div class="content-thumb-overlay">
-                                                                    <div class="property-action">
-                                                                        <div class="action-container">
-                                                                            <div class="property-sharing sharing612a0e9343bf3">
-                                                                                <div class="property-share hidden-print clearfix">
-                                                                                    <a href="#share" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" class="fa fa-facebook" title="Share on Facebook" onclick="window.open('http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2F__trashed%2F&amp;t=Luxury+apartment+ocean','popupFacebook','width=650,height=270,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-twitter" title="Share on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=Luxury+apartment+ocean&amp;url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2F__trashed%2F','popupTwitter','width=500,height=370,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-google-plus" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2F__trashed%2F','popupGooglePlus','width=650,height=226,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-pinterest" title="Share on Pinterest" onclick="window.open('http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2F__trashed%2F&amp;media=http://wp.nootheme.com/citilights/wp-content/uploads/2018/07/cedric-klei-743463-unsplash-1-370x300.jpg&amp;description=Luxury+apartment+ocean','popupPinterest','width=750,height=265,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-linkedin" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2F__trashed%2F&amp;title=Luxury+apartment+ocean&amp;summary=Lorem+ipsum+dolor+sit+amet%2C+consectetuer+adipiscing+elit%2C+sed+diam+nonummy+nibh+euismod+tincidunt+ut+laoreet+dolore+magna+aliquam+erat+volutpat.+Ut+wisi+enim+ad+minim+veniam%2C+quis+nostrud+exerci+tation+ullamcorper+suscipit+lobortis+nisl+ut+aliquip+ex+ea+commodo+consequat.+Duis+autem+vel+eum+iriure+dolor+in+hendrerit+in+vulputate+velit+esse+molestie+consequat%2C+vel+illum+dolore+eu+feugiat+nulla+facilisis+at+vero+eros+et+accumsan+et+iusto+odio+dignissim+qui+blandit+praesent+luptatum+zzril+delenit+augue+duis+dolore+te+feugait+nulla+facilisi.%0D%0A%0D%0ANam+liber+tempor+cum+soluta+nobis+eleifend+option+congue+nihil+imperdiet+doming+id+quod+mazim+placerat+facer+possim+assum.+Typi+non+habent+claritatem+insitam%3B+est+usus+legentis+in+iis+qui+facit+eorum+claritatem.+Investigationes+demonstraverunt+lectores+legere+me+lius+quod+ii+legunt+saepius.+Claritas+est+etiam+processus+dynamicus%2C+qui+sequitur+mutationem+consuetudium+lectorum.+Mirum+est+notare+quam+littera+gothica%2C+quam+nunc+putamus+parum+claram%2C+anteposuerit+litterarum+formas+humanitatis+per+seacula+quarta+decima+et+quinta+decima.+Eodem+modo+typi%2C+qui+nunc+nobis+videntur+parum+clari%2C+fiant+sollemnes+in+futurum.%0D%0A%0D%0ANulla+quis+lorem+ut+libero+malesuada+feugiat.+Vestibulum+ac+diam+sit+amet+quam+vehicula+elementum+sed+sit+amet+dui.+Donec+sollicitudin+molestie+malesuada.+Praesent+sapien+massa%2C+convallis+a+pellentesque+nec%2C+egestas+non+nisi.+Nulla+porttitor+accumsan+tincidunt.+Lorem+ipsum+dolor+sit+amet%2C+consectetur+adipiscing+elit.+Curabitur+arcu+erat%2C+accumsan+id+imperdiet+et%2C+porttitor+at+sem.+Curabitur+non+nulla+sit+amet+nisl+tempus+convallis+quis+ac+lectus.+Pellentesque+in+ipsum+id+orci+porta+dapibus.+Nulla+porttitor+accumsan+tincidunt.%0D%0A%0D%0AVestibulum+ac+diam+sit+amet+quam+vehicula+elementum+sed+sit+amet+dui.+Vivamus+suscipit+tortor+eget+felis+porttitor+volutpat.+Lorem+ipsum+dolor+sit+amet%2C+consectetur+adipiscing+elit.+Vivamus+suscipit+tortor+eget+felis+porttitor+volutpat.+Sed+porttitor+lectus+nibh.+Curabitur+aliquet+quam+id+dui+posuere+blandit.+Proin+eget+tortor+risus.+Praesent+sapien+massa%2C+convallis+a+pellentesque+nec%2C+egestas+non+nisi.+Donec+rutrum+congue+leo+eget+malesuada.+Quisque+velit+nisi%2C+pretium+ut+lacinia+in%2C+elementum+id+enim.&amp;source=CitiLights','popupLinkedIn','width=610,height=480,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                </div>
-                                                                            </div>
-                                                                            <i title="Compare" data-user="0" data-id="11026" data-action="compare" data-thumbnail="http://wp.nootheme.com/citilights/wp-content/uploads/2018/07/cedric-klei-743463-unsplash-1-180x130.jpg" data-div="submit-compare-612a0e933deef" class="property-action-button fa fa-plus compare-11026" aria-hidden="true"></i>
-                                                                            <i title="Add to favorites" data-user="0" data-id="11026" data-action="favorites" data-status="add_favorites" data-url="http://wp.nootheme.com/citilights/my-favorites/" class="property-action-button fa fa-heart-o" aria-hidden="true"></i>
-                                                                            <i title="Share" data-user="0" data-id="11026" data-action="sharing" data-class="sharing612a0e9343bf3" class="property-action-button fa fa-share-alt" aria-hidden="true"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="fp-style-2--wrap">
-                                                                <div>
-                                                                    <span class="fp-style-2--price">
-                                                                        <span class="amount">&#36;34,000</span>
-                                                                    </span>
-                                                                    <div class="fp-style-2--title">
-                                                                        <h4>
-                                                                            <a href="properties/__trashed/index.html" title="Luxury apartment ocean">
-                                                                                Luxury apartment ocean
-                                                                            </a>
-                                                                        </h4>
-                                                                        <small class="fp-style-2--address">
-                                                                            <i class="fa fa-map-marker"></i> Vietnam National Convention Center, Mễ Trì, Từ Liêm, Hanoi, Vietnam
-                                                                        </small>
-                                                                    </div>
-                                                                    <div class="fp-style-2--excerpt">
-                                                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci...</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="fp-style-2--summary">
-                                                                <div class="property-detail">
-                                                                    <div class="area"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/size-icon_ccd251439ef2512942b64d525ced79fe.png);"></span><span class="property-meta">3000 sqft</span></div>
-                                                                    <div class="bedrooms"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/bedroom-icon_92be012355310366e0bf07c8a41e35fe.png);"></span><span class="property-meta">4</span></div>
-                                                                    <div class="bathrooms"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/bathroom-icon_ffc5ba8874014ad0a7fcc5aa3b8acd57.png);"></span><span class="property-meta">3</span></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </article>
-                                                </li>
-                                                <li>
-                                                    <article>
-                                                        <div class="featured-style-2">
-                                                            <div class="fp-style-2--thumb">
-                                                                <a class="content-thumb" href="properties/new-york-upper-west-side/index.html">
-                                                                    <img width="370" height="300" src="~/wp-content/uploads/2014/09/Beautiful-House-1-370x300.jpg" class="attachment-property-thumb size-property-thumb wp-post-image" alt="" loading="lazy" />
-                                                                </a>
-                                                                <div class="content-thumb-overlay">
-                                                                    <div class="property-action">
-                                                                        <div class="action-container">
-                                                                            <div class="property-sharing sharing612a0e934831c">
-                                                                                <div class="property-share hidden-print clearfix">
-                                                                                    <a href="#share" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" class="fa fa-facebook" title="Share on Facebook" onclick="window.open('http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fnew-york-upper-west-side%2F&amp;t=New+York+Upper+West+Side','popupFacebook','width=650,height=270,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-twitter" title="Share on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=New+York+Upper+West+Side&amp;url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fnew-york-upper-west-side%2F','popupTwitter','width=500,height=370,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-google-plus" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fnew-york-upper-west-side%2F','popupGooglePlus','width=650,height=226,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-pinterest" title="Share on Pinterest" onclick="window.open('http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fnew-york-upper-west-side%2F&amp;media=http://wp.nootheme.com/citilights/wp-content/uploads/2014/09/Beautiful-House-1-370x300.jpg&amp;description=New+York+Upper+West+Side','popupPinterest','width=750,height=265,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-linkedin" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fnew-york-upper-west-side%2F&amp;title=New+York+Upper+West+Side&amp;summary=Fantastic+One+Bedroom+Facing+East+In+This+Amazing+Trump+Place+Doorman+Building.+There+Is+A+Large+Kitchen%2C+Washer+And+Dryer%2C+Great+Light+And+Plenty+Of+Closet+Space.+In+Addition%2C+There+Are+Amazing+Custom+Made+%27Built+Ins%27+In+The+Living+Room+Providing+Plenty+Of+Storage.+The+Building+Has+A+Gym%2C+Pool%2C+Chi+%3Cspan+id%3D%22longDescriptionEllipsis%22+class%3D%22hideVisually%22%3E...%3C%2Fspan%3E%3Cspan+id%3D%22moreDescription%22+class%3D%22%22%3Eldren%27s+Room%2C+Valet+Services%2C+Full+Time+Concierge+And+Doorman.+%3C%2Fspan%3E&amp;source=CitiLights','popupLinkedIn','width=610,height=480,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                </div>
-                                                                            </div>
-                                                                            <i title="Compare" data-user="0" data-id="6607" data-action="compare" data-thumbnail="http://wp.nootheme.com/citilights/wp-content/uploads/2014/09/Beautiful-House-1-180x130.jpg" data-div="submit-compare-612a0e933deef" class="property-action-button fa fa-plus compare-6607" aria-hidden="true"></i>
-                                                                            <i title="Add to favorites" data-user="0" data-id="6607" data-action="favorites" data-status="add_favorites" data-url="http://wp.nootheme.com/citilights/my-favorites/" class="property-action-button fa fa-heart-o" aria-hidden="true"></i>
-                                                                            <i title="Share" data-user="0" data-id="6607" data-action="sharing" data-class="sharing612a0e934831c" class="property-action-button fa fa-share-alt" aria-hidden="true"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="fp-style-2--wrap">
-                                                                <div>
-                                                                    <span class="fp-style-2--price">
-                                                                        <span class="amount">&#36;200</span> /month
-                                                                    </span>
-                                                                    <div class="fp-style-2--title">
-                                                                        <h4>
-                                                                            <a href="properties/new-york-upper-west-side/index.html" title="New York Upper West Side">
-                                                                                New York Upper West Side
-                                                                            </a>
-                                                                        </h4>
-                                                                        <small class="fp-style-2--address">
-                                                                            <i class="fa fa-map-marker"></i> 200 Riverside Blvd #12G
-                                                                        </small>
-                                                                    </div>
-                                                                    <div class="fp-style-2--excerpt">
-                                                                        <p>Fantastic One Bedroom Facing East In This Amazing Trump Place Doorman Building. There Is A Large Kitchen, Washer And Dryer, Great Light And Plenty Of Closet Space. In Addition, There...</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="fp-style-2--summary">
-                                                                <div class="property-detail">
-                                                                    <div class="area"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/size-icon_ccd251439ef2512942b64d525ced79fe.png);"></span><span class="property-meta">123 sqft</span></div>
-                                                                    <div class="bedrooms"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/bedroom-icon_92be012355310366e0bf07c8a41e35fe.png);"></span><span class="property-meta">1</span></div>
-                                                                    <div class="bathrooms"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/bathroom-icon_ffc5ba8874014ad0a7fcc5aa3b8acd57.png);"></span><span class="property-meta">1</span></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </article>
-                                                </li>
-                                                <li>
-                                                    <article>
-                                                        <div class="featured-style-2">
-                                                            <div class="fp-style-2--thumb">
-                                                                <a class="content-thumb" href="properties/single-family-residential-ca/index.html">
-                                                                    <img width="370" height="300" src="~/wp-content/uploads/2014/08/modern-contemporary-wood-house-interior-design-ideas-modern-contemporary-wood-house-interior-design-ideas-photos-370x300.jpg" class="attachment-property-thumb size-property-thumb wp-post-image" alt="" loading="lazy" />
-                                                                </a>
-                                                                <div class="content-thumb-overlay">
-                                                                    <div class="property-action">
-                                                                        <div class="action-container">
-                                                                            <div class="property-sharing sharing612a0e934c961">
-                                                                                <div class="property-share hidden-print clearfix">
-                                                                                    <a href="#share" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" class="fa fa-facebook" title="Share on Facebook" onclick="window.open('http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fsingle-family-residential-ca%2F&amp;t=Single+Family+Residential%2C+NJ','popupFacebook','width=650,height=270,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-twitter" title="Share on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=Single+Family+Residential%2C+NJ&amp;url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fsingle-family-residential-ca%2F','popupTwitter','width=500,height=370,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-google-plus" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fsingle-family-residential-ca%2F','popupGooglePlus','width=650,height=226,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-pinterest" title="Share on Pinterest" onclick="window.open('http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fsingle-family-residential-ca%2F&amp;media=http://wp.nootheme.com/citilights/wp-content/uploads/2014/08/modern-contemporary-wood-house-interior-design-ideas-modern-contemporary-wood-house-interior-design-ideas-photos-370x300.jpg&amp;description=Single+Family+Residential%2C+NJ','popupPinterest','width=750,height=265,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-linkedin" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fsingle-family-residential-ca%2F&amp;title=Single+Family+Residential%2C+NJ&amp;summary=Classic+60%27s+ranch+living.+House+has+hardwood+floors+and+hard+coat+plaster+wal%3Cwbr+%2F%3Els+and+ceilings+in+good+condition.+Intimate+backyard+for+private+gatherings.+Full+basement+leaves+plenty+of+room+for+expanding+living+space+if+you+so+desire.+An+antique+%22player+piano%22+and+a+large+chest+freezer+will+be+included+in+the+sale.+This+location+is+close+to+major+highways%2C+California+University+and+California+Technology+and+Business+Park.&amp;source=CitiLights','popupLinkedIn','width=610,height=480,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                </div>
-                                                                            </div>
-                                                                            <i title="Compare" data-user="0" data-id="6606" data-action="compare" data-thumbnail="http://wp.nootheme.com/citilights/wp-content/uploads/2014/08/modern-contemporary-wood-house-interior-design-ideas-modern-contemporary-wood-house-interior-design-ideas-photos-180x130.jpg" data-div="submit-compare-612a0e933deef" class="property-action-button fa fa-plus compare-6606" aria-hidden="true"></i>
-                                                                            <i title="Add to favorites" data-user="0" data-id="6606" data-action="favorites" data-status="add_favorites" data-url="http://wp.nootheme.com/citilights/my-favorites/" class="property-action-button fa fa-heart-o" aria-hidden="true"></i>
-                                                                            <i title="Share" data-user="0" data-id="6606" data-action="sharing" data-class="sharing612a0e934c961" class="property-action-button fa fa-share-alt" aria-hidden="true"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="fp-style-2--wrap">
-                                                                <div>
-                                                                    <span class="fp-style-2--price">
-                                                                        <span class="amount">&#36;299,000</span>
-                                                                    </span>
-                                                                    <div class="fp-style-2--title">
-                                                                        <h4>
-                                                                            <a href="properties/single-family-residential-ca/index.html" title="Single Family Residential, NJ">
-                                                                                Single Family Residential, NJ
-                                                                            </a>
-                                                                        </h4>
-                                                                        <small class="fp-style-2--address">
-                                                                            <i class="fa fa-map-marker"></i> 255 Hillcrest Dr
-                                                                        </small>
-                                                                    </div>
-                                                                    <div class="fp-style-2--excerpt">
-                                                                        <p>Classic 60&#8217;s ranch living. House has hardwood floors and hard coat plaster walls and ceilings in good condition. Intimate backyard for private gatherings. Full basement leaves plenty of room for...</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="fp-style-2--summary">
-                                                                <div class="property-detail">
-                                                                    <div class="area"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/size-icon_ccd251439ef2512942b64d525ced79fe.png);"></span><span class="property-meta">1118 sqft</span></div>
-                                                                    <div class="bedrooms"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/bedroom-icon_92be012355310366e0bf07c8a41e35fe.png);"></span><span class="property-meta">3</span></div>
-                                                                    <div class="bathrooms"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/bathroom-icon_ffc5ba8874014ad0a7fcc5aa3b8acd57.png);"></span><span class="property-meta">2</span></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </article>
-                                                </li>
-                                                <li>
-                                                    <article>
-                                                        <div class="featured-style-2">
-                                                            <div class="fp-style-2--thumb">
-                                                                <a class="content-thumb" href="properties/the-helux/index.html">
-                                                                    <img width="370" height="300" src="~/wp-content/uploads/2019/11/118625-interior-design-living-room-540x337-fancy-i_9939f1fe4c56e7728b34d9825825356e-370x300.jpg" class="attachment-property-thumb size-property-thumb wp-post-image" alt="" loading="lazy" />
-                                                                </a>
-                                                                <div class="content-thumb-overlay">
-                                                                    <div class="property-action">
-                                                                        <div class="action-container">
-                                                                            <div class="property-sharing sharing612a0e934e1c0">
-                                                                                <div class="property-share hidden-print clearfix">
-                                                                                    <a download href="wp-content/uploads/2014/10/Exhibit-A-SAMPLE-CONTRACT.html" class="fa fa-download action" title="Download File"></a>
-                                                                                    <a href="#share" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" class="fa fa-facebook" title="Share on Facebook" onclick="window.open('http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fthe-helux%2F&amp;t=The+Helux','popupFacebook','width=650,height=270,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-twitter" title="Share on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=The+Helux&amp;url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fthe-helux%2F','popupTwitter','width=500,height=370,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-google-plus" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fthe-helux%2F','popupGooglePlus','width=650,height=226,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-pinterest" title="Share on Pinterest" onclick="window.open('http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fthe-helux%2F&amp;media=http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/118625-interior-design-living-room-540x337-fancy-i_9939f1fe4c56e7728b34d9825825356e-370x300.jpg&amp;description=The+Helux','popupPinterest','width=750,height=265,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                    <a href="#share" class="fa fa-linkedin" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2Fproperties%2Fthe-helux%2F&amp;title=The+Helux&amp;summary=Located+on+43rd+Street+between+10th+and+11th+Avenue+in+the+hot+Midtown+West+ne%3Cwbr+%2F%3Eighborhood+of+Hell%3Fs+Kitchen+is+The+Helux.+These+no-fee+apartments+feature+newly+renovated+studio+to+two-bedroom+rentals+with+modern+luxuries.+Exceptional+amenities+include+a+new+lobby%2C+fitness+center+with+basketball+court%2C+landscaped+sun+terrace%2C+24-hour+concierge%2C+bicycle+and+tenant+storage+spaces%2C+on-site+management%2C+laundry+room%2C+resident+lounge%2C+children%3Fs+play+area%2C+and+an+attended+garage+with+valet+parking.+Enjoy+a+modern+lifestyle+with+quick+access+to+places+of+work+and+leisure%2C+including+access+to+the%3Cspan+id%3D%22longDescriptionEllipsis%22+class%3D%22hideVisually%22%3E...%3C%2Fspan%3E%3Cspan+id%3D%22moreDescription%22+class%3D%22%22%3E+Hudson+River+Park%2C+less+than+two+blocks+away.%3C%2Fspan%3E&amp;source=CitiLights','popupLinkedIn','width=610,height=480,resizable=0, toolbar=0, menubar=0, status=0, location=0, scrollbars=0'); return false;">
-                                                                                    </a>
-                                                                                </div>
-                                                                            </div>
-                                                                            <i title="Compare" data-user="0" data-id="6605" data-action="compare" data-thumbnail="http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/118625-interior-design-living-room-540x337-fancy-i_9939f1fe4c56e7728b34d9825825356e-180x130.jpg" data-div="submit-compare-612a0e933deef" class="property-action-button fa fa-plus compare-6605" aria-hidden="true"></i>
-                                                                            <i title="Add to favorites" data-user="0" data-id="6605" data-action="favorites" data-status="add_favorites" data-url="http://wp.nootheme.com/citilights/my-favorites/" class="property-action-button fa fa-heart-o" aria-hidden="true"></i>
-                                                                            <i title="Share" data-user="0" data-id="6605" data-action="sharing" data-class="sharing612a0e934e1c0" class="property-action-button fa fa-share-alt" aria-hidden="true"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="fp-style-2--wrap">
-                                                                <div>
-                                                                    <span class="fp-style-2--price">
-                                                                        From <span class="amount">&#36;3,515</span> /month
-                                                                    </span>
-                                                                    <div class="fp-style-2--title">
-                                                                        <h4>
-                                                                            <a href="properties/the-helux/index.html" title="The Helux">
-                                                                                The Helux
-                                                                            </a>
-                                                                        </h4>
-                                                                        <small class="fp-style-2--address">
-                                                                            <i class="fa fa-map-marker"></i> 520 West 43rd St
-                                                                        </small>
-                                                                    </div>
-                                                                    <div class="fp-style-2--excerpt">
-                                                                        <p>Located on 43rd Street between 10th and 11th Avenue in the hot Midtown West neighborhood of Hell?s Kitchen is The Helux. These no-fee apartments feature newly renovated studio to two-bedroom...</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="fp-style-2--summary">
-                                                                <div class="property-detail">
-                                                                    <div class="area"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/size-icon_ccd251439ef2512942b64d525ced79fe.png);"></span><span class="property-meta">762 sqft</span></div>
-                                                                    <div class="bedrooms"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/bedroom-icon_92be012355310366e0bf07c8a41e35fe.png);"></span><span class="property-meta">3</span></div>
-                                                                    <div class="bathrooms"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/bathroom-icon_ffc5ba8874014ad0a7fcc5aa3b8acd57.png);"></span><span class="property-meta">3</span></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </article>
-                                                </li>
+                                                        </article>
+                                                    </li>
+
+                                                }
                                             </ul>
                                             <a class="owl2-prev rp-prev" id="featured_612a0e933ddb8-prev"></a>
                                             <a class="owl2-next rp-next" id="featured_612a0e933ddb8-next"></a>
@@ -513,78 +197,21 @@
                                 <div class="city-info-masonry">
                                     <div id="city_612a0e93502f5">
                                         <div class="city-grid">
-                                            <div class="city-item city-item-w-50 city-item-h-50 ">
-                                                <img src="~/wp-content/uploads/2018/07/Layer-9.png" alt="Chicago">
-                                                <div class="city-hover">
-                                                    <div id="city-info">
-                                                        <h2>Chicago</h2>
-                                                        <p>1 property</p>
-                                                        <a href="property-location/chicago/index.html">
-                                                            <small>View All <i class="fa fa-arrow-circle-right"></i></small>
-                                                        </a>
+                                            @foreach (var data in ((IEnumerable<A2ZPortal.Core.ViewModel.HomeDetail.PropertyLocationWiseCountVm>)ViewBag.PropertyLocationCount))
+                                            {
+                                                <div class="city-item">
+                                                    <img src="~/wp-content/uploads/2018/07/Layer-9.png" alt="Chicago">
+                                                    <div class="city-hover">
+                                                        <div id="city-info">
+                                                            <h2>@data.LocationName</h2>
+                                                            <p>@data.PropertyCount property</p>
+                                                            <a asp-action="Index" asp-controller="PropertyDetails" asp-route-location="@data.LocationId">
+                                                                <small>View All <i class="fa fa-arrow-circle-right"></i></small>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="city-item ">
-                                                <img src="~/wp-content/uploads/2018/07/Layer-13.png" alt="London">
-                                                <div class="city-hover">
-                                                    <div id="city-info">
-                                                        <h2>London</h2>
-                                                        <p>2 property</p>
-                                                        <a href="property-location/london/index.html">
-                                                            <small>View All <i class="fa fa-arrow-circle-right"></i></small>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="city-item ">
-                                                <img src="~/wp-content/uploads/2018/07/Layer-11.png" alt="Los Angeles">
-                                                <div class="city-hover">
-                                                    <div id="city-info">
-                                                        <h2>Los Angeles</h2>
-                                                        <p>2 property</p>
-                                                        <a href="property-location/los-angeles/index.html">
-                                                            <small>View All <i class="fa fa-arrow-circle-right"></i></small>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="city-item city-item-w-50 city-item-h-50 ">
-                                                <img src="~/wp-content/uploads/2019/11/Untitled-3_2f39b5e41be5c2c9029b9a58309bf3fd.jpg" alt="New Jersey">
-                                                <div class="city-hover">
-                                                    <div id="city-info">
-                                                        <h2>New Jersey</h2>
-                                                        <p>6 property</p>
-                                                        <a href="property-location/california/index.html">
-                                                            <small>View All <i class="fa fa-arrow-circle-right"></i></small>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="city-item ">
-                                                <img src="~/wp-content/uploads/2018/07/Layer-4-2.png" alt="Paris">
-                                                <div class="city-hover">
-                                                    <div id="city-info">
-                                                        <h2>Paris</h2>
-                                                        <p>2 property</p>
-                                                        <a href="property-location/paris/index.html">
-                                                            <small>View All <i class="fa fa-arrow-circle-right"></i></small>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="city-item ">
-                                                <img src="~/wp-content/uploads/2018/07/Layer-14.png" alt="New York">
-                                                <div class="city-hover">
-                                                    <div id="city-info">
-                                                        <h2>New York</h2>
-                                                        <p>9 property</p>
-                                                        <a href="property-location/new-york-3/index.html">
-                                                            <small>View All <i class="fa fa-arrow-circle-right"></i></small>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            }
                                         </div>
                                     </div>
                                 </div>
@@ -625,8 +252,10 @@
                         </div>
                     </div>
                 </div>
-                <div id="divTestimonialData">     @await Component.InvokeAsync("Testimonials")</div>
-                
+                <div id="divTestimonialData">
+                    @await Component.InvokeAsync("Testimonials")
+                </div>
+
 
                 <div class="noo-vc-row row " style="background-color: #fafafa; padding-top: 0px; padding-bottom: 0px;">
                     <div class="noo-vc-col col-md-12 ">
@@ -635,41 +264,17 @@
                                 <div class="noo-vc-col col-md-12 ">
                                     <div id="client_HhzVL">
                                         <div class="client-row owl-carousel owl-theme">
-                                            <div class="client-item" data-page=''>
-                                                <a href="#" target="_blank">
-                                                    <img src="~/wp-content/uploads/2014/09/foot-nav-4.png" alt="Client logo 1">
-                                                </a>
-                                            </div>
-                                            <div class="client-item" data-page=''>
-                                                <a href="#" target="_blank">
-                                                    <img src="~/wp-content/uploads/2014/09/foot-nav-6.png" alt="Client logo 2">
-                                                </a>
-                                            </div>
-                                            <div class="client-item" data-page=''>
-                                                <a href="#" target="_blank">
-                                                    <img src="~/wp-content/uploads/2014/09/foot-nav-5.png" alt="Client logo 3">
-                                                </a>
-                                            </div>
-                                            <div class="client-item" data-page=''>
-                                                <a href="#" target="_blank">
-                                                    <img src="~/wp-content/uploads/2014/09/foot-nav-3.png" alt="Client logo 3">
-                                                </a>
-                                            </div>
-                                            <div class="client-item" data-page=''>
-                                                <a href="#" target="_blank">
-                                                    <img src="~/wp-content/uploads/2014/09/foot-nav-2.png" alt="Client logo 3">
-                                                </a>
-                                            </div>
-                                            <div class="client-item" data-page=''>
-                                                <a href="#" target="_blank">
-                                                    <img src="~/wp-content/uploads/2014/09/foot-nav-1.png" alt="Client logo 3">
-                                                </a>
-                                            </div>
-                                            <div class="client-item" data-page=''>
-                                                <a href="#" target="_blank">
-                                                    <img src="~/wp-content/uploads/2014/09/foot-nav-1.png" alt="Client logo 3">
-                                                </a>
-                                            </div>
+                                            @foreach (var data in (IEnumerable<A2ZPortal.Core.ViewModel.HomeDetail.RecentPropertyDetail>)ViewBag.PropertyImage)
+                                            {
+                                                <div class="client-item" data-page=''>
+                                                    <a asp-action="GetPropertyDetail" asp-route-id="@data.PropertyId"
+                                                       asp-controller="PropertyDetails" target="_blank">
+                                                        <img style="height:75px;width:125px" src="@data.ImagePath" alt="Client logo 1">
+                                                    </a>
+                                                </div>
+                                            }
+
+
                                         </div>
                                     </div>
                                     <script type="text/javascript">
@@ -707,6 +312,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="noo-vc-row row " style="background-color: #75b08a; padding-top: 25px; padding-bottom: 25px;">
                     <div class="noo-vc-col col-md-12 ">
                         <div class="container-boxed max">
@@ -751,14 +357,6 @@
     </div>
 </div>
 
-@*<script>
-        $(document).ready(function () {
-            $.get("/PropertySearch/Index",
-                function (data) {
-                    $("#div-property-search").html(data);
-                });
-        });
-    </script>*@
 
 <script type="text/javascript">
     $(document).ready(function () {

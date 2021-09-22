@@ -48,5 +48,35 @@ namespace A2ZPortal.Infrastructure.Implementation.PropertyImplementation
 
             return models;
         }
+
+        public async Task<List<RecentPropertyDetail>> GetRecentPropertyDetail(int pageNumber, int pageSize)
+        {
+            SqlParameter[] param = { new SqlParameter("@PageNbr", pageNumber), new SqlParameter("@PageSize", pageSize) };
+
+            var models = new List<RecentPropertyDetail>();
+
+            var reader = await SqlHelper.ExecuteReader(_connectionString, SqlConstant.GetRecentPropertyDetail,
+                System.Data.CommandType.StoredProcedure, param);
+
+            while (reader.Read())
+            {
+                var model = new RecentPropertyDetail();
+                model.ImagePath = reader.DefaultIfNull<string>("ImagePath");
+                model.PropertyId = reader.DefaultIfNull<int>("Id");
+                model.PropertyName = reader.DefaultIfNull<string>("PropertyName");
+                model.Description = reader.DefaultIfNull<string>("ProprtyDescription");
+                model.PlaceAddress = reader.DefaultIfNull<string>("PlaceAddress");
+                model.BedRooms = reader.DefaultIfNull<int>("BedRooms");
+                model.BathRooms = reader.DefaultIfNull<int>("BathRooms");
+                model.TotalArea = reader.DefaultIfNull<decimal>("TotalArea");
+                model.CategoryName = reader.DefaultIfNull<string>("CategoryId");
+                model.PropertyType = reader.DefaultIfNull<string>("PropertyTypeId");
+                model.Price = reader.DefaultIfNull<decimal>("Price");
+
+                models.Add(model);
+            }
+
+            return models;
+        }
     }
 }

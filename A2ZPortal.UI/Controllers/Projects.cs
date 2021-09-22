@@ -23,6 +23,7 @@ namespace A2ZPortal.UI.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewData["Title"] = " | Projects";
             var response = await _IPropertyDetailCompleteRepository.GetPropertyDetailByName(string.Empty);
             response.ForEach(item => {
                 if (string.IsNullOrEmpty(item.ImagePath))

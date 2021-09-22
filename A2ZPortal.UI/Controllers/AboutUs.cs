@@ -10,6 +10,7 @@ namespace A2ZPortal.UI.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["Title"] = "| AboutUs";
             return View();
         }
     }

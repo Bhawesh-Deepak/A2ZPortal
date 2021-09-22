@@ -8,7 +8,8 @@ namespace A2ZPortal.Helper.Extension
         //System.Drawing.Image i = resizeImage(b, new Size(100, 100));
         public static  Image ResizeImageData(string imagePath, Size size)
         {
-            var imgToResize = Image.FromFile(string.Concat(imagePath));
+            
+            var imgToResize = Image.FromFile(imagePath);
             var sourceWidth = imgToResize.Width;
             var sourceHeight = imgToResize.Height;
             float nPercent = 0;

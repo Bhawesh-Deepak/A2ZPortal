@@ -1,9 +1,11 @@
 ﻿using A2ZPortal.Infrastructure.Implementation.CustomersImplementation;
 using A2ZPortal.Infrastructure.Implementation.GenericImplementation;
+using A2ZPortal.Infrastructure.Implementation.HomeDetail;
 using A2ZPortal.Infrastructure.Implementation.PropertyImplementation;
 using A2ZPortal.Infrastructure.Implementation.UserManagement;
 using A2ZPortal.Infrastructure.Repository.CustomerRepository;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
+using A2ZPortal.Infrastructure.Repository.HomeDetailRepository;
 using A2ZPortal.Infrastructure.Repository.PropertyDetailRepository;
 using A2ZPortal.Infrastructure.Repository.UserManagement;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +27,7 @@ namespace A2ZPortal.Infrastructure.Implementation.Extensions
             services.AddTransient<IPropertyDetailCompleteRepository, PropertyDetailCompleteImplementation>();
             services.AddTransient<ITestimonialRepository, TestimonialImplimentation>();
             services.AddTransient<IOrderTransactionRepository, OrderTransactionImplementation>();
+            services.AddTransient<IHomeDetailRepository, HomeDetailImplementation>();
         }
     }
 }

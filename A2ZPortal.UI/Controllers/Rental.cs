@@ -24,6 +24,7 @@ namespace A2ZPortal.UI.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewData["Title"] = " | Rental";
             var response = await _IPropertyDetailCompleteRepository.GetPropertyDetailByName(PropertyEnums.Rent.ToString());
             response.ForEach(item => {
                 if (string.IsNullOrEmpty(item.ImagePath))
