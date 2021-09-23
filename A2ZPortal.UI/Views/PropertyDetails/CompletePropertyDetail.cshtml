@@ -20,6 +20,7 @@
                             @Model.PropertyName <small></small>
                         </h1>
                         <div class="property-share hidden-print clearfix">
+
                             <a href="javascript:void(0)" onclick="return window.print();" class="fa fa-print action" title="Print this property"></a>
                             <a href="#" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" class="fa fa-heart action" title="Wishlist">
                             </a>
@@ -147,6 +148,21 @@
             </div>
             @Model.PropertyName
         </div>
+
+        @*<div class="row">
+                @await Html.PartialAsync("~/Views/360PanomaIImages/_360ImageView.cshtml", Model)
+            </div>*@
+
+        <div class="row">
+            <div class="col-md-8">
+
+            </div>
+            <div class="col-md-4">
+                <a type="button" asp-action="DownloadBrochure" 
+                   asp-controller="PropertyDetails" asp-route-propId="@Model.Id" 
+                   class="wpcf7-form-control wpcf7-submit right-sidebar" >Download Brochure</a>
+            </div>
+        </div>
     </div>
 
 
@@ -209,4 +225,6 @@
             ev.preventDefault();
         });
     });
+
+
 </script>

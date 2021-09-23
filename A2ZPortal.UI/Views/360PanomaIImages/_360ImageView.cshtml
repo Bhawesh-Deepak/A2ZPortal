@@ -1,0 +1,69 @@
+﻿@model A2ZPortal.Core.ViewModel.PropertyDetail.CompletePropertyDetailsVm
+<link href="~/Paronama360/css/jquery.panorama.css" rel="stylesheet" />
+<link href="~/Paronama360/css/jquery.fancybox-1.3.1.css" rel="stylesheet" media="screen" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="~/Paronama360/jquery.panorama.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("img.advancedpanorama").panorama({
+            auto_start: 0,
+            start_position: 1527
+        });
+    });
+</script>
+<script type="text/javascript" src="~/Paronama360/js/cvi_text_lib.js"></script>
+<script src="~/Paronama360/jquery.advanced-panorama.js"></script>
+<script type="text/javascript" src="~/Paronama360/js/jquery.flipv.js"></script>
+<script type="text/javascript" src="~/Paronama360/js/jquery.fancybox-1.3.1.pack.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.thickbox').fancybox();
+    });
+</script>
+
+@*<style type="text/css">
+    body {
+        background: #595959;
+        text-align: center;
+    }
+
+    h1 {
+        color: white;
+        margin-bottom: 2em;
+        font-family: Verdana;
+        font-weight: normal;
+        font-size: 25px;
+    }
+
+    #page {
+        text-align: center;
+        color: white;
+    }
+
+        #page a {
+            color: white;
+        }
+
+        #page .panorama-viewport {
+            border: 20px solid #414141;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #page p {
+            margin-bottom: 1em;
+        }
+</style>*@
+
+
+<div id="page">
+    <img src="img/sculpteur.jpg" class="advancedpanorama" width="2448" height="375" usemap="testmap" alt="Atelier du sculpteur" />
+    <map id="testmap" name="testmap">
+        <area shape="rect" coords="1653,72,1839,255" href="salleformation.html" alt="vers la salle de formation" />
+        <area shape="rect" coords="2013,114,2091,210" href="@Model.ImageDetails.First().ImagePath" alt="statues" class="thickbox" />
+        <area shape="rect" coords="1920,276,2070,351" href="@Model.ImageDetails.First().ImagePath" alt="gouges" class="thickbox" />
+    </map>
+
+
+</div>
+

@@ -1,9 +1,12 @@
-﻿using A2ZPortal.Core.Entities.Master;
+﻿using A2ZPortal.Core.Entities.Common;
+using A2ZPortal.Core.Entities.Master;
+using A2ZPortal.Core.Entities.Property;
 using A2ZPortal.Core.ViewModel.PropertyDetail;
 using A2ZPortal.Core.ViewModel.RequestFolder;
 using A2ZPortal.Helper;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
 using A2ZPortal.Infrastructure.Repository.PropertyDetailRepository;
+using A2ZPortal.UI.Helper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -21,13 +24,15 @@ namespace A2ZPortal.UI.Controllers
         private readonly IGenericRepository<BathRoom, int> _iBathRoomGenericRepository;
         private readonly IPropertyDetailCompleteRepository _IPropertyCompleteRepository;
         private readonly string APIURL = string.Empty;
+        private readonly IGenericRepository<Brochure, int> _IBrochureRepository;
         public PropertyDetails(IGenericRepository<Location, int> iLocationGenericRepository,
             IGenericRepository<SubLocation, int> iSubLocationGenericRepository,
              IGenericRepository<PropertyStatusModel, int> iPropertyStatusGenericRepository,
              IGenericRepository<PropertyType, int> iPropertyTypeGenericRepository,
               IGenericRepository<BedRoom, int> iBedRoomGenericRepository,
              IGenericRepository<BathRoom, int> iBathRoomGenericRepository,
-             IPropertyDetailCompleteRepository propertyDetailCompleteRepository, IConfiguration configuration
+             IPropertyDetailCompleteRepository propertyDetailCompleteRepository,
+             IConfiguration configuration, IGenericRepository<Brochure, int> brochureRepository
              )
         {
             _iLocationGenericRepository = iLocationGenericRepository;
@@ -38,6 +43,7 @@ namespace A2ZPortal.UI.Controllers
             _iBathRoomGenericRepository = iBathRoomGenericRepository;
             _IPropertyCompleteRepository = propertyDetailCompleteRepository;
             APIURL = configuration.GetSection("APIURL").Value;
+            _IBrochureRepository = brochureRepository;
         }
         public async Task<IActionResult> Index(int location, int sub_location, int bathRoom,
             int status, int category, int bedrooms, int min_price, int max_price, int min_area, int max_area)
@@ -96,14 +102,24 @@ namespace A2ZPortal.UI.Controllers
             });
             return View(ViewPageHelper.InstanceHelper.GetPathDetail("PropertyDetails", "CompletePropertyDetail"), response);
         }
+        [CustomAuthenticate]
+        public async Task<IActionResult> DownloadBrochure(int propId)
+        {
+            var response = await _IBrochureRepository.GetSingle(x => x.PropertyId == propId);
+            if (response.ResponseStatus != ResponseStatus.Error) {
+                var pdfFile = APIURL + response.Entity.BrochurePath;
+                return RedirectPermanent(pdfFile);
+            }
+            return RedirectToAction("Index", "Error");
+        }
         private async Task PopulateViewBag()
         {
-            ViewBag.PropertyStatus = (await _iPropertyStatusGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
-            ViewBag.BedRoom = (await _iBedRoomGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
-            ViewBag.BathRoom = (await _iBathRoomGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
-            ViewBag.PropertyType = (await _iPropertyTypeGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
-            ViewBag.Location = (await _iLocationGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
-            ViewBag.SubLocation = (await _iSubLocationGenericRepository.GetList(x => x.IsActive == true && x.IsDeleted == false)).Entities;
+            ViewBag.PropertyStatus = (await _iPropertyStatusGenericRepository.GetList(x => x.IsActive && !x.IsDeleted)).Entities;
+            ViewBag.BedRoom = (await _iBedRoomGenericRepository.GetList(x => x.IsActive && !x.IsDeleted)).Entities;
+            ViewBag.BathRoom = (await _iBathRoomGenericRepository.GetList(x => x.IsActive && !x.IsDeleted)).Entities;
+            ViewBag.PropertyType = (await _iPropertyTypeGenericRepository.GetList(x => x.IsActive && !x.IsDeleted)).Entities;
+            ViewBag.Location = (await _iLocationGenericRepository.GetList(x => x.IsActive && !x.IsDeleted)).Entities;
+            ViewBag.SubLocation = (await _iSubLocationGenericRepository.GetList(x => x.IsActive && !x.IsDeleted)).Entities;
         }
     }
 }

@@ -55,6 +55,7 @@ namespace A2ZPortal.Core.Entities.Context
         public virtual DbSet<CustomerDetails> CustomerDetails { get; set; }
         public virtual DbSet<EmailSubscriber> EmailSubscribers { get; set; }
         public virtual DbSet<OrderManagement> OrderManagements { get; set; }
+        public virtual DbSet<Brochure> Brochures { get; set; }
 
     }
 }
