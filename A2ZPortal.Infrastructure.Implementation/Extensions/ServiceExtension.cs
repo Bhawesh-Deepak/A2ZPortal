@@ -28,6 +28,7 @@ namespace A2ZPortal.Infrastructure.Implementation.Extensions
             services.AddTransient<ITestimonialRepository, TestimonialImplimentation>();
             services.AddTransient<IOrderTransactionRepository, OrderTransactionImplementation>();
             services.AddTransient<IHomeDetailRepository, HomeDetailImplementation>();
+            services.AddTransient<IVirtualImageRepository, VirtualImageImplementation>();
         }
     }
 }

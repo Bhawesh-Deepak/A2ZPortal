@@ -149,9 +149,9 @@
             @Model.PropertyName
         </div>
 
-        @*<div class="row">
-                @await Html.PartialAsync("~/Views/360PanomaIImages/_360ImageView.cshtml", Model)
-            </div>*@
+        <div class="row">
+               <a href="/PropertyDetails/DisplayPropertyVirtualTour?propId=@Model.Id">Go Virtual Tour</a>
+            </div>
 
         <div class="row">
             <div class="col-md-8">

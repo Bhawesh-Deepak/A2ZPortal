@@ -25,6 +25,7 @@ namespace A2ZPortal.UI.Controllers
         private readonly IPropertyDetailCompleteRepository _IPropertyCompleteRepository;
         private readonly string APIURL = string.Empty;
         private readonly IGenericRepository<Brochure, int> _IBrochureRepository;
+        private readonly IVirtualImageRepository IVirtualImageRepository;
         public PropertyDetails(IGenericRepository<Location, int> iLocationGenericRepository,
             IGenericRepository<SubLocation, int> iSubLocationGenericRepository,
              IGenericRepository<PropertyStatusModel, int> iPropertyStatusGenericRepository,
@@ -32,7 +33,8 @@ namespace A2ZPortal.UI.Controllers
               IGenericRepository<BedRoom, int> iBedRoomGenericRepository,
              IGenericRepository<BathRoom, int> iBathRoomGenericRepository,
              IPropertyDetailCompleteRepository propertyDetailCompleteRepository,
-             IConfiguration configuration, IGenericRepository<Brochure, int> brochureRepository
+             IConfiguration configuration, IGenericRepository<Brochure, int> brochureRepository,
+             IVirtualImageRepository virtualImageRepository
              )
         {
             _iLocationGenericRepository = iLocationGenericRepository;
@@ -44,6 +46,7 @@ namespace A2ZPortal.UI.Controllers
             _IPropertyCompleteRepository = propertyDetailCompleteRepository;
             APIURL = configuration.GetSection("APIURL").Value;
             _IBrochureRepository = brochureRepository;
+            IVirtualImageRepository = virtualImageRepository;
         }
         public async Task<IActionResult> Index(int location, int sub_location, int bathRoom,
             int status, int category, int bedrooms, int min_price, int max_price, int min_area, int max_area)
@@ -111,6 +114,13 @@ namespace A2ZPortal.UI.Controllers
                 return RedirectPermanent(pdfFile);
             }
             return RedirectToAction("Index", "Error");
+        }
+
+        public async Task<IActionResult> DisplayPropertyVirtualTour(int propId) 
+        {
+            var response = await IVirtualImageRepository.GetVirtualImage(propId);
+            response.ImagePath= APIURL + response.ImagePath;
+            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("360PanomaIImages", "_360ImageView"), response);
         }
         private async Task PopulateViewBag()
         {

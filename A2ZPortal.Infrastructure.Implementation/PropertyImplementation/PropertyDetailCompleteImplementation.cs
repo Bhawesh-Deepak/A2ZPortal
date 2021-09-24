@@ -36,7 +36,7 @@ namespace A2ZPortal.Infrastructure.Implementation.PropertyImplementation
                 model.CategoryId = reader.DefaultIfNull<string>("CategoryId");
                 model.LocationName = reader.DefaultIfNull<string>("LocationName");
                 model.SubLocationName = reader.DefaultIfNull<string>("SubLocationName");
-                model.Budgets = reader.DefaultIfNull<int>("Budgets");
+                model.Budgets = reader.DefaultIfNull<decimal>("Budgets");
                 model.AreaCovered = reader.DefaultIfNull<decimal>("AreaCovered");
                 model.TotalArea = reader.DefaultIfNull<decimal>("TotalArea");
                 model.PropertyName = reader.DefaultIfNull<string>("PropertyName");
