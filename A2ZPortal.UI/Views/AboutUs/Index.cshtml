@@ -1,6 +1,5 @@
-﻿@{
-   
-}
+﻿@model A2ZPortal.Core.Entities.Master.Contact
+
 
 <div class="container-wrap">
     <div class="main-content container-boxed max offset">
@@ -54,17 +53,31 @@
                         <h2 class="content-title col-md-12">
                             Contact Me
                         </h2>
-                        <form role="form" id="conactagentform" method="post">
-                            <div style="display: none;">
-                                <input type="hidden" name="action" value="noo_contact_agent">
-                                <input type="hidden" name="agent_id" value="6280">
-                                <input type="hidden" name="security" value="a6ea2a9e2d">
+                        <form role="form" id="conactagentform" method="post" asp-action="CreateContact" asp-controller="AboutUs">
+
+                            <div class="form-group col-md-6 col-sm-6">
+                                <input type="text" asp-for="Name" class="form-control addclass" placeholder="Your Name *" required>
+                                <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
-                            <div class="form-group col-md-6 col-sm-6"><input type="text" name="name" class="form-control addclass" placeholder="Your Name *"></div><div class="form-group  col-md-6 col-sm-6"><input type="email" name="email" class="form-control addclass" placeholder="Your Email *"></div><div class="form-group message col-md-12 col-sm-12"><textarea name="message" class="form-control addclass" rows="5" placeholder="Message *"></textarea></div><div class="form-group col-md-12 col-sm-12"><div class="g-recaptcha addclass" data-sitekey=""></div></div>
-                            <script data-cfasync="false" src="http://wp.nootheme.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-                            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                            <div class="form-group  col-md-6 col-sm-6">
+                                <input type="email" asp-for="EmailId" class="form-control addclass" placeholder="Your Email *" required>
+                                <span asp-validation-for="EmailId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group message col-md-12 col-sm-12">
+                                <textarea asp-for="Message" class="form-control addclass" rows="5" placeholder="Message *" required></textarea>
+                                <span asp-validation-for="Message" class="text-danger"></span>
+                            </div>
+                            <input type="hidden" asp-for="Subject" value="About Us" />
                             <div class="form-action col-md-12 col-sm-12">
-                                <img class="ajax-loader" src="http://wp.nootheme.com/citilights/wp-content/themes/noo-citilights/assets/images/ajax-loader.gif" alt="Sending ..." style="visibility: hidden;">
+
+                                @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                                {
+                                    <div class="wpcf7-response-output vc_btn-green vc_pull-left text-left ">@Model.ErrorMessage</div>
+                                }
+                            </div>
+                            <br />
+                            <div class="form-action col-md-12 col-sm-12">
+
                                 <button type="submit" class="btn btn-default">Send Me</button>
                             </div>
                         </form>
@@ -495,5 +508,5 @@
             </div>
         </div>
     </div>
-    
+
 </div>
