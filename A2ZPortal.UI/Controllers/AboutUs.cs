@@ -16,24 +16,25 @@ namespace A2ZPortal.UI.Controllers
         {
             _IContactRepository = ContactRepository;
         }
-        public IActionResult Index(Contact model)
+        public IActionResult Index()
         {
             ViewData["Title"] = "| AboutUs";
-            return View(model);
+            ViewData["ErrorMessage"] = string.Empty;
+            return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateContact(Contact model, string returnUrl)
+        public async Task<IActionResult> Index(Contact model, string returnUrl)
         {
             model.ReturnUrl = returnUrl;
             var createModel = CommonCrudHelper.CommonCreateCode(model, 1);
             var response = await _IContactRepository.CreateEntity(createModel);
 
             ModelState.Clear();
-            model.ErrorMessage = response.ResponseStatus == Core.Entities.Common.ResponseStatus.Error ?
+            ViewData["ErrorMessage"] = response.ResponseStatus == Core.Entities.Common.ResponseStatus.Error ?
                             "Something wents wrong, Please contact admin." :
                             "Thanks for contact me. i will contact you soon";
-
-            return RedirectToAction("Index", "AboutUs", model);
+             
+            return View();
         }
     }
 }

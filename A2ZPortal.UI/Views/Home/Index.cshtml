@@ -74,7 +74,7 @@
                                     <div class="recent-properties recent-properties-featured">
                                         <div class="recent-properties-content">
                                             <div class="noo-property-compare">
-                                                <form style="display: none" method="POST" action="http://wp.nootheme.com/citilights/compare-listings/" class="submit-compare-612a0e933deef">
+                                                <form style="display: none" method="POST" action="#" class="submit-compare-612a0e933deef">
                                                     <h3 class="title-compare">
                                                         Compare properties
                                                     </h3>
@@ -92,15 +92,25 @@
                                                                     <a class="content-thumb" asp-action="GetPropertyDetail" asp-route-id="@data.PropertyId" asp-controller="PropertyDetails" >
                                                                         <img width="370" height="300" src="@data.ImagePath" class="attachment-property-thumb size-property-thumb wp-post-image" alt="" loading="lazy" />
                                                                     </a>
+
                                                                     <div class="content-thumb-overlay">
                                                                         <div class="property-action">
                                                                             <div class="action-container">
                                                                                 <div class="property-sharing sharing612a0e933f945">
                                                                                     <div class="property-share hidden-print clearfix">
-                                                                                       @data.PropertyName
+                                                                                        @data.PropertyName
                                                                                     </div>
+
                                                                                 </div>
-                                                                              
+                                                                                <a asp-action="AddToFavourite" asp-controller="CustomerTransaction" asp-route-propId="@data.PropertyId" class="fa fa-heart-o" title="Add to favorites">
+
+                                                                                </a>
+                                                                                <a asp-action="GetPropertyDetail" asp-route-id="@data.PropertyId" asp-controller="PropertyDetails" title="@data.PropertyName">
+                                                                                    Read More...
+                                                                                </a>
+                                                                                @*<a title="Compare" data-user="0" data-id="11917" data-action="compare" data-thumbnail="http://wp.nootheme.com/citilights/wp-content/uploads/2014/09/beautiful-new-concept-of-minimalist-home-exterior-180x130.jpg" data-div="submit-compare-612a033c631b4" class="property-action-button fa fa-plus compare-11917" aria-hidden="true"></a>*@
+                                                                                @*<i title="Add to favorites" data-user="0" data-id="11917" data-action="favorites" data-status="add_favorites" data-url="http://wp.nootheme.com/citilights/my-favorites/" class="property-action-button fa fa-heart-o" aria-hidden="true"></i>*@
+                                                                                @*<i title="Share" data-user="0" data-id="11917" data-action="sharing" data-class="sharing612a033c636d2" class="property-action-button fa fa-share-alt" aria-hidden="true"></i>*@
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -326,7 +336,7 @@
                                 <div class="noo-vc-col col-md-6 col-sm-12 " style="margin-top: 1.5rem">
                                     <div role="form" class="wpcf7" id="wpcf7-f10313-p10274-o1" lang="en-US" dir="ltr">
                                         <div class="screen-reader-response"></div>
-                                        <form action="http://wp.nootheme.com/citilights/#wpcf7-f10313-p10274-o1" method="post" class="wpcf7-form" novalidate="novalidate">
+                                        <form action="#" method="post" class="wpcf7-form" novalidate="novalidate">
                                             <div style="display: none;">
                                                 <input type="hidden" name="_wpcf7" value="10313" />
                                                 <input type="hidden" name="_wpcf7_version" value="5.1.5" />

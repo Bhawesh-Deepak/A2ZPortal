@@ -40,37 +40,37 @@
                                     <p>If you have any problems, please use the form below to leave us your questions. We will reply you as soon as possible. Thank you!</p>
                                 </div><hr class="noo-gap" style=" margin: 30px 0 0 0;"><div role="form" class="wpcf7" id="wpcf7-f5919-p3296-o1" lang="en-US" dir="ltr">
                                     <div class="screen-reader-response"></div>
-                                    <form asp-action="CreateContact" asp-controller="ContactUs" method="post" class="wpcf7-form">
+                                    <form asp-action="Index" asp-controller="ContactUs" method="post" class="wpcf7-form">
 
                                         <p>
                                             <span class="wpcf7-form-control-wrap your-name">
-                                                <input type="text" asp-for="Name" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" placeholder="Your Name*" />
-                                                <span asp-validation-for="Name" class="text-danger"></span>
+                                                <input type="text" asp-for="Name" size="40" class="wpcf7-form-control " placeholder="Your Name*" />
+                                                <span id="Span_Name" class="text-danger"></span>
 
                                             </span>
                                         </p>
                                         <p>
                                             <span class="wpcf7-form-control-wrap your-email">
-                                                <input type="email" asp-for="EmailId" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" placeholder="Your Email*" />
-                                                <span asp-validation-for="EmailId" class="text-danger"></span>
+                                                <input type="email" asp-for="EmailId" value="" size="40" class="wpcf7-form-control " placeholder="Your Email*" />
+                                                <span id="Span_EmailId" class="text-danger"></span>
                                             </span>
                                         </p>
                                         <p>
                                             <span class="wpcf7-form-control-wrap your-subject">
-                                                <input type="text" asp-for="Subject" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" placeholder="Subject" />
-                                                <span asp-validation-for="Subject" class="text-danger"></span>
+                                                <input type="text" asp-for="Subject" value="" size="40" class="wpcf7-form-control" placeholder="Subject *" />
+                                                <span id="Span_Subject" class="text-danger"></span>
                                             </span>
                                         </p>
                                         <p>
                                             <input type="hidden" asp-for="ReturnUrl" />
                                             <span class="wpcf7-form-control-wrap your-message">
-                                                <textarea asp-for="Message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" placeholder="Your Message"></textarea>
-                                                <span asp-validation-for="Message" class="text-danger"></span>
+                                                <textarea asp-for="Message" cols="40" rows="10" class="wpcf7-form-control" placeholder="Your Message *"></textarea>
+                                                <span id="Span_Message" class="text-danger"></span>
                                             </span>
                                         </p>
-                                        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                                        @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"].ToString()))
                                         {
-                                            <div class="wpcf7-response-output vc_btn-green vc_pull-right text-right ">@Model.ErrorMessage</div>
+                                            <div class="wpcf7-response-output vc_btn-green vc_pull-right text-right ">@ViewData["ErrorMessage"]</div>
                                         }
                                         <br />
                                         <p><input type="submit" value="SEND MESSAGE" class="wpcf7-form-control wpcf7-submit" onclick="return SubmitContact();" /></p>
@@ -87,3 +87,65 @@
         </div>
     </div>
 </div>
+<script>
+    function SubmitContact() {
+        debugger;
+        var Name = $("#Name").val();
+        var EmailId = $("#EmailId").val();
+        var Subject = $("#Subject").val();
+        var Message = $("#Message").val();
+        if (Name == "") {
+            $("#Span_Name").text("this field is required");
+            $('#Name').css('border-color', 'Red');
+            $('#Name').focus();
+            return false;
+        }
+        else {
+            $("#Span_Name").text('');
+            $('#Name').css('border-color', '');
+        }
+        if (EmailId == "") {
+            $("#Span_EmailId").text("this field is required");
+            $('#EmailId').css('border-color', 'Red');
+            $('#EmailId').focus();
+            return false;
+        }
+        else {
+            if (/^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(EmailId)) {
+                $("#Span_EmailId").text('');
+                $('#EmailId').css('border-color', '');
+               
+            }
+            else {
+                $("#Span_EmailId").text("invalid email id..");
+                $('#EmailId').css('border-color', 'Red');
+                $('#EmailId').focus();
+                return false;
+            }
+           
+        }
+        if (Subject == "") {
+            $("#Span_Subject").text("this field is required");
+            $('#Subject').css('border-color', 'Red');
+            $('#Subject').focus();
+            return false;
+        }
+        else {
+            $("#Span_Subject").text('');
+            $('#Subject').css('border-color', '');
+        }
+        if (Message == "") {
+            $("#Span_Message").text("this field is required");
+            $('#Message').css('border-color', 'Red');
+            $('#Message').focus();
+            return false;
+        }
+        else {
+            $("#Span_Message").text('');
+            $('#Message').css('border-color', '');
+            $('.wpcf7-form').submit();
+
+        }
+
+    }
+</script>

@@ -1,10 +1,10 @@
 ﻿@model A2ZPortal.Core.Entities.Customers.CustomerDetails
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-ajax-unobtrusive@3.2.6/dist/jquery.unobtrusive-ajax.min.js"
-            integrity="sha256-PAC000yuHt78nszJ2RO0OiDMu/uLzPLRlYTk8J3AO10="
-            crossorigin="anonymous"></script>
-
+ 
+<style>
+    .field-validation-valid {
+        display: none;
+    }
+</style>
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
     <div class="container-wrap">
@@ -18,24 +18,29 @@
                                 <div class="logreg-container">
                                     <div class="logreg-content row">
                                         <div class="login-form col-md-6 col-sm-6">
-                                            <form method="POST" asp-action="Login" asp-controller="CustomerDetail" class="shortcode-login noo-box noo-box-login class-login-wrap-613f7989462e8 show">
+                                            <form method="POST" asp-action="Login" asp-controller="CustomerDetail" class="shortcode-login noo-box noo-box-login class-login-wrap-613f7989462e8 ">
                                                 <div class="logreg-title">
                                                     Login Form
                                                 </div>
                                                 <div class="login_form">
-                                                    <div class="loginalert login_message_area"></div>
+                                                    <div class="loginalert login_message_area">
+                                                         
+                                                    </div>
                                                     <p class="logreg-desc">
                                                         Already a member of A2Z Portal. Please use the form below to log in site.
+                                                        
                                                     </p>
                                                     <div class="noo-item user_log">
                                                         <input type="hidden" asp-for="ReturnUrl" />
                                                         <input type="text" class="form-control" asp-for="CustomerPhone" placeholder="Customer Phone *">
+                                                        <span asp-validation-for="CustomerPhone" class="text-danger"></span>
                                                     </div>
                                                     <div class="noo-item user_pass">
                                                         <input type="password" class="form-control" asp-for="Password" placeholder="Password *">
+                                                        <span asp-validation-for="Password" class="text-danger"></span>
                                                     </div>
                                                     <div class="noo-form-action">
-                                                        <button type="submit" class="btn btn-secondary btn-lg noo-login" data-class-wrap=".class-login-wrap-613f7989462e8">
+                                                        <button type="submit" class="btn btn-secondary btn-lg noo-login" >
                                                             Login
                                                         </button>
                                                     </div>
@@ -58,17 +63,21 @@
                                                     </p>
                                                     <div class="noo-item user_login">
                                                         <input type="text" asp-for="CustomerName" class="user_login form-control" placeholder="Your Name *">
+                                                        <span asp-validation-for="CustomerName" class="text-danger"></span>
                                                     </div>
                                                     <div class="noo-item user_email">
                                                         <input type="text" asp-for="CustomerEmail" class="user_email form-control" placeholder="Your Email *">
+                                                        <span asp-validation-for="CustomerEmail" class="text-danger"></span>
                                                     </div>
                                                     <div class="noo-item user_password">
                                                         <input asp-for="CustomerPhone" class="user_password form-control" placeholder="Your Phone">
+                                                        <span asp-validation-for="CustomerPhone" class="text-danger"></span>
                                                     </div>
 
                                                     <div class="noo-item user_password">
                                                         <input asp-for="Password" class="user_password form-control"
                                                                placeholder="Your Password">
+                                                        <span asp-validation-for="Password" class="text-danger"></span>
                                                     </div>
 
                                                     <div class="noo-form-action">

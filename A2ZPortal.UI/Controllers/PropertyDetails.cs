@@ -109,18 +109,25 @@ namespace A2ZPortal.UI.Controllers
         public async Task<IActionResult> DownloadBrochure(int propId)
         {
             var response = await _IBrochureRepository.GetSingle(x => x.PropertyId == propId);
-            if (response.ResponseStatus != ResponseStatus.Error) {
+            if (response.ResponseStatus != ResponseStatus.Error)
+            {
                 var pdfFile = APIURL + response.Entity.BrochurePath;
                 return RedirectPermanent(pdfFile);
             }
             return RedirectToAction("Index", "Error");
         }
 
-        public async Task<IActionResult> DisplayPropertyVirtualTour(int propId) 
+        public async Task<IActionResult> DisplayPropertyVirtualTour(int propId)
         {
             var response = await IVirtualImageRepository.GetVirtualImage(propId);
-            response.ImagePath= APIURL + response.ImagePath;
+            response.ImagePath = APIURL + response.ImagePath;
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("360PanomaIImages", "_360ImageView"), response);
+        }
+        [HttpPost]
+        public async Task<IActionResult> RatingComments()
+        {
+            return View();
+
         }
         private async Task PopulateViewBag()
         {
