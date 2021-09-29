@@ -8,9 +8,13 @@
         min-height: 173px;
         max-height: 173px;
     }
+    .woocommerce .star-rating span:before, .woocommerce .star-rating:before, .woocommerce p.stars a, .noo-menu-item-cart .cart-item span, .fa-shopping-cart:before {
+        color: white;
+    }
 </style>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKGAp4SyPy1qnUqz5gMygSOzO8Qm2kNvY&callback=initMap&libraries=&v=weekly"
-        async></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKGAp4SyPy1qnUqz5gMygSOzO8Qm2kNvY&callback=initAutocomplete&libraries=places&v=weekly"
+        defer></script>
 <div class="container-wrap">
     <div class="main-content container-boxed max offset">
         <div class="row">
@@ -23,9 +27,9 @@
                         <div class="property-share hidden-print clearfix">
 
                             <a href="javascript:void(0)" onclick="return window.print();" class="fa fa-print action" title="Print this property"></a>
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" class="fa fa-heart action" title="Wishlist">
+                            <a asp-action="AddToFavourite" asp-controller="CustomerTransaction" asp-route-propId="@Model.Id" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" class="fa fa-heart action" title="Wishlist">
                             </a>
-                            <a href="#" class="fa fa-shopping-cart action" title="Add to Cart" data-toggle="tooltip" data-placement="bottom" data-trigger="hover">
+                            <a href="#" class="fa fa-shopping-cart action text-white" style="color:white" title="Add to Cart" data-toggle="tooltip" data-placement="bottom" data-trigger="hover">
                             </a>
 
                         </div>
@@ -49,7 +53,9 @@
                                 <a class="slider-control next-btn" role="button" href="#"><span class="slider-icon-next"></span></a>
                             </div>
                             <div class="property-action favorites-property">
-                                <i title="Add to favorites" data-user="0" data-id="6121" data-action="favorites" data-status="add_favorites" data-url="#" class="property-action-button fa fa-heart-o" aria-hidden="true"></i>
+                                <a asp-action="AddToFavourite" asp-controller="CustomerTransaction" asp-route-propId="@Model.Id">
+                                    <i title="Add to favorites" class="fa fa-heart-o" aria-hidden="true"></i>
+                                </a>
                             </div>
                         </div>
                         <div class="thumbnails">
@@ -132,8 +138,8 @@
                                         <h3 class="box-title">Location on Map</h3>
                                     </div>
                                     <div class="box-body">
-                                        <div id="map"></div>
-                                        <div id="info"></div>
+                                        <div id="map" style="width: 100%; height: 300px;"></div>
+
                                     </div>
                                 </div>
                             </div>
@@ -242,19 +248,21 @@
                     </h3>
                     <div class="cont">
                         <div class="stars">
-                            <form action="">
-                                <input class="star star-5" id="star-5-2" type="radio" name="star" />
+                            <form asp-action="RatingComments" asp-controller="PropertyDetails" method="post">
+                                <input class="star star-5" id="star-5-2" type="radio" value="5" name="star" />
                                 <label class="star star-5" for="star-5-2"></label>
-                                <input class="star star-4" id="star-4-2" type="radio" name="star" />
+                                <input class="star star-4" id="star-4-2" type="radio" value="4" name="star" />
                                 <label class="star star-4" for="star-4-2"></label>
-                                <input class="star star-3" id="star-3-2" type="radio" name="star" />
+                                <input class="star star-3" id="star-3-2" type="radio" value="3" name="star" />
                                 <label class="star star-3" for="star-3-2"></label>
-                                <input class="star star-2" id="star-2-2" type="radio" name="star" />
+                                <input class="star star-2" id="star-2-2" type="radio" value="2" name="star" />
                                 <label class="star star-2" for="star-2-2"></label>
-                                <input class="star star-1" id="star-1-2" type="radio" name="star" />
+                                <input class="star star-1" id="star-1-2" type="radio" value="1" name="star" />
                                 <label class="star star-1" for="star-1-2"></label>
+                                <input type="hidden" id="ratingStar" name="ratingStar" value="0" />
+                                <input type="hidden" id="Id" name="Id" value="@Model.Id" />
 
-                                <input type="text" class="form-control" placeholder="comments..." /><br />
+                                <input type="text" class="form-control" id="comments" name="comments" placeholder="comments..." required /><br />
                                 <input type="submit" value="Post" class="btn btn-primary pull-right" />
 
                             </form>
@@ -267,9 +275,9 @@
             @*@Model.PropertyName*@
         </div>
 
-        @*<div class="row">
-                @await Html.PartialAsync("~/Views/360PanomaIImages/_360ImageView.cshtml", Model)
-            </div>*@
+        <div class="row">
+                @*@await Html.PartialAsync("~/Views/360PanomaIImages/_360ImageView.cshtml", Model)*@
+            </div>
 
         <div class="row">
             <div class="col-md-8">
@@ -286,63 +294,98 @@
 
 </div>
 
-
 <script type="text/javascript">
-    function initMap() {
-        var lat = parseFloat('@Model.Lattitude');
+    function initialize() {
+          var lat = parseFloat('@Model.Lattitude');
         var long = parseFloat('@Model.Longitude');
-        debugger;
-        const myLatLng = { lat: lat, lng: long };
-        const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 15,
-            center: myLatLng,
+        var latlng = new google.maps.LatLng(lat, long);
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: latlng,
+            zoom: 13
         });
-
-        new google.maps.Marker({
-            position: myLatLng,
-            map,
-            title: "Hello World!",
+        var marker = new google.maps.Marker({
+            map: map,
+            position: latlng,
+            draggable: false,
+            anchorPoint: new google.maps.Point(0, -29)
+        });
+        var infowindow = new google.maps.InfoWindow();
+        google.maps.event.addListener(marker, 'click', function () {
+            var iwContent = '<div id="iw_container">' +
+                '<div class="iw_title"><b>Location</b> : Noida</div></div>';
+            // including content to the infowindow
+            infowindow.setContent(iwContent);
+            // opening the infowindow in the current map and at the current marker location
+            infowindow.open(map, marker);
         });
     }
-
-    $(document).ready(function () {
-        if ("geolocation" in navigator) { //check geolocation available
-            //try to get user current location using getCurrentPosition() method
-            navigator.geolocation.getCurrentPosition(function (position) {
-                $("#result").html("Found your location <br />Lat : " + position.coords.latitude + " </br>Lang :" + position.coords.longitude);
-            });
-        } else {
-            console.log("Browser doesn't support geolocation!");
-        }
-    })
-
-    $(function () {
-        var center = new google.maps.LatLng(32.498467, 74.542126);
-        var map = new google.maps.Map(document.getElementById("map_canvas"), {
-            center: center,
-            zoom: 14,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-        var m = new google.maps.Marker({ map: map, position: center });
-        var dD = new google.maps.DirectionsRenderer({ map: map, panel: $('#info')[0] });
-
-        $('#route').submit(function (ev) {
-            var addr = $('#addr').val();
-            var ds = new google.maps.DirectionsService();
-            ds.route({
-                origin: addr,
-                destination: center,
-                region: 'at',
-                travelMode: google.maps.TravelMode.DRIVING
-            }, function (result, status) {
-                // if(status == google.maps.DirectionsStatus.OK){
-                dD.setDirections(result);
-                $('#info').fadeIn(200);
-                // }
-            });
-            ev.preventDefault();
-        });
-    });
-
-
+    google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+@*<script type="text/javascript">
+        function initMap() {
+            var lat = parseFloat('@Model.Lattitude');
+            var long = parseFloat('@Model.Longitude');
+            debugger;
+            const myLatLng = { lat: lat, lng: long };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: myLatLng,
+            });
+
+            new google.maps.Marker({
+                position: myLatLng,
+                map,
+                title: "Hello World!",
+            });
+        }
+
+        $(document).ready(function () {
+            if ("geolocation" in navigator) { //check geolocation available
+                //try to get user current location using getCurrentPosition() method
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    $("#result").html("Found your location <br />Lat : " + position.coords.latitude + " </br>Lang :" + position.coords.longitude);
+                });
+            } else {
+                console.log("Browser doesn't support geolocation!");
+            }
+        })
+
+        $(function () {
+            var center = new google.maps.LatLng(32.498467, 74.542126);
+            var map = new google.maps.Map(document.getElementById("map_canvas"), {
+                center: center,
+                zoom: 14,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            var m = new google.maps.Marker({ map: map, position: center });
+            var dD = new google.maps.DirectionsRenderer({ map: map, panel: $('#info')[0] });
+
+            $('#route').submit(function (ev) {
+                var addr = $('#addr').val();
+                var ds = new google.maps.DirectionsService();
+                ds.route({
+                    origin: addr,
+                    destination: center,
+                    region: 'at',
+                    travelMode: google.maps.TravelMode.DRIVING
+                }, function (result, status) {
+                    // if(status == google.maps.DirectionsStatus.OK){
+                    dD.setDirections(result);
+                    $('#info').fadeIn(200);
+                    // }
+                });
+                ev.preventDefault();
+            });
+        });
+
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('input[name="star"]').change(function () {
+                $("#ratingStar").val($(this).val());
+            });
+        });
+
+
+    </script>*@
