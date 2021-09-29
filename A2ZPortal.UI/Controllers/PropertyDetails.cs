@@ -89,6 +89,7 @@ namespace A2ZPortal.UI.Controllers
 
 
         public async Task<IActionResult> GetPropertyDetail(int id)
+        
         {
             var response = await _IPropertyCompleteRepository.GetCompletePropertyDetail(id);
             response.ImageDetails.ForEach(item =>
