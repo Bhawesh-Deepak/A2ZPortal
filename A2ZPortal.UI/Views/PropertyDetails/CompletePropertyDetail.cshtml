@@ -8,9 +8,49 @@
         min-height: 173px;
         max-height: 173px;
     }
+
     .woocommerce .star-rating span:before, .woocommerce .star-rating:before, .woocommerce p.stars a, .noo-menu-item-cart .cart-item span, .fa-shopping-cart:before {
         color: white;
     }
+
+    .rating {
+        display: flex;
+        margin-top: -10px;
+        flex-direction: row-reverse;
+        margin-left: -4px;
+        float: left
+    }
+
+        .rating > input {
+            display: none
+        }
+
+        .rating > label {
+            position: relative;
+            width: 19px;
+            font-size: 25px;
+            color: #ff0000;
+            cursor: pointer
+        }
+
+            .rating > label::before {
+                content: "\2605";
+                position: absolute;
+                opacity: 0
+            }
+
+            .rating > label:hover:before,
+            .rating > label:hover ~ label:before {
+                opacity: 1 !important
+            }
+
+        .rating > input:checked ~ label:before {
+            opacity: 1
+        }
+
+        .rating:hover > input:checked ~ label:before {
+            opacity: 0.4
+        }
 </style>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKGAp4SyPy1qnUqz5gMygSOzO8Qm2kNvY&callback=initAutocomplete&libraries=places&v=weekly"
@@ -146,12 +186,6 @@
                         </div>
                     </div>
                 </article>
-                <div id="comments" class="comments-area hidden-print">
-                    <div id="respond" class="comment-respond">
-                        <h3 id="reply-title" class="comment-reply-title">Leave <span>Your thought</span> on this post <small><a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display:none;">Cancel reply</a></small></h3>
-                        <p class="must-log-in">You must be <a asp-action="Index" asp-controller="CustomerDetail">logged in</a> to post a comment.</p>
-                    </div>
-                </div>
             </div>
             <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
             <style>
@@ -239,55 +273,48 @@
                     font-family: FontAwesome;
                 }
             </style>
-
-            <div id="comments" class="comments-area hidden-print">
-                <div id="respond" class="comment-respond">
-                    <h3 id="reply-title" class="comment-reply-title">
-                        Rating
-
-                    </h3>
-                    <div class="cont">
-                        <div class="stars">
-                            <form asp-action="RatingComments" asp-controller="PropertyDetails" method="post">
-                                <input class="star star-5" id="star-5-2" type="radio" value="5" name="star" />
-                                <label class="star star-5" for="star-5-2"></label>
-                                <input class="star star-4" id="star-4-2" type="radio" value="4" name="star" />
-                                <label class="star star-4" for="star-4-2"></label>
-                                <input class="star star-3" id="star-3-2" type="radio" value="3" name="star" />
-                                <label class="star star-3" for="star-3-2"></label>
-                                <input class="star star-2" id="star-2-2" type="radio" value="2" name="star" />
-                                <label class="star star-2" for="star-2-2"></label>
-                                <input class="star star-1" id="star-1-2" type="radio" value="1" name="star" />
-                                <label class="star star-1" for="star-1-2"></label>
-                                <input type="hidden" id="ratingStar" name="ratingStar" value="0" />
-                                <input type="hidden" id="Id" name="Id" value="@Model.Id" />
-
-                                <input type="text" class="form-control" id="comments" name="comments" placeholder="comments..." required /><br />
-                                <input type="submit" value="Post" class="btn btn-primary pull-right" />
-
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            @*@Model.PropertyName*@
         </div>
 
-        <div class="row">
-                @*@await Html.PartialAsync("~/Views/360PanomaIImages/_360ImageView.cshtml", Model)*@
-            </div>
 
         <div class="row">
             <div class="col-md-8">
-
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-10">
+                            <div class="comment-box ml-2">
+                                <h4>Add a comment</h4>
+                                <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label> </div>
+                                <div class="comment-area"> <textarea class="form-control" placeholder="what is your view?" rows="4"></textarea> </div>
+                                <div class="comment-btns mt-2">
+                                    <br />
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <div class="pull-left"> <button class="btn btn-success btn-sm">Cancel</button> </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="pull-right"> <button class="btn btn-success send btn-sm">Send <i class="fa fa-long-arrow-right ml-1"></i></button> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-4">
                 <a type="button" asp-action="DownloadBrochure"
                    asp-controller="PropertyDetails" asp-route-propId="@Model.Id"
                    class="wpcf7-form-control wpcf7-submit right-sidebar">Download Brochure</a>
             </div>
+        </div>
+
+        <div class="row" style="padding-top:50px;">
+            <div style="width:1000px; height:400px; position:relative;">
+                <iframe src="https://www.mortgagecalculator.net/embeddable/v2/?size=1" frameborder=0 scrolling="yes" style="height:400px;width:100%" ></iframe>
+            </div>
+
         </div>
     </div>
 

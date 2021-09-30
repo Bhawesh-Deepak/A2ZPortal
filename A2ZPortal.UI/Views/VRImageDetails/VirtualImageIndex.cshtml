@@ -1,0 +1,24 @@
+﻿@model IEnumerable<A2ZPortal.Core.Entities.VirtualTour.VirtualTourModel>
+
+<div class="container-wrap">
+    <div class="main-content container-boxed max offset">
+        <div class="row">
+            @foreach (var data in Model)
+            {
+                <div class="col-md-4">
+                    <iframe src="@data.ImageSrc" allowfullscreen style="height:300px !important; width:500px !important">
+                    </iframe>
+                    <a asp-action="AddToFavourite" asp-controller="CustomerTransaction" asp-route-propId="@data.Id"
+                       data-toggle="tooltip" data-placement="bottom" data-trigger="hover" class="fa fa-heart action" title="Wishlist">
+
+                    </a>
+                    <h5>@data.PropertyName</h5>              
+                    <br />
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
