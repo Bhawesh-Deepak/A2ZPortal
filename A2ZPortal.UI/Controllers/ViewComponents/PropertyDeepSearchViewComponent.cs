@@ -1,5 +1,6 @@
 ﻿using A2ZPortal.Core.Entities.Master;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
+using A2ZPortal.UI.Helper;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace A2ZPortal.UI.Controllers.ViewComponents
 {
+    [BreadcrumbActionFilter]
     public class PropertyDeepSearchViewComponent:ViewComponent
     {
         private readonly IGenericRepository<Location, int> _iLocationGenericRepository;

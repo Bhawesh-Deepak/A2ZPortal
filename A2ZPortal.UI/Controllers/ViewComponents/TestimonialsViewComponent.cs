@@ -1,4 +1,5 @@
 ﻿using A2ZPortal.Infrastructure.Repository.CustomerRepository;
+using A2ZPortal.UI.Helper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace A2ZPortal.UI.Controllers.ViewComponents
 {
+    [BreadcrumbActionFilter]
     public class TestimonialsViewComponent : ViewComponent
     {
         private readonly ITestimonialRepository _ITestimonialRepository;

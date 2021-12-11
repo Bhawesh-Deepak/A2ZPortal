@@ -79,11 +79,11 @@
             <div class="login-main-bx wht-shd-bx clearfix" id="body_div">
 
                 <div class="login-left">
-                    <h3>Find your dream job</h3>
+                    <h3>Your dream property</h3>
                     <ul style="list-style:none">
-                        <li><i class="fa fa-check"></i> 3,00,000 job listings</li>
-                        <li><i class="fa fa-check"></i> Relevant job recommendations</li>
-                        <li><i class="fa fa-check"></i> One click apply</li>
+                        <li><i class="fa fa-check"></i>200 + Properties</li>
+                        <li><i class="fa fa-check"></i> Best property recommendations</li>
+                        
                     </ul>
                     
                 </div>
@@ -121,10 +121,16 @@
                                 <label>Password : </label>
                                 <input type="password" asp-for="Password" class="browser-default" placeholder="Your Password *" required>
                             </li>
+
+                            <li style="margin-left: -40px;">
+                                <label>Confirm Password : </label>
+                                <input type="password" asp-for="ConfirmPassword" class="browser-default" placeholder="Your Password *" required>
+                                <span asp-validation-for="ConfirmPassword"></span>
+                            </li>
                             <li class="clearfix login-act" style="margin-left: -40px;">
-                                
+
                                 <i class="waves-effect waves-light btn waves-input-wrapper" style="border-radius: 0">
-                                    <input type="submit" id="submitbutton" value="Login" class="waves-button-input text-white">
+                                    <input type="submit" id="submitbutton" value="Register" class="waves-button-input text-white">
                                 </i>
                             </li>
                         </ul>

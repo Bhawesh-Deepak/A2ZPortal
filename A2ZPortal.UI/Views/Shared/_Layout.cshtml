@@ -38,7 +38,7 @@
                         <a href="https://www.youtube.com/channel/UCxRQ1ukVeC7xKgJPBK5fPFg" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
                         <a href="https://www.linkedin.com/company/a2z-propertiesllc/" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a>
                         <a href="https://www.instagram.com/a2zprop/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
-                        <a href="#" onclick="SubmitContact()"><i class="fa fa-lock fa-2x"></i> Login</a>
+                        <a asp-action="Index" asp-controller="CustomerDetail"  class="pull-right"><i class="fa fa-lock fa-2x"></i></a>
                     </div>
                 </div>
             </div>
@@ -50,20 +50,19 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="Home">Home</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" asp-action="Index" asp-controller="AboutUs">About Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-action="Index" asp-controller="Sale">For Sale</a>
                         </li>
-                        @*<li class="nav-item">
-                                <a class="nav-link" asp-action="Index" asp-controller="Rental">For Rent</a>
-                            </li>*@
+
                         <li class="nav-item">
                             <a class="nav-link" asp-action="Index" asp-controller="Projects">New Projects</a>
                         </li>
-                        @*<li class="nav-item">
-                                <a class="nav-link" href="#">360 VR</a>
-                            </li>*@
+
                         <li class="nav-item">
                             <a class="nav-link" asp-action="Index" asp-controller="UpcomingProject">New Launch</a>
                         </li>
@@ -73,6 +72,25 @@
 
                     </ul>
                 </div>
+
+                @if (ViewBag.Breadcrumbs != null)
+                {
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb bg-white justify-content-center justify-content-md-start justify-content-lg-start justify-content-xl-start">
+                            @foreach (var breadcrumb in ViewBag.Breadcrumbs as List<Breadcrumb>)
+                            {
+                                if (breadcrumb.Active)
+                                {
+                                    <li class="breadcrumb-item active"><a asp-action="@breadcrumb.Action" asp-controller="@breadcrumb.Controller">@breadcrumb.Text</a></li>
+                                }
+                                else
+                                {
+                                    <li class="breadcrumb-item" aria-current="page">@breadcrumb.Text</li>
+                                }
+                            }
+                        </ol>
+                    </nav>
+                }
             </div>
         </nav>
     </header>

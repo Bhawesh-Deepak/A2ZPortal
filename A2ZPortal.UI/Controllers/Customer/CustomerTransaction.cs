@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 namespace A2ZPortal.UI.Controllers.Customer
 {
     [CustomAuthenticate]
+    [BreadcrumbActionFilter]
     public class CustomerTransaction : Controller
     {
         private readonly IGenericRepository<OrderManagement, int> _IOrderRepository;

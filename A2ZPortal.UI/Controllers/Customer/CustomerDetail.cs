@@ -2,11 +2,13 @@
 using A2ZPortal.Helper;
 using A2ZPortal.Helper.Extension;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
+using A2ZPortal.UI.Helper;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace A2ZPortal.UI.Controllers.Customer
 {
+    [BreadcrumbActionFilter]
     public class CustomerDetail : Controller
     {
         private readonly IGenericRepository<CustomerDetails, int> _ICustomerRepository;

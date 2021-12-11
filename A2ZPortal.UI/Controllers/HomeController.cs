@@ -10,6 +10,7 @@ using A2ZPortal.Infrastructure.Repository.CustomerRepository;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
 using A2ZPortal.Infrastructure.Repository.HomeDetailRepository;
 using A2ZPortal.Infrastructure.Repository.PropertyDetailRepository;
+using A2ZPortal.UI.Helper;
 using A2ZPortal.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -18,6 +19,7 @@ using Microsoft.Extensions.Logging;
 namespace A2ZPortal.UI.Controllers
 {
     [ResponseCache(Duration = 120)]
+    [BreadcrumbActionFilter]
     public class HomeController : Controller
     {
         private readonly IGenericRepository<UpComingPropertyDetail, int> _iUpComingPropertyDetailGenericRepository;

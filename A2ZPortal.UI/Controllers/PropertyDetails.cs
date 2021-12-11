@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace A2ZPortal.UI.Controllers
 {
+    [BreadcrumbActionFilter]
     public class PropertyDetails : Controller
     {
         private readonly IGenericRepository<Location, int> _iLocationGenericRepository;

@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using A2ZPortal.Helper;
 using A2ZPortal.Infrastructure.Repository.PropertyDetailRepository;
+using A2ZPortal.UI.Helper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
 namespace A2ZPortal.UI.Controllers
 {
+    [BreadcrumbActionFilter]
     public class Projects : Controller
     {
         private readonly IPropertyDetailCompleteRepository _IPropertyDetailCompleteRepository;

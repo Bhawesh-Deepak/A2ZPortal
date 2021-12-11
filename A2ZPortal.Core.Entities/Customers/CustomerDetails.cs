@@ -33,5 +33,10 @@ namespace A2ZPortal.Core.Entities.Customers
         [Required(ErrorMessage = "Password is required.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [NotMapped]
+        [Compare("Password")]
+        [DataType(DataType.Password)]
+        public string ConfirmPassword { get; set; }
     }
 }

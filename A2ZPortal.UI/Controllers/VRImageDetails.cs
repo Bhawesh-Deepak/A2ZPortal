@@ -1,5 +1,6 @@
 ﻿using A2ZPortal.Core.Entities.VirtualTour;
 using A2ZPortal.Helper;
+using A2ZPortal.UI.Helper;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace A2ZPortal.UI.Controllers
 {
+    [BreadcrumbActionFilter]
     public class VRImageDetails : Controller
     {
         public async Task<IActionResult> VirtualImage()

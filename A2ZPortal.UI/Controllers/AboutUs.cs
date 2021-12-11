@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using A2ZPortal.Core.Entities.Master;
 using A2ZPortal.Helper.Extension;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
+using A2ZPortal.UI.Helper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace A2ZPortal.UI.Controllers
 {
+    [BreadcrumbActionFilter]
     public class AboutUs : Controller
     {
         private readonly IGenericRepository<Contact, int> _IContactRepository;
