@@ -3,16 +3,32 @@
 <section class="about">
     <div class="bg-bar">
         <div class="container">
-            <h6>Home / About Us</h6>
+            @if (ViewBag.Breadcrumbs != null)
+            {
+                <h6>
+                    @foreach (var breadcrumb in ViewBag.Breadcrumbs as List<Breadcrumb>)
+                    {
+                        if (breadcrumb.Active)
+                        {
+                            <a asp-action="@breadcrumb.Action" asp-controller="@breadcrumb.Controller">@breadcrumb.Text</a> 
+                        }
+                        else
+                        {
+
+                            <span>/</span>  @breadcrumb.Text;
+                        }
+                    }
+                </h6>
+            }
         </div>
     </div>
     <div class="container mt-5 text-center">
         <h1>About Us</h1>
-            <div class="row">
-                <div class="col-md-6 offset-md-3 mt-5">
-                    <p>A2Z PROPERTIES L.L.C is one of the UAE’s leading brokerage firms, offering a complete property experience. We work in pursuit of service excellence and we are committed in every area of the real estate industry. Offering a premium, professional and flexible service to customers. A2Z PROPERTIES L.L.C provides an extensive list of properties for sale and lease and this is complemented by a full property management list of services.</p>
-                </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mt-5">
+                <p>A2Z PROPERTIES L.L.C is one of the UAE’s leading brokerage firms, offering a complete property experience. We work in pursuit of service excellence and we are committed in every area of the real estate industry. Offering a premium, professional and flexible service to customers. A2Z PROPERTIES L.L.C provides an extensive list of properties for sale and lease and this is complemented by a full property management list of services.</p>
             </div>
+        </div>
     </div>
     <div class="bg-about mt-5">
         <div class="container">
@@ -46,4 +62,3 @@
         </div>
     </div>
 </section>
- 
