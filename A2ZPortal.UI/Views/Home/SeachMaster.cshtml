@@ -1,164 +1,167 @@
 ﻿
+
+ 
+
 <link rel='stylesheet' id='vendor-chosen-css' href='~/wp-content/themes/noo-citilights/framework/vendor/chosen/chosen.css' type='text/css' media='all' />
-<div class="gsearch-wrap">
-    <form action="~/PropertyDetails/Index" class="gsearchform" method="get" role="search">
-        <div class="gsearch-content" style="display: block">
-            <div class="gsearch-field bg-white-opacity b-lr search_style_2">
-                <div class="form-group s-prop-location" style=width:25%>
-                    <select data-placeholder="All Location" name='location' id='location' class='form-control form-control-chosen ignore-valid'
-                            asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.Location>)ViewBag.Location,"Id","LocationName"))">
-                        <option value="" selected='selected'>All Location</option>
-                    </select>
-
-                </div>
-                <div class="form-group s-prop-sub_location" style=width:25%>
-                    <select data-placeholder="All Sub Location" name='sub_location' id='sub_location' class='form-control form-control-chosen ignore-valid'
-                            asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.SubLocation>)ViewBag.SubLocation,"Id","SubLocationName"))">
-                        <option value="" selected='selected'>All Sub Location</option>
-                    </select>
-
-                </div>
-                <div class="form-group s-prop-status" style=width:25%>
-                    <select data-placeholder="All Status" name='status' id='status' class='form-control form-control-chosen ignore-valid'
-                            asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.PropertyStatusModel>)ViewBag.PropertyStatus,"Id","PropertyStatus"))">
-                        <option value="" selected='selected'>All Status</option>
-                    </select>
-
-
-                </div>
-                <div class="form-group s-prop-category" style=width:25%>
-                    <select data-placeholder="All Type" name='category' id='category' class='form-control form-control-chosen ignore-valid'
-                            asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.PropertyType>)ViewBag.PropertyType,"Id","PropertyTypeName"))">
-                        <option value="" selected='selected'>All Type</option>
-                    </select>
-
-                </div>
-                <div class="form-group">
-                    <div class="noo-box-select">
-                        <select id="search-bedrooms" class="form-control  form-control-chosen ignore-valid" name="bedrooms" data-placeholder="All Bedrooms"
-                                asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.BedRoom>)ViewBag.BedRoom,"Id","BedRooms"))">
-                            <option value="" selected='selected'>All Bed Rooms</option>
+    <div class="gsearch-wrap">
+        <form action="~/PropertyDetails/Index" class="gsearchform" method="get" role="search">
+            <div class="gsearch-content" style="display: block">
+                <div class="gsearch-field bg-white-opacity b-lr search_style_2">
+                    <div class="form-group s-prop-location" style=width:25%>
+                        <select data-placeholder="All Location" name='location' id='location' class='form-control form-control-chosen ignore-valid'
+                                asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.Location>)ViewBag.Location,"Id","LocationName"))">
+                            <option value="" selected='selected'>All Location</option>
                         </select>
 
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="noo-box-select">
-                        <select id="search-bathrooms" class="form-control  form-control-chosen ignore-valid" name="bathrooms" data-placeholder="All Bathrooms"
-                                asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.BathRoom>)ViewBag.BathRoom,"Id","BathRooms"))">
-                            <option value="" selected='selected'>All Bath Rooms</option>
+                    <div class="form-group s-prop-sub_location" style=width:25%>
+                        <select data-placeholder="All Sub Location" name='sub_location' id='sub_location' class='form-control form-control-chosen ignore-valid'
+                                asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.SubLocation>)ViewBag.SubLocation,"Id","SubLocationName"))">
+                            <option value="" selected='selected'>All Sub Location</option>
                         </select>
 
                     </div>
+                    <div class="form-group s-prop-status" style=width:25%>
+                        <select data-placeholder="All Status" name='status' id='status' class='form-control form-control-chosen ignore-valid'
+                                asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.PropertyStatusModel>)ViewBag.PropertyStatus,"Id","PropertyStatus"))">
+                            <option value="" selected='selected'>All Status</option>
+                        </select>
+
+
+                    </div>
+                    <div class="form-group s-prop-category" style=width:25%>
+                        <select data-placeholder="All Type" name='category' id='category' class='form-control form-control-chosen ignore-valid'
+                                asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.PropertyType>)ViewBag.PropertyType,"Id","PropertyTypeName"))">
+                            <option value="" selected='selected'>All Type</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="noo-box-select">
+                            <select id="search-bedrooms" class="form-control  form-control-chosen ignore-valid" name="bedrooms" data-placeholder="All Bedrooms"
+                                    asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.BedRoom>)ViewBag.BedRoom,"Id","BedRooms"))">
+                                <option value="" selected='selected'>All Bed Rooms</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="noo-box-select">
+                            <select id="search-bathrooms" class="form-control  form-control-chosen ignore-valid" name="bathrooms" data-placeholder="All Bathrooms"
+                                    asp-items="@(new SelectList((IEnumerable<A2ZPortal.Core.Entities.Master.BathRoom>)ViewBag.BathRoom,"Id","BathRooms"))">
+                                <option value="" selected='selected'>All Bath Rooms</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-group gprice">
+                        <span class="gprice-label">Price</span>
+                        <div class="gprice-slider-range"></div>
+                        <input type="hidden" name="min_price" class="gprice_min" data-min="0" value="0">
+                        <input type="hidden" name="max_price" class="gprice_max" data-max="11000000" value="11000000">
+                    </div>
+                    <div class="form-group garea">
+                        <span class="garea-label">Area</span>
+                        <div class="garea-slider-range"></div>
+                        <input type="hidden" class="garea_min" name="min_area" data-min="1" value="1">
+                        <input type="hidden" class="garea_max" name="max_area" data-max="3077" value="3077">
+                    </div>
+                    <div class="gsearch-feature">
+                        <a id="gsearchFeature" href="#gsearch-feature" class="gsearch-feature-control" data-parent="#gsearch-feature" data-toggle="collapse">Advanced Search</a>
+                        <div id="gsearch-feature" class="panel-collapse collapse row">
+                            @foreach (var item in ViewBag.Amenities)
+                            {
+                                <div class="col-sm-3">
+                                    <label class="checkbox-label" for="@item.AmenitiesName">
+                                        <input type="checkbox" value="@item.Id" class="" name="Amenities" id="@item.AmenitiesName">&nbsp;@item.AmenitiesName
+                                    </label>
+                                </div>
+                            }
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group gprice">
-                    <span class="gprice-label">Price</span>
-                    <div class="gprice-slider-range"></div>
-                    <input type="hidden" name="min_price" class="gprice_min" data-min="0" value="0">
-                    <input type="hidden" name="max_price" class="gprice_max" data-max="11000000" value="11000000">
-                </div>
-                <div class="form-group garea">
-                    <span class="garea-label">Area</span>
-                    <div class="garea-slider-range"></div>
-                    <input type="hidden" class="garea_min" name="min_area" data-min="1" value="1">
-                    <input type="hidden" class="garea_max" name="max_area" data-max="3077" value="3077">
-                </div>
-                <div class="gsearch-feature">
-                    <a id="gsearchFeature" href="#gsearch-feature" class="gsearch-feature-control" data-parent="#gsearch-feature" data-toggle="collapse">Advanced Search</a>
-                    <div id="gsearch-feature" class="panel-collapse collapse row">
-                        @foreach (var item in ViewBag.Amenities)
-                        {
-                            <div class="col-sm-3">
-                                <label class="checkbox-label" for="@item.AmenitiesName">
-                                    <input type="checkbox" value="@item.Id" class="" name="Amenities" id="@item.AmenitiesName">&nbsp;@item.AmenitiesName
-                                </label>
-                            </div>
-                        }
+                <div class="gsearch-action-style-2">
+                    <div class="gsubmit ">
+                        <button type="submit">Search Property</button>
                     </div>
                 </div>
             </div>
-            <div class="gsearch-action-style-2">
-                <div class="gsubmit ">
-                    <button type="submit">Search Property</button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
-<script type='text/javascript' src='~/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.yith-wcwlbf3e.js?ver=2.2.16' id='jquery-yith-wcwl-js'></script>
-<link rel='stylesheet' id='vendor-chosen-css' href='~/wp-content/themes/noo-citilights/framework/vendor/chosen/chosen.css' type='text/css' media='all' />
-<link rel='stylesheet' id='owlcarousel2-css' href='~/wp-content/themes/noo-citilights/framework/vendor/owl-carousel-2/owl.carousel.css' type='text/css' media='all' />
-<link rel='stylesheet' id='owlcarousel2-theme-css' href='~/wp-content/themes/noo-citilights/framework/vendor/owl-carousel-2/owl.theme.default.min.css' type='text/css' media='all' />
-<script type='text/javascript' src='~/wp-includes/js/jquery/ui/core35d0.js?ver=1.12.1' id='jquery-ui-core-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/jquery/ui/mouse35d0.js?ver=1.12.1' id='jquery-ui-mouse-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/jquery/ui/resizable35d0.js?ver=1.12.1' id='jquery-ui-resizable-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/jquery/ui/draggable35d0.js?ver=1.12.1' id='jquery-ui-draggable-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/jquery/ui/controlgroup35d0.js?ver=1.12.1' id='jquery-ui-controlgroup-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/jquery/ui/checkboxradio35d0.js?ver=1.12.1' id='jquery-ui-checkboxradio-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/jquery/ui/button35d0.js?ver=1.12.1' id='jquery-ui-button-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/jquery/ui/dialog35d0.js?ver=1.12.1' id='jquery-ui-dialog-js'></script>
-<script type='text/javascript' src='~/wp-content/plugins/dsidxpress/js/widget-clienta7a0.js?ver=3.6.1' id='dsidxpress_widget_search_view-js'></script>
-<script type='text/javascript' src='~/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.selectBox.min7359.js?ver=1.2.0' id='jquery-selectBox-js'></script>
-<script type='text/javascript' src='~/wp-content/plugins/contact-form-7/includes/js/scriptsc6ac.js?ver=5.1.5' id='contact-form-7-js'></script>
-<script type='text/javascript' src='~/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie6b25.js?ver=2.1.4' id='js-cookie-js'></script>
-<script type='text/javascript' id='woocommerce-js-extra'>
+        </form>
+    </div>
+    <script type='text/javascript' src='~/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.yith-wcwlbf3e.js?ver=2.2.16' id='jquery-yith-wcwl-js'></script>
+    <link rel='stylesheet' id='vendor-chosen-css' href='~/wp-content/themes/noo-citilights/framework/vendor/chosen/chosen.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='owlcarousel2-css' href='~/wp-content/themes/noo-citilights/framework/vendor/owl-carousel-2/owl.carousel.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='owlcarousel2-theme-css' href='~/wp-content/themes/noo-citilights/framework/vendor/owl-carousel-2/owl.theme.default.min.css' type='text/css' media='all' />
+    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/core35d0.js?ver=1.12.1' id='jquery-ui-core-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/mouse35d0.js?ver=1.12.1' id='jquery-ui-mouse-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/resizable35d0.js?ver=1.12.1' id='jquery-ui-resizable-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/draggable35d0.js?ver=1.12.1' id='jquery-ui-draggable-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/controlgroup35d0.js?ver=1.12.1' id='jquery-ui-controlgroup-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/checkboxradio35d0.js?ver=1.12.1' id='jquery-ui-checkboxradio-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/button35d0.js?ver=1.12.1' id='jquery-ui-button-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/dialog35d0.js?ver=1.12.1' id='jquery-ui-dialog-js'></script>
+    <script type='text/javascript' src='~/wp-content/plugins/dsidxpress/js/widget-clienta7a0.js?ver=3.6.1' id='dsidxpress_widget_search_view-js'></script>
+    <script type='text/javascript' src='~/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.selectBox.min7359.js?ver=1.2.0' id='jquery-selectBox-js'></script>
+    <script type='text/javascript' src='~/wp-content/plugins/contact-form-7/includes/js/scriptsc6ac.js?ver=5.1.5' id='contact-form-7-js'></script>
+    <script type='text/javascript' src='~/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie6b25.js?ver=2.1.4' id='js-cookie-js'></script>
+    <script type='text/javascript' id='woocommerce-js-extra'>
 
-</script>
-<script type='text/javascript' src='~/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce3fd0.js?ver=3.8.2' id='woocommerce-js'></script>
-<script type='text/javascript' id='wc-cart-fragments-js-extra'>
+    </script>
+    <script type='text/javascript' src='~/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce3fd0.js?ver=3.8.2' id='woocommerce-js'></script>
+    <script type='text/javascript' id='wc-cart-fragments-js-extra'>
 
-</script>
-<script type='text/javascript' src='~/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments3fd0.js?ver=3.8.2' id='wc-cart-fragments-js'></script>
-<script type='text/javascript' src='~/wp-content/plugins/woocommerce/assets/js/prettyPhoto/jquery.prettyPhoto005e.js?ver=3.1.6' id='prettyPhoto-js'></script>
-<script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/easing-1.3.0.min.js' id='vendor-easing-js'></script>
-<script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/jquery.appear.js' id='vendor-appear-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/comment-reply41a3.js?ver=5.8' id='comment-reply-js'></script>
-<script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/bootstrap.min.js' id='vendor-bootstrap-js'></script>
-<script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/hoverIntent-r7.min.js' id='vendor-hoverIntent-js'></script>
-<script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/superfish-1.7.4.min.js' id='vendor-superfish-js'></script>
-<script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/jplayer/jplayer-2.5.0.min.js' id='vendor-jplayer-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/jquery/ui/slider35d0.js?ver=1.12.1' id='jquery-ui-slider-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/jquery/jquery.ui.touch-punchc682.js?ver=0.2.2' id='jquery-touch-punch-js'></script>
-<script type='text/javascript' id='noo-script-js-extra'>
+    </script>
+    <script type='text/javascript' src='~/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments3fd0.js?ver=3.8.2' id='wc-cart-fragments-js'></script>
+    <script type='text/javascript' src='~/wp-content/plugins/woocommerce/assets/js/prettyPhoto/jquery.prettyPhoto005e.js?ver=3.1.6' id='prettyPhoto-js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/easing-1.3.0.min.js' id='vendor-easing-js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/jquery.appear.js' id='vendor-appear-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/comment-reply41a3.js?ver=5.8' id='comment-reply-js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/bootstrap.min.js' id='vendor-bootstrap-js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/hoverIntent-r7.min.js' id='vendor-hoverIntent-js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/superfish-1.7.4.min.js' id='vendor-superfish-js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/jplayer/jplayer-2.5.0.min.js' id='vendor-jplayer-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/slider35d0.js?ver=1.12.1' id='jquery-ui-slider-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/jquery/jquery.ui.touch-punchc682.js?ver=0.2.2' id='jquery-touch-punch-js'></script>
+    <script type='text/javascript' id='noo-script-js-extra'>
 
-</script>
-<script type='text/javascript' src='~/wp-content/themes/noo-citilights/assets/js/noo.js' id='noo-script-js'></script>
-<script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/TouchSwipe/jquery.touchSwipe.min.js' id='vendor-TouchSwipe-js'></script>
-<script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/carouFredSel/jquery.carouFredSel-6.2.1-packed.js' id='vendor-carouFredSel-js'></script>
-<script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/imagesloaded.pkgd.min.js' id='vendor-imagesloaded-js'></script>
-<script type='text/javascript' id='noo-property-js-extra'>
+    </script>
+    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/assets/js/noo.js' id='noo-script-js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/TouchSwipe/jquery.touchSwipe.min.js' id='vendor-TouchSwipe-js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/carouFredSel/jquery.carouFredSel-6.2.1-packed.js' id='vendor-carouFredSel-js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/imagesloaded.pkgd.min.js' id='vendor-imagesloaded-js'></script>
+    <script type='text/javascript' id='noo-property-js-extra'>
 
-</script>
-<script type='text/javascript' src='~/wp-content/themes/noo-citilights/assets/js/property.js' id='noo-property-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/wp-embed41a3.js?ver=5.8' id='wp-embed-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/jquery/ui/menu35d0.js?ver=1.12.1' id='jquery-ui-menu-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/dist/vendor/regenerator-runtimeb36a.js?ver=0.13.7' id='regenerator-runtime-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/dist/vendor/wp-polyfill2c7c.js?ver=3.15.0' id='wp-polyfill-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/dist/dom-ready7354.js?ver=71883072590656bf22c74c7b887df3dd' id='wp-dom-ready-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/dist/hookse16b.js?ver=a7edae857aab69d69fa10d5aef23a5de' id='wp-hooks-js'></script>
-<script type='text/javascript' src='~/wp-includes/js/dist/i18n71a7.js?ver=5f1269854226b4dd90450db411a12b79' id='wp-i18n-js'></script>
-<script type='text/javascript' id='noo-property-map-js-extra'>
-    /* <![CDATA[ */
-    var NooPropertyMap = { "ajax_url": "http:\/\/wp.nootheme.com\/citilights\/wp-admin\/admin-ajax.php", "security": "3bbbdea0ca", "loading": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights\/assets\/images\/loading.gif", "results_search": "We found %d results. Do you want to load the results now?", "no_results_search": "We found no results", "icon_bedrooms": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights\/assets\/images\/bedroom-icon.png", "icon_bathrooms": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights\/assets\/images\/bathroom-icon.png", "icon_area": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights\/assets\/images\/size-icon.png" };
-    var nooGmapL10n = { "ajax_url": "\/citilights\/wp-admin\/admin-ajax.php", "home_url": "http:\/\/wp.nootheme.com\/citilights", "url_idx": "http:\/\/wp.nootheme.com\/citilights\/idx\/", "theme_dir": "\/home\/noodemo\/public_html\/citilights\/wp-content\/themes\/noo-citilights", "theme_uri": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights", "latitude": "40.714398", "longitude": "-74.005279", "maxZoom_MarkerClusterer": "5", "zoom": "12", "fitbounds": "", "draggable": "1", "area_unit": "sqft", "thousands_sep": ",", "decimal_sep": ".", "num_decimals": "0", "currency": "$", "currency_position": "left", "default_label": "", "fullscreen_label": "", "no_geolocation_pos": "The browser couldn't detect your position!", "no_geolocation_msg": "Geolocation is not supported by this browser.", "markers": "[]", "ajax_finishedMsg": "All posts displayed", "custom_fields": { "lot_area": "", "year_built": "", "flooring": "", "garage_size": "", "roofling": "", "parking": "", "style": "", "_agent": "" } };
+    </script>
+    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/assets/js/property.js' id='noo-property-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/wp-embed41a3.js?ver=5.8' id='wp-embed-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/menu35d0.js?ver=1.12.1' id='jquery-ui-menu-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/dist/vendor/regenerator-runtimeb36a.js?ver=0.13.7' id='regenerator-runtime-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/dist/vendor/wp-polyfill2c7c.js?ver=3.15.0' id='wp-polyfill-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/dist/dom-ready7354.js?ver=71883072590656bf22c74c7b887df3dd' id='wp-dom-ready-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/dist/hookse16b.js?ver=a7edae857aab69d69fa10d5aef23a5de' id='wp-hooks-js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/dist/i18n71a7.js?ver=5f1269854226b4dd90450db411a12b79' id='wp-i18n-js'></script>
+    <script type='text/javascript' id='noo-property-map-js-extra'>
+        /* <![CDATA[ */
+        var NooPropertyMap = { "ajax_url": "http:\/\/wp.nootheme.com\/citilights\/wp-admin\/admin-ajax.php", "security": "3bbbdea0ca", "loading": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights\/assets\/images\/loading.gif", "results_search": "We found %d results. Do you want to load the results now?", "no_results_search": "We found no results", "icon_bedrooms": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights\/assets\/images\/bedroom-icon.png", "icon_bathrooms": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights\/assets\/images\/bathroom-icon.png", "icon_area": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights\/assets\/images\/size-icon.png" };
+        var nooGmapL10n = { "ajax_url": "\/citilights\/wp-admin\/admin-ajax.php", "home_url": "http:\/\/wp.nootheme.com\/citilights", "url_idx": "http:\/\/wp.nootheme.com\/citilights\/idx\/", "theme_dir": "\/home\/noodemo\/public_html\/citilights\/wp-content\/themes\/noo-citilights", "theme_uri": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights", "latitude": "40.714398", "longitude": "-74.005279", "maxZoom_MarkerClusterer": "5", "zoom": "12", "fitbounds": "", "draggable": "1", "area_unit": "sqft", "thousands_sep": ",", "decimal_sep": ".", "num_decimals": "0", "currency": "$", "currency_position": "left", "default_label": "", "fullscreen_label": "", "no_geolocation_pos": "The browser couldn't detect your position!", "no_geolocation_msg": "Geolocation is not supported by this browser.", "markers": "[]", "ajax_finishedMsg": "All posts displayed", "custom_fields": { "lot_area": "", "year_built": "", "flooring": "", "garage_size": "", "roofling": "", "parking": "", "style": "", "_agent": "" } };
+        /* ]]> */
+    </script>
+    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/assets/js/property-map.js' id='noo-property-map-js'></script>
+    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AgOPskZ-APV_7eI2CoJACYGzDsJdgdJUUNNC-85E0KYeSNEAX1SD723ESJRIdtxz&amp;callback=Noo_Bing_Map' id='bing-map-api-js'></script>
+
+
+    <script type='text/javascript' id='bing-map-js-extra'>
+        /* <![CDATA[ */
+        var nooBingMap = { "latitude": "40.714398", "longitude": "-74.005279", "zoom": "12" };
+        var NooPropertyBingMap = { "ajax_url": "http:\/\/wp.nootheme.com\/citilights\/wp-admin\/admin-ajax.php", "security": "3bbbdea0ca", "loading": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights\/assets\/images\/loading.gif", "results_search": "We found %d results. Do you want to load the results now?", "no_results_search": "We found no results", "icon_bedrooms": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights\/assets\/images\/bedroom-icon.png", "icon_bathrooms": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights\/assets\/images\/bathroom-icon.png", "icon_area": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights\/assets\/images\/size-icon.png" };
+        /* ]]> */
+    </script>
+    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/assets/js/bing-map.js' id='bing-map-js'></script>
+    <script type='text/javascript' id='vendor-chosen-js-extra'>
+        /* <![CDATA[ */
+        var noo_chosen = { "multiple_text": "Select Some Options", "single_text": "Select an Option", "no_result_text": "No results match" };
     /* ]]> */
-</script>
-<script type='text/javascript' src='~/wp-content/themes/noo-citilights/assets/js/property-map.js' id='noo-property-map-js'></script>
-<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AgOPskZ-APV_7eI2CoJACYGzDsJdgdJUUNNC-85E0KYeSNEAX1SD723ESJRIdtxz&amp;callback=Noo_Bing_Map' id='bing-map-api-js'></script>
-
-
-<script type='text/javascript' id='bing-map-js-extra'>
-    /* <![CDATA[ */
-    var nooBingMap = { "latitude": "40.714398", "longitude": "-74.005279", "zoom": "12" };
-    var NooPropertyBingMap = { "ajax_url": "http:\/\/wp.nootheme.com\/citilights\/wp-admin\/admin-ajax.php", "security": "3bbbdea0ca", "loading": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights\/assets\/images\/loading.gif", "results_search": "We found %d results. Do you want to load the results now?", "no_results_search": "We found no results", "icon_bedrooms": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights\/assets\/images\/bedroom-icon.png", "icon_bathrooms": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights\/assets\/images\/bathroom-icon.png", "icon_area": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/themes\/noo-citilights\/assets\/images\/size-icon.png" };
-    /* ]]> */
-</script>
-<script type='text/javascript' src='~/wp-content/themes/noo-citilights/assets/js/bing-map.js' id='bing-map-js'></script>
-<script type='text/javascript' id='vendor-chosen-js-extra'>
-    /* <![CDATA[ */
-    var noo_chosen = { "multiple_text": "Select Some Options", "single_text": "Select an Option", "no_result_text": "No results match" };
-/* ]]> */
-</script>
-<script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/chosen/chosen.jquery.min.js' id='vendor-chosen-js'></script>
-<script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/owl-carousel-2/owl.carousel.min.js' id='owlcarousel2-js'></script>
-<script type='text/javascript' src='~/wp-content/plugins/js_composer/assets/lib/bower/isotope/dist/isotope.pkgd.min52c7.js?ver=6.0.5' id='isotope-js'></script>
+    </script>
+    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/chosen/chosen.jquery.min.js' id='vendor-chosen-js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/owl-carousel-2/owl.carousel.min.js' id='owlcarousel2-js'></script>
+    <script type='text/javascript' src='~/wp-content/plugins/js_composer/assets/lib/bower/isotope/dist/isotope.pkgd.min52c7.js?ver=6.0.5' id='isotope-js'></script>

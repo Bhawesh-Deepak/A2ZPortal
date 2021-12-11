@@ -1,0 +1,138 @@
+﻿@model A2ZPortal.Core.Entities.Property.UpComingPropertyDetail
+<section class="about">
+    <div class="bg-bar">
+        <div class="container">
+            <h6>Home / New Launch  Project</h6>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="mt-5">New Launch Project</h1>
+        <div class="row">
+            <div class="col-md-6 mt-5">
+                <img src="@Model.ImagePath" alt="" class="img-fluid" style="max-height:406px">
+            </div>
+            <div class="col-md-6 mt-5">
+                
+                @Html.Raw( Model.VideoURL)
+            </div>
+        </div>
+        <div class="row border-top mt-5">
+            <div class="col-lg-8 my-5">
+                <p>@Model.ProprtyDescription</p>
+                <h2 class="mt-5">Our property experts are just a few clicks away. Fill your details and they will get back to you.</h2>
+                <form asp-action="Contact" asp-controller="UpcomingProject" method="post" class="wpcf7-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="FirstName" id="FirstName" placeholder="First Name">
+                        <span id="Span_FirstName" class="text-danger"></span>
+                        <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="EmailId" name="EmailId" placeholder="Email">
+                        <span id="Span_EmailId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="PhoneNumber" name="PhoneNumber" placeholder="Phone">
+                        <span id="Span_PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="Country" name="Country" placeholder="Country">
+                        <span id="Span_Country" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="4" id="Message" name="Message" placeholder="Message"></textarea>
+                        <span id="Span_Message" class="text-danger"></span>
+                    </div>
+
+
+                    <button class="btn btn-success mb-3" onclick="return SubmitContact();">Submit</button>
+                </form>
+            </div>
+            <div class="col-lg-4 mt-md-5 custom-block">
+                
+                <img src="~/A2Z-wp-contents/img/avatar-g6c18a240f_640.png" alt="" class="img-fluid mt-3">
+                <h5 class="mt-3">A2Z  Property</h5>
+                <p><a href="tel:+971 50 109 9963">+971 50 109 9963</a><br><a href="mailto:info@a2zproperties.ae">info@a2zproperties.ae</a></p>
+                 
+            </div>
+             
+        </div>
+    </div>
+</section> 
+<script>
+    function SubmitContact() {
+        debugger;
+        var FirstName = $("#FirstName").val();
+        var EmailId = $("#EmailId").val();
+        var PhoneNumber = $("#PhoneNumber").val();
+        var Country = $("#Country").val();
+        var Message = $("#Message").val();
+
+
+        if (FirstName == "") {
+            $("#Span_FirstName").text("this field is required");
+            $('#FirstName').css('border-color', 'Red');
+            $('#FirstName').focus();
+            return false;
+        }
+        else {
+            $("#Span_FirstName").text('');
+            $('#FirstName').css('border-color', '');
+        }
+        if (EmailId == "") {
+            $("#Span_EmailId").text("this field is required");
+            $('#EmailId').css('border-color', 'Red');
+            $('#EmailId').focus();
+            return false;
+        }
+        else {
+            if (/^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(EmailId)) {
+                $("#Span_EmailId").text('');
+                $('#EmailId').css('border-color', '');
+
+            }
+            else {
+                $("#Span_EmailId").text("invalid email id..");
+                $('#EmailId').css('border-color', 'Red');
+                $('#EmailId').focus();
+                return false;
+            }
+
+        }
+        if (PhoneNumber == "") {
+            $("#Span_PhoneNumber").text("this field is required");
+            $('#PhoneNumber').css('border-color', 'Red');
+            $('#PhoneNumber').focus();
+            return false;
+        }
+        else {
+            $("#Span_PhoneNumber").text('');
+            $('#PhoneNumber').css('border-color', '');
+        }
+        if (Country == "") {
+            $("#Span_Country").text("this field is required");
+            $('#Country').css('border-color', 'Red');
+            $('#Country').focus();
+            return false;
+        }
+        else {
+            $("#Span_Country").text('');
+            $('#Country').css('border-color', '');
+        }
+        if (Message == "") {
+            $("#Span_Message").text("this field is required");
+            $('#Message').css('border-color', 'Red');
+            $('#Message').focus();
+            return false;
+        }
+        else {
+            $("#Span_Message").text('');
+            $('#Message').css('border-color', '');
+            $('.wpcf7-form').submit();
+
+        }
+
+    }
+</script>

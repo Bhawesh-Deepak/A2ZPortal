@@ -26,6 +26,7 @@
                                         <img  src="@Model.PropertyImages[i].ImagePath" alt="A2ZPropertyImage" style="height:125px;width:125px;" />
                                         <input type="hidden" asp-for="@Model.PropertyImages[i].Id" />
                                         <input type="hidden" asp-for="@Model.PropertyImages[i].ImagePath" />
+                                        <input type="hidden" asp-for="@Model.PropertyImages[i].PropertyDetailId" />
                                     </td>
                                     <td>
                                         <input type="checkbox" asp-for="@Model.PropertyImages[i].IsPrimaryImage" />

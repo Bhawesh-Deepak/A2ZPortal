@@ -2,379 +2,117 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
-<div class="container-wrap">
-    <div class="main-content container-fullwidth">
-        <div class="row">
-            <div class="noo-main col-md-12" role="main">
-                <div class="noo-vc-row row  bg-image" style="padding-top: 15%; padding-bottom: 15%;">
-                    <div class="noo-vc-col col-md-12 ">
-                        <div class="noo_advanced_search_property horizontal  hidden-print">
-                            <div class="noo-map no-map " style="background: none">
-                                <div class="gsearch property flex-column" style="background: rgba(0,0,0,0); min-height: 250px;">
-                                    <div class="container-boxed">
-                                        <div class="gsearch-info-style-2">
-                                            <span class="gsearch-info-title" id="infoTitle">The Best Way To Find Your Home</span>
-                                        </div>
-                                        <div id="searchMaster"></div>
-                                    </div>
-                                </div>
-                                <script type="text/javascript">
-                                    jQuery('document').ready(function ($) {
-                                        $('#gsearchFeature').click(function () {
-                                            $('#infoTitle').toggleClass('toggle-title');
-                                        })
+<style>
+    #popup .modal-dialog {
+        min-height: calc(100vh);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: auto;
+        padding-top:30px;
+    }
 
-                                    })
-                                </script>
+    #popup .modal-content {
+        width:75%;
+        margin: auto
+    }
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class=" parallax" data-parallax="1" data-parallax_no_mobile="1" data-velocity="0.1" style="background-image: url(A2Z-contents/images/Backgroundimage.jpg);"></div>
+    #popup img {
+        width: 400px
+    }
+
+    #popup #close {
+        position: absolute;
+        right: -15px;
+        top: -15px;
+        background: #7b0211;
+        border-radius: 50%;
+        padding: 0 5px 5px 5px
+    }
+</style>
+<section class="custom-form">
+    @await Component.InvokeAsync("PropertySearch")
+</section>
+@await Component.InvokeAsync("Featured")
+<section class="popular mt-5">
+    <div class="border border-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 my-3">
+                     
+                    <img src="~/A2Z-contents/img/elite.jpeg" alt="" class="img-fluid" />
                 </div>
-                <div id="divData">     @await Component.InvokeAsync("Featured")</div>
-
-                <div id="custom-calltoaction" class="noo-vc-row row  bg-image" style=" padding-top: 0px; padding-bottom: 0px;background-position: bottom">
-                    <div class="noo-vc-col col-md-6 col-sm-12 ">
-                        <div class="noo-vc-row row " style="background-color: rgba(255,255,255,0.9); padding-top: 100px; padding-bottom: 100px;padding-left: 10%;">
-                            <div class="noo-vc-col col-md-12 ">
-                                <div id="banner_sT41F">
-                                    <div>
-                                        <div class="noo-call-to-action-2">
-                                            <div>
-                                                <h1>Buy or sell your house in few second with A2Z Properties</h1>
-                                            </div>
-                                            <div class="nav-button">
-                                                <div>
-                                                    <a asp-action="Index" asp-controller="Projects" class="btn-2">Buy Now</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="noo-vc-col col-md-6 col-sm-12 "></div>
-                    <div class=" parallax" data-parallax="1" data-parallax_no_mobile="1" data-velocity="0.1" style="background-image: url(wp-content/uploads/2019/11/caltoaction_f96a134e44401011a9c5c779f8a7a1f5.jpg);"></div>
-                </div>
-                <div class="container-boxed max">
-                    <div class="noo-vc-row row " style=" padding-top: 50px; padding-bottom: 0px;">
-                        <div class="noo-vc-col col-md-12 ">
-                            <div class="noo-text-block">
-                                <h2 style="text-align: left;"><strong>Recent Properties</strong></h2>
-                                <p style="text-align: left;">The latest residential offerings from the best builders , handpicked by our team of experts just for you and backed by our widely 
-                                acclaimed transaction and financial services..</p>
-                                <h2 style="text-align: center;"></h2>
-                            </div>
-                        </div>
-                        <div class="noo-vc-col col-md-12 ">
-                            <div class="noo-vc-row row " style=" padding-top: 25px; padding-bottom: 0px;">
-                                <div class="noo-vc-col col-md-12 ">
-                                    <div class="recent-properties recent-properties-featured">
-                                        <div class="recent-properties-content">
-                                            <div class="noo-property-compare">
-                                                <form style="display: none" method="POST" action="#" class="submit-compare-612a0e933deef">
-                                                    <h3 class="title-compare">
-                                                        Compare properties
-                                                    </h3>
-                                                    <div class="list-compare"></div>
-                                                    <input type="submit" name="submit-compare" value="Compare" />
-                                                </form>
-                                            </div>
-                                            <ul id="featured_612a0e933ddb8" class="owl-carousel owl-theme">
-                                                @foreach (var data in ((IEnumerable<A2ZPortal.Core.ViewModel.PropertyDetail.RecentPropertyDetail>)ViewBag.PropertyRecentDetail))
-                                                {
-                                                    <li>
-                                                        <article>
-                                                            <div class="featured-style-2">
-                                                                <div class="fp-style-2--thumb">
-                                                                    <a class="content-thumb" asp-action="GetPropertyDetail" asp-route-id="@data.PropertyId" asp-controller="PropertyDetails" >
-                                                                        <img width="370" height="300" src="@data.ImagePath" class="attachment-property-thumb size-property-thumb wp-post-image" alt="" loading="lazy" />
-                                                                    </a>
-
-                                                                    <div class="content-thumb-overlay">
-                                                                        <div class="property-action">
-                                                                            <div class="action-container">
-                                                                                <div class="property-sharing sharing612a0e933f945">
-                                                                                    <div class="property-share hidden-print clearfix">
-                                                                                        @data.PropertyName
-                                                                                    </div>
-
-                                                                                </div>
-                                                                                <a asp-action="AddToFavourite" asp-controller="CustomerTransaction" asp-route-propId="@data.PropertyId" class="fa fa-heart-o" title="Add to favorites">
-
-                                                                                </a>
-                                                                                <a asp-action="GetPropertyDetail" asp-route-id="@data.PropertyId" asp-controller="PropertyDetails" title="@data.PropertyName">
-                                                                                    Read More...
-                                                                                </a>
-                                                                                @*<a title="Compare" data-user="0" data-id="11917" data-action="compare" data-thumbnail="http://wp.nootheme.com/citilights/wp-content/uploads/2014/09/beautiful-new-concept-of-minimalist-home-exterior-180x130.jpg" data-div="submit-compare-612a033c631b4" class="property-action-button fa fa-plus compare-11917" aria-hidden="true"></a>*@
-                                                                                @*<i title="Add to favorites" data-user="0" data-id="11917" data-action="favorites" data-status="add_favorites" data-url="http://wp.nootheme.com/citilights/my-favorites/" class="property-action-button fa fa-heart-o" aria-hidden="true"></i>*@
-                                                                                @*<i title="Share" data-user="0" data-id="11917" data-action="sharing" data-class="sharing612a033c636d2" class="property-action-button fa fa-share-alt" aria-hidden="true"></i>*@
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="fp-style-2--wrap">
-                                                                    <div>
-                                                                        <div class="fp-style-2--title">
-                                                                            <h4>
-                                                                                <a asp-action="GetPropertyDetail" asp-route-id="@data.PropertyId" asp-controller="PropertyDetails" title="@data.PropertyName">
-                                                                                    @data.PropertyName , @data.CategoryName
-                                                                                </a>
-                                                                            </h4>
-                                                                        </div>
-                                                                        <div class="fp-style-2--excerpt">
-                                                                            <p>@data.Description</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="fp-style-2--summary">
-                                                                    <div class="property-detail">
-                                                                        <div class="area"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/size-icon_ccd251439ef2512942b64d525ced79fe.png);"></span><span class="property-meta">@data.TotalArea sqft</span></div>
-                                                                        <div class="bedrooms"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/bedroom-icon_92be012355310366e0bf07c8a41e35fe.png);"></span><span class="property-meta">@data.BedRooms</span></div>
-                                                                        <div class="bathrooms"><span class="property-meta-icon" style="background-image: url(wp-content/uploads/2019/11/bathroom-icon_ffc5ba8874014ad0a7fcc5aa3b8acd57.png);"></span><span class="property-meta">@data.BathRooms</span></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </article>
-                                                    </li>
-
-                                                }
-                                            </ul>
-                                            <a class="owl2-prev rp-prev" id="featured_612a0e933ddb8-prev"></a>
-                                            <a class="owl2-next rp-next" id="featured_612a0e933ddb8-next"></a>
-                                        </div>
-                                    </div>
-                                    <script type="text/javascript">
-                                        jQuery('document').ready(function ($) {
-                                            let autoPlay = 'false';
-                                            if (autoPlay == '' || autoPlay == 'false') {
-                                                autoPlay = false;
-                                            } else if (autoPlay == 1 || autoPlay == 'true') {
-                                                autoPlay = true;
-                                            }
-                                            $("#featured_612a0e933ddb8").owlCarousel({
-                                                items: 3,
-                                                autoplay: autoPlay,
-                                                rtl: false,
-                                                autoplayTimeout: 6000,
-                                                autoplayHoverPause: true,
-                                                autoplaySpeed: 600,
-                                                lazyLoad: true,
-                                                dots: true,
-                                                responsiveClass: true,
-                                                loop: true,
-                                                margin: 30,
-                                                responsive: {
-                                                    0: {
-                                                        items: 1,
-                                                    },
-                                                    600: {
-                                                        items: 2,
-                                                    },
-                                                    1000: {
-                                                        items: 3,
-                                                    }
-                                                }
-                                            })
-                                            $('#featured_612a0e933ddb8-next').click(function () {
-                                                $("#featured_612a0e933ddb8").trigger('next.owl.carousel');
-                                            })
-                                            $('#featured_612a0e933ddb8-prev').click(function () {
-                                                $("#featured_612a0e933ddb8").trigger('prev.owl.carousel');
-                                            })
-                                        })
-                                    </script>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container-boxed max">
-                    <div class="noo-vc-row row " style=" padding-top: 25px; padding-bottom: 75px;">
-                        <div class="noo-vc-col col-md-12 ">
-                            <div class="noo-vc-row row " style="">
-                                <div class="noo-vc-col col-md-12 ">
-                                    <div class="noo-text-block">
-                                        <h2 style="text-align: center;"><strong>Reality Property Type</strong></h2>
-                                        <p style="text-align: center;">Choose from different templates and lay them out, full-width or boxed, grid or listed.</p>
-                                        <h2 style="text-align: center;"></h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="noo-vc-row row " style="">
-                                <div class="city-info-masonry">
-                                    <div id="city_612a0e93502f5">
-                                        <div class="city-grid">
-                                            @foreach (var data in ((IEnumerable<A2ZPortal.Core.ViewModel.HomeDetail.PropertyLocationWiseCountVm>)ViewBag.PropertyLocationCount))
-                                            {
-                                                <div class="city-item">
-                                                    <img src="~/wp-content/uploads/2018/07/Layer-9.png" alt="Chicago">
-                                                    <div class="city-hover">
-                                                        <div id="city-info">
-                                                            <h2>@data.LocationName</h2>
-                                                            <p>@data.PropertyCount property</p>
-                                                            <a asp-action="Index" asp-controller="PropertyDetails" asp-route-location="@data.LocationId">
-                                                                <small>View All <i class="fa fa-arrow-circle-right"></i></small>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                                <script type="text/javascript">
-                                    jQuery('docuement').ready(function ($) {
-                                        $('.city-item').mouseleave(function () {
-                                            $('.city-item .city-hover').addClass('animated zoomOut')
-                                        })
-                                        let size = 6;
-                                        if (size >= 2) {
-                                            if (size % 2 !== 0) {
-                                                $(window).resize(function () {
-                                                    let windowSize = $(window).width();
-                                                    if (windowSize < 1200) {
-                                                        console.log(windowSize);
-                                                        $('#city_612a0e93502f5 .city-grid .city-item:last-of-type').addClass('city-item-100');
-                                                    }
-                                                    if (windowSize > 1200) {
-                                                        $('.city-item:last-of-type').removeClass('city-item-100');
-                                                        console.log('removed')
-                                                    }
-                                                })
-                                            }
-                                        }
-                                        let grid = $('#city_612a0e93502f5 .city-grid');
-                                        grid.isotope({
-                                            layoutItems: '#city_612a0e93502f5 .city-item',
-                                            //layoutMode: 'masonry',
-                                            masonry: {
-                                                columnWidth: 1,
-                                            }
-                                        });
-
-                                    });
-                                </script>
-                                <div class="noo-vc-col col-md-12 "></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="divTestimonialData">
-                    @await Component.InvokeAsync("Testimonials")
-                </div>
-
-
-                <div class="noo-vc-row row " style="background-color: #fafafa; padding-top: 0px; padding-bottom: 0px;">
-                    <div class="noo-vc-col col-md-12 ">
-                        <div class="container-boxed max">
-                            <div class="noo-vc-row row " style=" padding-top: 0px; padding-bottom: 0px;">
-                                <div class="noo-vc-col col-md-12 ">
-                                    <div id="client_HhzVL">
-                                        <div class="client-row owl-carousel owl-theme">
-                                            @foreach (var data in (IEnumerable<A2ZPortal.Core.ViewModel.HomeDetail.RecentPropertyDetail>)ViewBag.PropertyImage)
-                                            {
-                                                <div class="client-item" data-page=''>
-                                                    <a asp-action="GetPropertyDetail" asp-route-id="@data.PropertyId"
-                                                       asp-controller="PropertyDetails" target="_blank">
-                                                        <img style="height:75px;width:125px" src="@data.ImagePath" alt="Client logo 1">
-                                                    </a>
-                                                </div>
-                                            }
-
-
-                                        </div>
-                                    </div>
-                                    <script type="text/javascript">
-                                        jQuery('document').ready(function ($) {
-                                            $("#client_HhzVL .client-row").owlCarousel({
-                                                items: 6,
-                                                loop: true,
-                                                margin: 20,
-                                                rtl: false,
-                                                autoplay: false,
-                                                autoplayTimeout: 3000,
-                                                autoplayHoverPause: true,
-                                                lazyLoad: true,
-                                                dots: false,
-                                                autoplaySpeed: 500,
-                                                responsiveClass: true,
-                                                responsive: {
-                                                    0: {
-                                                        items: 1,
-                                                    },
-                                                    600: {
-                                                        items: 3,
-                                                    },
-                                                    1000: {
-                                                        items: 6,
-                                                    }
-                                                }
-
-                                            });
-                                        })
-
-                                    </script>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="noo-vc-row row " style="background-color: #75b08a; padding-top: 25px; padding-bottom: 25px;">
-                    <div class="noo-vc-col col-md-12 ">
-                        <div class="container-boxed max">
-                            <div class="noo-vc-row row " style="">
-                                <div class="noo-vc-col col-md-6 col-sm-12 ">
-                                    <div class="noo-text-block">
-                                        <h2 style="color: white;"><strong>Subscribe Newsletter</strong></h2>
-                                        <p style="color: white;">Choose from different template and lay them out.</p>
-                                    </div>
-                                </div>
-                                <div class="noo-vc-col col-md-6 col-sm-12 " style="margin-top: 1.5rem">
-                                    <div role="form" class="wpcf7" id="wpcf7-f10313-p10274-o1" lang="en-US" dir="ltr">
-                                        <div class="screen-reader-response"></div>
-                                        <form action="#" method="post" class="wpcf7-form" novalidate="novalidate">
-                                            <div style="display: none;">
-                                                <input type="hidden" name="_wpcf7" value="10313" />
-                                                <input type="hidden" name="_wpcf7_version" value="5.1.5" />
-                                                <input type="hidden" name="_wpcf7_locale" value="en_US" />
-                                                <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f10313-p10274-o1" />
-                                                <input type="hidden" name="_wpcf7_container_post" value="10274" />
-                                            </div>
-                                            <div class="cf7">
-                                                <span class="wpcf7-form-control-wrap your-email">
-                                                    <input type="text" name="your-email"
-                                                           value="Type your email address" size="40"
-                                                           class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                                                           id="cf7-email-input" aria-required="true" aria-invalid="false" />
-                                                </span><br />
-                                                <input type="button" onclick="EmailSubscribe()" value="Send" class="wpcf7-form-control wpcf7-submit"
-                                                       id="cf7-submit-button" />
-                                            </div>
-                                            <div class="wpcf7-response-output wpcf7-display-none"></div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-md-4">
+                    <div class="mt-md-5 mb-3">
+                        <h2 class="mt-md-5 pt-md-5">Elite Residence, Dubai Marina</h2>
+                        <p class="my-3">
+                            Residential tower
+                            83 floors of residential apartments/ 4 parking floors/ 4 basement levels/ 2 health clubs/ state of the art business centre
+                        </p>
+                        <a type="button" class="btn btn-primary" asp-action="Index" asp-controller="Projects">Know More</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
+<section class="best-deals mt-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Featured Properties For Rent</h2>
+        <div class="row">
+            <div class="owl-carousel owl-theme" id="owl-carousel-0">
+                @foreach (var data in ((IEnumerable<A2ZPortal.Core.ViewModel.PropertyDetail.RecentPropertyDetail>)ViewBag.PropertyRecentDetail).GroupBy(x => x.PropertyId).OrderByDescending(x=>x.FirstOrDefault().PropertyId))
+                {
+                    <div class="item">
+                        <div class="border">
+                            <img src="@data.First().ImagePath" alt="" class="img-fluid" style="width:370px; height:300px">
+                            <div class="p-4">
+                                <h5>@data.First().PropertyName </h5>
+
+                                <button type="button" class="btn btn-primary">
+                                    @string.Format("{0:0.00}", data.First().Price) M AED
+                                </button>
+                                @if (data.First().PropertyType == "Rent")
+                                {
+                                    <span>Per Month</span>
+                                }
+                                <a type="button" class="btn btn-primary" asp-action="GetPropertyDetail" title="@data.First().PropertyName" asp-route-id="@data.First().PropertyId" asp-controller="PropertyDetails">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal 
+     " id="popup">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close btn-success" data-dismiss="modal" id="close">&times;</button>
+           <div id="div_upcoming">
+
+           </div>
+        </div>
+    </div>
 </div>
+<script>
+		$(document).ready(function() {
+            $.get("/Home/UpComingProject",
+                function (data) {
+                    $("#div_upcoming").html(data);
+                    $("#popup").hide().fadeIn(1000);
+                    $("#close").on("click", function (e) {
+                        e.preventDefault();
+                        $("#popup").fadeOut(1000);
+                    });
+                    
+                     
+                });
 
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $.get("/Home/SeachBoxPartial", function (data) {
-            $("#searchMaster").html(data);
+		  
         })
-    })
-    function EmailSubscribe() {
-        $("#cf7-email-input").text();
-    }
 </script>

@@ -2141,7 +2141,6 @@
     <None Include="wwwroot\lib\jquery\dist\jquery.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
-    <None Include="wwwroot\PropertyImage\bacterilogy.pdf.pdf" />
     <None Include="wwwroot\UnObtrusive\JqueryValidate.js" />
     <None Include="wwwroot\UnObtrusive\UnObtrusiveAjax.js" />
     <None Include="wwwroot\UnObtrusive\Validatemin.js" />
@@ -7212,6 +7211,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\PropertyImage\" />
     <Folder Include="wwwroot\validation\css\" />
     <Folder Include="wwwroot\validation\js\" />
   </ItemGroup>

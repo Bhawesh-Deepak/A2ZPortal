@@ -1,5 +1,256 @@
 ﻿@model A2ZPortal.Core.ViewModel.PropertyDetail.PropertySearchVm
-<div class="container-wrap">
+
+<section class="for-sale">
+    <div class="bg-bar">
+        <div class="container">
+            <h6>Home /  Projects</h6>
+        </div>
+    </div>
+    <div class="search-bar">
+        <div class="container">
+            @await Component.InvokeAsync("PropertyDeepSearch")
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="text-center my-5">  Projects</h1>
+        <div class="text-right py-3">
+            <button class="btn btn-primary" id="bt-1">
+                <i class="fa fa-bars"></i>
+            </button>
+            <button class="btn btn-primary" id="bt-2">
+                <i class="fa fa-th"></i>
+            </button>
+        </div>
+
+        <div class="list-grid">
+            @await Component.InvokeAsync("PropertyDetail", Model);
+          
+        </div>
+        @*<div class="clearfix"></div>
+            <div class="mt-5">
+                <div class="owl-carousel owl-theme" id="owl-carousel-3">
+                    <div class="item">
+                        <div class="border">
+                            <img src="images/villa-1.jpg" alt="" class="img-fluid">
+                            <div class="p-4">
+                                <h5>Villa-1</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                                <a href="property-1.html" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="border">
+                            <img src="images/villa-2.jpg" alt="" class="img-fluid">
+                            <div class="p-4">
+                                <h5>Villa-2</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                                <a href="property-1.html" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="border">
+                            <img src="images/villa-3.jpg" alt="" class="img-fluid">
+                            <div class="p-4">
+                                <h5>Villa-3</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                                <a href="property-1.html" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="border">
+                            <img src="images/villa-1.jpg" alt="" class="img-fluid">
+                            <div class="p-4">
+                                <h5>Villa-1</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                                <a href="property-1.html" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="border">
+                            <img src="images/villa-2.jpg" alt="" class="img-fluid">
+                            <div class="p-4">
+                                <h5>Villa-2</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                                <a href="property-1.html" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="border">
+                            <img src="images/villa-3.jpg" alt="" class="img-fluid">
+                            <div class="p-4">
+                                <h5>Villa-3</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                                <a href="property-1.html" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h2 class="text-center my-5">Appartments</h2>
+            <div class="owl-carousel owl-theme" id="owl-carousel-4">
+                <div class="item">
+                    <div class="border">
+                        <img src="images/app-1.jpg" alt="" class="img-fluid">
+                        <div class="p-4">
+                            <h5>Appartment-1</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                            <a href="property-1.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="border">
+                        <img src="images/app-2.jpg" alt="" class="img-fluid">
+                        <div class="p-4">
+                            <h5>Appartment-2</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                            <a href="property-1.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="border">
+                        <img src="images/app-3.jpg" alt="" class="img-fluid">
+                        <div class="p-4">
+                            <h5>Appartment-3</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                            <a href="property-1.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="border">
+                        <img src="images/app-1.jpg" alt="" class="img-fluid">
+                        <div class="p-4">
+                            <h5>Appartment-1</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                            <a href="property-1.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="border">
+                        <img src="images/app-2.jpg" alt="" class="img-fluid">
+                        <div class="p-4">
+                            <h5>Appartment-2</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                            <a href="property-1.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="border">
+                        <img src="images/app-3.jpg" alt="" class="img-fluid">
+                        <div class="p-4">
+                            <h5>Appartment-3</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                            <a href="property-1.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h2 class="text-center my-5">Townhouse</h2>
+            <div class="owl-carousel owl-theme" id="owl-carousel-5">
+                <div class="item">
+                    <div class="border">
+                        <img src="images/town-1.jpg" alt="" class="img-fluid">
+                        <div class="p-4">
+                            <h5>Townhouse-1</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                            <a href="property-1.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="border">
+                        <img src="images/town-2.jpg" alt="" class="img-fluid">
+                        <div class="p-4">
+                            <h5>Townhouse-2</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                            <a href="property-1.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="border">
+                        <img src="images/town-3.jpg" alt="" class="img-fluid">
+                        <div class="p-4">
+                            <h5>Townhouse-3</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                            <a href="property-1.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="border">
+                        <img src="images/town-1.jpg" alt="" class="img-fluid">
+                        <div class="p-4">
+                            <h5>Townhouse-1</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                            <a href="property-1.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="border">
+                        <img src="images/town-2.jpg" alt="" class="img-fluid">
+                        <div class="p-4">
+                            <h5>Townhouse-2</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                            <a href="property-1.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="border">
+                        <img src="images/town-3.jpg" alt="" class="img-fluid">
+                        <div class="p-4">
+                            <h5>Townhouse-3</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+                            <a href="property-1.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="container-wrap">
     <div class="noo_advanced_search_property horizontal  hidden-print">
         <div class="noo-map ">
             <div id="gmap" data-source="property" style="height: 820px;"></div>
@@ -162,4 +413,4 @@
             })
 
     }
-</script>
+</script>*@

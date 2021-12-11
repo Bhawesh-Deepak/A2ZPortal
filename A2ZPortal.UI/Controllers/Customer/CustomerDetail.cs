@@ -17,10 +17,12 @@ namespace A2ZPortal.UI.Controllers.Customer
         }
         public IActionResult Index(CustomerDetails model)
         {
-
             return View(ViewPageHelper.InstanceHelper.GetPathDetail("Customer", "Authenticate"), model);
         }
-
+        public IActionResult Register(CustomerDetails model)
+        {
+            return View(ViewPageHelper.InstanceHelper.GetPathDetail("Customer", "RegisterUser"),model);
+        }
         [HttpPost]
         public async Task<IActionResult> CreateCustomer(CustomerDetails model, string returnUrl)
         {
@@ -38,8 +40,10 @@ namespace A2ZPortal.UI.Controllers.Customer
         }
         [HttpPost]
         public async Task<IActionResult> Login(CustomerDetails model, string returnUrl)
-        {
-            if (model.CustomerPhone == "9315775084" && model.Password == "admin")
+        {// && x.CustomerPhone==model.CustomerPhone && x.Password==model.Password
+            var responseData = await _ICustomerRepository.GetSingle(x => x.IsActive && !x.IsDeleted && x.CustomerPhone == model.CustomerPhone && x.Password == model.Password);
+              
+            if (responseData.Entity!=null )
             {
                 HttpContext.Session.SetString("UserPhone", model.CustomerPhone);
 
@@ -49,7 +53,13 @@ namespace A2ZPortal.UI.Controllers.Customer
 
                 return await Task.Run(() => Redirect(returnUrl));
             }
-            return await Task.Run(() => RedirectToAction("Index", "CustomerDetail"));
+            ModelState.Clear();
+
+            model.PlaceAddress = responseData.ResponseStatus == Core.Entities.Common.ResponseStatus.Error ?
+                "Something wents wrong, Please contact admin." :
+                "Invalid Login Credential !!!!!.";
+
+            return RedirectToAction("Index", "CustomerDetail", model);
         }
 
     }

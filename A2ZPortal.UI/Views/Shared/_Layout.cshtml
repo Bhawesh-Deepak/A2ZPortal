@@ -1,1040 +1,90 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>A2Z Properties @ViewData["Title"]</title>
-    <link rel="shortcut icon" href="~/A2Z-contents/img/logo/logo.png" style="height:125px;width:125px;" type="image/x-icon">
-
-    <style type="text/css" data-type="vc_custom-css">
-        #custom-testimonial .parallax {
-            background-position: bottom !important;
-        }
-    </style>
-
-    <script type="text/javascript">
-        window._wpemojiSettings = { "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/", "ext": ".png", "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/", "svgExt": ".svg", "source": { "wpemoji": "http:\/\/wp.nootheme.com\/citilights\/wp-includes\/js\/wp-emoji.js?ver=5.8", "twemoji": "http:\/\/wp.nootheme.com\/citilights\/wp-includes\/js\/twemoji.js?ver=5.8" } };
-        (function (window, document, settings) {
-            var src, ready, ii, tests;
-
-            // Create a canvas element for testing native browser support of emoji.
-            var canvas = document.createElement('canvas');
-            var context = canvas.getContext && canvas.getContext('2d');
-
-            /**
-             * Checks if two sets of Emoji characters render the same visually.
-             *
-             * @@since 4.9.0
-             *
-             * @@private
-             *
-             * @@param {number[]} set1 Set of Emoji character codes.
-             * @@param {number[]} set2 Set of Emoji character codes.
-             *
-             * @@return {boolean} True if the two sets render the same.
-             */
-            function emojiSetsRenderIdentically(set1, set2) {
-                var stringFromCharCode = String.fromCharCode;
-
-                // Cleanup from previous test.
-                context.clearRect(0, 0, canvas.width, canvas.height);
-                context.fillText(stringFromCharCode.apply(this, set1), 0, 0);
-                var rendered1 = canvas.toDataURL();
-
-                // Cleanup from previous test.
-                context.clearRect(0, 0, canvas.width, canvas.height);
-                context.fillText(stringFromCharCode.apply(this, set2), 0, 0);
-                var rendered2 = canvas.toDataURL();
-
-                return rendered1 === rendered2;
-            }
-
-            /**
-             * Detects if the browser supports rendering emoji or flag emoji.
-             *
-             * Flag emoji are a single glyph made of two characters, so some browsers
-             * (notably, Firefox OS X) don't support them.
-             *
-             * @@since 4.2.0
-             *
-             * @@private
-             *
-             * @@param {string} type Whether to test for support of "flag" or "emoji".
-             *
-             * @@return {boolean} True if the browser can render emoji, false if it cannot.
-             */
-            function browserSupportsEmoji(type) {
-                var isIdentical;
-
-                if (!context || !context.fillText) {
-                    return false;
-                }
-
-                /*
-                 * Chrome on OS X added native emoji rendering in M41. Unfortunately,
-                 * it doesn't work when the font is bolder than 500 weight. So, we
-                 * check for bold rendering support to avoid invisible emoji in Chrome.
-                 */
-                context.textBaseline = 'top';
-                context.font = '600 32px Arial';
-
-                switch (type) {
-                    case 'flag':
-                        /*
-                         * Test for Transgender flag compatibility. This flag is shortlisted for the Emoji 13 spec,
-                         * but has landed in Twemoji early, so we can add support for it, too.
-                         *
-                         * To test for support, we try to render it, and compare the rendering to how it would look if
-                         * the browser doesn't render it correctly (white flag emoji + transgender symbol).
-                         */
-                        isIdentical = emojiSetsRenderIdentically(
-                            [0x1F3F3, 0xFE0F, 0x200D, 0x26A7, 0xFE0F],
-                            [0x1F3F3, 0xFE0F, 0x200B, 0x26A7, 0xFE0F]
-                        );
-
-                        if (isIdentical) {
-                            return false;
-                        }
-
-                        /*
-                         * Test for UN flag compatibility. This is the least supported of the letter locale flags,
-                         * so gives us an easy test for full support.
-                         *
-                         * To test for support, we try to render it, and compare the rendering to how it would look if
-                         * the browser doesn't render it correctly ([U] + [N]).
-                         */
-                        isIdentical = emojiSetsRenderIdentically(
-                            [0xD83C, 0xDDFA, 0xD83C, 0xDDF3],
-                            [0xD83C, 0xDDFA, 0x200B, 0xD83C, 0xDDF3]
-                        );
-
-                        if (isIdentical) {
-                            return false;
-                        }
-
-                        /*
-                         * Test for English flag compatibility. England is a country in the United Kingdom, it
-                         * does not have a two letter locale code but rather an five letter sub-division code.
-                         *
-                         * To test for support, we try to render it, and compare the rendering to how it would look if
-                         * the browser doesn't render it correctly (black flag emoji + [G] + [B] + [E] + [N] + [G]).
-                         */
-                        isIdentical = emojiSetsRenderIdentically(
-                            [0xD83C, 0xDFF4, 0xDB40, 0xDC67, 0xDB40, 0xDC62, 0xDB40, 0xDC65, 0xDB40, 0xDC6E, 0xDB40, 0xDC67, 0xDB40, 0xDC7F],
-                            [0xD83C, 0xDFF4, 0x200B, 0xDB40, 0xDC67, 0x200B, 0xDB40, 0xDC62, 0x200B, 0xDB40, 0xDC65, 0x200B, 0xDB40, 0xDC6E, 0x200B, 0xDB40, 0xDC67, 0x200B, 0xDB40, 0xDC7F]
-                        );
-
-                        return !isIdentical;
-                    case 'emoji':
-                        /*
-                         * Burning Love: Just a hunk, a hunk of burnin' love.
-                         *
-                         *  To test for Emoji 13.1 support, try to render a new emoji: Heart on Fire!
-                         *
-                         * The Heart on Fire emoji is a ZWJ sequence combining ❤️ Red Heart, a Zero Width Joiner and 🔥 Fire.
-                         *
-                         * 0x2764, 0xfe0f == Red Heart emoji.
-                         * 0x200D == Zero-Width Joiner (ZWJ) that links the two code points for the new emoji or
-                         * 0x200B == Zero-Width Space (ZWS) that is rendered for clients not supporting the new emoji.
-                         * 0xD83D, 0xDD25 == Fire.
-                         *
-                         * When updating this test for future Emoji releases, ensure that individual emoji that make up the
-                         * sequence come from older emoji standards.
-                         */
-                        isIdentical = emojiSetsRenderIdentically(
-                            [0x2764, 0xfe0f, 0x200D, 0xD83D, 0xDD25],
-                            [0x2764, 0xfe0f, 0x200B, 0xD83D, 0xDD25]
-                        );
-
-                        return !isIdentical;
-                }
-
-                return false;
-            }
-
-            /**
-             * Adds a script to the head of the document.
-             *
-             * @@ignore
-             *
-             * @@since 4.2.0
-             *
-             * @@param {Object} src The url where the script is located.
-             * @@return {void}
-             */
-            function addScript(src) {
-                var script = document.createElement('script');
-
-                script.src = src;
-                script.defer = script.type = 'text/javascript';
-                document.getElementsByTagName('head')[0].appendChild(script);
-            }
-
-            tests = Array('flag', 'emoji');
-
-            settings.supports = {
-                everything: true,
-                everythingExceptFlag: true
-            };
-
-            /*
-             * Tests the browser support for flag emojis and other emojis, and adjusts the
-             * support settings accordingly.
-             */
-            for (ii = 0; ii < tests.length; ii++) {
-                settings.supports[tests[ii]] = browserSupportsEmoji(tests[ii]);
-
-                settings.supports.everything = settings.supports.everything && settings.supports[tests[ii]];
-
-                if ('flag' !== tests[ii]) {
-                    settings.supports.everythingExceptFlag = settings.supports.everythingExceptFlag && settings.supports[tests[ii]];
-                }
-            }
-
-            settings.supports.everythingExceptFlag = settings.supports.everythingExceptFlag && !settings.supports.flag;
-
-            // Sets DOMReady to false and assigns a ready function to settings.
-            settings.DOMReady = false;
-            settings.readyCallback = function () {
-                settings.DOMReady = true;
-            };
-
-            // When the browser can not render everything we need to load a polyfill.
-            if (!settings.supports.everything) {
-                ready = function () {
-                    settings.readyCallback();
-                };
-
-                /*
-                 * Cross-browser version of adding a dom ready event.
-                 */
-                if (document.addEventListener) {
-                    document.addEventListener('DOMContentLoaded', ready, false);
-                    window.addEventListener('load', ready, false);
-                } else {
-                    window.attachEvent('onload', ready);
-                    document.attachEvent('onreadystatechange', function () {
-                        if ('complete' === document.readyState) {
-                            settings.readyCallback();
-                        }
-                    });
-                }
-
-                src = settings.source || {};
-
-                if (src.concatemoji) {
-                    addScript(src.concatemoji);
-                } else if (src.wpemoji && src.twemoji) {
-                    addScript(src.twemoji);
-                    addScript(src.wpemoji);
-                }
-            }
-
-        })(window, document, window._wpemojiSettings);
-    </script>
-    <style type="text/css">
-        img.wp-smiley,
-        img.emoji {
-            display: inline !important;
-            border: none !important;
-            box-shadow: none !important;
-            height: 1em !important;
-            width: 1em !important;
-            margin: 0 .07em !important;
-            vertical-align: -0.1em !important;
-            background: none !important;
-            padding: 0 !important;
-        }
-    </style>
-    <link rel='stylesheet' id='dsidx-css' href='https://api-idx.diversesolutions.com/combo-css?config=dsidxpress&amp;ver=3.6.1' type='text/css' media='all' />
-    <link rel='stylesheet' id='dsidxpress-icons-css' href='~/wp-content/plugins/dsidxpress/css/dsidx-icons41a3.css?ver=5.8' type='text/css' media='all' />
-    <link rel='stylesheet' id='dsidxpress-unconditional-css' href='~/wp-content/plugins/dsidxpress/css/client41a3.css?ver=5.8' type='text/css' media='all' />
-    <link rel='stylesheet' id='dsidxwidgets-unconditional-css' href='~/wp-content/plugins/dsidxpress/dsidxwidgets/css/client41a3.css?ver=5.8' type='text/css' media='all' />
-    <link rel='stylesheet' id='wp-block-library-css' href='~/wp-includes/css/dist/block-library/style41a3.css?ver=5.8' type='text/css' media='all' />
-    <link rel='stylesheet' id='wc-block-style-css' href='~/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/styled989.css?ver=1626312930' type='text/css' media='all' />
-    <link rel='stylesheet' id='jquery-selectBox-css' href='~/wp-content/plugins/yith-woocommerce-wishlist/assets/css/jquery.selectBox7359.css?ver=1.2.0' type='text/css' media='all' />
-    <link rel='stylesheet' id='yith-wcwl-font-awesome-css' href='~/wp-content/plugins/yith-woocommerce-wishlist/assets/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
-    <link rel='stylesheet' id='yith-wcwl-main-css' href='~/wp-content/plugins/yith-woocommerce-wishlist/assets/css/stylebf3e.css?ver=2.2.16' type='text/css' media='all' />
-    <style id='yith-wcwl-main-inline-css' type='text/css'>
-        .wishlist_table .add_to_cart, a.add_to_wishlist.button.alt {
-            border-radius: 16px;
-            -moz-border-radius: 16px;
-            -webkit-border-radius: 16px;
-        }
-    </style>
-    <link rel='stylesheet' id='rs-plugin-settings-css' href='~/wp-content/plugins/revslider/public/assets/css/rs66fb3.css?ver=6.1.3' type='text/css' media='all' />
-    <style id='rs-plugin-settings-inline-css' type='text/css'>
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-
-        .tp-caption a {
-            color: #ff7302;
-            text-shadow: none;
-            -webkit-transition: all 0.2s ease-out;
-            -moz-transition: all 0.2s ease-out;
-            -o-transition: all 0.2s ease-out;
-            -ms-transition: all 0.2s ease-out
-        }
-
-            .tp-caption a:hover {
-                color: #ffa902
-            }
-    </style>
-    <style id='woocommerce-inline-inline-css' type='text/css'>
-        .woocommerce form .form-row .required {
-            visibility: visible;
-        }
-    </style>
-    <link rel='stylesheet' id='woocommerce_prettyPhoto_css-css' href='~/wp-content/plugins/woocommerce/assets/css/prettyPhoto41a3.css?ver=5.8' type='text/css' media='all' />
-    <link rel='stylesheet' id='noo-main-style-css' href='~/wp-content/themes/noo-citilights/assets/css/noo.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='noo-idx-style-css' href='~/wp-content/themes/noo-citilights/assets/css/idx.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='noo-woocommerce-css' href='~/wp-content/themes/noo-citilights/assets/css/woocommerce.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='noo-custom-style-css' href='~/wp-content/uploads/noo_citilights/custom.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='noo-style-css' href='~/wp-content/themes/noo-citilights/style.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='vendor-font-awesome-css-css' href='~/wp-content/themes/noo-citilights/framework/vendor/fontawesome/css/font-awesome.minbfce.css?ver=4.1.0' type='text/css' media='all' />
-    <link rel='stylesheet' id='noo-google-fonts-default-css' href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic,400italic,700italic,900italic" type='text/css' media='all' />
-    <!--[if lt IE 9]>
-    <link rel='stylesheet' id='vc_lte_ie9-css'  href='http://wp.nootheme.com/citilights/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css?ver=6.0.5' type='text/css' media='screen' />
-    <![endif]-->
-    <link rel='stylesheet' id='js_composer_front-css' href='~/wp-content/plugins/js_composer/assets/css/js_composer.min52c7.css?ver=6.0.5' type='text/css' media='all' />
-    <script type='text/javascript' src='~/wp-includes/js/jquery/jqueryaf6c.js?ver=3.6.0' id='jquery-core-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/jquery/jquery-migrated617.js?ver=3.3.2' id='jquery-migrate-js'></script>
-    <script type='text/javascript' src='https://maps.google.com/maps/api/js?libraries=geometry&amp;key=AIzaSyCVldL9czMmSd7QaNecblFdml2pB5dUTt4&amp;ver=3.6.1' id='googlemaps3-js'></script>
-    <script type='text/javascript' id='dsidx-js-extra'>
-        /* <![CDATA[ */
-        var dsidxAjaxHandler = { "ajaxurl": "http:\/\/wp.nootheme.com\/citilights\/wp-admin\/admin-ajax.php" };
-        /* ]]> */
-    </script>
-    <script type='text/javascript' src='https://api-idx.diversesolutions.com/combo-js?config=dsidxpress&amp;ver=3.6.1' id='dsidx-js'></script>
-    <script type='text/javascript' src='~/wp-content/plugins/revslider/public/assets/js/revolution.tools.minf049.js?ver=6.0' id='tp-tools-js'></script>
-    <script type='text/javascript' src='~/wp-content/plugins/revslider/public/assets/js/rs6.min6fb3.js?ver=6.1.3' id='revmin-js'></script>
-    <script type='text/javascript' src='~/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI44fd.js?ver=2.70' id='jquery-blockui-js'></script>
-    <script type='text/javascript' id='wc-add-to-cart-js-extra'>
-
-    </script>
-    <script type='text/javascript' src='~/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart3fd0.js?ver=3.8.2' id='wc-add-to-cart-js'></script>
-    <script type='text/javascript' src='~/wp-content/plugins/js_composer/assets/js/vendors/woocommerce-add-to-cart52c7.js?ver=6.0.5' id='vc_woocommerce-add-to-cart-js-js'></script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/modernizr-2.7.1.min.js' id='vendor-modernizr-js'></script>
-
-    <link rel="alternate" type="application/json+oembed" href="~/wp-json/oembed/1.0/embeddacb.json?url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2F" />
-    <link rel="alternate" type="text/xml+oembed" href="~/wp-json/oembed/1.0/embeda644?url=http%3A%2F%2Fwp.nootheme.com%2Fcitilights%2F&amp;format=xml" />
-    <noscript>
-        <style>
-            .woocommerce-product-gallery {
-                opacity: 1 !important;
-            }
-        </style>
-    </noscript>
-    <meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress." />
-    <meta name="generator" content="Powered by Slider Revolution 6.1.3 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
-    <script type="text/javascript">function setREVStartSize(t) { try { var h, e = document.getElementById(t.c).parentNode.offsetWidth; if (e = 0 === e || isNaN(e) ? window.innerWidth : e, t.tabw = void 0 === t.tabw ? 0 : parseInt(t.tabw), t.thumbw = void 0 === t.thumbw ? 0 : parseInt(t.thumbw), t.tabh = void 0 === t.tabh ? 0 : parseInt(t.tabh), t.thumbh = void 0 === t.thumbh ? 0 : parseInt(t.thumbh), t.tabhide = void 0 === t.tabhide ? 0 : parseInt(t.tabhide), t.thumbhide = void 0 === t.thumbhide ? 0 : parseInt(t.thumbhide), t.mh = void 0 === t.mh || "" == t.mh || "auto" === t.mh ? 0 : parseInt(t.mh, 0), "fullscreen" === t.layout || "fullscreen" === t.l) h = Math.max(t.mh, window.innerHeight); else { for (var i in t.gw = Array.isArray(t.gw) ? t.gw : [t.gw], t.rl) void 0 !== t.gw[i] && 0 !== t.gw[i] || (t.gw[i] = t.gw[i - 1]); for (var i in t.gh = void 0 === t.el || "" === t.el || Array.isArray(t.el) && 0 == t.el.length ? t.gh : t.el, t.gh = Array.isArray(t.gh) ? t.gh : [t.gh], t.rl) void 0 !== t.gh[i] && 0 !== t.gh[i] || (t.gh[i] = t.gh[i - 1]); var r, a = new Array(t.rl.length), n = 0; for (var i in t.tabw = t.tabhide >= e ? 0 : t.tabw, t.thumbw = t.thumbhide >= e ? 0 : t.thumbw, t.tabh = t.tabhide >= e ? 0 : t.tabh, t.thumbh = t.thumbhide >= e ? 0 : t.thumbh, t.rl) a[i] = t.rl[i] < window.innerWidth ? 0 : t.rl[i]; for (var i in r = a[0], a) r > a[i] && 0 < a[i] && (r = a[i], n = i); var d = e > t.gw[n] + t.tabw + t.thumbw ? 1 : (e - (t.tabw + t.thumbw)) / t.gw[n]; h = t.gh[n] * d + (t.tabh + t.thumbh) } void 0 === window.rs_init_css && (window.rs_init_css = document.head.appendChild(document.createElement("style"))), document.getElementById(t.c).height = h, window.rs_init_css.innerHTML += "#" + t.c + "_wrapper { height: " + h + "px }" } catch (t) { console.log("Failure at Presize of Slider:" + t) } };</script>
-    <script type="text/javascript">
-        if (typeof localdsidx == "undefined" || !localdsidx) { var localdsidx = {}; };
-        localdsidx.pluginUrl = "wp-content/plugins/dsidxpress/index.html";
-        localdsidx.homeUrl = "http://wp.nootheme.com/citilights";
-    </script>
-    <script type="text/javascript">
-        if (typeof localdsidx == "undefined" || !localdsidx) { var localdsidx = {}; };
-        localdsidx.pluginUrl = "wp-content/plugins/dsidxpress/index.html";
-        localdsidx.homeUrl = "http://wp.nootheme.com/citilights";
-    </script>
-    <style type="text/css" id="wp-custom-css">
-        .page-map-right .noo-map .gsearch .gsearch-content {
-            background-color: #fff;
-        }
-
-            .page-map-right .noo-map .gsearch .gsearch-content .gsearch-field {
-                padding: 15px 0;
-            }
-
-        .page-map-right .noo-map {
-            min-height: 250px;
-        }
-    </style>
-    <noscript>
-        <style>
-            .wpb_animate_when_almost_visible {
-                opacity: 1;
-            }
-        </style>
-    </noscript>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/A2Z-wp-contents/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/A2Z-wp-contents/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/A2Z-wp-contents/css/owl.theme.default.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/A2Z-wp-contents/css/style.css">
+    <link rel="stylesheet" href="~/A2Z-wp-contents/css/lightbox.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script src="~/A2Z-wp-contents/js/owl.carousel.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="~/A2Z-wp-contents/js/lightbox.js"></script>
+    
 </head>
-<body class="home page-template page-template-page-full-width page-template-page-full-width-php page page-id-10274 theme-noo-citilights woocommerce-no-js  page-fullwidth full-width-layout wpb-js-composer js-comp-ver-6.0.5 vc_responsive">
-    <div class="site">
-        <div class="noo-topbar">
-            <div class="topbar-inner content_right container-boxed max">
-
-                <p class="topbar-content"></p>
-                <ul class="topbar-content">
-                    <li class="noo-li-icon"><a href="mailto://pritam.maity@a2zproperties.ae"><i class="fa fa-envelope-o"></i>&nbsp;Email : <span>&nbsp; pritam.maity@a2zproperties.ae</span> </a></li>
-                    <li class="noo-li-icon"><a class="open-form-login" target="_blank" href="http://122.160.49.247:1008/"><i class="fa fa-sign-in"></i>&nbsp;Login</a></li>
-
-                </ul>
-            </div>
-        </div>
-        <header class="noo-header " role="banner">
-            <div class="navbar-wrapper">
-                <div class="navbar  fixed-top shrinkable has-mobile" role="navigation">
-                    <div class="container-boxed max">
-                        <div class="noo-navbar">
-                            <div class="navbar-header">
-                                <h1 class="sr-only">A2Z </h1>
-                                <a class="navbar-toggle collapsed" data-toggle="collapse" data-target=".noo-navbar-collapse">
-                                    <span class="sr-only">Navigation</span>
-                                    <i class="fa fa-bars"></i>
-                                </a>
-                                <a asp-action="Index" asp-controller="Home" class="navbar-brand" title="A2Z Property Website site">
-                                    <img class="noo-logo-img noo-logo-normal" src="~/A2Z-contents/img/logo/logo.png" alt="Just another WordPress site"> <img class="noo-logo-retina-img noo-logo-normal" src="~/A2Z-contents/img/logo/logo.png" alt="A2z Property Website">
-                                </a>
-
-                            </div>
-                            <div class="calling-info">
-                                <div class="calling-content">
-                                    <i class="fa fa-mobile"></i>
-                                    <div class="calling-desc">
-                                        CALL US NOW<br>
-                                        <span><a href="tel:(+971)562162833" style="font-size: 1em;">(+971)-562162833</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <nav class="collapse navbar-collapse noo-navbar-collapse" role="navigation">
-                                <ul id="menu-main-menu" class="navbar-nav sf-menu">
-                                    <li id="menu-item-6857" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-6857 align-left">
-                                        <a asp-action="Index" asp-controller="Home">Home</a>
-
-                                    </li>
-                                    <li id="menu-item-6857" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-6857 align-left">
-                                        <a asp-action="Index" asp-controller="Projects">Projects</a>
-
-                                    </li>
-
-                                    <li id="menu-item-6857" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-6857 align-left">
-                                        <a asp-action="Index" asp-controller="Sale">Sale</a>
-
-                                    </li>
-                                    @*<li id="menu-item-6857" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-6857 align-left">
-            <a asp-action="Index" asp-controller="ReSale">Resale</a>
-
-        </li>*@
-                                    <li id="menu-item-6857" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-6857 align-left">
-                                        <a asp-action="Index" asp-controller="Rental">Rental</a>
-
-                                    </li>
-                                    <li id="menu-item-6857" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-6857 align-left">
-                                        <a asp-action="Index" asp-controller="AboutUs">
-                                            About Us
-                                        </a>
-
-                                    </li>
-                                    <li id="menu-item-6857" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-6857 align-left">
-                                        <a asp-action="Index" asp-controller="ContactUs">
-                                            Contact  Us
-                                        </a>
-
-                                    </li>
-
-                                    <li id="menu-item-6857" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-6857 align-left">
-                                        <a asp-action="VirtualImage" asp-controller="VRImageDetails">
-                                            Virtual Tour
-                                        </a>
-
-                                    </li>
-                                    <li id="nav-menu-item-search" class="menu-item noo-menu-item-search">
-                                        <a class="search-button" href="#"><i class="fa fa-search"></i></a>
-                                        <div class="searchbar hide">
-                                            <form method="GET" class="col-md-12" asp-action="Index" asp-controller="Project">
-                                                <label for="s" class="sr-only"></label>
-                                                <input type="search" id="s" name="s" class="form-control" value="" placeholder="Search" />
-                                                <input type="submit" id="searchsubmit" class="hidden" value="Search" />
-                                            </form>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
+ 
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 py-2">
+                        <a href="tel:+971 50 109 9963"><i class="fa fa-phone"></i> +971 50 109 9963</a>
+                    </div>
+                    <div class="col-lg-7 py-2">
+                        <a href="mailto:info@a2zproperties.ae"><i class="fa fa-envelope"></i> info@a2zproperties.ae</a>
+                    </div>
+                    <div class="col-lg-3 text-lg-right mb-md-0 mb-3">
+                        <a href="https://www.facebook.com/a2zproperties.ae" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
+                        <a href="https://www.youtube.com/channel/UCxRQ1ukVeC7xKgJPBK5fPFg" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+                        <a href="https://www.linkedin.com/company/a2z-propertiesllc/" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a>
+                        <a href="https://www.instagram.com/a2zprop/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+                        <a href="#" onclick="SubmitContact()"><i class="fa fa-lock fa-2x"></i> Login</a>
                     </div>
                 </div>
             </div>
-        </header>
-        @RenderBody()
+        </div>
+        <nav class="navbar navbar-expand-md" id="navbar">
+            <div class="container">
+                <a class="navbar-brand" asp-action="Index" asp-controller="Home"><img src="~/A2Z-wp-contents/images/logo.png" alt="" class="img-fluid"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-expanded="false"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="AboutUs">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="Sale">For Sale</a>
+                        </li>
+                        @*<li class="nav-item">
+                                <a class="nav-link" asp-action="Index" asp-controller="Rental">For Rent</a>
+                            </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="Projects">New Projects</a>
+                        </li>
+                        @*<li class="nav-item">
+                                <a class="nav-link" href="#">360 VR</a>
+                            </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="UpcomingProject">New Launch</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="ContactUs">Contact Us</a>
+                        </li>
 
-        @await Html.PartialAsync("~/Views/Shared/Footer.cshtml")
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    @RenderBody()
+    
+    @await Html.PartialAsync("~/Views/Shared/_LoginPopUp.cshtml")
 
-    </div>
-    <script type="text/javascript">
-        var c = document.body.className;
-        c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
-        document.body.className = c;
-    </script>
-
-
-    <link rel='stylesheet' id='vendor-chosen-css' href='~/wp-content/themes/noo-citilights/framework/vendor/chosen/chosen.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='owlcarousel2-css' href='~/wp-content/themes/noo-citilights/framework/vendor/owl-carousel-2/owl.carousel.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='owlcarousel2-theme-css' href='~/wp-content/themes/noo-citilights/framework/vendor/owl-carousel-2/owl.theme.default.min.css' type='text/css' media='all' />
-    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/core35d0.js?ver=1.12.1' id='jquery-ui-core-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/mouse35d0.js?ver=1.12.1' id='jquery-ui-mouse-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/resizable35d0.js?ver=1.12.1' id='jquery-ui-resizable-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/draggable35d0.js?ver=1.12.1' id='jquery-ui-draggable-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/controlgroup35d0.js?ver=1.12.1' id='jquery-ui-controlgroup-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/checkboxradio35d0.js?ver=1.12.1' id='jquery-ui-checkboxradio-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/button35d0.js?ver=1.12.1' id='jquery-ui-button-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/dialog35d0.js?ver=1.12.1' id='jquery-ui-dialog-js'></script>
-    <script type='text/javascript' src='~/wp-content/plugins/dsidxpress/js/widget-clienta7a0.js?ver=3.6.1' id='dsidxpress_widget_search_view-js'></script>
-    <script type='text/javascript' src='~/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.selectBox.min7359.js?ver=1.2.0' id='jquery-selectBox-js'></script>
-    <script type='text/javascript' id='jquery-yith-wcwl-js-extra'>
-        /* <![CDATA[ */
-        var yith_wcwl_l10n = { "ajax_url": "\/citilights\/wp-admin\/admin-ajax.php", "redirect_to_cart": "no", "multi_wishlist": "", "hide_add_button": "1", "is_user_logged_in": "", "ajax_loader_url": "http:\/\/wp.nootheme.com\/citilights\/wp-content\/plugins\/yith-woocommerce-wishlist\/assets\/images\/ajax-loader.gif", "remove_from_wishlist_after_add_to_cart": "yes", "labels": { "cookie_disabled": "We are sorry, but this feature is available only if cookies are enabled on your browser.", "added_to_cart_message": "<div class=\"woocommerce-message\">Product correctly added to cart<\/div>" }, "actions": { "add_to_wishlist_action": "add_to_wishlist", "remove_from_wishlist_action": "remove_from_wishlist", "move_to_another_wishlist_action": "move_to_another_wishlsit", "reload_wishlist_and_adding_elem_action": "reload_wishlist_and_adding_elem" } };
-        /* ]]> */
-    </script>
-    <script type='text/javascript' src='~/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.yith-wcwlbf3e.js?ver=2.2.16' id='jquery-yith-wcwl-js'></script>
-    <script type='text/javascript' id='contact-form-7-js-extra'>
-        /* <![CDATA[ */
-        var wpcf7 = { "apiSettings": { "root": "http:\/\/wp.nootheme.com\/citilights\/wp-json\/contact-form-7\/v1", "namespace": "contact-form-7\/v1" } };
-        /* ]]> */
-    </script>
-    <script type='text/javascript' src='~/wp-content/plugins/contact-form-7/includes/js/scriptsc6ac.js?ver=5.1.5' id='contact-form-7-js'></script>
-    <script type='text/javascript' src='~/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie6b25.js?ver=2.1.4' id='js-cookie-js'></script>
-    <script type='text/javascript' id='woocommerce-js-extra'>
-
-    </script>
-    <script type='text/javascript' src='~/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce3fd0.js?ver=3.8.2' id='woocommerce-js'></script>
-    <script type='text/javascript' id='wc-cart-fragments-js-extra'>
-
-    </script>
-    <script type='text/javascript' src='~/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments3fd0.js?ver=3.8.2' id='wc-cart-fragments-js'></script>
-    <script type='text/javascript' src='~/wp-content/plugins/woocommerce/assets/js/prettyPhoto/jquery.prettyPhoto005e.js?ver=3.1.6' id='prettyPhoto-js'></script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/easing-1.3.0.min.js' id='vendor-easing-js'></script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/jquery.appear.js' id='vendor-appear-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/comment-reply41a3.js?ver=5.8' id='comment-reply-js'></script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/bootstrap.min.js' id='vendor-bootstrap-js'></script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/hoverIntent-r7.min.js' id='vendor-hoverIntent-js'></script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/superfish-1.7.4.min.js' id='vendor-superfish-js'></script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/jplayer/jplayer-2.5.0.min.js' id='vendor-jplayer-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/slider35d0.js?ver=1.12.1' id='jquery-ui-slider-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/jquery/jquery.ui.touch-punchc682.js?ver=0.2.2' id='jquery-touch-punch-js'></script>
-    <script type='text/javascript' id='noo-script-js-extra'>
-
-    </script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/assets/js/noo.js' id='noo-script-js'></script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/TouchSwipe/jquery.touchSwipe.min.js' id='vendor-TouchSwipe-js'></script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/carouFredSel/jquery.carouFredSel-6.2.1-packed.js' id='vendor-carouFredSel-js'></script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/imagesloaded.pkgd.min.js' id='vendor-imagesloaded-js'></script>
-    <script type='text/javascript' id='noo-property-js-extra'>
-
-    </script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/assets/js/property.js' id='noo-property-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/wp-embed41a3.js?ver=5.8' id='wp-embed-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/menu35d0.js?ver=1.12.1' id='jquery-ui-menu-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/dist/vendor/regenerator-runtimeb36a.js?ver=0.13.7' id='regenerator-runtime-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/dist/vendor/wp-polyfill2c7c.js?ver=3.15.0' id='wp-polyfill-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/dist/dom-ready7354.js?ver=71883072590656bf22c74c7b887df3dd' id='wp-dom-ready-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/dist/hookse16b.js?ver=a7edae857aab69d69fa10d5aef23a5de' id='wp-hooks-js'></script>
-    <script type='text/javascript' src='~/wp-includes/js/dist/i18n71a7.js?ver=5f1269854226b4dd90450db411a12b79' id='wp-i18n-js'></script>
-    <script type='text/javascript' id='wp-i18n-js-after'>
-        wp.i18n.setLocaleData({ 'text direction\u0004ltr': ['ltr'] });
-    </script>
-    <script type='text/javascript' id='wp-a11y-js-translations'>
-        (function (domain, translations) {
-            var localeData = translations.locale_data[domain] || translations.locale_data.messages;
-            localeData[""].domain = domain;
-            wp.i18n.setLocaleData(localeData, domain);
-        })("default", { "locale_data": { "messages": { "": {} } } });
-    </script>
-    <script type='text/javascript' src='~/wp-includes/js/dist/a11yac6e.js?ver=0ac8327cc1c40dcfdf29716affd7ac63' id='wp-a11y-js'></script>
-    <script type='text/javascript' id='jquery-ui-autocomplete-js-extra'>
-        /* <![CDATA[ */
-        var uiAutocompleteL10n = { "noResults": "No results found.", "oneResult": "1 result found. Use up and down arrow keys to navigate.", "manyResults": "%d results found. Use up and down arrow keys to navigate.", "itemSelected": "Item selected." };
-        /* ]]> */
-    </script>
-    <script type='text/javascript' src='~/wp-includes/js/jquery/ui/autocomplete35d0.js?ver=1.12.1' id='jquery-ui-autocomplete-js'></script>
-    <script type='text/javascript' src='~/wp-content/plugins/dsidxpress/js/autocompletea7a0.js?ver=3.6.1' id='dsidx-autocomplete-js'></script>
-    <script type='text/javascript' src='~/wp-content/plugins/dsidxpress/js/autocomplete-mls-numbera7a0.js?ver=3.6.1' id='dsidx-autocomplete-mls-number-js'></script>
-    <script type='text/javascript' src='~/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min52c7.js?ver=6.0.5' id='wpb_composer_front_js-js'></script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/jquery.parallax-1.1.3.js' id='vendor-parallax-js'></script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/jquery.form.min.js' id='vendor-form-js'></script>
-    <script type='text/javascript' src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=places&amp;key=AIzaSyCRFdCDv0PExBF4VZQvAlBs4nlqlIPrp_4" id='googleapis-js'></script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/assets/js/infobox.js' id='google-map-infobox-js'></script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/assets/js/markerclusterer.js' id='google-map-markerclusterer-js'></script>
-    <script type='text/javascript' id='noo-property-map-js-extra'>
-    </script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/assets/js/property-map.js' id='noo-property-map-js'></script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/assets/js/bing-map.js' id='bing-map-js'></script>
-    <script type='text/javascript' id='vendor-chosen-js-extra'>
-    </script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/chosen/chosen.jquery.min.js' id='vendor-chosen-js'></script>
-    <script type='text/javascript' src='~/wp-content/themes/noo-citilights/framework/vendor/owl-carousel-2/owl.carousel.min.js' id='owlcarousel2-js'></script>
-    <script type='text/javascript' src='~/wp-content/plugins/js_composer/assets/lib/bower/isotope/dist/isotope.pkgd.min52c7.js?ver=6.0.5' id='isotope-js'></script>
-    <!-- GetButton.io widget -->
+    
     <script type="text/javascript">
         (function () {
             var options = {
-                whatsapp: "+919315775084", // WhatsApp number
+                whatsapp: "+971501099963", // WhatsApp number
                 call_to_action: "Hello, how may we help you?", // Call to action
                 position: "right", // Position may be 'right' or 'left'
             };
@@ -1044,6 +94,83 @@
             var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
         })();
     </script>
-    <!-- /GetButton.io widget -->
+    @await Html.PartialAsync("~/Views/Shared/Footer.cshtml")
+    <script>
+        $(document).ready(function () {
+
+            $('#owl-carousel-0').owlCarousel({
+                margin: 10,
+                nav: true,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true,
+                navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    1200: {
+                        items: 3
+                    }
+                }
+            });
+
+            $('#owl-carousel-1').owlCarousel({
+                margin: 10,
+                nav: true,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true,
+                navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    1200: {
+                        items: 3
+                    }
+                }
+            });
+
+            $("#ex-1").select2({
+                placeholder: "Types"
+            });
+
+            $("#ex-2").select2({
+                placeholder: "Categories"
+            });
+
+            $("#ex-3").select2({
+                placeholder: "Bedrooms"
+            });
+
+            $("#ex-4").select2({
+                placeholder: "Area"
+            });
+
+        })
+    </script>
+    <script>
+        window.onscroll = function () { myFunction() };
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+    </script>
+
+   
 </body>
 </html>

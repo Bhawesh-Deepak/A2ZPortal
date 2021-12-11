@@ -1,108 +1,107 @@
 ﻿@model A2ZPortal.Core.Entities.Master.Contact
-<style type="text/css" data-type="vc_custom-css">
-    .contact-info li {
-        margin-bottom: 1em;
-    }
-</style>
-<div class="container-wrap">
-    <div class="main-content container-boxed max offset">
-        <div class="row">
-            <div class="noo-main col-md-12 right-sidebar  noo-page" role="main">
 
-                <div class="noo-vc-row row " style=" padding-top: 0px; padding-bottom: 20px;">
-                    <div class="noo-vc-col col-md-12 ">
-                        <div class="noo-vc-row row " style="">
-                            <div class="noo-vc-col col-md-12 ">
-                                <div class="noo-text-block">
-                                    <h4 style="font-weight: 900; padding-bottom: 30px; margin-top: 10px; font-size: 24px;">CONTACT US</h4>
-                                </div><div class="noo-gmaps">
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3021.995077478525!2d-73.959878!3d40.762133000000006!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258e803893377%3A0xc4f699bee50530bb!2sBaker+Street!5e0!3m2!1svi!2s!4v1406001908080" width="600" height="400" frameborder="0" style="border:0"></iframe>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="noo-vc-row row contact-form" style=" padding-top: 50px; padding-bottom: 20px;margin-top: 50px; ">
-                            <div class="noo-vc-col contact-info col-md-4 col-sm-6 ">
-                                <div class="noo-text-block">
-                                    <h4 style="font-weight: 300; font-size: 24px; margin-bottom: 30px;">Contact Info</h4>
-                                </div><div class="noo-text-block">
-                                    <ul>
-                                        <li><b>Address</b>376 Baker Str., NYC</li>
-                                        <li><b>Phone</b> (+971)-562162833</li>
-                                        <li><b>Email</b><a href="mailto://pritam.maity@a2zproperties.ae"> pritam.maity@a2zproperties.ae</a></li>
-                                        <li><b>Fax</b>(+01)-111-1111</li>
-                                        <li><b>Website</b>http://klbs.in</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="noo-vc-col contact-desc col-md-8 col-sm-12 " style="padding-left: 30px;">
-                                <div class="noo-text-block">
-                                    <h4 style="font-weight: 300; font-size: 24px; margin-bottom: 30px;">Drop Us A Line</h4>
-                                    <p>If you have any problems, please use the form below to leave us your questions. We will reply you as soon as possible. Thank you!</p>
-                                </div><hr class="noo-gap" style=" margin: 30px 0 0 0;"><div role="form" class="wpcf7" id="wpcf7-f5919-p3296-o1" lang="en-US" dir="ltr">
-                                    <div class="screen-reader-response"></div>
-                                    <form asp-action="Index" asp-controller="ContactUs" method="post" class="wpcf7-form">
-
-                                        <p>
-                                            <span class="wpcf7-form-control-wrap your-name">
-                                                <input type="text" asp-for="Name" size="40" class="wpcf7-form-control " placeholder="Your Name*" />
-                                                <span id="Span_Name" class="text-danger"></span>
-
-                                            </span>
-                                        </p>
-                                        <p>
-                                            <span class="wpcf7-form-control-wrap your-email">
-                                                <input type="email" asp-for="EmailId" value="" size="40" class="wpcf7-form-control " placeholder="Your Email*" />
-                                                <span id="Span_EmailId" class="text-danger"></span>
-                                            </span>
-                                        </p>
-                                        <p>
-                                            <span class="wpcf7-form-control-wrap your-subject">
-                                                <input type="text" asp-for="Subject" value="" size="40" class="wpcf7-form-control" placeholder="Subject *" />
-                                                <span id="Span_Subject" class="text-danger"></span>
-                                            </span>
-                                        </p>
-                                        <p>
-                                            <input type="hidden" asp-for="ReturnUrl" />
-                                            <span class="wpcf7-form-control-wrap your-message">
-                                                <textarea asp-for="Message" cols="40" rows="10" class="wpcf7-form-control" placeholder="Your Message *"></textarea>
-                                                <span id="Span_Message" class="text-danger"></span>
-                                            </span>
-                                        </p>
-                                        @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"].ToString()))
-                                        {
-                                            <div class="wpcf7-response-output vc_btn-green vc_pull-right text-right ">@ViewData["ErrorMessage"]</div>
-                                        }
-                                        <br />
-                                        <p><input type="submit" value="SEND MESSAGE" class="wpcf7-form-control wpcf7-submit" onclick="return SubmitContact();" /></p>
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
+<section class="contact-img text-center">
+    <div class="container">
+        <div class="pt-5">
+            <h1 class="white pt-50">
+                Contact Us</h2>
+                <h3 class="white">We offer unique properties<br>suitable for any need.</h3>
         </div>
     </div>
-</div>
-<script>
+</section>
+<section>
+    <div class="contact-box container">
+        <div class="row">
+            <div class="col-md-6 mt-5">
+                <div class="row">
+                    <div class="col-2">
+                        <i class="fa fa-home fa-3x"></i>
+                    </div>
+                    <div class="col-10">
+                        <h5>Address:</h5>
+                        <p>Office 502, Aspect Tower, Business Bay, Dubai, UAE</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fa fa-phone fa-2x"></i>
+                    </div>
+                    <div class="col-10 mt-1">
+                        <p>Phone: <a href="tel:+971 4 430 6933">+971 4 430 6933</a></p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fa fa-envelope fa-2x"></i>
+                    </div>
+                    <div class="col-10 mt-1">
+                        <p>Email: <a href="mailto:info@a2zproperties.ae">info@a2zproperties.ae</a></p>
+                    </div>
+                    <div class="col-12 mt-5">
+                        <a href="https://www.facebook.com/a2zproperties.ae" class="mr-3 btn btn-success"><i class="fa fa-facebook fa-2x"></i></a>
+                        <a href="https://www.youtube.com/channel/UCxRQ1ukVeC7xKgJPBK5fPFg" class="mr-3 btn btn-success"><i class="fa fa-youtube fa-2x"></i></a>
+                        <a href="https://www.linkedin.com/company/a2z-propertiesllc/" class="mr-3 btn btn-success"><i class="fa fa-linkedin fa-2x"></i></a>
+                        <a href="https://www.instagram.com/a2zprop/" class="mr-3 btn btn-success"><i class="fa fa-instagram fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mt-5">
+                @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"].ToString()))
+                {<div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-check"></i> Alert!</h4>
+                        @ViewData["ErrorMessage"]
+                    </div>
+
+                }
+                <form asp-action="Index" asp-controller="ContactUs" method="post" class="wpcf7-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" asp-for="FirstName" placeholder="First Name">
+                        <span id="Span_FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" asp-for="LastName" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" asp-for="EmailId" placeholder="Email">
+                        <span id="Span_EmailId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" asp-for="PhoneNumber" placeholder="Phone">
+                        <span id="Span_PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" asp-for="Country" placeholder="Country">
+                        <span id="Span_Country" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="4" asp-for="Message" placeholder="Message"></textarea>
+                        <span id="Span_Message" class="text-danger"></span>
+                    </div>
+
+
+                    <button class="btn btn-success mb-3" onclick="return SubmitContact();">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <script>
     function SubmitContact() {
         debugger;
-        var Name = $("#Name").val();
+        var FirstName = $("#FirstName").val();
         var EmailId = $("#EmailId").val();
-        var Subject = $("#Subject").val();
+        var PhoneNumber = $("#PhoneNumber").val();
+        var Country = $("#Country").val();
         var Message = $("#Message").val();
-        if (Name == "") {
-            $("#Span_Name").text("this field is required");
-            $('#Name').css('border-color', 'Red');
-            $('#Name').focus();
+
+
+        if (FirstName == "") {
+            $("#Span_FirstName").text("this field is required");
+            $('#FirstName').css('border-color', 'Red');
+            $('#FirstName').focus();
             return false;
         }
         else {
-            $("#Span_Name").text('');
-            $('#Name').css('border-color', '');
+            $("#Span_FirstName").text('');
+            $('#FirstName').css('border-color', '');
         }
         if (EmailId == "") {
             $("#Span_EmailId").text("this field is required");
@@ -114,7 +113,7 @@
             if (/^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(EmailId)) {
                 $("#Span_EmailId").text('');
                 $('#EmailId').css('border-color', '');
-               
+
             }
             else {
                 $("#Span_EmailId").text("invalid email id..");
@@ -122,17 +121,27 @@
                 $('#EmailId').focus();
                 return false;
             }
-           
+
         }
-        if (Subject == "") {
-            $("#Span_Subject").text("this field is required");
-            $('#Subject').css('border-color', 'Red');
-            $('#Subject').focus();
+        if (PhoneNumber == "") {
+            $("#Span_PhoneNumber").text("this field is required");
+            $('#PhoneNumber').css('border-color', 'Red');
+            $('#PhoneNumber').focus();
             return false;
         }
         else {
-            $("#Span_Subject").text('');
-            $('#Subject').css('border-color', '');
+            $("#Span_PhoneNumber").text('');
+            $('#PhoneNumber').css('border-color', '');
+        }
+        if (Country == "") {
+            $("#Span_Country").text("this field is required");
+            $('#Country').css('border-color', 'Red');
+            $('#Country').focus();
+            return false;
+        }
+        else {
+            $("#Span_Country").text('');
+            $('#Country').css('border-color', '');
         }
         if (Message == "") {
             $("#Span_Message").text("this field is required");

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using A2ZPortal.Core.Entities.Master;
+using A2ZPortal.Core.Entities.Property;
 using A2ZPortal.Helper;
 using A2ZPortal.Infrastructure.Repository.CustomerRepository;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
@@ -18,6 +20,7 @@ namespace A2ZPortal.UI.Controllers
     [ResponseCache(Duration = 120)]
     public class HomeController : Controller
     {
+        private readonly IGenericRepository<UpComingPropertyDetail, int> _iUpComingPropertyDetailGenericRepository;
         private readonly IGenericRepository<Location, int> _iLocationGenericRepository;
         private readonly IGenericRepository<SubLocation, int> _iSubLocationGenericRepository;
         private readonly IGenericRepository<PropertyStatusModel, int> _iPropertyStatusGenericRepository;
@@ -37,7 +40,8 @@ namespace A2ZPortal.UI.Controllers
              IGenericRepository<BathRoom, int> iBathRoomGenericRepository,
              IGenericRepository<Amenities, int> iAmenitiesGenericRepository,
              IHomeDetailRepository homeDetailRepository, IConfiguration configuration,
-             IPropertyDashBoradRepository propertyDashBoradRepository
+             IPropertyDashBoradRepository propertyDashBoradRepository,
+             IGenericRepository<UpComingPropertyDetail, int> iUpComingPropertyDetailGenericRepository
 
 
             )
@@ -51,6 +55,7 @@ namespace A2ZPortal.UI.Controllers
             _iAmenitiesGenericRepository = iAmenitiesGenericRepository;
             APIURL = configuration.GetSection("APIURL").Value;
             _IHomeDetailRepository = homeDetailRepository;
+            _iUpComingPropertyDetailGenericRepository = iUpComingPropertyDetailGenericRepository;
             _IPropertyDashBoradRepository = propertyDashBoradRepository;
 
         }
@@ -68,7 +73,7 @@ namespace A2ZPortal.UI.Controllers
             var taskAnemities = _iAmenitiesGenericRepository.GetList(x => x.IsActive && !x.IsDeleted);
 
             await Task.WhenAll
-                            (taskPropertyLocationWiseCount, 
+                            (taskPropertyLocationWiseCount,
                             taskRecentProperty,
                             taskRecentPropertyDetails, taskPropertyStatus, taskBedRooms,
                             taskBathRooms, taskPropertyType, taskLocation, taskSubLocation, taskAnemities);
@@ -119,12 +124,27 @@ namespace A2ZPortal.UI.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        [HttpPost]
+        public JsonResult Search(string prefix)
+        {
+            var taskLocation = _iLocationGenericRepository.GetList(x => x.IsActive && !x.IsDeleted).Result.Entities.Where(p => p.LocationName.Contains(prefix)).ToList();
+            return Json(taskLocation);
+        }
         public async Task<IActionResult> SeachBoxPartial()
         {
             await PopulateViewBag();
             return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("Home", "SeachMaster"));
         }
+        public async Task<IActionResult> UpComingProject()
+        {
+            var taskPropertyStatus = await _iUpComingPropertyDetailGenericRepository.GetList(x => x.IsActive && !x.IsDeleted);
 
+            taskPropertyStatus.Entities.ToList().ForEach(item =>
+            {
+                item.ImagePath = APIURL + item.ImagePath;
+            });
+            return PartialView(ViewPageHelper.InstanceHelper.GetPathDetail("Home", "UpComingProject"), taskPropertyStatus.Entities.LastOrDefault());
+        }
         public async Task<IActionResult> FeaturedProperty(int pageIndex)
         {
             return await Task.Run(() => ViewComponent("Featured", pageIndex));

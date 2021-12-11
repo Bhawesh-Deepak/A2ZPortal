@@ -1,0 +1,149 @@
+﻿@model A2ZPortal.Core.Entities.Customers.CustomerDetails
+
+<link href="~/A2Z-wp-contents/css/global-usability.css" rel="stylesheet" />
+<style>
+    .waves-input-wrapper {
+        vertical-align: bottom;
+    }
+    .login-main-bx {
+        width: 865px;
+        height: 480px;
+        margin: -24px;
+    }
+    .waves-effect {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        overflow: hidden;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        vertical-align: middle;
+        z-index: 1;
+        -webkit-transition: .3s ease-out;
+        transition: .3s ease-out;
+    }
+
+    .btn, .btn-large {
+        text-decoration: none;
+        color: #fff;
+        background-color: #f24141;
+        text-align: center;
+        -webkit-transition: .2s ease-out;
+        transition: .2s ease-out;
+        cursor: pointer;
+    }
+
+    .btn, .btn-large, .btn-floating, .btn-large, .btn-flat {
+        font-size: 13px;
+        outline: 0;
+        font-weight: 600;
+    }
+
+    .btn, .btn-large, .btn-flat {
+        border: none;
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 0.25rem;
+        text-transform: uppercase;
+        vertical-align: middle;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .waves-effect input[type="button"], .waves-effect input[type="reset"], .waves-effect input[type="submit"] {
+        border: 0;
+        font-style: normal;
+        font-size: inherit;
+        text-transform: inherit;
+        background: none;
+    }
+
+    input-wrapper .waves-button-input {
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    button, html input[type="button"], input[type="reset"], input[type="submit"] {
+        -webkit-appearance: button;
+        cursor: pointer;
+    }
+</style>
+<section style=" background-image: url(../A2Z-wp-contents/img/bg-pattern.png);">
+    <div class="container">
+        <div class="login-page">
+            <div class="login-main-bx wht-shd-bx clearfix" id="body_div">
+
+                <div class="login-left">
+                    <h3>Find your dream job</h3>
+                    <ul style="list-style:none">
+                        <li><i class="fa fa-check"></i> 3,00,000 job listings</li>
+                        <li><i class="fa fa-check"></i> Relevant job recommendations</li>
+                        <li><i class="fa fa-check"></i> One click apply</li>
+                    </ul>
+                    
+                </div>
+                <div class="login-form">
+                    <div id="login_midbox_id" style="display:block;">
+
+
+                        <form method="POST" asp-action="Login" asp-controller="CustomerDetail" class="form-horizontal mt-3 p-4   custom-block" style="display: contents;">
+
+
+                            <h3>Create your A2Z Properties account</h3>
+
+                            @if (!string.IsNullOrEmpty(Model.Message))
+                            {
+                                <span id="errormsg" class="msg error">@Model.Message</span>
+
+                            }
+
+
+                        <ul class="form-list" style="list-style:none">
+                            <li style="margin-left: -40px;">
+                                <label class="">Name : </label>
+
+                                <input type="text" asp-for="CustomerName" class="browser-default" placeholder="Your Name *" required>
+                            </li>
+                            <li style="margin-left: -40px;">
+                                <label>Email Id : </label>
+                                <input type="text" asp-for="CustomerEmail" class="browser-default" placeholder="Your Email *" required>
+                            </li>
+                            <li style="margin-left: -40px;">
+                                <label>Mobile Number : </label>
+                                <input type="text" asp-for="CustomerPhone" class="browser-default" placeholder="Your Mobile Number *" required>
+                            </li>
+                            <li style="margin-left: -40px;">
+                                <label>Password : </label>
+                                <input type="password" asp-for="Password" class="browser-default" placeholder="Your Password *" required>
+                            </li>
+                            <li class="clearfix login-act" style="margin-left: -40px;">
+                                
+                                <i class="waves-effect waves-light btn waves-input-wrapper" style="border-radius: 0">
+                                    <input type="submit" id="submitbutton" value="Login" class="waves-button-input text-white">
+                                </i>
+                            </li>
+                        </ul>
+
+
+                        </form>
+                        <h4>
+                            Already have an account?<a id="registerlogin" asp-action="Index" asp-controller="CustomerDetail"><u>  Login Now!</u></a>
+                        </h4>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- login bottom box starts here-->
+    </div>
+
+</section>

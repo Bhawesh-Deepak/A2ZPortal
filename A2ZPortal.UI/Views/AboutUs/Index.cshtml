@@ -1,90 +1,49 @@
 ﻿@model A2ZPortal.Core.Entities.Master.Contact
 
-
-<div class="container-wrap">
-    <div class="main-content container-boxed max offset">
-        <div class="row">
-            <div class="noo-main col-md-12 right-sidebar" role="main">
-                <article id="post-6280" class="noo-agent">
-                    <h1 class="content-title agent-name">
-                       A2Z Properties
-                    </h1>
-                    @*<div class="agent-social clearfix">
-                        <a class="fa fa-facebook" href="#"></a><a class="fa fa-twitter" href="#"></a><a class="fa fa-pinterest" href="#"></a><a class="fa fa-linkedin" href="#"></a><a class="fa fa-google-plus" href="#"></a>
-                    </div>*@
-                    <div class="agent-info">
-                        <div class="content-featured">
-                            <div class="content-thumb">
-                                <img src="http://wp.nootheme.com/citilights/wp-content/uploads/2014/09/agent-3.png" alt="Stacy Barron" />
-                            </div>
-                        </div>
-                        <div class="agent-detail">
-                            <h4 class="agent-detail-title">Contact Info</h4>
-                            <div class="agent-detail-info">
-                                <div class="agent-position">
-                                    <i class="fa fa-user"></i><span class='label-_noo_agent_position '>Position:</span> Real Estate broker
-                                </div>
-                                <div class="agent-position">
-                                    <i class="fa fa-user"></i><span class='label-_noo_agent_position '>Position:</span> Real Estate broker
-                                </div>
-                                <div class="agent-phone">
-                                    <i class="fa fa-phone"></i><span class='label-_noo_agent_phone '>Phone:</span> (401) 749624
-                                </div>
-                                <div class="agent-mobile">
-                                    <i class="fa fa-tablet"></i><span class='label-_noo_agent_mobile '>Mobile:</span> (213) 759374
-                                </div>
-                                <div class="agent-skype">
-                                    <i class="fa fa-skype"></i><span class='label-_noo_agent_skype '>Skype:</span> stacybroker01
-                                </div>
-                            </div>
-                            <div class="agent-desc">
-                                <h4 class="agent-detail-title">About Me</h4>
-                                <p>Stacy is a long time resident and successful broker in the Lincoln Center area. Never far from home, sheis intimately acquainted with each block of this extraordinary neighborhood. With the experience of selling thousands of apartments in buildings all over the area, Stacy has the knowledge and expertise to take the stress out of the buying and selling process.</p>
-                                <p>Stacy has instant access to thousands of Manhattan brokers. Each of her listings is given the maximum exposure available on the Internet and in print media. Over 1 Million visitors a month go directly to www.Halstead.com and 100,000 hits a day are directed to us from the NYTimes.com. Stacy continually gives the best that this competitive market has to offer.</p>
-                                <p>Throughout her years of continued success in real estate, she has established and maintained a vast network of Manhattan bound professionals. Shetruly understands the intricate process of buying or selling on the Upper West Side. Her commitment to excellence and professionalism combined with her calming personality and knowledge have made Stacy Barron true success story.</p>
-                                <p>The word professionalism stands out in every letter of recommendation &#8211; and that seems to say it all.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="conact-agent row">
-                        <h2 class="content-title col-md-12">
-                            Contact Me
-                        </h2>
-                        <form role="form" id="conactagentform" method="post" asp-action="Index" asp-controller="AboutUs">
-
-                            <div class="form-group col-md-6 col-sm-6">
-                                <input type="text" asp-for="Name" class="form-control addclass" placeholder="Your Name *" required>
-                                <span asp-validation-for="Name" class="text-danger"></span>
-                            </div>
-                            <div class="form-group  col-md-6 col-sm-6">
-                                <input type="email" asp-for="EmailId" class="form-control addclass" placeholder="Your Email *" required>
-                                <span asp-validation-for="EmailId" class="text-danger"></span>
-                            </div>
-                            <div class="form-group message col-md-12 col-sm-12">
-                                <textarea asp-for="Message" class="form-control addclass" rows="5" placeholder="Message *" required></textarea>
-                                <span asp-validation-for="Message" class="text-danger"></span>
-                            </div>
-                            <input type="hidden" asp-for="Subject" value="About Us" />
-                            <div class="form-action col-md-12 col-sm-12">
-
-                                @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"].ToString()))
-                                {
-                                <div class="wpcf7-response-output vc_btn-green vc_pull-left text-left ">@ViewData["ErrorMessage"]</div>
-                                }
-                            </div>
-                            <br />
-                            <div class="form-action col-md-12 col-sm-12">
-
-                                <button type="submit" class="btn btn-default">Send Me</button>
-                            </div>
-                        </form>
-                    </div>
-                     
-                </article>
-            </div>
-             
+<section class="about">
+    <div class="bg-bar">
+        <div class="container">
+            <h6>Home / About Us</h6>
         </div>
     </div>
-
-</div>
+    <div class="container mt-5 text-center">
+        <h1>About Us</h1>
+            <div class="row">
+                <div class="col-md-6 offset-md-3 mt-5">
+                    <p>A2Z PROPERTIES L.L.C is one of the UAE’s leading brokerage firms, offering a complete property experience. We work in pursuit of service excellence and we are committed in every area of the real estate industry. Offering a premium, professional and flexible service to customers. A2Z PROPERTIES L.L.C provides an extensive list of properties for sale and lease and this is complemented by a full property management list of services.</p>
+                </div>
+            </div>
+    </div>
+    <div class="bg-about mt-5">
+        <div class="container">
+            <h3 class="white pt-5">Our Services</h3>
+            <div class="row">
+                <div class="col-md-6 col-xl-3 mt-5">
+                    <div class="bg-white p-5">
+                        <h4>Residental Properties</h4>
+                        <p>Find the perfect house that fits your requirements through our team of experienced agents.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3 mt-5">
+                    <div class="bg-white p-5">
+                        <h4> Commercial Properties</h4>
+                        <p>Offices, commercial freehold and leasehold lands, warehouses</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3 mt-5">
+                    <div class="bg-white p-5">
+                        <h4>Developer Properties</h4>
+                        <p>We work with Dubai’s most established developers to provide you with a chance to be early on the latest upcoming investment opportunities in the UAE</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3 mt-5">
+                    <div class="bg-white p-5">
+                        <h4>Investment Portfolios</h4>
+                        <p>Our team of experienced agents helps you to pick the best investment avenues to add to your current portfolio </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ 
