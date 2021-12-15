@@ -69,6 +69,12 @@
         -webkit-appearance: button;
         cursor: pointer;
     }
+
+
+    .btn-success, .btn-success:hover {
+        background: #f24141 !important;
+        border: 0 !important;
+    }
 </style>
 <section style=" background-image: url(../A2Z-wp-contents/img/bg-pattern.png);">
     <div class="container">
@@ -86,45 +92,74 @@
                 </div>
                 <div class="login-form">
                     <div id="login_midbox_id" style="display:block;">
-
-
                         <form method="POST" asp-action="Login" asp-controller="CustomerDetail" class="form-horizontal mt-3 p-4   custom-block" style="display: contents;">
-
-
                             <h3>Login to your A2Z Properties account</h3>
                             @if (!string.IsNullOrEmpty(Model.PlaceAddress))
                             {
                                 <span id="errormsg" class="msg error">@Model.PlaceAddress</span>
 
                             }
-
-
                             <ul class="form-list" style="list-style:none">
                                 <li style="margin-left: -40px;">
-                                    <label class="">Email / Login Id: </label>
+                                    <label class="">Email Id <span style="color: #dc3545">*</span> </label>
 
                                     <input type="hidden" asp-for="ReturnUrl" />
-                                    <input type="text" class="browser-default" asp-for="CustomerPhone" placeholder="Customer Phone *" required style="color: rgb(153, 153, 153);">
-
+                                    <input type="text" class="browser-default" asp-for="CustomerEmail" placeholder="" required style="color: rgb(153, 153, 153);">
+                                    <span id="Span_EmailId" class="text-danger"></span>
                                 </li>
                                 <li style="margin-left: -40px;">
-                                    <label>Password: </label>
-                                    <input type="password" class="browser-default" asp-for="Password" placeholder="Password *" required>
+                                    <label>Password <span style="color: #dc3545">*</span> </label>
+                                    <input type="password" class="browser-default" asp-for="Password" placeholder="" required>
+                                    <span id="Span_Password" class="text-danger"></span>
                                 </li>
                                 <li class="clearfix login-act" style="margin-left: -40px;">
-                                    <a href="#" style="padding:2px 5px; position:relative;">Forgot your Password?</a>
+                                    <a href="#" onclick="return ChangeDiv()" style="padding:2px 5px; position:relative;">Forgot your Password?</a>
                                     <i class="waves-effect waves-light btn waves-input-wrapper" style="border-radius: 0">
-                                        <input type="submit" id="submitbutton" value="Login" class="waves-button-input text-white">
+                                        <button class="btn btn-success mb-3" onclick="return SubmitContact();">Submit</button>
+                                        @*<input type="submit" id="submitbutton" value="Login" class="waves-button-input text-white">*@
                                     </i>
                                 </li>
                             </ul>
-
-
                         </form>
                         <h4>
                             Don't have an account?<a id="registerlogin" asp-action="Register" asp-controller="CustomerDetail"><u>  Register Now!</u></a>
                         </h4>
                     </div>
+
+
+
+
+                    <div id="login_forgetpassword_id" style="display:none;">
+                        <form method="POST" asp-action="Login" asp-controller="CustomerDetail" class="form-horizontal mt-3 p-4   custom-block" style="display: contents;">
+                            <h3>Forget Password to your A2Z Properties account</h3>
+                            @*@if (!string.IsNullOrEmpty(Model.PlaceAddress))
+                                {
+                                    <span id="errormsg" class="msg error">@Model.PlaceAddress</span>
+
+                                }*@
+                            <ul class="form-list" style="list-style:none">
+                                <li style="margin-left: -40px;">
+                                    <label class="">Email Id * </label>
+
+                                    <input type="hidden" asp-for="ReturnUrl" />
+                                    <input type="text" class="browser-default" asp-for="CustomerEmail" placeholder="" required style="color: rgb(153, 153, 153);">
+                                    <span id="Span_EmailId" class="text-danger"></span>
+                                </li>
+
+                                <li class="clearfix login-act" style="margin-left: -40px;">
+                                    <a href="#" onclick="return BTL()" style="padding:2px 5px; position:relative;">Login</a>
+                                    <i class="waves-effect waves-light btn waves-input-wrapper" style="border-radius: 0">
+                                        <button class="btn btn-success mb-3" onclick="return SubmitContact();">Submit</button>
+                                        @*<input type="submit" id="submitbutton" value="Login" class="waves-button-input text-white">*@
+                                    </i>
+                                </li>
+                            </ul>
+                        </form>
+                        <h4>
+                            Don't have an account?<a id="registerlogin" asp-action="Register" asp-controller="CustomerDetail"><u>  Register Now!</u></a>
+                        </h4>
+                    </div>
+
 
 
                 </div>
@@ -135,9 +170,56 @@
         </div>
         <!-- login bottom box starts here-->
     </div>
-    
+
 </section>
 
+<script>
+    function SubmitContact() {
+        debugger;
+
+        var EmailId = $("#CustomerEmail").val();
+        var Password = $("#Password").val();
+
+
+
+
+        if (EmailId == "") {
+            $("#Span_EmailId").text("EmailID is required");
+            $('#EmailId').css('border-color', 'Red');
+            $('#EmailId').focus();
+            return false;
+        }
+
+        else {
+            $("#Span_FirstName").text('');
+            $('#CustomerName').css('border-color', '');
+        }
+
+
+
+        if (Password == "") {
+            $("#Span_Password").text("Password is required");
+            $('#Password').css('border-color', 'Red');
+            $('#Password').focus();
+            return false;
+        }
+
+        else {
+            $("#Span_Password").text('');
+            $('#Password').css('border-color', '');
+        }
+    }
+
+    function ChangeDiv() {
+        $("#login_midbox_id").css('display', 'none');
+        $("#login_forgetpassword_id").css('display', 'block');
+    }
+
+    function BTL() {
+        $("#login_forgetpassword_id").css('display', 'none');
+        $("#login_midbox_id").css('display', 'block');
+    }
+</script>
 
 
 @*<style>

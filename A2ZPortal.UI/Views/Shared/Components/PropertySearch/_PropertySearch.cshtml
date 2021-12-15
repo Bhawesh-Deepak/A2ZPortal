@@ -15,6 +15,15 @@
         overflow-y: auto;
         background: #a31e2e;
     }
+
+    #show-block {
+        display: none
+    }
+
+        #show-block .checkbox-label {
+            color: #fff;
+            justify-content: flex-start !important
+        }
 </style>
 
  
@@ -56,38 +65,69 @@
                             </select>
 
                         </div>
-                        <div class="col-lg-12 more mt-3">
-                            <a href="" data-toggle="modal" data-target="#myModal">More Options</a>
-                        </div>
-                        <div class="col-lg-4 offset-lg-4 mt-2 mb-3">
-                            <button type="submit" class="btn btn-primary btn-block btn-sm" ><i class="fa fa-search"></i> Search</button>
-                        </div>
-                        <div class="modal" id="myModal" tabindex="-1" role="dialog" style="opacity:2;margin-top:100px">
-                            <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4>Choose among these options</h4>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            @foreach (var item in ViewBag.Amenities)
-                                            {
-                                                <div class="col-md-12">
-                                                    <label class="checkbox-label" for="@item.AmenitiesName" style="text-align:left !important">
-                                                        <input type="checkbox" value="@item.Id" class="" name="Amenities" id="@item.AmenitiesName">&nbsp;@item.AmenitiesName
-                                                    </label>
-                                                </div>
-                                            }
+                        @*<div class="col-lg-12 more mt-3">
+            <a href="" data-toggle="modal" data-target="#myModal">More Options</a>
+        </div>*@
 
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Submit</button>
-                                    </div>
-                                </div>
+                        <div class="col-lg-12 more mt-3" id="more">
+                            <a href="">More Options</a>
+                        </div>
+
+
+                        <div class="row" id="show-block">
+                            <div class="col-md-12">
+                                <label class="checkbox-label" for="2 swimming pool" style="text-align:left !important">
+                                    <input type="checkbox" value="2" class="" name="Amenities" id="2 swimming pool">&nbsp;2 swimming pool
+                                </label>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="checkbox-label" for="2 gym with steam room and sauna separately for men and women" style="text-align:left !important">
+                                    <input type="checkbox" value="3" class="" name="Amenities" id="2 gym with steam room and sauna separately for men and women">&nbsp;2 gym with steam room and sauna separately for men and women
+                                </label>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="checkbox-label" for="1 covered parking for each apartment" style="text-align:left !important">
+                                    <input type="checkbox" value="4" class="" name="Amenities" id="1 covered parking for each apartment">&nbsp;1 covered parking for each apartment
+                                </label>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="checkbox-label" for="Fully equipped kitchen having built in fridge, oven, dishwasher, washing machine, cooker and cooker hood." style="text-align:left !important">
+                                    <input type="checkbox" value="5" class="mt-n4" name="Amenities" id="Fully equipped kitchen having built in fridge, oven, dishwasher, washing machine, cooker and cooker hood.">&nbsp;Fully equipped kitchen having built in fridge, oven, dishwasher, washing machine, cooker and cooker hood.
+                                </label>
                             </div>
                         </div>
+
+
+
+                        @*<div class="col-lg-4 offset-lg-4 mt-2 mb-3">
+            <button type="submit" class="btn btn-primary btn-block btn-sm"><i class="fa fa-search"></i> Search</button>
+        </div>
+        <div class="modal" id="myModal" tabindex="-1" role="dialog" style="opacity:2;margin-top:100px">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Choose among these options</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            @foreach (var item in ViewBag.Amenities)
+                            {
+                                <div class="col-md-12">
+                                    <label class="checkbox-label" for="@item.AmenitiesName" style="text-align:left !important">
+                                        <input type="checkbox" value="@item.Id" class="" name="Amenities" id="@item.AmenitiesName">&nbsp;@item.AmenitiesName
+                                    </label>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>*@
                     </form>
                 </div>
                 <div class="row">
@@ -136,5 +176,12 @@
                 return false;
             }
         });
+    });
+
+
+
+    $("#more").click(function () {
+        $("#show-block").slideToggle();
+        return false;
     });
 </script>

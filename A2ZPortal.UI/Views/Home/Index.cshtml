@@ -3,17 +3,17 @@
 
 }
 <style>
-    #popup .modal-dialog {
+   /* #popup .modal-dialog {
         min-height: calc(100vh);
         display: flex;
         flex-direction: column;
         justify-content: center;
         overflow: auto;
-        padding-top:30px;
+        padding-top: 30px;
     }
 
     #popup .modal-content {
-        width:75%;
+        width: 75%;
         margin: auto
     }
 
@@ -29,6 +29,27 @@
         border-radius: 50%;
         padding: 0 5px 5px 5px
     }
+*/
+
+
+    .add {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 999;
+        padding: 20px;
+        background: skyblue
+    }
+
+        .add img {
+            max-width: 340px
+        }
+
+    #close-add {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 </style>
 <section class="custom-form">
     @await Component.InvokeAsync("PropertySearch")
@@ -39,7 +60,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 my-3">
-                     
+
                     <img src="~/A2Z-contents/img/elite.jpeg" alt="" class="img-fluid" />
                 </div>
                 <div class="col-md-4">
@@ -61,7 +82,7 @@
         <h2 class="text-center mb-5">Featured Properties For Rent</h2>
         <div class="row">
             <div class="owl-carousel owl-theme" id="owl-carousel-0">
-                @foreach (var data in ((IEnumerable<A2ZPortal.Core.ViewModel.PropertyDetail.RecentPropertyDetail>)ViewBag.PropertyRecentDetail).GroupBy(x => x.PropertyId).OrderByDescending(x=>x.FirstOrDefault().PropertyId))
+                @foreach (var data in ((IEnumerable<A2ZPortal.Core.ViewModel.PropertyDetail.RecentPropertyDetail>)ViewBag.PropertyRecentDetail).GroupBy(x => x.PropertyId).OrderByDescending(x => x.FirstOrDefault().PropertyId))
                 {
                     <div class="item">
                         <div class="border">
@@ -88,31 +109,43 @@
     </div>
 </section>
 
-<div class="modal 
+@*<div class="modal
      " id="popup">
     <div class="modal-dialog">
         <div class="modal-content">
             <button type="button" class="close btn-success" data-dismiss="modal" id="close">&times;</button>
-           <div id="div_upcoming">
+            <div id="div_upcoming">
 
-           </div>
+            </div>
         </div>
     </div>
+</div>*@
+
+
+<div class="add" id="add">
+    <button type="button" class="close" id="close-add">&times;</button>
+
+    <img src="http://122.160.49.247:1008//PropertyImage/WhatsApp Image 2021-11-30 at 4.45.29 PM.jpeg" alt="" class="img-fluid"><br>
+    <button class="btn btn-secondary btn-block mt-3">Read More</button>
 </div>
+
 <script>
-		$(document).ready(function() {
-            $.get("/Home/UpComingProject",
-                function (data) {
-                    $("#div_upcoming").html(data);
-                    $("#popup").hide().fadeIn(1000);
-                    $("#close").on("click", function (e) {
-                        e.preventDefault();
-                        $("#popup").fadeOut(1000);
-                    });
-                    
-                     
+    $(document).ready(function () {
+        $.get("/Home/UpComingProject",
+            function (data) {
+                $("#div_upcoming").html(data);
+                $("#popup").hide().fadeIn(1000);
+                $("#close").on("click", function (e) {
+                    e.preventDefault();
+                    $("#popup").fadeOut(1000);
                 });
 
-		  
-        })
+                $("#close-add").click(function () {
+                    $("#add").hide();
+                });
+
+            });
+
+
+    })
 </script>
