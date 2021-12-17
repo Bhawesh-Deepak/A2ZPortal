@@ -31,7 +31,7 @@
     </div>
     
     <div class="container">
-        <h1 class="text-center my-5">@Model.First().CategoryName Projects</h1>
+        <h1 class="text-center mt-5 mb-3">@Model.First().CategoryName Projects</h1>
         <div class="text-right py-3">
             <button class="btn btn-primary" id="bt-1">
                 <i class="fa fa-bars"></i>
@@ -44,14 +44,15 @@
         <div class="list-grid">
             <div class="row">
                 @foreach (var item in Model.Reverse())
-                {<div class="col-lg-4 mt-3">
+                {<div class="col-lg-4 my-3">
                         <div class="border">
                             <img src="@item.ImagePath" alt="" class="img-fluid" style="max-height:194px;width:100%">
                             <div class="p-4">
                                 <h5>@item.PropertyName</h5>
-                                <p>@item.PropertyDescription.Substring(0,100)</p>
-                                <button type="button" class="btn btn-primary mb-1"> @string.Format("{0:0.00}", @item.Price) M AED</button>
-                                <a asp-action="GetPropertyDetail" title="@item.PropertyName" asp-route-id="@item.Id" asp-controller="PropertyDetails"class="btn btn-primary mb-1">View Details</a>
+                                <p>@item.PropertyDescription.Substring(0, 100)</p>
+                                <button type="button" class="btn btn-primary disabled mb-1"> @string.Format("{0:0.00}", @item.Price) M AED</button>
+                                <a asp-action="GetPropertyDetail" title="@item.PropertyName" asp-route-id="@item.Id" asp-controller="PropertyDetails" class="btn btn-primary mb-1">View Details</a>
+                                <a type="button" class="btn btn-primary"><i class="fa fa-heart"></i></a>
                             </div>
                         </div>
                     </div>

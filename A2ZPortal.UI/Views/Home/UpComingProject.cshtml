@@ -1,5 +1,6 @@
 ﻿@model A2ZPortal.Core.Entities.Property.UpComingPropertyDetail
-
-<img src="@Model.ImagePath" alt="" class="img-fluid" style="height:420px;width:100%"  />
-<br />
-<a asp-action="GetPropertyDetail" asp-controller="UpcomingProject" asp-route-Id="@Model.Id" class="btn btn-secondary btn-block">Click Here </a>
+ 
+ 
+<img src="@Model.ImagePath" alt="" class="img-fluid">
+<br>
+ <a asp-action="GetPropertyDetail" asp-controller="UpcomingProject" asp-route-Id="@Model.Id" class="btn btn-secondary btn-block mt-3">Click Here </a>

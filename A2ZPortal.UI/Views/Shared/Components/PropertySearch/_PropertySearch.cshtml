@@ -31,10 +31,10 @@
         <div class="row">
             <div class="col-md-12 text-center pt-5">
                 <div class="col-md-6 offset-md-3 border mt-4">
-                     
+
                     <form class="form-inline" action="~/PropertyDetails/Index" method="get" role="search">
                         <div class="col-md-12 mt-4">
-                            <input id="location" name="location" type="text" class="form-control" autocomplete="on" placeholder="Type state, city, area or address">
+                            <input id="location" name="location" type="text" class="form-control" autocomplete="on" placeholder="Type, State, City, Area or Address">
                             <input type="hidden" id="LocationId" name="LocationId" />
                         </div>
                         <div class="col-lg-6 mt-3">
@@ -66,8 +66,8 @@
 
                         </div>
                         @*<div class="col-lg-12 more mt-3">
-            <a href="" data-toggle="modal" data-target="#myModal">More Options</a>
-        </div>*@
+                <a href="" data-toggle="modal" data-target="#myModal">More Options</a>
+            </div>*@
 
                         <div class="col-lg-12 more mt-3" id="more">
                             <a href="">More Options</a>
@@ -100,45 +100,42 @@
 
 
                         @*<div class="col-lg-4 offset-lg-4 mt-2 mb-3">
-            <button type="submit" class="btn btn-primary btn-block btn-sm"><i class="fa fa-search"></i> Search</button>
-        </div>
-        <div class="modal" id="myModal" tabindex="-1" role="dialog" style="opacity:2;margin-top:100px">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4>Choose among these options</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            @foreach (var item in ViewBag.Amenities)
-                            {
-                                <div class="col-md-12">
-                                    <label class="checkbox-label" for="@item.AmenitiesName" style="text-align:left !important">
-                                        <input type="checkbox" value="@item.Id" class="" name="Amenities" id="@item.AmenitiesName">&nbsp;@item.AmenitiesName
-                                    </label>
-                                </div>
-                            }
-
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Submit</button>
-                    </div>
-                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-sm"><i class="fa fa-search"></i> Search</button>
             </div>
-        </div>*@
-                    </form>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 offset-lg-3 mt-1">
-                        <div class="d-lg-flex justify-content-between">
-                            <a asp-controller="Sale" asp-action="Index" class="btn btn-success mt-3">Property For Sale</a>
-                            @*<a asp-controller="Rental" asp-action="Index" class="btn btn-success mt-3">Property For Rent</a>*@
-                            <a asp-controller="Sale" asp-action="Index" class="btn btn-success mt-3">Off Plan</a>
+            <div class="modal" id="myModal" tabindex="-1" role="dialog" style="opacity:2;margin-top:100px">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4>Choose among these options</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                @foreach (var item in ViewBag.Amenities)
+                                {
+                                    <div class="col-md-12">
+                                        <label class="checkbox-label" for="@item.AmenitiesName" style="text-align:left !important">
+                                            <input type="checkbox" value="@item.Id" class="" name="Amenities" id="@item.AmenitiesName">&nbsp;@item.AmenitiesName
+                                        </label>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Submit</button>
                         </div>
                     </div>
                 </div>
+            </div>*@
+                    </form>
+                    <div class="d-lg-flex justify-content-between m-3">
+                        <a asp-controller="Sale" asp-action="Index" class="btn btn-success mt-3">Property For Sale</a>
+                        @*<a asp-controller="Rental" asp-action="Index" class="btn btn-success mt-3">Property For Rent</a>*@
+                        <a asp-controller="Sale" asp-action="Index" class="btn btn-success mt-3">Off Plan</a>
+                    </div>
+                </div>
+               
             </div>
         </div>
     </div>

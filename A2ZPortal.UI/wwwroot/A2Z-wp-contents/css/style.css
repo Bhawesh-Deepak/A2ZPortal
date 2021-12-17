@@ -100,6 +100,13 @@ footer h4{color:#fff; text-transform:uppercase; font-size:14px; font-weight:bold
 	color:#fff
 }
 
+.disabled {
+	background: #7b0211 !important;
+	border: 1px solid #7b0211 !important;
+	cursor: default !important;
+}
+
+
 @media screen and (max-width:1199px){
 	.bg-about .bg-white{min-height:250px !important}
 	#ui-id-1{width:380px;}
