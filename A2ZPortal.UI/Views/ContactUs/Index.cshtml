@@ -57,6 +57,7 @@
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" asp-for="LastName" placeholder="Last Name">
+                        <span id="Span_LastName" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" asp-for="EmailId" placeholder="Email">
@@ -84,77 +85,100 @@
 </section>
 
  <script>
-    function SubmitContact() {
-        debugger;
-        var FirstName = $("#FirstName").val();
-        var EmailId = $("#EmailId").val();
-        var PhoneNumber = $("#PhoneNumber").val();
-        var Country = $("#Country").val();
-        var Message = $("#Message").val();
+     function SubmitContact() {
+         debugger;
+         var FirstName = $("#FirstName").val();
+         var LastName = $("#LastName").val()
+         var EmailId = $("#EmailId").val();
+         var PhoneNumber = $("#PhoneNumber").val();
+         var Country = $("#Country").val();
+         var Message = $("#Message").val();
 
 
-        if (FirstName == "") {
-            $("#Span_FirstName").text("this field is required");
-            $('#FirstName').css('border-color', 'Red');
-            $('#FirstName').focus();
-            return false;
-        }
-        else {
-            $("#Span_FirstName").text('');
-            $('#FirstName').css('border-color', '');
-        }
-        if (EmailId == "") {
-            $("#Span_EmailId").text("this field is required");
-            $('#EmailId').css('border-color', 'Red');
-            $('#EmailId').focus();
-            return false;
-        }
-        else {
-            if (/^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(EmailId)) {
-                $("#Span_EmailId").text('');
-                $('#EmailId').css('border-color', '');
+         if (FirstName == "") {
+             $("#Span_FirstName").text("First Name is required");
+             $('#FirstName').css('border-color', 'Red');
+             $('#FirstName').focus();
+             return false;
+         }
+         else {
+             $("#Span_FirstName").text('');
+             $('#FirstName').css('border-color', '');
+         }
 
-            }
-            else {
-                $("#Span_EmailId").text("invalid email id..");
-                $('#EmailId').css('border-color', 'Red');
-                $('#EmailId').focus();
-                return false;
-            }
 
-        }
-        if (PhoneNumber == "") {
-            $("#Span_PhoneNumber").text("this field is required");
-            $('#PhoneNumber').css('border-color', 'Red');
-            $('#PhoneNumber').focus();
-            return false;
-        }
-        else {
-            $("#Span_PhoneNumber").text('');
-            $('#PhoneNumber').css('border-color', '');
-        }
-        if (Country == "") {
-            $("#Span_Country").text("this field is required");
-            $('#Country').css('border-color', 'Red');
-            $('#Country').focus();
-            return false;
-        }
-        else {
-            $("#Span_Country").text('');
-            $('#Country').css('border-color', '');
-        }
-        if (Message == "") {
-            $("#Span_Message").text("this field is required");
-            $('#Message').css('border-color', 'Red');
-            $('#Message').focus();
-            return false;
-        }
-        else {
-            $("#Span_Message").text('');
-            $('#Message').css('border-color', '');
-            $('.wpcf7-form').submit();
+         if (LastName == "") {
+             $("#Span_LastName").text("Last Name is required");
+             $('#FirstName').css('border-color', 'Red');
+             $('#FirstName').focus();
+             return false;
+         }
+         else {
+             $("#Span_LastName").text('');
+             $('#FirstName').css('border-color', '');
+         }
 
-        }
 
-    }
+         if (EmailId == "") {
+             $("#Span_EmailId").text("EmailID is required");
+             $('#EmailId').css('border-color', 'Red');
+             $('#EmailId').focus();
+             return false;
+         }
+         else {
+             if (/^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(EmailId)) {
+                 $("#Span_EmailId").text('');
+                 $('#EmailId').css('border-color', '');
+
+             }
+             else {
+                 $("#Span_EmailId").text("invalid email id..");
+                 $('#EmailId').css('border-color', 'Red');
+                 $('#EmailId').focus();
+                 return false;
+             }
+
+         }
+         if (PhoneNumber == "") {
+             $("#Span_PhoneNumber").text("this field is required");
+             $('#PhoneNumber').css('border-color', 'Red');
+             $('#PhoneNumber').focus();
+             return false;
+         }
+         else if (PhoneNumber.length > 10) {
+             $("#Span_PhoneNumber").text("Phone Number should not greater than 10 digits");
+             $('#PhoneNumber').css('border-color', 'Red');
+             $('#PhoneNumber').focus();
+             return false;
+         }
+         else {
+
+             $("#Span_PhoneNumber").text('');
+             $('#PhoneNumber').css('border-color', '');
+         }
+         if (Country == "") {
+             $("#Span_Country").text("Country is required");
+             $('#Country').css('border-color', 'Red');
+             $('#Country').focus();
+             return false;
+         }
+         else {
+             $("#Span_Country").text('');
+             $('#Country').css('border-color', '');
+         }
+         if (Message == "") {
+             $("#Span_Message").text("Message is required");
+             $('#Message').css('border-color', 'Red');
+             $('#Message').focus();
+             return false;
+         }
+         else {
+             $("#Span_Message").text('');
+             $('#Message').css('border-color', '');
+             $('.wpcf7-form').submit();
+
+         }
+
+     }
+
 </script>

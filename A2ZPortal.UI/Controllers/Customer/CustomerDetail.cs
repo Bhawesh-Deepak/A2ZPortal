@@ -29,6 +29,7 @@ namespace A2ZPortal.UI.Controllers.Customer
         public async Task<IActionResult> CreateCustomer(CustomerDetails model, string returnUrl)
         {
             model.ReturnUrl = returnUrl;
+            model.Password = PasswordEncryptor.Instance.Encrypt(model.Password, "SQYPAYROLLLEADMANAGEMENT");
             var createModel = CommonCrudHelper.CommonCreateCode(model, 1);
             var response = await _ICustomerRepository.CreateEntity(createModel);
 
@@ -43,11 +44,13 @@ namespace A2ZPortal.UI.Controllers.Customer
         [HttpPost]
         public async Task<IActionResult> Login(CustomerDetails model, string returnUrl)
         {// && x.CustomerPhone==model.CustomerPhone && x.Password==model.Password
-            var responseData = await _ICustomerRepository.GetSingle(x => x.IsActive && !x.IsDeleted && x.CustomerPhone == model.CustomerPhone && x.Password == model.Password);
-              
-            if (responseData.Entity!=null )
+            var responseData = await _ICustomerRepository.GetSingle(x => x.IsActive && !x.IsDeleted && x.CustomerEmail == model.CustomerEmail && x.Password == model.Password);
+
+            if (responseData.Entity != null)
             {
-                HttpContext.Session.SetString("UserPhone", model.CustomerPhone);
+                //HttpContext.Session.SetString("UserPhone", model.CustomerPhone);
+                HttpContext.Session.SetString("UserPhone", model.CustomerEmail);
+
 
                 if (string.IsNullOrEmpty(returnUrl))
                     return await Task.Run(() => RedirectToAction("Index", "Home"));

@@ -1,15 +1,12 @@
 ﻿@model A2ZPortal.Core.Entities.Customers.CustomerDetails
 
 <link href="~/A2Z-wp-contents/css/global-usability.css" rel="stylesheet" />
+<link href="~/A2Z-wp-contents/css/bootstrap.min.css" rel="stylesheet" />
 <style>
     .waves-input-wrapper {
         vertical-align: bottom;
     }
-    .login-main-bx {
-        width: 865px;
-        height: 480px;
-        margin: -24px;
-    }
+
     .waves-effect {
         position: relative;
         cursor: pointer;
@@ -72,84 +69,182 @@
         -webkit-appearance: button;
         cursor: pointer;
     }
+
+    .btn-success, .btn-success:hover {
+        background: #f24141 !important;
+        border: 0 !important;
+    }
 </style>
 <section style=" background-image: url(../A2Z-wp-contents/img/bg-pattern.png);">
     <div class="container">
-        <div class="login-page">
-            <div class="login-main-bx wht-shd-bx clearfix" id="body_div">
+        <div class="login-page" style="padding:0">
+            <div class="wht-shd-bx col-lg-10 lg-offset-1 bg-white p-3" id="body_div">
+                <div class="row">
+                    <div class="login-left col-lg-6 mt-5">
+                        <h3>Your dream property</h3>
+                        <ul style="list-style:none">
+                            <li><i class="fa fa-check"></i>200 + Properties</li>
+                            <li><i class="fa fa-check"></i> Best property recommendations</li>
+                        </ul>
+                    </div>
+                    <div class="login-form col-lg-6 bg-white mt-5" style="height:100%; padding:0">
+                        <div id="login_midbox_id" style="display:block;">
+                            <form method="POST" asp-action="CreateCustomer" asp-controller="CustomerDetail" class="form-horizontal mt-3 py-0 px-3 custom-block">
+                                <h3 class="ml-5">Create Your A2Z Properties Account</h3>
 
-                <div class="login-left">
-                    <h3>Your dream property</h3>
-                    <ul style="list-style:none">
-                        <li><i class="fa fa-check"></i>200 + Properties</li>
-                        <li><i class="fa fa-check"></i> Best property recommendations</li>
-                        
-                    </ul>
-                    
-                </div>
-                <div class="login-form">
-                    <div id="login_midbox_id" style="display:block;">
-
-
-                        <form method="POST" asp-action="Login" asp-controller="CustomerDetail" class="form-horizontal mt-3 p-4   custom-block" style="display: contents;">
-
-
-                            <h3>Create your A2Z Properties account</h3>
-
-                            @if (!string.IsNullOrEmpty(Model.Message))
-                            {
+                                @if (!string.IsNullOrEmpty(Model.Message))
+                                {
                                 <span id="errormsg" class="msg error">@Model.Message</span>
 
-                            }
-
-
-                        <ul class="form-list" style="list-style:none">
-                            <li style="margin-left: -40px;">
-                                <label class="">Name : </label>
-
-                                <input type="text" asp-for="CustomerName" class="browser-default" placeholder="Your Name *" required>
-                            </li>
-                            <li style="margin-left: -40px;">
-                                <label>Email Id : </label>
-                                <input type="text" asp-for="CustomerEmail" class="browser-default" placeholder="Your Email *" required>
-                            </li>
-                            <li style="margin-left: -40px;">
-                                <label>Mobile Number : </label>
-                                <input type="text" asp-for="CustomerPhone" class="browser-default" placeholder="Your Mobile Number *" required>
-                            </li>
-                            <li style="margin-left: -40px;">
-                                <label>Password : </label>
-                                <input type="password" asp-for="Password" class="browser-default" placeholder="Your Password *" required>
-                            </li>
-
-                            <li style="margin-left: -40px;">
-                                <label>Confirm Password : </label>
-                                <input type="password" asp-for="ConfirmPassword" class="browser-default" placeholder="Your Password *" required>
-                                <span asp-validation-for="ConfirmPassword"></span>
-                            </li>
-                            <li class="clearfix login-act" style="margin-left: -40px;">
-
-                                <i class="waves-effect waves-light btn waves-input-wrapper" style="border-radius: 0">
-                                    <input type="submit" id="submitbutton" value="Register" class="waves-button-input text-white">
-                                </i>
-                            </li>
-                        </ul>
-
-
-                        </form>
-                        <h4>
-                            Already have an account?<a id="registerlogin" asp-action="Index" asp-controller="CustomerDetail"><u>  Login Now!</u></a>
-                        </h4>
+                                }
+                                <ul class="form-list" style="list-style:none">
+                                    <li>
+                                        <label class="">Name  <span style="color: #dc3545">*</span> </label>
+                                        <input type="text" asp-for="CustomerName" class="browser-default form-control" placeholder="Your Name" required>
+                                        <span id="Span_FirstName" class="text-danger"></span>
+                                    </li>
+                                    <li>
+                                        <label>Email Id <span style="color: #dc3545">*</span> </label>
+                                        <input type="text" asp-for="CustomerEmail" class="browser-default form-control" placeholder="Your Email" required>
+                                        <span id="Span_EmailId" class="text-danger"></span>
+                                    </li>
+                                    <li>
+                                        <label>Mobile Number <span style="color: #dc3545">*</span> </label>
+                                        <input type="number" asp-for="CustomerPhone" class="browser-default form-control w-100" placeholder="Your Mobile Number" required>
+                                        <span id="Span_Phone" class="text-danger"></span>
+                                    </li>
+                                    <li>
+                                        <label>Password <span style="color: #dc3545">*</span> </label>
+                                        <input type="password" asp-for="Password" class="browser-default form-control" placeholder="Your Password" required>
+                                        <span id="Span_Password" class="text-danger"></span>
+                                    </li>
+                                    <li>
+                                        <label>Confirm Password <span style="color: #dc3545">*</span> </label>
+                                        <input type="password" asp-for="ConfirmPassword" class="browser-default form-control" placeholder="Your Password" required>
+                                        <span id="Span_ConfirmPassword" class="text-danger"></span>
+                                    </li>
+                                    <li class="clearfix login-act">
+                                        <i class="waves-effect waves-light btn waves-input-wrapper" style="border-radius: 0">
+                                            <button class="btn btn-success mb-3" onclick="return SubmitContact();">Submit</button>
+                                            @*<input type="submit" id="submitbutton" onclick="return submitcontact(); value="register" class="waves-button-input text-white">*@
+                                        </i>
+                                    </li>
+                                </ul>
+                            </form>
+                            <div class="ml-5 pl-2">
+                                <h4>
+                                    Already have an account?<a id="registerlogin" asp-action="Index" asp-controller="CustomerDetail"><u>  Login Now!</u></a>
+                                </h4>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
-
-
                 </div>
-
-
             </div>
-
         </div>
         <!-- login bottom box starts here-->
     </div>
 
 </section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+<script>
+    function SubmitContact() {
+        debugger;
+        var FirstName = $("#CustomerName").val();
+        var EmailId = $("#CustomerEmail").val();
+        var PhoneNumber = $("#CustomerPhone").val();
+        var Password = $("#Password").val();
+        var ConfirmPassword = $("#ConfirmPassword").val();
+
+        if (FirstName == "") {
+            $("#Span_FirstName").text("First Name is required");
+            $('#CustomerName').css('border-color', 'Red');
+            $('#CustomerName').focus();
+            return false;
+        }
+
+        else {
+            $("#Span_FirstName").text('');
+            $('#CustomerName').css('border-color', '');
+        }
+
+        if (EmailId == "") {
+            $("#Span_EmailId").text("EmailID is required");
+            $('#EmailId').css('border-color', 'Red');
+            $('#EmailId').focus();
+            return false;
+        }
+
+        else {
+            if (/^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(EmailId)) {
+                $("#Span_EmailId").text('');
+                $('#EmailId').css('border-color', '');
+            }
+
+            else {
+                $("#Span_EmailId").text("invalid email id..");
+                $('#EmailId').css('border-color', 'Red');
+                $('#EmailId').focus();
+                return false;
+            }
+
+        }
+
+        if (PhoneNumber == "") {
+            $("#Span_Phone").text("this field is required");
+            $('#PhoneNumber').css('border-color', 'Red');
+            $('#PhoneNumber').focus();
+            return false;
+        }
+
+        else if (PhoneNumber.length > 10) {
+            $("#Span_Phone").text("Phone Number should not greater than 10 digits");
+            $('#PhoneNumber').css('border-color', 'Red');
+            $('#PhoneNumber').focus();
+            return false;
+        }
+
+        else {
+            $("#Span_Phone").text('');
+            $('#PhoneNumber').css('border-color', '');
+        }
+
+        if (Password == "") {
+            $("#Span_Password").text("Password is required");
+            $('#Password').css('border-color', 'Red');
+            $('#Password').focus();
+            return false;
+        }
+
+        else {
+            $("#Span_Password").text('');
+            $('#Password').css('border-color', '');
+        }
+
+        if (ConfirmPassword == "") {
+            $("#Span_ConfirmPassword").text("Confirm Password is required");
+            $('#ConfirmPassword').css('border-color', 'Red');
+            $('#ConfirmPassword').focus();
+            return false;
+        }
+        else if (Password != ConfirmPassword) {
+            $("#Span_ConfirmPassword").text("Confirm Password is not match with Password");
+            $('#ConfirmPassword').css('border-color', 'Red');
+            $('#ConfirmPassword').focus();
+            return false;
+        }
+
+        else {
+            $("#ConfirmPassword").text('');
+            $('#Span_ConfirmPassword').css('border-color', '');
+            $('.wpcf7-form').submit();
+        }
+
+    }
+</script>

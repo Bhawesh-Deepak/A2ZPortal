@@ -1,311 +1,98 @@
 ﻿@model A2ZPortal.Core.Entities.Customers.CustomerDetails
 
-
 <link href="~/A2Z-wp-contents/css/global-usability.css" rel="stylesheet" />
-<style>
-    .waves-input-wrapper {
-        vertical-align: bottom;
-    }
-
-    .waves-effect {
-        position: relative;
-        cursor: pointer;
-        display: inline-block;
-        overflow: hidden;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        -webkit-tap-highlight-color: transparent;
-        vertical-align: middle;
-        z-index: 1;
-        -webkit-transition: .3s ease-out;
-        transition: .3s ease-out;
-    }
-
-    .btn, .btn-large {
-        text-decoration: none;
-        color: #fff;
-        background-color: #f24141;
-        text-align: center;
-        -webkit-transition: .2s ease-out;
-        transition: .2s ease-out;
-        cursor: pointer;
-    }
-
-    .btn, .btn-large, .btn-floating, .btn-large, .btn-flat {
-        font-size: 13px;
-        outline: 0;
-        font-weight: 600;
-    }
-
-    .btn, .btn-large, .btn-flat {
-        border: none;
-        display: inline-block;
-        height: 30px;
-        line-height: 30px;
-        padding: 0 0.25rem;
-        text-transform: uppercase;
-        vertical-align: middle;
-        -webkit-tap-highlight-color: transparent;
-    }
-
-    .waves-effect input[type="button"], .waves-effect input[type="reset"], .waves-effect input[type="submit"] {
-        border: 0;
-        font-style: normal;
-        font-size: inherit;
-        text-transform: inherit;
-        background: none;
-    }
-
-    input-wrapper .waves-button-input {
-        position: relative;
-        top: 0;
-        left: 0;
-        z-index: 1;
-    }
-
-    button, html input[type="button"], input[type="reset"], input[type="submit"] {
-        -webkit-appearance: button;
-        cursor: pointer;
-    }
-</style>
 <section style=" background-image: url(../A2Z-wp-contents/img/bg-pattern.png);">
     <div class="container">
-        <div class="login-page">
-            <div class="login-main-bx wht-shd-bx clearfix" id="body_div">
-
-                <div class="login-left">
-                    <h3>Your dream property</h3>
-                    <ul style="list-style:none">
-                        <li><i class="fa fa-check"></i>200 + Properties</li>
-                        <li><i class="fa fa-check"></i> Best property recommendations</li>
-
-                    </ul>
-
-                </div>
-                <div class="login-form">
-                    <div id="login_midbox_id" style="display:block;">
-
-
-                        <form method="POST" asp-action="Login" asp-controller="CustomerDetail" class="form-horizontal mt-3 p-4   custom-block" style="display: contents;">
-
-
-                            <h3>Login to your A2Z Properties account</h3>
-                            @if (!string.IsNullOrEmpty(Model.PlaceAddress))
-                            {
-                                <span id="errormsg" class="msg error">@Model.PlaceAddress</span>
-
-                            }
-
-
-                            <ul class="form-list" style="list-style:none">
-                                <li style="margin-left: -40px;">
-                                    <label class="">Email / Login Id: </label>
-
-                                    <input type="hidden" asp-for="ReturnUrl" />
-                                    <input type="text" class="browser-default" asp-for="CustomerPhone" placeholder="Customer Phone *" required style="color: rgb(153, 153, 153);">
-
-                                </li>
-                                <li style="margin-left: -40px;">
-                                    <label>Password: </label>
-                                    <input type="password" class="browser-default" asp-for="Password" placeholder="Password *" required>
-                                </li>
-                                <li class="clearfix login-act" style="margin-left: -40px;">
-                                    <a href="#" style="padding:2px 5px; position:relative;">Forgot your Password?</a>
-                                    <i class="waves-effect waves-light btn waves-input-wrapper" style="border-radius: 0">
-                                        <input type="submit" id="submitbutton" value="Login" class="waves-button-input text-white">
-                                    </i>
-                                </li>
-                            </ul>
-
-
-                        </form>
-                        <h4>
-                            Don't have an account?<a id="registerlogin" asp-action="Register" asp-controller="CustomerDetail"><u>  Register Now!</u></a>
-                        </h4>
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-        </div>
-        <!-- login bottom box starts here-->
-    </div>
-    
-</section>
-
-
-
-@*<style>
-        .bg-gradientwithbackground {
-         background-image: url('../A2Z-wp-contents/img/bg-pattern.png');
-        }
-    </style>
-    <section class="bg-gradient bg-gradientwithbackground">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 pt-5">
-                    <p> Already a member of A2Z Portal. Please use the form below to log in site.</p>
-                    <form method="POST" asp-action="Login" asp-controller="CustomerDetail" class="form-horizontal mt-3 p-4 border custom-block">
-
-                        <div class="form-group">
-                            <input type="hidden" asp-for="ReturnUrl" />
-                            <input type="text" class="form-control" asp-for="CustomerPhone" placeholder="Customer Phone *">
-                            <span asp-validation-for="CustomerPhone" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" asp-for="Password" placeholder="Password *">
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            @if (!string.IsNullOrEmpty(Model.PlaceAddress))
-                            {
-                                <span style="color: red">@Model.PlaceAddress</span>
-                            }
-                        </div>
-                        <div class="form-group">
-                            <a href="">Forgot Password</a>
-                        </div>
-                        <button class="btn btn-success" type="submit">Login</button>
-                    </form>
-                </div>
-                <div class="col-md-6 pt-5">
-                    <p>  Don't have an account? Please fill in the form below to create one.</p>
-
-                <form class="form-horizontal mt-3 border p-4" asp-action="CreateCustomer" asp-controller="CustomerDetail" method="post">
-                    <div class="form-group">
-                        @if (!string.IsNullOrEmpty(Model.Message))
-                        {
-                            <span style="color: #bdb254">@Model.Message</span>
-                        }
-                    </div>
-                    <div class="form-group">
-                        <input type="text" asp-for="CustomerName" class="user_login form-control" placeholder="Your Name *">
-                        <span asp-validation-for="CustomerName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" asp-for="CustomerEmail" class="user_email form-control" placeholder="Your Email *">
-                        <span asp-validation-for="CustomerEmail" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input asp-for="CustomerPhone" class="user_password form-control" placeholder="Your Phone">
-                        <span asp-validation-for="CustomerPhone" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input asp-for="Password" class="user_password form-control"
-                               placeholder="Your Password">
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
-
-                    <button type="submit" class="btn btn-success">Sign Up</button>
-                </form>
-                </div>
-            </div>
-        </div>
-    </section>*@
-@*<style>
-        .field-validation-valid {
-            display: none;
-        }
-    </style>
-        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-        <div class="container-wrap">
-            <div class="main-content container-fullwidth">
+        <div class="login-page" style="padding:0">
+            <div class="wht-shd-bx col-lg-10 lg-offset-1 bg-white p-3" id="body_div">
                 <div class="row">
-                    <div class="noo-main col-md-12" role="main">
-
-                        <div class="noo-vc-row row " style="">
-                            <div class="noo-vc-col col-md-12 ">
-                                <div class="noo-logreg both">
-                                    <div class="logreg-container">
-                                        <div class="logreg-content row">
-                                            <div class="login-form col-md-6 col-sm-6">
-                                                <form method="POST" asp-action="Login" asp-controller="CustomerDetail" class="shortcode-login noo-box noo-box-login class-login-wrap-613f7989462e8 ">
-                                                    <div class="logreg-title">
-                                                        Login Form
-                                                    </div>
-                                                    <div class="login_form">
-                                                        <div class="loginalert login_message_area">
-
-                                                        </div>
-                                                        <p class="logreg-desc">
-                                                            Already a member of A2Z Portal. Please use the form below to log in site.
-
-                                                        </p>
-                                                        <div class="noo-item user_log">
-                                                            <input type="hidden" asp-for="ReturnUrl" />
-                                                            <input type="text" class="form-control" asp-for="CustomerPhone" placeholder="Customer Phone *">
-                                                            <span asp-validation-for="CustomerPhone" class="text-danger"></span>
-                                                        </div>
-                                                        <div class="noo-item user_pass">
-                                                            <input type="password" class="form-control" asp-for="Password" placeholder="Password *">
-                                                            <span asp-validation-for="Password" class="text-danger"></span>
-                                                        </div>
-                                                        <div class="noo-form-action">
-                                                            <button type="submit" class="btn btn-secondary btn-lg noo-login" >
-                                                                Login
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="register-form col-md-6 col-sm-6">
-                                                <form asp-action="CreateCustomer" asp-controller="CustomerDetail"
-                                                      class="shortcode-login noo-box noo-box-register class-register-wrap-613f79894632a show">
-                                                    <div class="logreg-title">Register Form</div>
-                                                    <div class="register_form">
-                                                        <div class="loginalert register_message_area">
-                                                            @if (!string.IsNullOrEmpty(Model.Message))
-                                                            {
-                                                                <span style="color: #bdb254">@Model.Message</span>
-                                                            }
-                                                        </div>
-                                                        <p class="logreg-desc">
-                                                            Don't have an account? Please fill in the form below to create one.
-                                                        </p>
-                                                        <div class="noo-item user_login">
-                                                            <input type="text" asp-for="CustomerName" class="user_login form-control" placeholder="Your Name *">
-                                                            <span asp-validation-for="CustomerName" class="text-danger"></span>
-                                                        </div>
-                                                        <div class="noo-item user_email">
-                                                            <input type="text" asp-for="CustomerEmail" class="user_email form-control" placeholder="Your Email *">
-                                                            <span asp-validation-for="CustomerEmail" class="text-danger"></span>
-                                                        </div>
-                                                        <div class="noo-item user_password">
-                                                            <input asp-for="CustomerPhone" class="user_password form-control" placeholder="Your Phone">
-                                                            <span asp-validation-for="CustomerPhone" class="text-danger"></span>
-                                                        </div>
-
-                                                        <div class="noo-item user_password">
-                                                            <input asp-for="Password" class="user_password form-control"
-                                                                   placeholder="Your Password">
-                                                            <span asp-validation-for="Password" class="text-danger"></span>
-                                                        </div>
-
-                                                        <div class="noo-form-action">
-                                                            <button type="submit" class=" btn btn-success">Register</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="login-left col-lg-6 mt-5">
+                        <h3>Your dream property</h3>
+                        <ul style="list-style:none">
+                            <li><i class="fa fa-check"></i>200 + Properties</li>
+                            <li><i class="fa fa-check"></i> Best property recommendations</li>
+                        </ul>
+                    </div>
+                    <div class="login-form col-lg-6 bg-white mt-5" style="height:100%; padding:0">
+                        <div id="login_midbox_id" style="display:block;">
+                            <form method="POST" asp-action="Login" asp-controller="CustomerDetail" class="form-horizontal mt-3 py-0 px-3 custom-block">
+                                <h3 class="ml-5">Login to your A2Z Properties account</h3>
+                                @if (!string.IsNullOrEmpty(Model.PlaceAddress))
+                                {
+                                 <span id="errormsg" class="msg error">@Model.PlaceAddress</span>}
+                                <ul class="form-list" style="list-style:none">
+                                    <li>
+                                        <label class="">Email Id <span style="color: #dc3545">*</span> </label>
+                                        <input type="hidden" asp-for="ReturnUrl" />
+                                        <input type="text" class="browser-default form-control" asp-for="CustomerEmail" placeholder="Email Id *" required style="color: rgb(153, 153, 153);">
+                                        <span id="Span_EmailId" class="text-danger"></span>
+                                    </li>
+                                    <li>
+                                        <label>Password <span style="color: #dc3545">*</span> </label>
+                                        <input type="password" class="browser-default form-control" asp-for="Password" placeholder="Password" required>
+                                        <span id="Span_Password" class="text-danger"></span>
+                                    </li>
+                                    <li class="clearfix login-act">
+                                        <a href="#" onclick="return ChangeDiv()" style="padding:2px 5px; position:relative;">Forgot your Password?</a>
+                                        <i class="waves-effect waves-light btn waves-input-wrapper" style="border-radius: 0">
+                                            <button class="btn btn-success mb-3" onclick="return SubmitContact();">Submit</button>
+                                            
+                                        </i>
+                                    </li>
+                                </ul>
+                            </form>
+                            <div class="ml-5 pl-2">
+                                <h4>
+                                    Don't have an account?<a id="registerlogin" asp-action="Register" asp-controller="CustomerDetail"><u>  Register Now!</u></a>
+                                </h4>
                             </div>
                         </div>
 
+
+
+
+                        <div id="login_forgetpassword_id" class="col-lg-12 bg-white mt-5" style="display:none;">
+                            <form method="POST" asp-action="Login" asp-controller="CustomerDetail" class="form-horizontal mt-3 py-0 px-3   custom-block" style="display: contents;">
+                                <h3 class="ml-5">Forget Password to your A2Z Properties account</h3>
+                                @*@if (!string.IsNullOrEmpty(Model.PlaceAddress))
+                                    {
+                                        <span id="errormsg" class="msg error">@Model.PlaceAddress</span>
+
+                                    }*@
+                                <ul class="form-list" style="list-style:none">
+                                    <li>
+                                        <label class="">Email Id * </label>
+
+                                        <input type="hidden" asp-for="ReturnUrl" />
+                                        <input type="text" class="browser-default form-control" asp-for="CustomerEmail" placeholder="" required style="color: rgb(153, 153, 153);">
+                                        <span id="Span_EmailId" class="text-danger"></span>
+                                    </li>
+                                    <li class="clearfix login-act">
+                                        <a href="#" onclick="return BTL()" style="padding:2px 5px; position:relative;">Login</a>
+                                        <i class="waves-effect waves-light btn waves-input-wrapper" style="border-radius: 0">
+                                            <button class="btn btn-success mb-3" onclick="return SubmitContact();">Submit</button>
+                                            
+                                        </i>
+                                    </li>
+                                </ul>
+                            </form>
+                            <div class="ml-5">
+                                <h4>
+                                    Don't have an account?<a id="registerlogin" asp-action="Register" asp-controller="CustomerDetail"><u>  Register Now!</u></a>
+                                </h4>
+                            </div>
+                        </div>
+
+
+
+
                     </div>
+
+
                 </div>
+
             </div>
+            <!-- login bottom box starts here-->
         </div>
 
-    <script>
-        function RegisterCustomer() {
-
-        }
-    </script>*@
+</section>

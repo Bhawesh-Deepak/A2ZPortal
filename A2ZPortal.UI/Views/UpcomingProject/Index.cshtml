@@ -5,13 +5,29 @@
 <section class="for-sale">
     <div class="bg-bar">
         <div class="container">
-            <h6>Home /New Launch Projects</h6>
+            @if (ViewBag.Breadcrumbs != null)
+            {
+                <h6>
+                    @foreach (var breadcrumb in ViewBag.Breadcrumbs as List<Breadcrumb>)
+                    {
+                        if (breadcrumb.Active)
+                        {
+                            <a asp-action="@breadcrumb.Action" asp-controller="@breadcrumb.Controller">@breadcrumb.Text</a>
+                        }
+                        else
+                        {
+
+                            <span>/</span> @breadcrumb.Text;
+                        }
+                    }
+                </h6>
+            }
         </div>
     </div>
      
 
     <div class="container">
-        <h1 class="text-center my-5">New Launch Projects</h1>
+        <h1 class="text-center mt-5 mb-3">New Launch Projects</h1>
         <div class="text-right py-3">
             <button class="btn btn-primary" id="bt-1">
                 <i class="fa fa-bars"></i>
@@ -24,7 +40,7 @@
         <div class="list-grid">
             <div class="row">
                 @foreach (var item in Model.OrderByDescending(x=>x.Id))
-                {<div class="col-lg-4 mt-3">
+                {<div class="col-lg-4 my-3">
                         <div class="border">
                             <img src="@item.ImagePath" alt="" class="img-fluid" style="max-height:500px;width:100%">
                             <div class="p-4">
