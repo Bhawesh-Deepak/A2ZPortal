@@ -131,8 +131,11 @@
                 });
             });
 
+        $("header, section, footer").addClass('overlay');
+
         $("#close-add").click(function () {
             $("#add").hide();
+            $("header, section, footer").removeClass('overlay');
         });
     })
 
