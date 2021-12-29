@@ -1,39 +1,39 @@
 ﻿@model IEnumerable<A2ZPortal.Core.ViewModel.OrderManagement.OrderDetail>
 
 <div class="container-wrap">
-    <div class="main-content container-boxed max offset">
+    <div class="main-content container">
         <div class="row">
-            <div class="noo-main col-md-12  noo-page" role="main">
-                <h1 class="page-title">Thanks your intrest in the A2Z Property, .</h1>
-                <h5>Our Executive will contact you soon....</h5>
+            <div class="noo-main col-md-12 my-5 noo-page wishlist" role="main">
+                <h1 class="page-title text-center">Thanks your intrest in the A2Z Property.</h1>
+                <h5 class="text-center my-3">Our Executive will contact you soon....</h5>
                 <div class="woocommerce">
                     <div class="woocommerce-notices-wrapper"></div>
-                    <form class="woocommerce-cart-form" action="http://wp.nootheme.com/citilights/cart/" method="post">
+                    <form class="woocommerce-cart-form table-responsive" action="http://wp.nootheme.com/citilights/cart/" method="post">
 
-                        <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
+                        <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents border w-100" cellspacing="0" cellpadding="0">
                             <thead>
                                 <tr>
                                     <th class="product-remove">&nbsp;</th>
                                     <th class="product-thumbnail">&nbsp;</th>
-                                    <th class="product-name">Property Name</th>
-                                    <th class="product-price">Place Address</th>
+                                    <th class="product-name pt-3 pb-1"><h5>Property Name</h5></th>
+                                    <th class="product-price pt-3 pb-1 px-3"><h5>Place Address</h5></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var data in Model.GroupBy(x=>x.PropertyId))
                                 {
-                                    <tr class="woocommerce-cart-form__cart-item cart_item">
+                                    <tr class="woocommerce-cart-form__cart-item cart_item border-top">
 
-                                        <td class="product-remove">
-                                            <a onclick="DeleteCart(@data.First().Id)" class="remove" 
+                                        <td class="product-remove align-top pt-2 pl-1">
+                                            <a onclick="DeleteCart(@data.First().Id)" class="remove pl-1" 
                                                aria-label="Remove this item" data-product_id="11650" 
                                                data-product_sku="">&times;</a>
                                         </td>
 
-                                        <td class="product-thumbnail">
+                                        <td class="product-thumbnail p-3">
                                             <a asp-action="GetPropertyDetail" asp-controller="PropertyDetails" 
                                                asp-route-id="@data.First().PropertyId"><img  src="@data.First().Image" 
-                                                                                            style="height:125px;width:125px;"/></a>
+                                               style="height:125px;width:125px;"/></a>
                                         </td>
 
                                         <td class="product-name" data-title="Product">
@@ -41,7 +41,7 @@
                                                asp-route-id="@data.First().PropertyId">@data.First().PropertyName</a>
                                         </td>
 
-                                        <td class="product-price" data-title="Price">
+                                        <td class="product-price px-3" data-title="Price">
                                             <span class="woocommerce-Price-amount amount">
                                                 @data.First().PlaceAddress
                                             </span>

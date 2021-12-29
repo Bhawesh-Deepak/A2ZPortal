@@ -83,7 +83,7 @@ footer h4{color:#fff; text-transform:uppercase; font-size:14px; font-weight:bold
 .property-img{border-top:1px solid #7b0211; border-bottom:1px solid #7b0211; margin:50px auto}
 .about .form-inline{border-top:1px solid #7b0211; border-bottom:1px solid #7b0211; padding:20px 0}
 .custom-block h4{text-decoration:underline}
-.custom-block a{color:#7b0211}
+.custom-block a, .wishlist h1{color:#7b0211 !important}
 .custom-block .border{max-height:750px; overflow-y:auto}
 .search-bar{background:#027b5d}
 .list-view{padding:15px; margin:0 15px}
@@ -96,25 +96,16 @@ footer h4{color:#fff; text-transform:uppercase; font-size:14px; font-weight:bold
 #ui-id-1 li{margin-left:-35px; padding:2px 10px}
 #ui-id-1 li:hover{background:#7b0211; color:#fff}
 .select2-container--default .select2-results > .select2-results__options{max-height:75px; overflow-y:auto}
-.btn-secondary {
-	border: 1px solid #7b0211;
-	background: #7b0211;
-	color:#fff
-}
+.btn-secondary{border:1px solid #7b0211; background:#7b0211; color:#fff}
+.disabled{background:#7b0211 !important; border:1px solid #7b0211 !important; cursor:default !important;}
+.overlay{background:#000; opacity:.1;}
+h1, h2{font-size:30px; font-weight:bold}
+.wishlist a{font-size:16px; color: #7b0211; font-weight:bold}
+.wishlist a:hover{color:#027b5d !important; text-decoration:none; cursor:pointer}
+.wishlist .remove{font-size:30px}
+.wishlist h5{font-weight:bold}
 
-.disabled {
-	background: #7b0211 !important;
-	border: 1px solid #7b0211 !important;
-	cursor: default !important;
-}
-
-.overlay {
-	background: #000;
-	opacity: .1;
-}
-h1, h2 {font-size:30px; font-weight:bold}
-
-@media screen and (max-width:1199px){
+@media screen and (max-width:1199px) {
 	.bg-about .bg-white{min-height:250px !important}
 	#ui-id-1{width:380px;}
 }
