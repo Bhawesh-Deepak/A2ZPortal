@@ -580,15 +580,16 @@ label {
     box-sizing: border-box
 }
 .login-left {
-    background: url(https://static.timesjobs.com/images_cand/tj_images/usability/login-bg.jpg) no-repeat #194a8d;
-    width: 444px;
+    background: url(../img/bg-left.jpg) no-repeat;
+    height: 511px;
     color: #fff;
     font-size: 13px
 }
 .login-left h3 {
     font-size: 32px;
     font-weight: 600;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    margin-left:40px
 }
 .login-left ul li {
     margin-bottom: 5px
