@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>A2Z Properties @ViewData["Title"]</title>
@@ -19,22 +20,58 @@
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <script src="~/A2Z-wp-contents/js/owl.carousel.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <script src="~/A2Z-wp-contents/js/lightbox.js"></script>
 
     <style>
         a.sc-7dvmpp-1.dfBDQI {
             display: none;
         }
+
+         * {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 3px;
+            height: 8px;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 2px;
+            background-color: #ff4444;
+            transition: all 400ms ease-in-out;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: rgba(0,0,0,.1);
+            border-radius: 10px;
+        }
+
     </style>
 
 </head>
- 
+
 <body>
     <header>
         <div class="top-bar">
-            <a asp-action="Index" asp-controller="CustomerDetail" class="pull-right mt-2 mr-2" title="login">
-                <i class="fa fa-lock fa-2x"></i>
-            </a>
+            @if (Context.Session.GetString("UserPhone") != null)
+            {
+                <div class="container">
+                            <h6 class="text-right mt-3 mr-2" style="color:white">Welcome @Context.Session.GetString("UserPhone")</h6>
+                            <a asp-action="LogOut" asp-controller="CustomerDetail" class="pull-right mt-2 mr-2" title="log Out">
+                            <i class="fa fa-sign-out  fa-2x"></i>
+                            </a>
+                </div>
+            }
+            else
+            {
+                <a asp-action="Index" asp-controller="CustomerDetail" class="pull-right mt-2 mr-2" title="login">
+                    <i class="fa fa-lock fa-2x"></i>
+                </a>
+            }
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2 py-2">
@@ -48,7 +85,7 @@
                         <a href="https://www.youtube.com/channel/UCxRQ1ukVeC7xKgJPBK5fPFg" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
                         <a href="https://www.linkedin.com/company/a2z-propertiesllc/" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a>
                         <a href="https://www.instagram.com/a2zprop/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
-                       
+
                     </div>
                 </div>
             </div>
@@ -83,15 +120,15 @@
                     </ul>
                 </div>
 
-               
+
             </div>
         </nav>
     </header>
     @RenderBody()
-    
+
     @*@await Html.PartialAsync("~/Views/Shared/_LoginPopUp.cshtml")*@
 
-    
+
     <script type="text/javascript">
         (function () {
             var options = {
@@ -104,13 +141,13 @@
             s.onload = function () { WhWidgetSendButton.init(host, '', options); };
             var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
 
-          
+
         })();
     </script>
     @await Html.PartialAsync("~/Views/Shared/Footer.cshtml")
     <script>
         $(document).ready(function () {
-          
+
             $('#owl-carousel-0').owlCarousel({
                 margin: 10,
                 nav: true,
@@ -184,15 +221,15 @@
         }
     </script>
 
-   <script>
-       $(window).load(function () {
-           setTimeout(function () {
-               $('a').filter(function (index) { return $(this).text() === "GetButton"; }).hide();
-           }, 2000)
+    <script>
+        $(window).load(function () {
+            setTimeout(function () {
+                $('a').filter(function (index) { return $(this).text() === "GetButton"; }).hide();
+            }, 2000)
 
-         
-       });
 
-   </script>
+        });
+
+    </script>
 </body>
 </html>

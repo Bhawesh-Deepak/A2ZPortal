@@ -5,7 +5,7 @@
                 <div class="border">
                     <img src="@item.ImagePath" alt="" class="img-fluid" style="height: 194px;   width:100%;">
                     <div class="p-4">
-                        <h5>@item.PropertyName</h5>
+                        <h5 style="font-size:16px; font-weight:bold">@item.PropertyName</h5>
                         <p>@item.Description.Substring(0, 100)</p>
                         <button type="button" class="btn btn-primary mb-1"> @item.Price M AED</button>
                         <a asp-action="GetPropertyDetail" title="@item.PropertyName" asp-route-id="@item.PropertyId" asp-controller="PropertyDetails" class="btn btn-primary mb-1">View Details</a>

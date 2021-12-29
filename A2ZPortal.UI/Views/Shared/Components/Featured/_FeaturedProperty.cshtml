@@ -23,7 +23,7 @@
                                             }
                                         </button>
                                         <a class="btn btn-primary" asp-action="GetPropertyDetail" title="@data.PropertyName" asp-route-id="@data.PropertyId" asp-controller="PropertyDetails">View Details</a>
-                                        <a type="button" class="btn btn-primary"><i class="fa fa-heart"></i></a>   
+                                        <a asp-action="AddToFavourite" asp-controller="CustomerTransaction" asp-route-propId="@data.PropertyId" class="btn btn-primary"><i class="fa fa-heart"></i></a>   
                                 </div>
                                 </div>
                             </div>

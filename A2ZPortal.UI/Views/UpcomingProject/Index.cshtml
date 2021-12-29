@@ -31,14 +31,14 @@
 
     <div class="container">
         <h1 class="text-center mt-5 mb-3">New Launch Projects</h1>
-        <div class="text-right py-3">
+      @*  <div class="text-right py-3">
             <button class="btn btn-primary" id="bt-1">
                 <i class="fa fa-bars"></i>
             </button>
             <button class="btn btn-primary" id="bt-2">
                 <i class="fa fa-th"></i>
             </button>
-        </div>
+        </div>*@
 
         <div class="list-grid">
             <div class="row">
@@ -47,7 +47,7 @@
                         <div class="border">
                             <img src="@item.ImagePath" alt="" class="img-fluid" style="max-height:500px;width:100%">
                             <div class="p-4">
-                                <h5>@item.PropertyName</h5>
+                                <h5 style="font-size:16px; font-weight:bold">@item.PropertyName</h5>
                                 <a asp-action="GetPropertyDetail" title="@item.PropertyName" asp-route-id="@item.Id" asp-controller="UpcomingProject" class="btn btn-primary mb-1">View Details</a>
                             </div>
                         </div>

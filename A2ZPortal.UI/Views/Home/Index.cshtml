@@ -50,6 +50,8 @@
         top: 0;
         right: 0;
     }
+    h5{font-size:16px; font-weight:bold}
+    .form-inline .form-control, .select2-container--default .select2-selection--single .select2-selection__placeholder, .select2-selection__rendered{font-size:14px}
 </style>
 <section class="custom-form">
     @await Component.InvokeAsync("PropertySearch")
@@ -70,14 +72,14 @@
                             Residential tower
                             83 floors of residential apartments/ 4 parking floors/ 4 basement levels/ 2 health clubs/ state of the art business centre
                         </p>
-                        <a type="button" class="btn btn-primary" asp-action="Index" asp-controller="Projects">Know More</a>
+                        <a type="button" class="btn btn-primary"  asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id=1002>Know More</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<section class="best-deals mt-5">
+<section class="best-deals my-5">
     <div class="container">
         <h2 class="text-center mb-5">Featured Properties For Rent</h2>
         <div class="row">
@@ -98,7 +100,8 @@
                                     <span>Per Month</span>
                                 }
                                 <a type="button" class="btn btn-primary" asp-action="GetPropertyDetail" title="@data.First().PropertyName" asp-route-id="@data.First().PropertyId" asp-controller="PropertyDetails">View Details</a>
-                                <a type="button" class="btn btn-primary"><i class="fa fa-heart"></i></a>
+                                   <a asp-action="AddToFavourite" asp-controller="CustomerTransaction"
+                                   asp-route-propId="@data.First().PropertyId" class="btn btn-primary"><i class="fa fa-heart"></i></a>   
                             </div>
                         </div>
                     </div>

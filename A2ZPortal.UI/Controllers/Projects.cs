@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 namespace A2ZPortal.UI.Controllers
 {
     [BreadcrumbActionFilter]
+    [ResponseCache(Duration =30000,Location =ResponseCacheLocation.Client)]
     public class Projects : Controller
     {
         private readonly IPropertyDetailCompleteRepository _IPropertyDetailCompleteRepository;

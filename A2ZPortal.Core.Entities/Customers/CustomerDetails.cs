@@ -12,11 +12,13 @@ namespace A2ZPortal.Core.Entities.Customers
         public string CustomerName { get; set; }
 
         [Required(ErrorMessage = "Customer phone is required.")]
+        [RegularExpression(@"^(\d{10})$", ErrorMessage = "Wrong mobile")]
         [DataType(DataType.PhoneNumber, ErrorMessage = "Phone is invalid.")]
         public string CustomerPhone { get; set; }
 
         [Required(ErrorMessage = "Customer email is required.")]
         [DataType(DataType.EmailAddress, ErrorMessage = "Email is invalid.")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string CustomerEmail { get; set; }
         public string PlaceId { get; set; }
         public string Longitude { get; set; }

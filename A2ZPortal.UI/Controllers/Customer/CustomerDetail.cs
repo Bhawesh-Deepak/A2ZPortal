@@ -3,6 +3,8 @@ using A2ZPortal.Helper;
 using A2ZPortal.Helper.Extension;
 using A2ZPortal.Infrastructure.Repository.GenericRepository;
 using A2ZPortal.UI.Helper;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -23,7 +25,7 @@ namespace A2ZPortal.UI.Controllers.Customer
         }
         public IActionResult Register(CustomerDetails model)
         {
-            return View(ViewPageHelper.InstanceHelper.GetPathDetail("Customer", "RegisterUser"),model);
+            return View(ViewPageHelper.InstanceHelper.GetPathDetail("Customer", "RegisterUser"), model);
         }
         [HttpPost]
         public async Task<IActionResult> CreateCustomer(CustomerDetails model, string returnUrl)
@@ -43,13 +45,16 @@ namespace A2ZPortal.UI.Controllers.Customer
         }
         [HttpPost]
         public async Task<IActionResult> Login(CustomerDetails model, string returnUrl)
-        {// && x.CustomerPhone==model.CustomerPhone && x.Password==model.Password
-            var responseData = await _ICustomerRepository.GetSingle(x => x.IsActive && !x.IsDeleted && x.CustomerEmail == model.CustomerEmail && x.Password == model.Password);
+        {
+            var password= PasswordEncryptor.Instance.Encrypt(model.Password, "SQYPAYROLLLEADMANAGEMENT");
+            var responseData = await _ICustomerRepository.GetSingle(x => x.IsActive && !x.IsDeleted && x.CustomerEmail == model.CustomerEmail && x.Password ==  password);
 
             if (responseData.Entity != null)
             {
-                //HttpContext.Session.SetString("UserPhone", model.CustomerPhone);
-                HttpContext.Session.SetString("UserPhone", model.CustomerEmail);
+
+                HttpContext.Session.SetString("UserPhone", responseData.Entity.CustomerPhone);
+                HttpContext.Session.SetString("UserEmail", responseData.Entity.CustomerEmail);
+                HttpContext.Session.SetString("CustomerId", responseData.Entity.Id.ToString());
 
 
                 if (string.IsNullOrEmpty(returnUrl))
@@ -65,6 +70,16 @@ namespace A2ZPortal.UI.Controllers.Customer
                 "Invalid Login Credential !!!!!.";
 
             return RedirectToAction("Index", "CustomerDetail", model);
+        }
+        [HttpGet, CustomAuthenticate]
+        public async Task<IActionResult> LogOut()
+        {
+            HttpContext.Session.Clear();
+             
+
+
+            
+            return RedirectToAction("Index", "CustomerDetail");
         }
 
     }

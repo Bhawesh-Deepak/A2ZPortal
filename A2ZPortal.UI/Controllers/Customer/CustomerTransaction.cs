@@ -21,8 +21,8 @@ namespace A2ZPortal.UI.Controllers.Customer
         private readonly IGenericRepository<CustomerDetails, int> _ICustomerRepository;
         private readonly IOrderTransactionRepository _IOrderTransactionRepository;
         private readonly string APIURL;
-        public CustomerTransaction(IGenericRepository<OrderManagement, int> orderRepository, 
-            IGenericRepository<CustomerDetails, int> customerRepository, 
+        public CustomerTransaction(IGenericRepository<OrderManagement, int> orderRepository,
+            IGenericRepository<CustomerDetails, int> customerRepository,
             IOrderTransactionRepository orderTransactionRepository, IConfiguration configuration)
         {
             _IOrderRepository = orderRepository;
@@ -32,15 +32,13 @@ namespace A2ZPortal.UI.Controllers.Customer
         }
         public async Task<IActionResult> AddToFavourite(int propId)
         {
-            var customerPhone = HttpContext.Session.GetString("UserPhone");
-
-            var customer = (await _ICustomerRepository.GetSingle(x => x.CustomerPhone == customerPhone)).Entity;
-
+            var customerId = Convert.ToInt32(HttpContext.Session.GetString("CustomerId"));
+            var customer = (await _ICustomerRepository.GetSingle(x => x.Id == customerId)).Entity;
             var orderDetail = new OrderManagement()
             {
                 PropertyId = propId,
                 CustomerId = customer.Id,
-                IsAddToWishList = true
+                IsAddToWishList = true,
             };
             var createModel = CommonCrudHelper.CommonCreateCode(orderDetail, 1);
 
@@ -48,25 +46,22 @@ namespace A2ZPortal.UI.Controllers.Customer
 
             return RedirectToAction("GetCartDetail");
         }
-        public async Task<IActionResult> GetCartDetail() 
+        public async Task<IActionResult> GetCartDetail()
         {
-            var customerPhone = HttpContext.Session.GetString("UserPhone");
-
-            var customer = (await _ICustomerRepository.GetSingle(x => x.CustomerPhone == customerPhone)).Entity;
-
-            var response = await _IOrderTransactionRepository.GetCustomerOrderDetail(1002);
+            var customerId = Convert.ToInt32(HttpContext.Session.GetString("CustomerId"));
+            var response = await _IOrderTransactionRepository.GetCustomerOrderDetail(customerId);
 
             response.ForEach(item =>
             {
                 item.Image = APIURL + item.Image;
             });
 
-            return View(ViewPageHelper.InstanceHelper.GetPathDetail("Customer", "OrderManagement"),response);
+            return View(ViewPageHelper.InstanceHelper.GetPathDetail("Customer", "OrderManagement"), response);
         }
 
         public async Task<IActionResult> DeleteCartProperty(int id)
         {
-            var model = await _IOrderRepository.GetSingle(x=>x.Id==id);
+            var model = await _IOrderRepository.GetSingle(x => x.Id == id);
 
             var updateModel = CommonCrudHelper.CommonUpdateCode(model.Entity, 1);
 

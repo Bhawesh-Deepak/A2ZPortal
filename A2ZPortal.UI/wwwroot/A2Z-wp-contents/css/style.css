@@ -6,7 +6,7 @@
 .sticky{position:fixed; top:0; width:100%;}
 .sticky + .content{padding-top:60px;}
 .navbar-expand-md .navbar-nav .nav-item .nav-link:last-child{padding-right:0}
-header .navbar-nav .nav-item a.nav-link{transition:.5s; text-transform:uppercase; color:#000; font-weight:bold}
+header .navbar-nav .nav-item a.nav-link{transition:.5s; text-transform:uppercase; color:#000; font-weight:bold; font-size:14px}
 header .navbar-nav a.nav-link:hover, .modal-header h4{color:#7b0211}
 header .navbar-nav .nav-item{margin-left:20px}
 .custom-form{background:url() no-repeat; background-size:cover; min-height:600px; padding:0px 0; animation: change 12s ease-in-out infinite;}
@@ -71,6 +71,7 @@ footer h4{color:#fff; text-transform:uppercase; font-size:14px; font-weight:bold
 .navbar-brand img{max-width:50px}
 .contact-img{background:url(../images/img-contact.jpg) no-repeat; background-size:cover; height:600px}
 .contact-img .white{color:#fff}
+.contact-img h3{font-size:26px}
 .pt-50{padding-top:200px}
 .bg-about{background:url(../images/img-about.jpg) no-repeat; background-size:cover; min-height:600px;}
 .white{color:#fff}
@@ -78,6 +79,7 @@ footer h4{color:#fff; text-transform:uppercase; font-size:14px; font-weight:bold
 .bg-about .bg-white{min-height:370px !important}
 .bg-about .bg-white p{text-align:left}
 .bg-bar{background:#7b0211; color:#fff; padding:10px 0 5px}
+.bg-bar h6 a{color:#fff; text-decoration:underline}
 .property-img{border-top:1px solid #7b0211; border-bottom:1px solid #7b0211; margin:50px auto}
 .about .form-inline{border-top:1px solid #7b0211; border-bottom:1px solid #7b0211; padding:20px 0}
 .custom-block h4{text-decoration:underline}
@@ -110,7 +112,7 @@ footer h4{color:#fff; text-transform:uppercase; font-size:14px; font-weight:bold
 	background: #000;
 	opacity: .1;
 }
-
+h1, h2 {font-size:30px; font-weight:bold}
 
 @media screen and (max-width:1199px){
 	.bg-about .bg-white{min-height:250px !important}
