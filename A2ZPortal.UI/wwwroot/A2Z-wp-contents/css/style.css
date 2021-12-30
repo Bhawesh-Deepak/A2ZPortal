@@ -48,7 +48,7 @@ footer h4{color:#fff; text-transform:uppercase; font-size:14px; font-weight:bold
 .best-deals .owl-dots{display:block}
 .best-deals .item{width:360px}
 .popular .bg-white{margin-bottom:-25px; width:270px; height:40px; position:relative; z-index:999}
-.owl-carousel .item{margin:auto}
+.owl-carousel .item{margin:auto; margin-bottom:10px}
 .our-agents .item img{height:339px}
 .main-form .form-control{width:100%}
 .custom-border{ box-shadow: 0 8px 6px -6px #ececec;}
