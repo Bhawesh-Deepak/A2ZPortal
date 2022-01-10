@@ -25,18 +25,19 @@ namespace A2ZPortal.UI
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-                app.UseDeveloperExceptionPage();
-            else
-                app.UseExceptionHandler("/Home/Error");
-
+            //if (env.IsDevelopment())
+            //    app.UseDeveloperExceptionPage();
+            //else
+            //    app.UseExceptionHandler("/Home/Error");
+            app.UseDeveloperExceptionPage();
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
             app.UseAuthorization();
             app.UseSession();
-
+             
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
