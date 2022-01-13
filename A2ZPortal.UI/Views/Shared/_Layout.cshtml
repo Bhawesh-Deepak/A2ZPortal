@@ -23,35 +23,6 @@
      <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <script src="~/A2Z-wp-contents/js/lightbox.js"></script>
 
-    <style>
-        a.sc-7dvmpp-1.dfBDQI {
-            display: none;
-        }
-
-         * {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        ::-webkit-scrollbar {
-            width: 3px;
-            height: 8px;
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            border-radius: 2px;
-            background-color: #ff4444;
-            transition: all 400ms ease-in-out;
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background-color: rgba(0,0,0,.1);
-            border-radius: 10px;
-        }
-
-    </style>
-
 </head>
 
 <body>
@@ -144,51 +115,11 @@
 
         })();
     </script>
+
     @await Html.PartialAsync("~/Views/Shared/Footer.cshtml")
+   
     <script>
         $(document).ready(function () {
-
-            $('#owl-carousel-0').owlCarousel({
-                margin: 10,
-                nav: true,
-                loop: true,
-                autoplay: true,
-                autoplayTimeout: 2000,
-                autoplayHoverPause: true,
-                navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    768: {
-                        items: 2
-                    },
-                    1200: {
-                        items: 3
-                    }
-                }
-            });
-
-            $('#owl-carousel-1').owlCarousel({
-                margin: 10,
-                nav: true,
-                loop: true,
-                autoplay: true,
-                autoplayTimeout: 2000,
-                autoplayHoverPause: true,
-                navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    768: {
-                        items: 2
-                    },
-                    1200: {
-                        items: 3
-                    }
-                }
-            });
 
             $("#ex-1").select2({
                 placeholder: "Types"
@@ -205,7 +136,6 @@
             $("#ex-4").select2({
                 placeholder: "Area"
             });
-
         })
     </script>
     <script>
@@ -226,8 +156,6 @@
             setTimeout(function () {
                 $('a').filter(function (index) { return $(this).text() === "GetButton"; }).hide();
             }, 2000)
-
-
         });
 
     </script>

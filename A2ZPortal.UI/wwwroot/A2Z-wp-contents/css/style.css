@@ -4,12 +4,12 @@
 .top-bar a:hover{color:#027b5d; text-decoration:none;}
 .navbar{background:#fff; overflow: hidden; z-index:999; box-shadow:0 0 5px #000}
 .sticky{position:fixed; top:0; width:100%;}
-.sticky + .content{padding-top:60px;}
+.sticky + .custom-form{padding-top:60px}
 .navbar-expand-md .navbar-nav .nav-item .nav-link:last-child{padding-right:0}
 header .navbar-nav .nav-item a.nav-link{transition:.5s; text-transform:uppercase; color:#000; font-weight:bold; font-size:14px}
 header .navbar-nav a.nav-link:hover, .modal-header h4{color:#7b0211}
 header .navbar-nav .nav-item{margin-left:20px}
-.custom-form{background:url() no-repeat; background-size:cover; min-height:600px; padding:0px 0; animation: change 12s ease-in-out infinite;}
+.custom-form{background:url() no-repeat; background-size:cover; min-height:600px; padding:0px 0; animation: change 12s linear infinite;}
 @keyframes change{
 	0%{background:url(../images/banner-1.jpg);}
 	25%{background:url(../images/banner-2.jpg);}
@@ -17,15 +17,8 @@ header .navbar-nav .nav-item{margin-left:20px}
 	75%{background:url(../images/banner-4.jpg);}
 	100%{background:url(../images/banner-5.jpg);}
 }
- 
 .custom-form h1{color:#fff}
-.custom-form .border {
-	border: 1px solid #fff !important;
-	border-radius: 10px;
-	background: transparent;
-	opacity: .9;
-	z-index: 990
-}
+.custom-form .border{border:1px solid #fff !important; border-radius:10px; background:transparent; opacity:.9; z-index:990}
 .custom-form .d-md-flex .btn{min-width:150px}
 footer{background:#000; color:#fff; padding-top:50px; margin-top:0px}
 footer hr{border-top:1px solid #fff}
@@ -105,9 +98,24 @@ h1, h2{font-size:30px; font-weight:bold}
 .wishlist .remove{font-size:30px}
 .wishlist h5{font-weight:bold}
 
+/*  popup */
+
+.add{position:absolute;	top:0; left:50%; margin-left:-190px; z-index:999; padding:20px;	background:skyblue}
+.add img{max-width:340px}
+#close-add{position:absolute; top:0; right:0;}
+
+/* header css */
+
+a.sc-7dvmpp-1.dfBDQI{display:none;}
+*{font-family:Arial, Helvetica, sans-serif;}
+::-webkit-scrollbar{width:3px; height:8px; border-radius:10px;}
+::-webkit-scrollbar-thumb{border-radius:2px; background-color:#ff4444; transition:all 400ms ease-in-out; border-radius:10px;}
+::-webkit-scrollbar-track{background-color:rgba(0,0,0,.1); border-radius:10px;}
+
 @media screen and (max-width:1199px) {
 	.bg-about .bg-white{min-height:250px !important}
 	#ui-id-1{width:380px;}
+	.owl-nav{display:none}
 }
 
 @media screen and (max-width:1130px){
