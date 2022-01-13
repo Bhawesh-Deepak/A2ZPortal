@@ -32,25 +32,6 @@
         */
 
 
-    .add {
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 999;
-        padding: 20px;
-        background: skyblue
-    }
-
-        .add img {
-            max-width: 340px
-        }
-
-    #close-add {
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-
     h5 {
         font-size: 16px;
         font-weight: bold
@@ -63,13 +44,87 @@
 <section class="custom-form">
     @await Component.InvokeAsync("PropertySearch")
 </section>
-@await Component.InvokeAsync("Featured")
+<!--@await Component.InvokeAsync("Featured")-->
+
+
+<!---- Static Slider ----->
+<section class="best-deals mt-5">
+	<div class="container">
+		<h2 class="text-center mb-5">Featured Properties For Sale</h2>
+		<div class="row">
+			<div class="owl-carousel owl-theme" id="owl-carousel-1">
+				
+                <div class="item">
+					<div class="border"> 
+						<img src="~/A2Z-contents/img/elite.jpeg" alt="" class="img-fluid">
+						<div class="p-4">
+							<h5>10 years Payment Plan| Studio ,1,2 Bedroom | Ready to move</h5>
+							<button type="button" class="btn btn-primary">&euro; 140,000</button>
+							<a type="button" class="btn btn-primary" href="property-1.html">View Details</a>
+						</div>
+					</div>					  
+				</div>
+				<div class="item">
+					<div class="border"> 
+						<img src="~/A2Z-contents/img/elite.jpeg" alt="" class="img-fluid">
+						<div class="p-4">
+							<h5>60/40 Payment Plan | 6 Years | 4 & 5 Bedroom Villa</h5>
+							<button type="button" class="btn btn-primary">&euro; 140,000</button>
+							<a type="button" class="btn btn-primary" href="property-1.html">View Details</a>
+						</div>
+					</div>				  
+				</div>
+				<div class="item">
+					<div class="border"> 
+						<img src="~/A2Z-contents/img/elite.jpeg" alt="" class="img-fluid">
+						<div class="p-4">
+							<h5>Great offer | 2 Bedroom townhouses | Best offer</h5>	
+							<button type="button" class="btn btn-primary">&euro; 140,000</button>
+							<a type="button" class="btn btn-primary" href="property-1.html">View Details</a>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="border"> 
+						<img src="~/A2Z-contents/img/elite.jpeg" alt="" class="img-fluid">
+						<div class="p-4">
+							<h5>60/40 Payment Plan | 1 Bedroom Apartment | Marina Visata</h5>								
+							<button type="button" class="btn btn-primary">&euro; 140,000</button>
+							<a type="button" class="btn btn-primary" href="property-1.html">View Details</a>
+						</div>
+					</div>					  
+				</div>
+				<div class="item">
+					<div class="border"> 
+						<img src="~/A2Z-contents/img/elite.jpeg" alt="" class="img-fluid">
+						<div class="p-4">
+							<h5>50|50 Payment plan | 1 Bedroom Apartment | Sunsire Bay</h5>
+							<button type="button" class="btn btn-primary">&euro; 140,000</button>
+							<a type="button" class="btn btn-primary" href="property-1.html">View Details</a>
+						</div>
+					</div>				  
+				</div>
+				<div class="item">
+					<div class="border"> 
+						<img src="~/A2Z-contents/img/elite.jpeg" alt="" class="img-fluid">
+						<div class="p-4">
+							<h5>80/20 Payment Plan | 3 BR Villas | Golf Grove DHE</h5>
+							<button type="button" class="btn btn-primary">&euro; 140,000</button>
+							<a type="button" class="btn btn-primary" href="property-1.html">View Details</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
 <section class="popular mt-5">
     <div class="border border-1">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 my-3">
-
                     <img src="~/A2Z-contents/img/elite.jpeg" alt="" class="img-fluid" />
                 </div>
                 <div class="col-md-4">
@@ -86,6 +141,81 @@
         </div>
     </div>
 </section>
+
+<!---- Static Slider ----->
+<section class="best-deals my-5">
+	<div class="container">
+		<h2 class="text-center mb-5">Featured Properties For Rent</h2>
+		<div class="row">
+			<div class="owl-carousel owl-theme" id="owl-carousel-0">
+				
+                <div class="item">
+					<div class="border"> 
+						<img src="~/A2Z-contents/img/elite.jpeg" alt="" class="img-fluid">
+						<div class="p-4">
+							<h5>10 years Payment Plan| Studio ,1,2 Bedroom | Ready to move</h5>
+							<button type="button" class="btn btn-primary">&euro; 140,000</button>
+							<a type="button" class="btn btn-primary" href="property-1.html">View Details</a>
+						</div>
+					</div>					  
+				</div>
+				<div class="item">
+					<div class="border"> 
+						<img src="~/A2Z-contents/img/elite.jpeg" alt="" class="img-fluid">
+						<div class="p-4">
+							<h5>60/40 Payment Plan | 6 Years | 4 & 5 Bedroom Villa</h5>
+							<button type="button" class="btn btn-primary">&euro; 140,000</button>
+							<a type="button" class="btn btn-primary" href="property-1.html">View Details</a>
+						</div>
+					</div>				  
+				</div>
+				<div class="item">
+					<div class="border"> 
+						<img src="~/A2Z-contents/img/elite.jpeg" alt="" class="img-fluid">
+						<div class="p-4">
+							<h5>Great offer | 2 Bedroom townhouses | Best offer</h5>	
+							<button type="button" class="btn btn-primary">&euro; 140,000</button>
+							<a type="button" class="btn btn-primary" href="property-1.html">View Details</a>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="border"> 
+						<img src="~/A2Z-contents/img/elite.jpeg" alt="" class="img-fluid">
+						<div class="p-4">
+							<h5>60/40 Payment Plan | 1 Bedroom Apartment | Marina Visata</h5>								
+							<button type="button" class="btn btn-primary">&euro; 140,000</button>
+							<a type="button" class="btn btn-primary" href="property-1.html">View Details</a>
+						</div>
+					</div>					  
+				</div>
+				<div class="item">
+					<div class="border"> 
+						<img src="~/A2Z-contents/img/elite.jpeg" alt="" class="img-fluid">
+						<div class="p-4">
+							<h5>50|50 Payment plan | 1 Bedroom Apartment | Sunsire Bay</h5>
+							<button type="button" class="btn btn-primary">&euro; 140,000</button>
+							<a type="button" class="btn btn-primary" href="property-1.html">View Details</a>
+						</div>
+					</div>				  
+				</div>
+				<div class="item">
+					<div class="border"> 
+						<img src="~/A2Z-contents/img/elite.jpeg" alt="" class="img-fluid">
+						<div class="p-4">
+							<h5>80/20 Payment Plan | 3 BR Villas | Golf Grove DHE</h5>
+							<button type="button" class="btn btn-primary">&euro; 140,000</button>
+							<a type="button" class="btn btn-primary" href="property-1.html">View Details</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--
 <section class="best-deals my-5">
     <div class="container">
         <h2 class="text-center mb-5">Featured Properties For Rent</h2>
@@ -113,15 +243,11 @@
                         </div>
                     </div>
                 }
-
-
             </div>
         </div>
     </div>
 </section>
-
-
-
+-->
 <div class="add" id="UpcomingProject-modal" style="display:none">
     <button type="button" class="close" id="close-add">&times;</button>
     <div id="UpcomingProject-body">
@@ -130,6 +256,51 @@
 
 <script>
     $(document).ready(function () {
+
+         $('#owl-carousel-0').owlCarousel({
+                margin: 10,
+                nav: true,
+                loop: true,
+                slideBy:3,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    1200: {
+                        items: 3
+                    }
+                }
+            });
+
+            $('#owl-carousel-1').owlCarousel({
+                margin: 10,
+                nav: true,
+                loop: true,
+                slideBy:3,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    1200: {
+                        items: 3
+                    }
+                }
+            }); 
+
         if(sessionStorage.getItem("isFirst")==null){
 
             sessionStorage.setItem("isFirst",1);
