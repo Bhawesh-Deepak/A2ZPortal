@@ -6,8 +6,7 @@
         <div class="row">
             <div class="owl-carousel owl-theme" id="owl-carousel-1">
                 @{
-
-                   c
+                    foreach (var data in Model.OrderByDescending(x => x.PropertyId))
                     {
                         <div class="item">
                             <div class="border">
@@ -16,17 +15,17 @@
                                     <h5>@data.PropertyName </h5>
                                     <button type="button" class="btn btn-primary disabled">
                                         @string.Format("{0:0.00}", data.Price)  M AED
-                                            @if (data.PropertyType == "Rent")
-                                            {
-                                                <span>Per Month</span>
-                                            }
-                                        </button>
-                                        <a class="btn btn-primary" asp-action="GetPropertyDetail" title="@data.PropertyName" asp-route-id="@data.PropertyId" asp-controller="PropertyDetails">View Details</a>
-                                        <a asp-action="AddToFavourite" asp-controller="CustomerTransaction" asp-route-propId="@data.PropertyId" class="btn btn-primary"><i class="fa fa-heart"></i></a>   
-                                </div>
+                                        @if (data.PropertyType == "Rent")
+                                        {
+                                            <span>Per Month</span>
+                                        }
+                                    </button>
+                                    <a class="btn btn-primary" asp-action="GetPropertyDetail" title="@data.PropertyName" asp-route-id="@data.PropertyId" asp-controller="PropertyDetails">View Details</a>
+                                    <a asp-action="AddToFavourite" asp-controller="CustomerTransaction" asp-route-propId="@data.PropertyId" class="btn btn-primary"><i class="fa fa-heart"></i></a>
                                 </div>
                             </div>
-                        }
+                        </div>
+                    }
                 }
 
 
@@ -34,5 +33,4 @@
         </div>
     </div>
 </section>
-
  

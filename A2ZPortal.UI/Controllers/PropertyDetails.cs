@@ -27,6 +27,8 @@ namespace A2ZPortal.UI.Controllers
         private readonly string APIURL = string.Empty;
         private readonly IGenericRepository<Brochure, int> _IBrochureRepository;
         private readonly IVirtualImageRepository IVirtualImageRepository;
+
+
         public PropertyDetails(IGenericRepository<Location, int> iLocationGenericRepository,
             IGenericRepository<SubLocation, int> iSubLocationGenericRepository,
              IGenericRepository<PropertyStatusModel, int> iPropertyStatusGenericRepository,
@@ -97,7 +99,7 @@ namespace A2ZPortal.UI.Controllers
             {
                 if (string.IsNullOrEmpty(item.ImagePath))
                 {
-                    item.ImagePath = "/A2Z-contents/PropertyImageNotFound.png";
+                    item.ImagePath = "~/A2Z-contents/PropertyImageNotFound.png";
                 }
                 else
                 {
