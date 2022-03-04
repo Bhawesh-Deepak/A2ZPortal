@@ -17,7 +17,8 @@
                         else
                         {
 
-                            <span>/</span> @breadcrumb.Text;
+                            <span>/</span> @breadcrumb.Text
+                            ;
                         }
                     }
                 </h6>
@@ -29,30 +30,46 @@
             @await Component.InvokeAsync("PropertyDeepSearch")
         </div>
     </div>
-    
+
     <div class="container">
         <h1 class="text-center mt-5 mb-3">@Model.First().CategoryName Projects</h1>
-@*        <div class="text-right py-3">
+        @*        <div class="text-right py-3">
             <button class="btn btn-primary" id="bt-1">
-                <i class="fa fa-bars"></i>
+            <i class="fa fa-bars"></i>
             </button>
             <button class="btn btn-primary" id="bt-2">
-                <i class="fa fa-th"></i>
+            <i class="fa fa-th"></i>
             </button>
-        </div>*@
+            </div>*@
 
         <div class="list-grid">
             <div class="row">
                 @foreach (var item in Model.Reverse())
-                {<div class="col-lg-4 my-3">
+                {
+                    <div class="col-lg-4 my-3">
                         <div class="border">
                             <img src="@item.ImagePath" alt="" class="img-fluid" style="max-height:194px;width:100%">
                             <div class="p-4">
                                 <h5 style="font-size:16px; font-weight:bold">@item.PropertyName</h5>
-                                <p>@item.PropertyDescription.Substring(0, 100)</p>
-                                <button type="button" class="btn btn-primary disabled"> @string.Format("{0:0.00}", @item.Price) M AED</button>
+                                @{
+                                    int length = item.PropertyDescription.Length;
+
+                                }
+                                @if (length > 100)
+                                {
+                                    <p>
+                                        @item.PropertyDescription.Substring(0, 100)
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p>
+                                        @item.PropertyDescription.Substring(0, length)
+                                    </p>
+                                }
+                                <button type="button" class="btn btn-primary disabled"> @string.Format("{0:0}", @item.Price) AED</button>
                                 <a asp-action="GetPropertyDetail" title="@item.PropertyName" asp-route-id="@item.Id" asp-controller="PropertyDetails" class="btn btn-primary">View Details</a>
-                                 <a asp-action="AddToFavourite" asp-controller="CustomerTransaction" asp-route-propId="@item.Id" class="btn btn-primary"><i class="fa fa-heart"></i></a>   
+                                <a asp-action="AddToFavourite" asp-controller="CustomerTransaction" asp-route-propId="@item.Id" class="btn btn-primary"><i class="fa fa-heart"></i></a>
                             </div>
                         </div>
                     </div>
@@ -63,457 +80,457 @@
         </div>
         @*<div class="clearfix"></div>
             <div class="mt-5">
-                <div class="owl-carousel owl-theme" id="owl-carousel-3">
-                    <div class="item">
-                        <div class="border">
-                            <img src="images/villa-1.jpg" alt="" class="img-fluid">
-                            <div class="p-4">
-                                <h5>Villa-1</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                                <a href="property-1.html" class="btn btn-primary">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="border">
-                            <img src="images/villa-2.jpg" alt="" class="img-fluid">
-                            <div class="p-4">
-                                <h5>Villa-2</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                                <a href="property-1.html" class="btn btn-primary">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="border">
-                            <img src="images/villa-3.jpg" alt="" class="img-fluid">
-                            <div class="p-4">
-                                <h5>Villa-3</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                                <a href="property-1.html" class="btn btn-primary">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="border">
-                            <img src="images/villa-1.jpg" alt="" class="img-fluid">
-                            <div class="p-4">
-                                <h5>Villa-1</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                                <a href="property-1.html" class="btn btn-primary">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="border">
-                            <img src="images/villa-2.jpg" alt="" class="img-fluid">
-                            <div class="p-4">
-                                <h5>Villa-2</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                                <a href="property-1.html" class="btn btn-primary">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="border">
-                            <img src="images/villa-3.jpg" alt="" class="img-fluid">
-                            <div class="p-4">
-                                <h5>Villa-3</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                                <a href="property-1.html" class="btn btn-primary">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="owl-carousel owl-theme" id="owl-carousel-3">
+            <div class="item">
+            <div class="border">
+            <img src="images/villa-1.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Villa-1</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/villa-2.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Villa-2</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/villa-3.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Villa-3</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/villa-1.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Villa-1</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/villa-2.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Villa-2</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/villa-3.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Villa-3</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
+            </div>
             </div>
             <h2 class="text-center my-5">Appartments</h2>
             <div class="owl-carousel owl-theme" id="owl-carousel-4">
-                <div class="item">
-                    <div class="border">
-                        <img src="images/app-1.jpg" alt="" class="img-fluid">
-                        <div class="p-4">
-                            <h5>Appartment-1</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                            <a href="property-1.html" class="btn btn-primary">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="border">
-                        <img src="images/app-2.jpg" alt="" class="img-fluid">
-                        <div class="p-4">
-                            <h5>Appartment-2</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                            <a href="property-1.html" class="btn btn-primary">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="border">
-                        <img src="images/app-3.jpg" alt="" class="img-fluid">
-                        <div class="p-4">
-                            <h5>Appartment-3</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                            <a href="property-1.html" class="btn btn-primary">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="border">
-                        <img src="images/app-1.jpg" alt="" class="img-fluid">
-                        <div class="p-4">
-                            <h5>Appartment-1</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                            <a href="property-1.html" class="btn btn-primary">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="border">
-                        <img src="images/app-2.jpg" alt="" class="img-fluid">
-                        <div class="p-4">
-                            <h5>Appartment-2</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                            <a href="property-1.html" class="btn btn-primary">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="border">
-                        <img src="images/app-3.jpg" alt="" class="img-fluid">
-                        <div class="p-4">
-                            <h5>Appartment-3</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                            <a href="property-1.html" class="btn btn-primary">View Details</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/app-1.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Appartment-1</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/app-2.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Appartment-2</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/app-3.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Appartment-3</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/app-1.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Appartment-1</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/app-2.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Appartment-2</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/app-3.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Appartment-3</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
             </div>
             <h2 class="text-center my-5">Townhouse</h2>
             <div class="owl-carousel owl-theme" id="owl-carousel-5">
-                <div class="item">
-                    <div class="border">
-                        <img src="images/town-1.jpg" alt="" class="img-fluid">
-                        <div class="p-4">
-                            <h5>Townhouse-1</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                            <a href="property-1.html" class="btn btn-primary">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="border">
-                        <img src="images/town-2.jpg" alt="" class="img-fluid">
-                        <div class="p-4">
-                            <h5>Townhouse-2</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                            <a href="property-1.html" class="btn btn-primary">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="border">
-                        <img src="images/town-3.jpg" alt="" class="img-fluid">
-                        <div class="p-4">
-                            <h5>Townhouse-3</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                            <a href="property-1.html" class="btn btn-primary">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="border">
-                        <img src="images/town-1.jpg" alt="" class="img-fluid">
-                        <div class="p-4">
-                            <h5>Townhouse-1</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                            <a href="property-1.html" class="btn btn-primary">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="border">
-                        <img src="images/town-2.jpg" alt="" class="img-fluid">
-                        <div class="p-4">
-                            <h5>Townhouse-2</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                            <a href="property-1.html" class="btn btn-primary">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="border">
-                        <img src="images/town-3.jpg" alt="" class="img-fluid">
-                        <div class="p-4">
-                            <h5>Townhouse-3</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <button type="button" class="btn btn-primary">&euro; 140,000</button>
-                            <a href="property-1.html" class="btn btn-primary">View Details</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/town-1.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Townhouse-1</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/town-2.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Townhouse-2</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/town-3.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Townhouse-3</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/town-1.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Townhouse-1</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/town-2.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Townhouse-2</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
+            <div class="item">
+            <div class="border">
+            <img src="images/town-3.jpg" alt="" class="img-fluid">
+            <div class="p-4">
+            <h5>Townhouse-3</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button type="button" class="btn btn-primary">&euro; 140,000</button>
+            <a href="property-1.html" class="btn btn-primary">View Details</a>
+            </div>
+            </div>
+            </div>
             </div>*@
     </div>
 </section>
 @*<div class="container-wrap">
-        <div class="main-content container-boxed max offset">
-            <div class="row">
-                <div class="noo-main col-md-12 right-sidebar  noo-page" role="main">
+    <div class="main-content container-boxed max offset">
+    <div class="row">
+    <div class="noo-main col-md-12 right-sidebar  noo-page" role="main">
 
-                    <div class="noo-vc-row row " style="">
-                        <div class="noo-vc-col col-md-12 ">
-                            <div class="recent-properties">
-                                <div class="properties grid">
-                                    <div class="properties-header">
-                                        <h1 class="page-title">Properties</h1>
-                                    </div>
-                                    <div class="noo-property-compare">
-                                        <form style="display: none" method="POST" action="http://wp.nootheme.com/citilights/compare-listings/" class="submit-compare-612a036c0bbe8">
-                                            <h3 class="title-compare">
-                                                Compare properties
-                                            </h3>
-                                            <div class="list-compare"></div>
-                                            <input type="submit" name="submit-compare" value="Compare" />
-                                        </form>
-                                    </div>
-                                    <div class="properties-content">
-                                        @foreach (var data in Model)
-                                        {
+    <div class="noo-vc-row row " style="">
+    <div class="noo-vc-col col-md-12 ">
+    <div class="recent-properties">
+    <div class="properties grid">
+    <div class="properties-header">
+    <h1 class="page-title">Properties</h1>
+    </div>
+    <div class="noo-property-compare">
+    <form style="display: none" method="POST" action="http://wp.nootheme.com/citilights/compare-listings/" class="submit-compare-612a036c0bbe8">
+    <h3 class="title-compare">
+    Compare properties
+    </h3>
+    <div class="list-compare"></div>
+    <input type="submit" name="submit-compare" value="Compare" />
+    </form>
+    </div>
+    <div class="properties-content">
+    @foreach (var data in Model)
+    {
 
-                                            <article id="@data.Id" class="post-11917 noo_property type-noo_property status-publish has-post-thumbnail hentry property_category-single-family-home property_location-california property_sub_location-brooklyn property_sub_location-district-10 property_sub_location-district-11 property_sub_location-district-2 property_sub_location-district-3 property_sub_location-district-4 property_sub_location-district-5 property_sub_location-district-6 property_sub_location-district-7 property_sub_location-district-8 property_sub_location-district-9 property_sub_location-manhattan property_sub_location-manhattanville property_sub_location-queens property_sub_location-staten-island property_sub_location-the-bronx property_sub_location-upper-west-side property_status-sales has-featured">
-                                                <div class="property-featured">
-                                                    <a class="content-thumb xx" asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id="@data.Id">
-                                                        <img style="height:300px;width:370px;" src="@data.ImagePath" class="attachment-property-thumb size-property-thumb wp-post-image" alt="" loading="lazy" />
-                                                    </a>
-                                                    <span class="property-label sold">@data.CategoryName</span>
-                                                    <span class="property-category"><a asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id="@data.Id" rel="tag">@data.PropertyName</a></span>
-                                                    <a class="out-link" title="" asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id="@data.Id">
-                                                        <i class="fa fa-link" aria-hidden="true"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="property-wrap">
-                                                    <h2 class="property-title">
-                                                        <a  asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id="@data.Id" title="@data.PropertyName">@data.PropertyName</a>
-                                                    </h2>
-                                                    <div class="property-excerpt">
-                                                        <p>@data.PropertyDescription</p>
-                                                    </div>
-                                                    <div class="property-summary">
-                                                        <div class="property-detail">
-                                                            <div class="area"><span class="property-meta-icon" style="background-image: url(http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/size-icon_ccd251439ef2512942b64d525ced79fe.png);"></span><span class="property-meta">@data.AreaCovered</span></div>
-                                                            <div class="bedrooms"><span class="property-meta-icon" style="background-image: url(http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/bedroom-icon_92be012355310366e0bf07c8a41e35fe.png);"></span><span class="property-meta">@data.BedRooms</span></div>
-                                                            <div class="bathrooms"><span class="property-meta-icon" style="background-image: url(http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/bathroom-icon_ffc5ba8874014ad0a7fcc5aa3b8acd57.png);"></span><span class="property-meta">@data.BathRooms</span></div>
-                                                        </div> <div class="property-info style-1">
-                                                            <div class="property-price">
-                                                                <span> </span>
-                                                            </div>
+    <article id="@data.Id" class="post-11917 noo_property type-noo_property status-publish has-post-thumbnail hentry property_category-single-family-home property_location-california property_sub_location-brooklyn property_sub_location-district-10 property_sub_location-district-11 property_sub_location-district-2 property_sub_location-district-3 property_sub_location-district-4 property_sub_location-district-5 property_sub_location-district-6 property_sub_location-district-7 property_sub_location-district-8 property_sub_location-district-9 property_sub_location-manhattan property_sub_location-manhattanville property_sub_location-queens property_sub_location-staten-island property_sub_location-the-bronx property_sub_location-upper-west-side property_status-sales has-featured">
+    <div class="property-featured">
+    <a class="content-thumb xx" asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id="@data.Id">
+    <img style="height:300px;width:370px;" src="@data.ImagePath" class="attachment-property-thumb size-property-thumb wp-post-image" alt="" loading="lazy" />
+    </a>
+    <span class="property-label sold">@data.CategoryName</span>
+    <span class="property-category"><a asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id="@data.Id" rel="tag">@data.PropertyName</a></span>
+    <a class="out-link" title="" asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id="@data.Id">
+    <i class="fa fa-link" aria-hidden="true"></i>
+    </a>
+    </div>
+    <div class="property-wrap">
+    <h2 class="property-title">
+    <a  asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id="@data.Id" title="@data.PropertyName">@data.PropertyName</a>
+    </h2>
+    <div class="property-excerpt">
+    <p>@data.PropertyDescription</p>
+    </div>
+    <div class="property-summary">
+    <div class="property-detail">
+    <div class="area"><span class="property-meta-icon" style="background-image: url(http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/size-icon_ccd251439ef2512942b64d525ced79fe.png);"></span><span class="property-meta">@data.AreaCovered</span></div>
+    <div class="bedrooms"><span class="property-meta-icon" style="background-image: url(http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/bedroom-icon_92be012355310366e0bf07c8a41e35fe.png);"></span><span class="property-meta">@data.BedRooms</span></div>
+    <div class="bathrooms"><span class="property-meta-icon" style="background-image: url(http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/bathroom-icon_ffc5ba8874014ad0a7fcc5aa3b8acd57.png);"></span><span class="property-meta">@data.BathRooms</span></div>
+    </div> <div class="property-info style-1">
+    <div class="property-price">
+    <span> </span>
+    </div>
 
-                                                            <div class="property-action">
-                                                                <i title="Compare" data-user="0" data-id="@data.Id" data-action="compare" data-thumbnail="@data.ImagePath" data-div="submit-compare-612a036c0bbe8" class="property-action-button fa fa-plus compare-11917" aria-hidden="true"></i>
-                                                                <a asp-action="AddToFavourite" asp-controller="CustomerTransaction" asp-route-propId="@data.Id">
-                                                                    <i title="Add to favorites" class="fa fa-heart-o" aria-hidden="true"></i>
-                                                                </a>
+    <div class="property-action">
+    <i title="Compare" data-user="0" data-id="@data.Id" data-action="compare" data-thumbnail="@data.ImagePath" data-div="submit-compare-612a036c0bbe8" class="property-action-button fa fa-plus compare-11917" aria-hidden="true"></i>
+    <a asp-action="AddToFavourite" asp-controller="CustomerTransaction" asp-route-propId="@data.Id">
+    <i title="Add to favorites" class="fa fa-heart-o" aria-hidden="true"></i>
+    </a>
 
-                                                            </div>
-                                                        </div>
+    </div>
+    </div>
 
-                                                    </div>
-                                                </div>
-                                            </article>
+    </div>
+    </div>
+    </article>
 
 
-                                        }
+    }
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 
-                </div>
+    </div>
 
-            </div>
-        </div>
+    </div>
+    </div>
 
     </div>*@@*<div class="container-wrap">
-        <div class="main-content container-boxed max offset">
-            <div class="row">
-                <div class="noo-main col-md-12 right-sidebar  noo-page" role="main">
+    <div class="main-content container-boxed max offset">
+    <div class="row">
+    <div class="noo-main col-md-12 right-sidebar  noo-page" role="main">
 
-                    <div class="noo-vc-row row " style="">
-                        <div class="noo-vc-col col-md-12 ">
-                            <div class="recent-properties">
-                                <div class="properties grid">
-                                    <div class="properties-header">
-                                        <h1 class="page-title">Properties</h1>
-                                    </div>
-                                    <div class="noo-property-compare">
-                                        <form style="display: none" method="POST" action="http://wp.nootheme.com/citilights/compare-listings/" class="submit-compare-612a036c0bbe8">
-                                            <h3 class="title-compare">
-                                                Compare properties
-                                            </h3>
-                                            <div class="list-compare"></div>
-                                            <input type="submit" name="submit-compare" value="Compare" />
-                                        </form>
-                                    </div>
-                                    <div class="properties-content">
-                                        @foreach (var data in Model)
-                                        {
+    <div class="noo-vc-row row " style="">
+    <div class="noo-vc-col col-md-12 ">
+    <div class="recent-properties">
+    <div class="properties grid">
+    <div class="properties-header">
+    <h1 class="page-title">Properties</h1>
+    </div>
+    <div class="noo-property-compare">
+    <form style="display: none" method="POST" action="http://wp.nootheme.com/citilights/compare-listings/" class="submit-compare-612a036c0bbe8">
+    <h3 class="title-compare">
+    Compare properties
+    </h3>
+    <div class="list-compare"></div>
+    <input type="submit" name="submit-compare" value="Compare" />
+    </form>
+    </div>
+    <div class="properties-content">
+    @foreach (var data in Model)
+    {
 
-                                            <article id="@data.Id" class="post-11917 noo_property type-noo_property status-publish has-post-thumbnail hentry property_category-single-family-home property_location-california property_sub_location-brooklyn property_sub_location-district-10 property_sub_location-district-11 property_sub_location-district-2 property_sub_location-district-3 property_sub_location-district-4 property_sub_location-district-5 property_sub_location-district-6 property_sub_location-district-7 property_sub_location-district-8 property_sub_location-district-9 property_sub_location-manhattan property_sub_location-manhattanville property_sub_location-queens property_sub_location-staten-island property_sub_location-the-bronx property_sub_location-upper-west-side property_status-sales has-featured">
-                                                <div class="property-featured">
-                                                    <a class="content-thumb xx" asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id="@data.Id">
-                                                        <img style="height:300px;width:370px;" src="@data.ImagePath" class="attachment-property-thumb size-property-thumb wp-post-image" alt="" loading="lazy" />
-                                                    </a>
-                                                    <span class="property-label sold">@data.CategoryName</span>
-                                                    <span class="property-category"><a asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id="@data.Id" rel="tag">@data.PropertyName</a></span>
-                                                    <a class="out-link" title="" asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id="@data.Id">
-                                                        <i class="fa fa-link" aria-hidden="true"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="property-wrap">
-                                                    <h2 class="property-title">
-                                                        <a  asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id="@data.Id" title="@data.PropertyName">@data.PropertyName</a>
-                                                    </h2>
-                                                    <div class="property-excerpt">
-                                                        <p>@data.PropertyDescription</p>
-                                                    </div>
-                                                    <div class="property-summary">
-                                                        <div class="property-detail">
-                                                            <div class="area"><span class="property-meta-icon" style="background-image: url(http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/size-icon_ccd251439ef2512942b64d525ced79fe.png);"></span><span class="property-meta">@data.AreaCovered</span></div>
-                                                            <div class="bedrooms"><span class="property-meta-icon" style="background-image: url(http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/bedroom-icon_92be012355310366e0bf07c8a41e35fe.png);"></span><span class="property-meta">@data.BedRooms</span></div>
-                                                            <div class="bathrooms"><span class="property-meta-icon" style="background-image: url(http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/bathroom-icon_ffc5ba8874014ad0a7fcc5aa3b8acd57.png);"></span><span class="property-meta">@data.BathRooms</span></div>
-                                                        </div> <div class="property-info style-1">
-                                                            <div class="property-price">
-                                                                <span> </span>
-                                                            </div>
+    <article id="@data.Id" class="post-11917 noo_property type-noo_property status-publish has-post-thumbnail hentry property_category-single-family-home property_location-california property_sub_location-brooklyn property_sub_location-district-10 property_sub_location-district-11 property_sub_location-district-2 property_sub_location-district-3 property_sub_location-district-4 property_sub_location-district-5 property_sub_location-district-6 property_sub_location-district-7 property_sub_location-district-8 property_sub_location-district-9 property_sub_location-manhattan property_sub_location-manhattanville property_sub_location-queens property_sub_location-staten-island property_sub_location-the-bronx property_sub_location-upper-west-side property_status-sales has-featured">
+    <div class="property-featured">
+    <a class="content-thumb xx" asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id="@data.Id">
+    <img style="height:300px;width:370px;" src="@data.ImagePath" class="attachment-property-thumb size-property-thumb wp-post-image" alt="" loading="lazy" />
+    </a>
+    <span class="property-label sold">@data.CategoryName</span>
+    <span class="property-category"><a asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id="@data.Id" rel="tag">@data.PropertyName</a></span>
+    <a class="out-link" title="" asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id="@data.Id">
+    <i class="fa fa-link" aria-hidden="true"></i>
+    </a>
+    </div>
+    <div class="property-wrap">
+    <h2 class="property-title">
+    <a  asp-action="GetPropertyDetail" asp-controller="PropertyDetails" asp-route-id="@data.Id" title="@data.PropertyName">@data.PropertyName</a>
+    </h2>
+    <div class="property-excerpt">
+    <p>@data.PropertyDescription</p>
+    </div>
+    <div class="property-summary">
+    <div class="property-detail">
+    <div class="area"><span class="property-meta-icon" style="background-image: url(http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/size-icon_ccd251439ef2512942b64d525ced79fe.png);"></span><span class="property-meta">@data.AreaCovered</span></div>
+    <div class="bedrooms"><span class="property-meta-icon" style="background-image: url(http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/bedroom-icon_92be012355310366e0bf07c8a41e35fe.png);"></span><span class="property-meta">@data.BedRooms</span></div>
+    <div class="bathrooms"><span class="property-meta-icon" style="background-image: url(http://wp.nootheme.com/citilights/wp-content/uploads/2019/11/bathroom-icon_ffc5ba8874014ad0a7fcc5aa3b8acd57.png);"></span><span class="property-meta">@data.BathRooms</span></div>
+    </div> <div class="property-info style-1">
+    <div class="property-price">
+    <span> </span>
+    </div>
 
-                                                            <div class="property-action">
-                                                                <i title="Compare" data-user="0" data-id="@data.Id" data-action="compare" data-thumbnail="@data.ImagePath" data-div="submit-compare-612a036c0bbe8" class="property-action-button fa fa-plus compare-11917" aria-hidden="true"></i>
-                                                                <a asp-action="AddToFavourite" asp-controller="CustomerTransaction" asp-route-propId="@data.Id">
-                                                                    <i title="Add to favorites" class="fa fa-heart-o" aria-hidden="true"></i>
-                                                                </a>
+    <div class="property-action">
+    <i title="Compare" data-user="0" data-id="@data.Id" data-action="compare" data-thumbnail="@data.ImagePath" data-div="submit-compare-612a036c0bbe8" class="property-action-button fa fa-plus compare-11917" aria-hidden="true"></i>
+    <a asp-action="AddToFavourite" asp-controller="CustomerTransaction" asp-route-propId="@data.Id">
+    <i title="Add to favorites" class="fa fa-heart-o" aria-hidden="true"></i>
+    </a>
 
-                                                            </div>
-                                                        </div>
+    </div>
+    </div>
 
-                                                    </div>
-                                                </div>
-                                            </article>
+    </div>
+    </div>
+    </article>
 
 
-                                        }
+    }
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 
-                </div>
+    </div>
 
-            </div>
-        </div>
+    </div>
+    </div>
 
     </div>*@
 
 
 <script>
-		$(document).ready(function() {
+    $(document).ready(function() {
 
-		  $('#owl-carousel-3').owlCarousel({
-			margin: 10,
-			nav: true,
-			loop: true,
-			autoplay:true,
-			autoplayTimeout:2000,
-			autoplayHoverPause:true,
-			navText : ['<i class="fa fa-chevron-left"></i>','<i class="fa fa-chevron-right"></i>'],
-			responsive: {
-			  0: {
-				items: 1
-			  },
-			  768: {
-				items: 2
-			  },
-			  1200: {
-				items: 3
-			  }
-			}
-		  });
+      $('#owl-carousel-3').owlCarousel({
+        margin: 10,
+        nav: true,
+        loop: true,
+        autoplay:true,
+        autoplayTimeout:2000,
+        autoplayHoverPause:true,
+        navText : ['<i class="fa fa-chevron-left"></i>','<i class="fa fa-chevron-right"></i>'],
+        responsive: {
+          0: {
+            items: 1
+          },
+          768: {
+            items: 2
+          },
+          1200: {
+            items: 3
+          }
+        }
+      });
 
-		  $('#owl-carousel-4').owlCarousel({
-			margin: 10,
-			nav: true,
-			loop: true,
-			autoplay:true,
-			autoplayTimeout:2000,
-			autoplayHoverPause:true,
-			navText : ['<i class="fa fa-chevron-left"></i>','<i class="fa fa-chevron-right"></i>'],
-			responsive: {
-			  0: {
-				items: 1
-			  },
-			  768: {
-				items: 2
-			  },
-			  1200: {
-				items: 3
-			  }
-			}
-		  });
+      $('#owl-carousel-4').owlCarousel({
+        margin: 10,
+        nav: true,
+        loop: true,
+        autoplay:true,
+        autoplayTimeout:2000,
+        autoplayHoverPause:true,
+        navText : ['<i class="fa fa-chevron-left"></i>','<i class="fa fa-chevron-right"></i>'],
+        responsive: {
+          0: {
+            items: 1
+          },
+          768: {
+            items: 2
+          },
+          1200: {
+            items: 3
+          }
+        }
+      });
 
-		  $('#owl-carousel-5').owlCarousel({
-			margin: 10,
-			nav: true,
-			loop: true,
-			autoplay:true,
-			autoplayTimeout:2000,
-			autoplayHoverPause:true,
-			navText : ['<i class="fa fa-chevron-left"></i>','<i class="fa fa-chevron-right"></i>'],
-			responsive: {
-			  0: {
-				items: 1
-			  },
-			  768: {
-				items: 2
-			  },
-			  1200: {
-				items: 3
-			  }
-			}
-		  });
+      $('#owl-carousel-5').owlCarousel({
+        margin: 10,
+        nav: true,
+        loop: true,
+        autoplay:true,
+        autoplayTimeout:2000,
+        autoplayHoverPause:true,
+        navText : ['<i class="fa fa-chevron-left"></i>','<i class="fa fa-chevron-right"></i>'],
+        responsive: {
+          0: {
+            items: 1
+          },
+          768: {
+            items: 2
+          },
+          1200: {
+            items: 3
+          }
+        }
+      });
 
-		  $("#bt-1").click(function(){
-			  $(".list-grid .col-lg-4").removeClass("col-lg-4");
-			  $(".list-grid .border").addClass("list-view");
-		  });
-		  $("#bt-2").click(function(){
-			  $(".list-grid .list-view").removeClass("list-view");
-			  $(".list-grid .mt-3").addClass("col-lg-4");
-		  });
+      $("#bt-1").click(function(){
+          $(".list-grid .col-lg-4").removeClass("col-lg-4");
+          $(".list-grid .border").addClass("list-view");
+      });
+      $("#bt-2").click(function(){
+          $(".list-grid .list-view").removeClass("list-view");
+          $(".list-grid .mt-3").addClass("col-lg-4");
+      });
 
-		  $("#flip").click(function(){
-			 $(".panel").toggle();
-			 return false;
-		  });
+      $("#flip").click(function(){
+         $(".panel").toggle();
+         return false;
+      });
 
-		})
+    })
 </script>

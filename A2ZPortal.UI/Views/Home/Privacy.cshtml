@@ -1,9 +1,48 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
-}
-<h1>@ViewData["Title"]</h1>
+﻿@model A2ZPortal.Core.Entities.Master.Contact
 
-
-
-
- 
+<section class="about">
+    <div class="bg-bar">
+        <div class="container">
+            @if (ViewBag.Breadcrumbs != null)
+            {
+                <h6>
+                    @foreach (var breadcrumb in ViewBag.Breadcrumbs as List<Breadcrumb>)
+                    {
+                        if (breadcrumb.Active)
+                        {
+                            <a asp-action="@breadcrumb.Action" asp-controller="@breadcrumb.Controller">@breadcrumb.Text</a> 
+                        }
+                        else
+                        {
+                            <span></span>  @breadcrumb.Text;
+                        }
+                    }
+                </h6>
+            }
+        </div>
+    </div>
+    
+    <div class="container my-5 text-center">
+		<h1>Privacy Policy</h1>
+		<div class="row">
+			<div class="col-md-12 text-left mt-5">
+				<p>We at A2Z Properties recognize that you expect privacy and security when it comes to information that personally identifies you and allows you to be individually contacted (“Personal Information”). We adopted the following online privacy policy because we understand the need to safeguard the information you may be providing to us at our websites.</p>
+				<h3>How we protect your information</h3>
+				<p>The information we receive from you is protected against unauthorized access once we receive it. We limit the access to your information to employees who have a business reason for accessing it. We also educate our employees about the importance of your privacy through educational programs and company policies. We will not sell or distribute your Personal Information. Because this website does not collect any financial information from you, we do not currently use secure socket layer software (SSL). We do use cookies.</p>
+				<p>Despite our continual and evolving efforts to protect your personal information, we cannot guarantee the security of your Personal Information. You acknowledge and agree that we make no such guarantee.</p>
+				<h3>About our cookies</h3>
+				<p>Cookies are small pieces of information that are stored by your browser on your computer hard drive. We use cookies so our website can remember you and provide content you’re most likely to request- such as properties you have saved for future review, or your favorite agent. We also use cookies to gather statistical information about our website, such as the time users spend at a site and the pages they visit most often. Those statistics to not contain Personal Information.</p>
+				<h3>Links to other websites</h3>
+				<p>Our websites contain links to and from other websites. Some links may be in the form of display advertising. We cannot guarantee that websites other than A2Z Properties websites will respect and protect your Personal Information like we do. For your own protection, you should go to and read the privacy statements/policies of other websites when you visit them.</p>
+				<p>We are not responsible for the content of websites other than A2Z Properties websites.</p>
+				<h3>Your consent</h3>
+				<p>When you provide us with Personal Information, you consent to the collection and use of this information by A2Z Properties.</p>
+				<h3>Business Transfers</h3>
+				<p>If A2Z Properties, or substantially all of its assets were acquired, or in the unlikely event that A2Z Properties goes out of business or enters bankruptcy, Personal Information would be one of the assets transferred to or acquired by a third party. You acknowledge that such transfers may occur, and that any acquirer of A2Z Properties may continue to use the Personal Information as set forth in this policy.</p>
+				<h3>Amendments</h3>
+				<p>If we decide to change our privacy policy, we will post changes on this page to keep you informed of what information we collect, how we use it, and under what circumstances we disclose it.</p>
+				<p>Questions on our privacy policy can be directed to <a href="mailto:info@a2zproperties.ae">info@a2zproperties.ae</a></p>
+			</div>
+		</div>
+	</div>
+</section>

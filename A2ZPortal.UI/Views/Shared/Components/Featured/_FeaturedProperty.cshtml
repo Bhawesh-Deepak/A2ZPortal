@@ -14,7 +14,7 @@
                                 <div class="p-4">
                                     <h5>@data.PropertyName </h5>
                                     <button type="button" class="btn btn-primary disabled">
-                                        @string.Format("{0:0.00}", data.Price)  M AED
+                                        @string.Format("{0:0}", data.Price) AED
                                         @if (data.PropertyType == "Rent")
                                         {
                                             <span>Per Month</span>

@@ -47,8 +47,8 @@ footer h4{color:#fff; text-transform:uppercase; font-size:14px; font-weight:bold
 .custom-border{ box-shadow: 0 8px 6px -6px #ececec;}
 .mt-460 .btn-success{border:1px solid #7b0211 !important; background:#7b0211 !important}
 .mt-460 .btn-success:hover{background:#fff !important; color:#7b0211 !important}
-.mt-460 .btn-success:last-child{background:#fff !important;	color:#7b0211 !important; border:1px solid #7b0211 !important}
-.mt-460 .btn-success:last-child:hover{background:#7b0211 !important; color:#fff !important;	border:1px solid #7b0211 !important}
+/*.mt-460 .btn-success:last-child{background:#fff !important;	color:#7b0211 !important; border:1px solid #7b0211 !important}
+.mt-460 .btn-success:last-child:hover{background:#7b0211 !important; color:#fff !important;	border:1px solid #7b0211 !important}*/
 .form-inline .form-control{width:100%;	font-size:.9rem}
 #owl-carousel-2{color:#fff}
 #owl-carousel-2 .btn{color:#fff; text-transform:uppercase}
@@ -115,7 +115,7 @@ a.sc-7dvmpp-1.dfBDQI{display:none;}
 ::-webkit-scrollbar{width:3px; height:8px; border-radius:10px;}
 ::-webkit-scrollbar-thumb{border-radius:2px; background-color:#ff4444; transition:all 400ms ease-in-out; border-radius:10px;}
 ::-webkit-scrollbar-track{background-color:rgba(0,0,0,.1); border-radius:10px;}
-
+.jxPOhn{poaition: relative !important; bottom: 80px !important}
 
 @media screen and (min-width:1200px) {
 	.mt-460 {
