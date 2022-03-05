@@ -10,16 +10,16 @@
                 <h6>
                     @foreach (var breadcrumb in ViewBag.Breadcrumbs as List<Breadcrumb>)
                     {
-                        if (breadcrumb.Active)
-                        {
-                            <a asp-action="@breadcrumb.Action" asp-controller="@breadcrumb.Controller">@breadcrumb.Text</a>
-                        }
-                        else
-                        {
+                         //if (breadcrumb.Active)
+                        //{
+                           // <a asp-action="@breadcrumb.Action" asp-controller="@breadcrumb.Controller">@breadcrumb.Text</a>
+                           <span>@breadcrumb.Text</span><span> / @ViewBag.ControllerName</span>
+                        //}
+                        //else
+                        //{
 
-                            <span>/</span> @breadcrumb.Text
-                            ;
-                        }
+                        //    <span>/</span> @breadcrumb.Text;
+                        //}
                     }
                 </h6>
             }

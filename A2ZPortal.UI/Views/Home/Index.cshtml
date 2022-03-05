@@ -107,6 +107,25 @@
     </div>
 </div>
 
+
+<div class="vedpopup" id="popid"  style="display: block;height: 300px;width: 300px;border: solid 1px black;position: fixed;top: 210px;
+        left: 0;z-index: 990;">
+    <button type="button" id="closeId" value="close" style="position: relative;right: -271px;z-index:999">X</button>
+    <div id="vediodiv">
+         <video autoplay muted loop style="height: 300px;width:298px;position:relative;top:-31px;">
+        <source src="~/A2Z-contents/WhatsappVedioHome.mp4" type="video/mp4"/>
+    </video>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#closeId").click(function () {
+            $("#popid").hide();
+         });
+    });
+</script>
+
 <script>
     $(document).ready(function () {
         $('.owl-theme').owlCarousel({
