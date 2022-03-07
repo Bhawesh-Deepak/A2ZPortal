@@ -1,0 +1,45 @@
+﻿@model IEnumerable<A2ZPortal.Core.Entities.UserManagement.MenuSubMenu>
+
+<nav class="navbar navbar-expand-md" id="navbar">
+    <div class="container">
+        <a class="navbar-brand" asp-action="Index" asp-controller="Home"><img src="~/A2Z-wp-contents/images/logo.png" alt="" class="img-fluid"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-expanded="false"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+                @foreach (var item in Model)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="@item.ActionName" asp-controller="@item.ControllerName">@item.ModuleName</a>
+                    </li>
+
+                }
+                @*  <li class="nav-item">
+                            <a class="nav-link" asp-action="index" asp-controller="home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" asp-action="index" asp-controller="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="index" asp-controller="aboutus">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="index" asp-controller="sale">For Sale</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="index" asp-controller="projects">New Projects</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="index" asp-controller="upcomingproject">New Launch</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="index" asp-controller="contactus">Contact Us</a>
+                    </li>*@
+
+            </ul>
+        </div>
+
+
+    </div>
+</nav>

@@ -58,5 +58,6 @@ namespace A2ZPortal.Core.Entities.Context
         public virtual DbSet<Brochure> Brochures { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<UpComingPropertyDetail> UpComingPropertyDetails { get; set; }
+        public virtual DbSet<MenuSubMenu> MenuSubMenus { get; set; }
     }
 }
